@@ -41,17 +41,22 @@ Official API and MCP authentication: [Orbitype Docs - API Authentication](https:
 
 ```mermaid
 flowchart LR
-  Figma[Figma design] --> FigmaMCP[Figma MCP in Cursor]
-  FigmaMCP --> CursorBuild[Cursor builds Vue sections]
-  CursorBuild --> OrbitypeMCP[Orbitype MCP sql_crud_execute]
+  Figma[Figma design] --> CursorBox[Inside Cursor]
+  subgraph CursorBox [Inside Cursor]
+    FigmaMCP[Figma MCP]
+    CursorBuild[Vue sections]
+    OrbitypeMCP[Orbitype MCP]
+  end
+  FigmaMCP --> CursorBuild --> OrbitypeMCP
   OrbitypeMCP --> DB[(PostgreSQL sections JSON)]
   DB --> Nuxt[Nuxt server/api + AnySection]
   Nuxt --> Browser[Rendered page]
+  OrbitypeMCP --> OrbitypeApp[Orbitype Intelligence]
 ```
 
-1. **Design** — Lay out pages and sections in Figma; use the **Figma MCP** in Cursor to inspect frames, spacing, typography, and copy.
-2. **Build** — Implement matching `components/sections/Section*.vue` files in this repo (Tailwind, `I18nString`, `useTranslate()`, `SafeHtml` where needed). `AnySection.vue` auto-discovers section files; no registry.
-3. **Publish content** — With **Orbitype MCP** connected, call `orbitype_get_context`, then use `sql_readonly_query` / `sql_crud_execute` to write `sections` JSON on `pages` (and related tables). Verify in the browser and SEO metadata.
+1. **Design** — Lay out pages and sections in Figma.
+2. **Inside Cursor** — **Figma MCP** for specs; build `components/sections/Section*.vue`; **Orbitype MCP** (`orbitype_get_context`, `sql_crud_execute`) to write `sections` JSON.
+3. **Orbitype Intelligence** — Content operations in the Orbitype app (section editing, page review, CMS management).
 
 Do not hand-edit production JSON without a read-first backup of the current `sections` array.
 
@@ -88,15 +93,28 @@ Same section components and rendering; different data per key/connector.
 
 ## Sections contract
 
-Each page row has metadata (`title`, `lead`, `keywords`, …) and `sections` (JSON array). Every section object must include:
+Each page row has metadata (`title`, `lead`, `keywords`, …) and `sections` (JSON array).
+
+### JSON key order (required for CMS admin)
+
+Orbitype renders sections from JSON key order. The **first key** is the skimmable list title in the CMS.
+
+1. **First** — human-readable field: `title`, `name`, `label`, or similar (`I18nString` with `en`/`de` when applicable).
+2. **Middle** — remaining section props.
+3. **Last** — `_orbi` with `component`.
+
+Do **not** put `_orbi` or `img` first. Image URLs make sections hard to identify in the admin UI.
 
 ```json
 {
-  "_orbi": {
-    "component": "SectionFeatureCallout"
-  }
+  "title": { "en": "Feature callout", "de": "Feature-Highlight" },
+  "content": { "en": "<p>...</p>", "de": "<p>...</p>" },
+  "variant": "highlight",
+  "_orbi": { "component": "SectionFeatureCallout" }
 }
 ```
+
+For sections without `title`, use the best available label field (`name`, `height` as number for spacers, etc.).
 
 `_orbi.component` must match the Vue file name in `components/sections/` (for example `SectionFeatureCallout.vue` → `"SectionFeatureCallout"`).
 
@@ -165,7 +183,7 @@ const t = useTranslate()
 </template>
 ```
 
-2. Append or insert JSON in `pages.sections` via SQL (see README SQL examples). Props in JSON must match the Vue `defineProps` shape.
+2. Append or insert JSON in `pages.sections` via SQL (see README SQL examples). Put `title` (or `name`/`label`) first, `_orbi` last in `jsonb_build_object`. Props must match Vue `defineProps`.
 3. `SELECT slug, sections FROM pages WHERE slug = '...'` to verify.
 4. Open the URL; check layout, i18n, and SEO.
 
@@ -177,8 +195,8 @@ SET sections = jsonb_insert(
   COALESCE(sections, '[]'::json)::jsonb,
   '{1}',
   jsonb_build_object(
-    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout'),
-    'title', jsonb_build_object('en', 'Inserted', 'de', 'Eingefuegt')
+    'title', jsonb_build_object('en', 'Inserted', 'de', 'Eingefuegt'),
+    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout')
   ),
   false
 )::json
@@ -195,6 +213,7 @@ WHERE slug = 'home';
 
 ## Common pitfalls
 
+- `_orbi` or `img` placed first — CMS list labels become useless.
 - `_orbi.component` does not match the `.vue` filename.
 - Missing required section props → blank UI.
 - `sections` not a JSON array of objects.

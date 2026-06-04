@@ -28,7 +28,6 @@ function buildWelcomePage(): IPage {
     },
     sections: [
       {
-        _orbi: { component: "SectionWelcome" },
         title: {
           en: "Welcome to the Orbitype Headless CMS Template",
           de: "Welcome to the Orbitype Headless CMS Template",
@@ -40,6 +39,7 @@ function buildWelcomePage(): IPage {
         steps: welcomePageSteps(sqlKeyConfigured),
         hasSqlKeyConfigured: sqlKeyConfigured,
         apiKeysUrl: ORBITYPE_API_KEYS_URL,
+        _orbi: { component: "SectionWelcome" },
       },
     ],
     head: {},
@@ -114,36 +114,48 @@ function welcomePageSteps(sqlKeyConfigured: boolean) {
 }
 
 function welcomeDeveloperWorkflow() {
-  return [
-    {
+  return {
+    figma: {
       label: { en: "Figma", de: "Figma" },
       detail: {
         en: "Design page layout, typography, and section content structure.",
         de: "Design page layout, typography, and section content structure.",
       },
     },
-    {
-      label: { en: "Figma MCP", de: "Figma MCP" },
+    inCursor: {
+      label: { en: "Inside Cursor", de: "Inside Cursor" },
+      steps: [
+        {
+          label: { en: "Figma MCP", de: "Figma MCP" },
+          detail: {
+            en: "Pull frames, spacing, and copy into the editor.",
+            de: "Pull frames, spacing, and copy into the editor.",
+          },
+        },
+        {
+          label: { en: "Cursor build", de: "Cursor build" },
+          detail: {
+            en: "Ship components/sections/Section*.vue\nAnySection auto-loads them.",
+            de: "Ship components/sections/Section*.vue\nAnySection auto-loads them.",
+          },
+        },
+        {
+          label: { en: "Orbitype MCP", de: "Orbitype MCP" },
+          detail: {
+            en: "Publish pages.sections JSON to PostgreSQL\nvia sql_crud_execute.",
+            de: "Publish pages.sections JSON to PostgreSQL\nvia sql_crud_execute.",
+          },
+        },
+      ],
+    },
+    orbitypeIntelligence: {
+      label: { en: "Orbitype Intelligence", de: "Orbitype Intelligence" },
       detail: {
-        en: "Pull frames, spacing, and copy into Cursor while you implement.",
-        de: "Pull frames, spacing, and copy into Cursor while you implement.",
+        en: "Content operations in Orbitype — edit sections, review pages, and manage CMS data in the app.",
+        de: "Content operations in Orbitype — edit sections, review pages, and manage CMS data in the app.",
       },
     },
-    {
-      label: { en: "Cursor build", de: "Cursor build" },
-      detail: {
-        en: "Ship components/sections/Section*.vue\nAnySection auto-loads them.",
-        de: "Ship components/sections/Section*.vue\nAnySection auto-loads them.",
-      },
-    },
-    {
-      label: { en: "Orbitype MCP", de: "Orbitype MCP" },
-      detail: {
-        en: "Publish pages.sections JSON to PostgreSQL\nvia sql_crud_execute.",
-        de: "Publish pages.sections JSON to PostgreSQL\nvia sql_crud_execute.",
-      },
-    },
-  ]
+  }
 }
 
 function welcomeCmsGuide() {
@@ -179,11 +191,12 @@ function welcomeCmsGuide() {
       {
         title: { en: "Sections contract" },
         text: {
-          en: 'Each section object requires _orbi.component matching the Vue filename (SectionFeatureCallout.vue → "SectionFeatureCallout"). Localized props use en and de with useTranslate(). No registry file.',
+          en: 'Put a human-readable field first (title, name, label — not img URLs). _orbi must be the last key so the CMS list shows a skimmable title. Match _orbi.component to the Vue filename. Use en/de with useTranslate().',
         },
         code: `{
-  "_orbi": { "component": "SectionFeatureCallout" },
-  "title": { "en": "...", "de": "..." }
+  "title": { "en": "...", "de": "..." },
+  "content": { "en": "...", "de": "..." },
+  "_orbi": { "component": "SectionFeatureCallout" }
 }`,
       },
       {
@@ -214,10 +227,10 @@ SET sections = (
   COALESCE(sections, '[]'::json)::jsonb
   || jsonb_build_array(
     jsonb_build_object(
-      '_orbi', jsonb_build_object('component', 'SectionFeatureCallout'),
       'title', jsonb_build_object('en', '<p>Title</p>', 'de', '<p>Titel</p>'),
       'content', jsonb_build_object('en', '<p>Body</p>', 'de', '<p>Text</p>'),
-      'variant', 'highlight'
+      'variant', 'highlight',
+      '_orbi', jsonb_build_object('component', 'SectionFeatureCallout')
     )
   )
 )::json
@@ -233,8 +246,8 @@ SET sections = jsonb_insert(
   COALESCE(sections, '[]'::json)::jsonb,
   '{1}',
   jsonb_build_object(
-    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout'),
-    'title', jsonb_build_object('en', 'Inserted', 'de', 'Eingefuegt')
+    'title', jsonb_build_object('en', 'Inserted', 'de', 'Eingefuegt'),
+    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout')
   ),
   false
 )::json
@@ -263,7 +276,7 @@ WHERE section->'_orbi'->>'component' = 'SectionFeatureCallout';`,
       {
         title: { en: "Common pitfalls" },
         text: {
-          en: "Wrong connector (run orbitype_get_context), _orbi.component name mismatch, sections not a JSON array, missing en/de on translated fields, missing required Vue props.",
+          en: "Wrong connector, _orbi not last (or no title/name first), component name mismatch, invalid sections array, missing en/de, or missing Vue props. Avoid img as first key — URLs are hard to skim.",
         },
       },
     ],

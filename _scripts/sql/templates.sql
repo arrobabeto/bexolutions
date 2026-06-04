@@ -7,18 +7,14 @@ CREATE TABLE templates
   sections_before json DEFAULT '[
     {
       "height": 0,
-      "_orbi": {
-        "component": "SectionSpacer"
-      }
+      "_orbi": { "component": "SectionSpacer" }
     }
   ]'::json,
   
   sections_after json DEFAULT '[
     {
       "height": 0,
-      "_orbi": {
-        "component": "SectionSpacer"
-      }
+      "_orbi": { "component": "SectionSpacer" }
     }
   ]'::json
 );

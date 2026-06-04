@@ -6,10 +6,9 @@ Production-ready Nuxt starter for Orbitype-powered websites with section-driven 
 
 Typical flow for a new page or section:
 
-1. **Design in Figma** — Define layout, typography, and content structure per section.
-2. **Figma MCP in Cursor** — Inspect frames and specs from Figma while implementing (spacing, copy, assets).
-3. **Build in this repo** — Add `components/sections/Section*.vue`; `AnySection.vue` auto-loads them. Match props to the JSON you will store (`I18nString` with `en` / `de`).
-4. **Publish with Orbitype MCP** — In Cursor, configure `.cursor/mcp.json`, run `orbitype_get_context`, then use `sql_readonly_query` and `sql_crud_execute` to write `sections` JSON into `pages` (after schema install). Re-read the row and open the URL to verify.
+1. **Figma** — Design layout, typography, and section structure.
+2. **Inside Cursor** — Figma MCP (inspect frames), build `components/sections/Section*.vue`, publish `sections` JSON via Orbitype MCP (`sql_crud_execute`).
+3. **Orbitype Intelligence** — Content operations in the Orbitype app (edit sections, review pages, manage CMS data).
 
 Until the SQL API returns real rows, the welcome screen (`SectionWelcome`) explains setup and shows this CMS guide.
 
@@ -98,17 +97,21 @@ Same section system and rendering code; different data per connector/key.
 
 ### Sections system
 
-Each row includes metadata (`title`, `lead`, `keywords`, …) and `sections` (JSON array). Every section must include:
+Each row includes metadata (`title`, `lead`, `keywords`, …) and `sections` (JSON array). Every section must include `_orbi.component` and should follow **key order for the CMS admin UI**:
+
+1. **First key** — human-readable (`title`, `name`, `label`, …). The CMS uses this as the list label. Do not use `img` first (URLs are hard to skim).
+2. **Middle keys** — section props (`content`, `variant`, …).
+3. **Last key** — `_orbi` (component binding).
 
 ```json
 {
-  "_orbi": {
-    "component": "SectionWelcome"
-  }
+  "title": { "en": "Feature callout", "de": "Feature-Highlight" },
+  "content": { "en": "<p>...</p>", "de": "<p>...</p>" },
+  "_orbi": { "component": "SectionFeatureCallout" }
 }
 ```
 
-`AnySection.vue` auto-loads all `components/sections/*.vue`. The `_orbi.component` value must match the Vue component name (for example `SectionFeatureCallout.vue` → `"SectionFeatureCallout"`). No registration file is needed.
+`AnySection.vue` auto-loads all `components/sections/*.vue`. `_orbi.component` must match the Vue file name (for example `SectionFeatureCallout.vue` → `"SectionFeatureCallout"`). No registration file is needed.
 
 Localized fields use `en` and `de` keys with `useTranslate()`.
 
@@ -155,7 +158,6 @@ SET sections = (
   COALESCE(sections, '[]'::json)::jsonb
   || jsonb_build_array(
     jsonb_build_object(
-      '_orbi', jsonb_build_object('component', 'SectionFeatureCallout'),
       'title', jsonb_build_object(
         'en', '<p>Why teams switch to Orbitype</p>',
         'de', '<p>Warum Teams zu Orbitype wechseln</p>'
@@ -164,7 +166,8 @@ SET sections = (
         'en', '<p>Run CRM, outreach, and automation in one place.</p>',
         'de', '<p>CRM, Outreach und Automatisierung an einem Ort.</p>'
       ),
-      'variant', 'highlight'
+      'variant', 'highlight',
+      '_orbi', jsonb_build_object('component', 'SectionFeatureCallout')
     )
   )
 )::json
@@ -187,9 +190,9 @@ SET sections = jsonb_insert(
   COALESCE(sections, '[]'::json)::jsonb,
   '{1}',
   jsonb_build_object(
-    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout'),
     'title', jsonb_build_object('en', 'Inserted section', 'de', 'Eingefuegter Abschnitt'),
-    'content', jsonb_build_object('en', '<p>Inserted by SQL.</p>', 'de', '<p>Per SQL eingefuegt.</p>')
+    'content', jsonb_build_object('en', '<p>Inserted by SQL.</p>', 'de', '<p>Per SQL eingefuegt.</p>'),
+    '_orbi', jsonb_build_object('component', 'SectionFeatureCallout')
   ),
   false
 )::json
@@ -206,6 +209,7 @@ WHERE slug = 'home';
 
 ### Common pitfalls
 
+- `_orbi` not last, or no human-readable first key (CMS list becomes hard to scan).
 - Component name mismatch between `_orbi.component` and the `.vue` file name.
 - Missing required section props.
 - Invalid `sections` shape (must stay an array of objects).

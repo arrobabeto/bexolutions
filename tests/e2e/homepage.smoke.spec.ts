@@ -23,7 +23,6 @@ test.describe("Homepage smoke", () => {
           },
           sections: [
             {
-              _orbi: { component: "SectionWelcome" },
               title: {
                 en: "Welcome to the Orbitype Headless CMS Template",
                 de: "Welcome to the Orbitype Headless CMS Template",
@@ -44,6 +43,7 @@ test.describe("Homepage smoke", () => {
                   text: { en: "Step one details", de: "Step one details" },
                 },
               ],
+              _orbi: { component: "SectionWelcome" },
             },
           ],
           head: {},
