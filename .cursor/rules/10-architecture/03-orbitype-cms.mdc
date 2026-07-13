@@ -122,21 +122,15 @@ Localized fields use `en` and `de` keys; render with `useTranslate()`.
 
 ## Cursor MCP setup
 
-`.cursor/mcp.json` example:
+Local secrets live in `.cursor/mcp.json` (gitignored). Shared template: `.cursor/mcp.json.example`. Long-form guide: `docs/Orbitype-Marketing-CMS-System-Documentation.md`.
 
 ```json
 {
   "mcpServers": {
-    "orbitype-sql-prod-website": {
+    "orbitype-sql-prod": {
       "url": "https://core.orbitype.com/api/mcp/v1",
       "headers": {
-        "X-API-KEY": "${env:ORBITYPE_SQL_API_KEY_PROD_WEBSITE}"
-      }
-    },
-    "orbitype-sql-prod-marketing": {
-      "url": "https://core.orbitype.com/api/mcp/v1",
-      "headers": {
-        "X-API-KEY": "${env:ORBITYPE_SQL_API_KEY_PROD_MARKETING}"
+        "X-API-KEY": "${env:ORBITYPE_SQL_API_KEY_PROD}"
       }
     },
     "orbitype-s3-public-prod": {
@@ -144,12 +138,18 @@ Localized fields use `en` and `de` keys; render with `useTranslate()`.
       "headers": {
         "X-API-KEY": "${env:ORBITYPE_S3_PUBLIC_API_KEY_PROD}"
       }
+    },
+    "orbitype-s3-private-prod": {
+      "url": "https://core.orbitype.com/api/mcp/v1",
+      "headers": {
+        "X-API-KEY": "${env:ORBITYPE_S3_PRIVATE_API_KEY_PROD}"
+      }
     }
   }
 }
 ```
 
-**Every session:** `orbitype_get_context` → `sql_readonly_query` (reads) → `sql_crud_execute` (writes). Confirm connector before mutating data.
+**Every session:** `orbitype_get_context` → `sql_readonly_query` (reads) → `sql_crud_execute` (writes). Confirm connector before mutating data. After changing `mcp.json`, reload MCP in Cursor (Settings → Tools & MCP).
 
 ## Add a section (agent checklist)
 

@@ -9,6 +9,7 @@ node_modules
 .cache
 .output
 .env
+.cursor/mcp.json
 dist
 playwright-report
 test-results

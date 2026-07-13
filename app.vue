@@ -84,7 +84,7 @@
 <template>
   <!--eslint-disable vue/no-multiple-template-root-->
   <Head>
-    <Link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <Link rel="icon" href="/favicon.png" type="image/png" />
     <Link rel="preconnect" href="https://fonts.googleapis.com" />
     <Link
       rel="preconnect"
