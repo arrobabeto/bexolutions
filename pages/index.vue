@@ -22,7 +22,12 @@
     ],
   })
 
-  const navLinks = ["Über uns", "Leistungen", "Wissen", "Treuhänder"]
+  const navLinks = [
+    { l: "Über uns", to: "/ueber-uns" },
+    { l: "Leistungen", to: "/leistungen" },
+    { l: "Wissen", to: "#" },
+    { l: "Treuhänder", to: "#" },
+  ]
 
   const stats = [
     { label: "mehr Klicks pro Monat", value: "+200%", left: 0, w: 510 },
@@ -189,11 +194,11 @@
   ]
 
   const footerLinks = [
-    "Über uns",
-    "Leistungen",
-    "Wissen",
-    "Treuhänder",
-    "Kontakt",
+    { l: "Über uns", to: "/ueber-uns" },
+    { l: "Leistungen", to: "/leistungen" },
+    { l: "Wissen", to: "#" },
+    { l: "Treuhänder", to: "#" },
+    { l: "Kontakt", to: "#" },
   ]
 </script>
 
@@ -213,12 +218,14 @@
         <div class="absolute inset-0 bg-black/40"></div>
 
         <!-- logo mark -->
-        <NuxtImg
-          :src="`${IMG}/logo-mark.png`"
-          class="absolute"
-          style="left: 112px; top: 60px; width: 107px; height: 107px"
-          alt="Bexolutions"
-        />
+        <a href="/" aria-label="Bexolutions Startseite">
+          <NuxtImg
+            :src="`${IMG}/logo-mark.png`"
+            class="absolute"
+            style="left: 112px; top: 60px; width: 107px; height: 107px"
+            alt="Bexolutions"
+          />
+        </a>
 
         <!-- nav links -->
         <nav
@@ -226,12 +233,12 @@
           style="left: 564px; top: 104px; height: 44px; gap: 24px"
         >
           <a
-            v-for="l of navLinks"
-            :key="l"
-            href="#"
+            v-for="n of navLinks"
+            :key="n.l"
+            :href="n.to"
             class="text-[16px] font-medium leading-5 text-white transition hover:opacity-80"
           >
-            {{ l }}
+            {{ n.l }}
           </a>
         </nav>
 
@@ -576,7 +583,7 @@
         — Philippe Bally, Zofingen Treuhand AG
       </p>
       <a
-        href="#"
+        href="/referenz-zofingen"
         class="btn-outline absolute"
         style="left: 607px; top: 6101px; width: 299px"
       >
@@ -883,12 +890,12 @@
           class="absolute flex flex-col"
           style="left: 987px; top: 96px; gap: 20px"
         >
-          <li v-for="l of footerLinks" :key="l">
+          <li v-for="l of footerLinks" :key="l.l">
             <a
-              href="#"
+              :href="l.to"
               class="text-[14px] font-medium leading-[18px] text-white transition hover:opacity-80"
             >
-              {{ l }}
+              {{ l.l }}
             </a>
           </li>
         </ul>
