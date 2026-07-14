@@ -23,7 +23,12 @@
     ],
   })
 
-  const navLinks = ["Über uns", "Leistungen", "Wissen", "Treuhänder"]
+  const navLinks = [
+    { l: "Über uns", to: "/ueber-uns" },
+    { l: "Leistungen", to: "/leistungen" },
+    { l: "Wissen", to: "#" },
+    { l: "Treuhänder", to: "#" },
+  ]
 
   const team = [
     "team-1",
@@ -141,21 +146,23 @@
         class="absolute"
         style="left: 0; top: 0; width: 1512px; height: 180px"
       >
-        <span
-          class="nav-logo absolute"
-          style="left: 120px; top: 64px; width: 107px; height: 107px"
-        ></span>
+        <a href="/" aria-label="Bexolutions Startseite">
+          <span
+            class="nav-logo absolute"
+            style="left: 120px; top: 64px; width: 107px; height: 107px"
+          ></span>
+        </a>
         <nav
           class="absolute flex items-center"
           style="left: 572px; top: 95px; height: 44px; gap: 24px"
         >
           <a
-            v-for="l of navLinks"
-            :key="l"
-            href="#"
+            v-for="n of navLinks"
+            :key="n.l"
+            :href="n.to"
             class="text-[16px] font-medium leading-5 text-[#0e2138] transition hover:opacity-70"
           >
-            {{ l }}
+            {{ n.l }}
           </a>
         </nav>
         <div
@@ -927,19 +934,19 @@
         >
           <li
             v-for="l of [
-              'Über uns',
-              'Leistungen',
-              'Wissen',
-              'Treuhänder',
-              'Kontakt',
+              { l: 'Über uns', to: '/ueber-uns' },
+              { l: 'Leistungen', to: '/leistungen' },
+              { l: 'Wissen', to: '#' },
+              { l: 'Treuhänder', to: '#' },
+              { l: 'Kontakt', to: '#' },
             ]"
-            :key="l"
+            :key="l.l"
           >
             <a
-              href="#"
+              :href="l.to"
               class="text-[14px] font-medium leading-[18px] text-white transition hover:opacity-80"
             >
-              {{ l }}
+              {{ l.l }}
             </a>
           </li>
         </ul>
