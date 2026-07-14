@@ -26,7 +26,7 @@
   const navLinks = [
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
-    { l: "Wissen", to: "#" },
+    { l: "Wissen", to: "/wissen" },
     { l: "Treuhänder", to: "#" },
   ]
 
@@ -167,7 +167,7 @@
           class="absolute flex items-center"
           style="left: 993px; top: 95px; gap: 10px"
         >
-          <a href="#" class="btn-navy" style="width: 153px">Kontakt</a>
+          <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
           <a href="#" class="btn-primary" style="width: 237px">
             Termin vereinbaren
           </a>
@@ -700,9 +700,9 @@
             v-for="l of [
               { l: 'Über uns', to: '/ueber-uns' },
               { l: 'Leistungen', to: '/leistungen' },
-              { l: 'Wissen', to: '#' },
-              { l: 'Treuhänder', to: '#' },
-              { l: 'Kontakt', to: '#' },
+              { l: 'Wissen', to: '/wissen' },
+              { l: 'Treuhänder', to: '/treuhaender' },
+              { l: 'Kontakt', to: '/kontakt' },
             ]"
             :key="l.l"
           >

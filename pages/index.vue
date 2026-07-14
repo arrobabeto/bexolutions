@@ -25,7 +25,7 @@
   const navLinks = [
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
-    { l: "Wissen", to: "#" },
+    { l: "Wissen", to: "/wissen" },
     { l: "Treuhänder", to: "#" },
   ]
 
@@ -196,9 +196,9 @@
   const footerLinks = [
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
-    { l: "Wissen", to: "#" },
-    { l: "Treuhänder", to: "#" },
-    { l: "Kontakt", to: "#" },
+    { l: "Wissen", to: "/wissen" },
+    { l: "Treuhänder", to: "/treuhaender" },
+    { l: "Kontakt", to: "/kontakt" },
   ]
 </script>
 
@@ -247,7 +247,7 @@
           class="absolute flex items-center"
           style="left: 990px; top: 104px; gap: 10px"
         >
-          <a href="#" class="btn-white" style="width: 153px">Kontakt</a>
+          <a href="/kontakt" class="btn-white" style="width: 153px">Kontakt</a>
           <a href="#" class="btn-primary" style="width: 237px">
             Termin vereinbaren
           </a>
