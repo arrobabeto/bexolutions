@@ -1,73 +1,33 @@
 import { expect, test } from "@playwright/test"
 
 test.describe("Homepage smoke", () => {
-  test("renders home, supports /de, and expands next steps", async ({
+  test("renders the Bexolutions home at / and /de and toggles the FAQ", async ({
     page,
   }) => {
-    await page.route("**/api/pages**", async (route) => {
-      await route.fulfill({
-        status: 200,
-        contentType: "application/json",
-        body: JSON.stringify({
-          id: "smoke-home",
-          title: {
-            en: "Orbitype Headless CMS Template",
-            de: "Orbitype Headless CMS Template",
-          },
-          slug: "home",
-          img: "",
-          keywords: ["orbitype", "smoke"],
-          lead: {
-            en: "Smoke test lead",
-            de: "Smoke test lead",
-          },
-          sections: [
-            {
-              title: {
-                en: "Welcome to the Orbitype Headless CMS Template",
-                de: "Welcome to the Orbitype Headless CMS Template",
-              },
-              lead: {
-                en: "Start here",
-                de: "Start here",
-              },
-              capabilities: [
-                {
-                  title: { en: "Smoke capability", de: "Smoke capability" },
-                  text: { en: "Smoke text", de: "Smoke text" },
-                },
-              ],
-              steps: [
-                {
-                  title: { en: "Step one", de: "Step one" },
-                  text: { en: "Step one details", de: "Step one details" },
-                },
-              ],
-              _orbi: { component: "SectionWelcome" },
-            },
-          ],
-          head: {},
-          created_at: new Date(0).toISOString(),
-          updated_at: new Date(0).toISOString(),
-        }),
-      })
-    })
-
     await page.goto("/")
 
-    const homeHeading = page.getByRole("heading", {
-      name: /Orbitype Headless CMS Template/i,
+    // Hero of the Bexolutions design
+    await expect(page.getByText("Better Marketing Systems.")).toBeVisible()
+    await expect(page.getByAltText("BEXOLUTIONS").first()).toBeVisible()
+
+    const faqHeading = page.getByRole("heading", {
+      name: /Was KMU-Inhaber uns am häufigsten fragen\./,
     })
-    await expect(homeHeading).toBeVisible()
+    await expect(faqHeading).toBeVisible()
 
+    // The same home is served under the /de locale prefix
     await page.goto("/de")
-    await expect(homeHeading).toBeVisible()
+    await expect(page.getByText("Better Marketing Systems.")).toBeVisible()
 
-    const firstStep = page.locator("details").first()
-    await expect(firstStep).not.toHaveAttribute("open", "")
+    // FAQ native <details> accordion: open by default, clicking the summary collapses it
+    const firstFaq = page.locator("details.faq-item").first()
+    await expect(firstFaq).toHaveAttribute("open", "")
+    await expect(
+      page.getByText(/3-5 Werktagen nach Auftragserteilung/),
+    ).toBeVisible()
 
-    await firstStep.locator("summary").click()
-    await expect(firstStep).toHaveAttribute("open", "")
+    await firstFaq.locator("summary").click()
+    await expect(firstFaq).not.toHaveAttribute("open", "")
   })
 
   test("serves robots, sitemaps, and llms routes", async ({
