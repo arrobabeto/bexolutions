@@ -6,7 +6,7 @@ import pluginVue from "eslint-plugin-vue"
 export default tseslint.config(
   // settings
   //////////////////////////////////////////////////////////////////////////////
-  { ignores: [".nuxt/", "vite-env.d.ts"] },
+  { ignores: [".nuxt/", ".output/", "node_modules/", "vite-env.d.ts"] },
   {
     languageOptions: {
       parser: vueParser,

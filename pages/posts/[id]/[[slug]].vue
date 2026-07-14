@@ -141,7 +141,7 @@
 <template>
   <main class="max-w-3xl mx-auto w-full space-y-5 p-4 sm:py-8">
     <NuxtLinkLocale
-      to="/posts"
+      to="posts"
       class="inline-flex items-center rounded-lg border border-[#e0e0e0] bg-[#fefefe] px-3 py-1.5 text-sm text-[#010101] hover:bg-[#f6f6f6] dark:border-[#282a36] dark:bg-[#191a22] dark:text-[#fefefe] dark:hover:bg-[#22232b]"
     >
       ← back
