@@ -19,7 +19,7 @@
     <div class="space-y-4 text-center">
       <p class="text-2xl font-semibold">404 Page not found</p>
       <p class="text-sm opacity-80">The page you requested does not exist.</p>
-      <NuxtLinkLocale to="/" class="underline">Go back home</NuxtLinkLocale>
+      <NuxtLinkLocale to="index" class="underline">Go back home</NuxtLinkLocale>
     </div>
   </main>
 </template>

@@ -52,6 +52,7 @@
   }
 
   async function switchLocale(code: string) {
+    if (code !== "en" && code !== "de") return
     await setLocale(code)
   }
 
@@ -78,7 +79,10 @@
     <NuxtLinkLocale
       v-for="p of posts"
       :key="p.id"
-      :to="`/posts/${p.id}/${slug(t(p.title))}`"
+      :to="{
+        name: 'posts-id-slug',
+        params: { id: p.id, slug: slug(t(p.title)) },
+      }"
       class="block rounded-2xl border border-[#e0e0e0] bg-[#fefefe]/95 p-4 transition hover:-translate-y-0.5 hover:shadow-sm dark:border-[#282a36] dark:bg-[#191a22]/95"
     >
       <h2
