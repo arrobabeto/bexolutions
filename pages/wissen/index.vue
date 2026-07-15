@@ -1,7 +1,12 @@
 <script setup lang="ts">
+  import { ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
+  import { useCanvasScale } from "~/composables/useCanvasScale"
 
   definePageMeta({ layout: false })
+
+  const canvasRef = ref<HTMLElement | null>(null)
+  useCanvasScale(canvasRef)
 
   const IMG = "/images/wissen"
   const HOME = "/images/startseite"
@@ -109,7 +114,7 @@
 
 <template>
   <main class="bexo">
-    <div class="canvas">
+    <div ref="canvasRef" class="canvas">
       <!-- ============================= NAV (light) ============================= -->
       <header
         class="absolute"
@@ -235,7 +240,11 @@
           <p class="mt-[9px] text-[20px] font-normal leading-[28px] text-black">
             ⏱️ KI-Sichtbarkeit · 6 Min. Lesezeit
           </p>
-          <a href="#" class="btn-primary mt-[16px]" style="width: 187px">
+          <a
+            href="/wissen/google-business-profile-optimieren"
+            class="btn-primary mt-[16px]"
+            style="width: 187px"
+          >
             Weiterlesen →
           </a>
         </div>
@@ -259,10 +268,11 @@
         >
           {{ cat.label }}
         </p>
-        <div
+        <a
           v-for="cx of cols"
           :key="cat.label + cx"
-          class="card-shadow absolute overflow-hidden rounded-[20px] bg-[#f9f9f9]"
+          href="/wissen/google-business-profile-optimieren"
+          class="card-shadow absolute block overflow-hidden rounded-[20px] bg-[#f9f9f9] transition hover:brightness-95"
           :style="{
             left: cx + 'px',
             top: cat.cardsTop + 'px',
@@ -299,7 +309,7 @@
           >
             Was das für Ihr KMU bedeutet. · 6 Min. →
           </p>
-        </div>
+        </a>
       </template>
 
       <!-- ============================= MID CTA BANNER ============================= -->

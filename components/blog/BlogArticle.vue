@@ -1,0 +1,358 @@
+<script setup lang="ts">
+  import { computed, ref } from "vue"
+  import type { IBlog, IBlogCta } from "~/types/dto/IBlog"
+  import BlogBlock from "~/components/blog/BlogBlock.vue"
+  import BlogSidebar from "~/components/blog/BlogSidebar.vue"
+  import SafeHtml from "~/components/common/SafeHtml.vue"
+  import { useCanvasScale } from "~/composables/useCanvasScale"
+
+  const p = defineProps<{ blog: IBlog }>()
+
+  const canvasRef = ref<HTMLElement | null>(null)
+  useCanvasScale(canvasRef)
+
+  const IMG = "/images/wissen"
+  const HOME = "/images/startseite"
+
+  const navLinks = [
+    { l: "Über uns", to: "/ueber-uns" },
+    { l: "Leistungen", to: "/leistungen" },
+    { l: "Wissen", to: "/wissen" },
+    { l: "Treuhänder", to: "/treuhaender" },
+  ]
+
+  const footerLinks = [
+    { l: "Über uns", to: "/ueber-uns" },
+    { l: "Leistungen", to: "/leistungen" },
+    { l: "Wissen", to: "/wissen" },
+    { l: "Treuhänder", to: "/treuhaender" },
+    { l: "Kontakt", to: "/kontakt" },
+  ]
+
+  const defaultCta: IBlogCta = {
+    heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
+    body: "Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse.<br>Wir analysieren Ihre aktuelle digitale Sichtbarkeit in 20 Minuten — kostenlos und konkret.",
+    buttonLabel: "Jetzt Sichtbarkeitsanalyse anfordern",
+    buttonHref: "/kontakt",
+    bgImage: `${HOME}/billboard.jpg`,
+  }
+
+  const cta = computed<IBlogCta>(() => ({ ...defaultCta, ...p.blog.cta }))
+  const metaLine = computed(
+    () => `${p.blog.category}  |  ${p.blog.readTime}  |  ${p.blog.date}`,
+  )
+</script>
+
+<template>
+  <main class="bexo">
+    <div ref="canvasRef" class="canvas">
+      <!-- ============================= NAV ============================= -->
+      <header
+        class="relative"
+        style="width: 1512px; height: 180px; z-index: 20"
+      >
+        <a href="/" aria-label="Bexolutions Startseite">
+          <span
+            class="nav-logo absolute"
+            style="left: 120px; top: 64px; width: 107px; height: 107px"
+          ></span>
+        </a>
+        <nav
+          class="absolute flex items-center"
+          style="left: 572px; top: 95px; height: 44px; gap: 24px"
+        >
+          <a
+            v-for="n of navLinks"
+            :key="n.l"
+            :href="n.to"
+            class="text-[16px] font-medium leading-5 text-[#0e2138] transition hover:opacity-70"
+          >
+            {{ n.l }}
+          </a>
+        </nav>
+        <div
+          class="absolute flex items-center"
+          style="left: 993px; top: 95px; gap: 10px"
+        >
+          <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
+          <a href="/kontakt" class="btn-primary" style="width: 237px">
+            Termin vereinbaren
+          </a>
+        </div>
+      </header>
+
+      <!-- ============================= ARTICLE ============================= -->
+      <article class="article-wrap">
+        <!-- Header: title trio + meta box -->
+        <div class="flex items-start justify-between gap-[40px] pt-[64px]">
+          <div class="max-w-[1008px]">
+            <h1 class="text-[40px] font-semibold leading-[1.3] text-black">
+              {{ blog.title }}
+            </h1>
+            <p
+              v-if="blog.subtitle"
+              class="mt-[8px] text-[32px] font-medium leading-[1.3] text-black"
+            >
+              {{ blog.subtitle }}
+            </p>
+            <p
+              v-if="blog.tagline"
+              class="mt-[16px] text-[18px] font-medium leading-[1.4] text-black"
+            >
+              {{ blog.tagline }}
+            </p>
+          </div>
+
+          <div
+            class="flex w-[212px] shrink-0 flex-col items-end gap-[16px] border-l border-black/10 pl-[24px] pt-[8px]"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#0e2138"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              :aria-hidden="blog.audioUrl ? undefined : 'true'"
+            >
+              <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#0e2138" stroke="none" />
+              <path d="M16 8a5 5 0 0 1 0 8" />
+              <path d="M19 5a9 9 0 0 1 0 14" />
+            </svg>
+            <p
+              class="text-right text-[16px] font-semibold leading-[1.6] text-black"
+            >
+              {{ metaLine }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Hero image -->
+        <div
+          class="mt-[28px] h-[410px] w-full overflow-hidden rounded-[30px] bg-[#f9f9f9]"
+        >
+          <NuxtImg
+            v-if="blog.heroImage"
+            :src="blog.heroImage"
+            class="h-full w-full object-cover"
+            alt=""
+          />
+        </div>
+
+        <!-- TL;DR callout -->
+        <div class="mt-[40px] rounded-[30px] bg-[#0e2138] px-[46px] py-[36px]">
+          <p class="text-[18px] font-semibold leading-[1.5] text-white">
+            {{ blog.tldr.title }}
+          </p>
+          <p
+            class="mt-[10px] text-[16px] font-medium leading-[1.6] text-white/90"
+          >
+            {{ blog.tldr.body }}
+          </p>
+        </div>
+
+        <!-- Two-column: body + sticky sidebar -->
+        <div class="mt-[48px] flex items-start gap-[48px]">
+          <div class="blog-body flex min-w-0 flex-1 flex-col gap-[24px]">
+            <BlogBlock
+              v-for="(block, i) of blog.blocks"
+              :key="i"
+              :block="block"
+            />
+          </div>
+          <BlogSidebar
+            class="sticky-rail"
+            :author="blog.author"
+            :toc="blog.toc"
+            :title="blog.title"
+            :url="`/wissen/${blog.slug}`"
+          />
+        </div>
+      </article>
+
+      <!-- ============================= CTA BILLBOARD ============================= -->
+      <section
+        class="relative mt-[96px] overflow-hidden rounded-t-[200px]"
+        style="width: 1512px; height: 679px"
+      >
+        <NuxtImg
+          v-if="cta.bgImage"
+          :src="cta.bgImage"
+          class="absolute inset-0 h-full w-full object-cover object-top"
+          alt=""
+        />
+        <div
+          class="absolute inset-0"
+          style="background: rgba(14, 33, 56, 0.55)"
+        ></div>
+        <h2
+          class="absolute text-[40px] font-semibold leading-[1.4] text-white"
+          style="left: 136px; top: 257px; width: 498px"
+        >
+          {{ cta.heading }}
+        </h2>
+        <SafeHtml
+          :html="cta.body"
+          class="absolute text-[20px] font-normal leading-[1.4] text-white"
+          style="left: 136px; top: 393px; width: 639px"
+        />
+        <a
+          :href="cta.buttonHref"
+          class="btn-primary absolute"
+          style="left: 136px; top: 513px; width: 370px"
+        >
+          {{ cta.buttonLabel }}
+        </a>
+      </section>
+
+      <!-- ============================= FOOTER ============================= -->
+      <footer
+        class="relative bg-[#0e2138]"
+        style="width: 1512px; height: 634px"
+      >
+        <h2
+          class="absolute text-[56px] font-semibold leading-[55px] tracking-[1.12px] text-white"
+          style="left: 120px; top: 140px; width: 491px"
+        >
+          Better than yesterday.
+        </h2>
+        <ul
+          class="absolute flex flex-col"
+          style="left: 987px; top: 96px; gap: 20px"
+        >
+          <li v-for="l of footerLinks" :key="l.l">
+            <a
+              :href="l.to"
+              class="text-[14px] font-medium leading-[18px] text-white transition hover:opacity-80"
+            >
+              {{ l.l }}
+            </a>
+          </li>
+        </ul>
+        <div class="absolute" style="left: 1207px; top: 96px; width: 189px">
+          <p class="text-[14px] font-bold leading-[21px] text-white">
+            Adresse:
+          </p>
+          <p class="text-[14px] font-medium leading-[21px] text-white">
+            Fabrikweg 1a
+            <br />
+            5502 Hunzenschwil
+          </p>
+          <p class="mt-[20px] text-[14px] font-bold leading-[20px] text-white">
+            Kontakt:
+          </p>
+          <p
+            class="footer-mono text-[14px] font-medium leading-[21px] text-white"
+          >
+            044 771 37 77
+          </p>
+          <a
+            href="mailto:info@bexolutions.ch"
+            class="footer-mono block text-[16px] font-medium leading-[22px] text-white hover:opacity-80"
+          >
+            info@bexolutions.ch
+          </a>
+        </div>
+        <NuxtImg
+          :src="`${HOME}/wordmark.png`"
+          class="absolute opacity-90"
+          style="left: 120px; top: 302px; width: 1272px; height: 108px"
+          alt="BEXOLUTIONS"
+        />
+        <div
+          class="absolute bg-white/20"
+          style="left: 120px; top: 462px; width: 1272px; height: 1px"
+        ></div>
+        <p
+          class="footer-legal absolute text-[16px] leading-[24px] text-white"
+          style="left: 120px; top: 514px"
+        >
+          © 2026 Bexolutions. Alle Rechte vorbehalten.
+        </p>
+        <div class="absolute flex" style="left: 907px; top: 514px; gap: 24px">
+          <a
+            v-for="legal of [
+              'Datenschutzrichtlinie',
+              'Nutzungsbedingungen',
+              'Cookie-Einstellungen',
+            ]"
+            :key="legal"
+            href="#"
+            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
+          >
+            {{ legal }}
+          </a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</template>
+
+<style scoped>
+  .bexo {
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+  }
+  .canvas {
+    position: relative;
+    width: 1512px;
+    flex: none;
+    background: #ffffff;
+  }
+  /* Centred 1272px content band (1512 − 2×120 gutters). */
+  .article-wrap {
+    width: 1272px;
+    margin: 0 auto;
+  }
+  /* Sticky right rail; align-self:flex-start is required for sticky to detach. */
+  .sticky-rail {
+    position: sticky;
+    top: 40px;
+    align-self: flex-start;
+  }
+  .footer-mono {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  }
+  .footer-legal {
+    font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+  }
+  .nav-logo {
+    background-color: #0e2138;
+    -webkit-mask: url("/images/startseite/logo-mark.png") center / contain
+      no-repeat;
+    mask: url("/images/startseite/logo-mark.png") center / contain no-repeat;
+  }
+  .btn-primary,
+  .btn-navy {
+    display: inline-grid;
+    place-items: center;
+    height: 44px;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: center;
+    transition:
+      filter 0.15s ease,
+      background 0.15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: #bde0fe;
+    color: #0e2138;
+  }
+  .btn-primary:hover {
+    filter: brightness(0.96);
+  }
+  .btn-navy {
+    background: #13315c;
+    color: #ffffff;
+  }
+  .btn-navy:hover {
+    filter: brightness(1.1);
+  }
+</style>
