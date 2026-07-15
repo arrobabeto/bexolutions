@@ -1,9 +1,128 @@
 <script setup lang="ts">
+  import { computed, nextTick, onMounted, onUnmounted, ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
 
   definePageMeta({ layout: false })
 
   const IMG = "/images/startseite"
+
+  const featScrollRef = ref<HTMLElement | null>(null)
+  const featTrackRef = ref<HTMLElement | null>(null)
+  const featSectionRef = ref<HTMLElement | null>(null)
+  const introSectionRef = ref<HTMLElement | null>(null)
+  const darkSectionRef = ref<HTMLElement | null>(null)
+  const faqListRef = ref<HTMLElement | null>(null)
+
+  const featTranslateX = ref(0)
+  const introTranslateY = ref(0)
+  const introExtraH = ref(0)
+  const darkTranslateY = ref(0)
+  const darkExtraH = ref(0)
+
+  const STEPS_SECTION_TOP = 6456
+  const OVERLAP_PX = 140
+
+  const FAQ_SECTION_TOP = 9431
+  const FAQ_LIST_TOP = 206
+  const BILLBOARD_H = 679
+  const FOOTER_H = 654
+
+  const faqSectionH = ref(963)
+  const billboardTop = computed(() => FAQ_SECTION_TOP + faqSectionH.value)
+  const footerTop = computed(() => billboardTop.value + BILLBOARD_H)
+  const canvasH = computed(() => footerTop.value + FOOTER_H)
+
+  const CANVAS_W = 1512
+  const canvasScale = ref(1)
+  const pageHeight = ref(canvasH.value)
+
+  let rafId = 0
+
+  function clamp01(n: number) {
+    return Math.min(1, Math.max(0, n))
+  }
+
+  function updateScale() {
+    const w = window.innerWidth || CANVAS_W
+    canvasScale.value = w / CANVAS_W
+    pageHeight.value = canvasH.value * canvasScale.value
+  }
+
+  function updateFaqHeight() {
+    const list = faqListRef.value
+    if (!list) return
+    faqSectionH.value = FAQ_LIST_TOP + list.offsetHeight
+    pageHeight.value = canvasH.value * canvasScale.value
+  }
+
+  function onFaqToggle() {
+    nextTick(() => {
+      updateFaqHeight()
+      onScrollOrResize()
+    })
+  }
+
+  function updateScrollFx() {
+    rafId = 0
+
+    const featSection = featSectionRef.value
+    const featScroll = featScrollRef.value
+    const featTrack = featTrackRef.value
+    if (featSection && featScroll && featTrack) {
+      const rect = featSection.getBoundingClientRect()
+      const vh = window.innerHeight || 1
+      const travel = rect.height + vh
+      const progress = clamp01((vh - rect.top) / travel)
+      const maxX = Math.max(0, featTrack.scrollWidth - featScroll.clientWidth)
+      featTranslateX.value = -(progress * maxX)
+    }
+
+    const vh = window.innerHeight || 1
+    const start = vh * 0.92
+    const end = vh * 0.28
+
+    const intro = introSectionRef.value
+    if (intro) {
+      const rect = intro.getBoundingClientRect()
+      const progress = clamp01((start - rect.top) / (start - end))
+      const extra = progress * OVERLAP_PX
+      introExtraH.value = extra
+      introTranslateY.value = -extra
+    }
+
+    const dark = darkSectionRef.value
+    if (dark) {
+      const rect = dark.getBoundingClientRect()
+      const progress = clamp01((start - rect.top) / (start - end))
+      const extra = progress * OVERLAP_PX
+      darkExtraH.value = extra
+      darkTranslateY.value = -extra
+    }
+  }
+
+  function onScrollOrResize() {
+    if (!rafId) rafId = requestAnimationFrame(updateScrollFx)
+  }
+
+  function onResize() {
+    updateScale()
+    updateFaqHeight()
+    onScrollOrResize()
+  }
+
+  onMounted(() => {
+    updateScale()
+    nextTick(updateFaqHeight)
+    window.addEventListener("scroll", onScrollOrResize, { passive: true })
+    window.addEventListener("resize", onResize, { passive: true })
+    onScrollOrResize()
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener("scroll", onScrollOrResize)
+    window.removeEventListener("resize", onResize)
+    if (rafId) cancelAnimationFrame(rafId)
+  })
 
   useHead({
     title: "Bexolutions — Better Marketing Systems",
@@ -81,34 +200,35 @@
     },
   ]
 
+  // Tops are relative to the steps section (canvas top STEPS_SECTION_TOP)
   const steps = [
     {
       n: "1",
       title: "Analyse",
       body: "Wir analysieren Ihre Google-Sichtbarkeit, Mitbewerber und die Suchanfragen Ihrer Zielkunden. Klare Übersicht: Wo stehen Sie — wo liegt das Potenzial?",
       left: 152,
-      top: 6663,
+      top: 6663 - STEPS_SECTION_TOP,
     },
     {
       n: "2",
       title: "Strategie",
       body: "Keine Standardlösung. Massgeschneiderter Plan für Ihre Branche, Region und Wachstumsziele — mit klaren Prioritäten.",
       left: 330,
-      top: 7177,
+      top: 7177 - STEPS_SECTION_TOP,
     },
     {
       n: "3",
       title: "Umsetzung",
       body: "Website, SEO-Inhalte, Google Business Profile, LinkedIn — systematisch, KI-gestützt, termingerecht. Monatlich nachvollziehbar.",
       left: 662,
-      top: 6723,
+      top: 6723 - STEPS_SECTION_TOP,
     },
     {
       n: "4",
       title: "Ergebnisse",
       body: "Monatliche Reports: Klicks, Rankings, Anfragen, KI-Sichtbarkeit. Kein Bauchgefühl. Was funktioniert, wird skaliert.",
       left: 932,
-      top: 7224,
+      top: 7224 - STEPS_SECTION_TOP,
     },
   ]
 
@@ -182,17 +302,6 @@
     },
   ]
 
-  // FAQ heights (design) so borders match the reference band exactly
-  const faqLayout = [
-    { top: 9637, h: 182 },
-    { top: 9843, h: 159 },
-    { top: 10026, h: 159 },
-    { top: 10209, h: 182 },
-    { top: 10415, h: 159 },
-    { top: 10598, h: 182 },
-    { top: 10804, h: 182 },
-  ]
-
   const footerLinks = [
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
@@ -203,11 +312,17 @@
 </script>
 
 <template>
-  <main class="bexo">
-    <div class="canvas">
+  <main class="bexo" :style="{ height: pageHeight + 'px' }">
+    <div
+      class="canvas"
+      :style="{
+        transform: `scale(${canvasScale})`,
+        height: canvasH + 'px',
+      }"
+    >
       <!-- ============================= HERO ============================= -->
       <section
-        class="absolute overflow-hidden rounded-[60px]"
+        class="absolute z-0 overflow-hidden rounded-[60px]"
         style="left: 5px; top: 9px; width: 1503px; height: 970px"
       >
         <NuxtImg
@@ -273,49 +388,68 @@
       </section>
 
       <!-- ============================= INTRO ============================= -->
-      <div
-        class="absolute rounded-full opacity-90"
-        style="
-          left: 337px;
-          top: 1001px;
-          width: 773px;
-          height: 647px;
-          background: radial-gradient(
-            closest-side,
-            #bde0fe 0%,
-            rgba(189, 224, 254, 0) 100%
-          );
-        "
-      ></div>
-      <h2
-        class="absolute text-[40px] font-semibold leading-[50px] text-[#0e2138]"
-        style="left: 550px; top: 1155px; width: 730px"
+      <section
+        ref="introSectionRef"
+        class="absolute z-[1] overflow-hidden bg-white will-change-transform"
+        :style="{
+          left: '0',
+          top: '1001px',
+          width: '1512px',
+          height: 711 + introExtraH + 'px',
+          transform: `translateY(${introTranslateY}px)`,
+        }"
       >
-        Mehr Kunden über Google und KI. Systematisch. Messbar.
-        <br />
-        <span class="text-[#a7c8ef]">Ohne Werbebudget.</span>
-      </h2>
-      <p
-        class="absolute text-[18px] font-normal leading-[25px] tracking-[0.36px] text-black"
-        style="left: 550px; top: 1341px; width: 730px"
-      >
-        Bexolutions entwickelt das komplette Marketingsystem für Ihr KMU — von
-        der Website über Local SEO bis zur KI-Sichtbarkeit. Heute bei Google
-        gefunden. Morgen in ChatGPT, Perplexity und Google AI Mode erwähnt.
-        Alles aus einer Hand. Eine fixe Monatsrate.
-      </p>
-      <a
-        href="#"
-        class="btn-outline absolute"
-        style="left: 550px; top: 1477px; width: 237px"
-      >
-        Termin vereinbaren
-      </a>
+        <div
+          class="absolute rounded-full opacity-90"
+          style="
+            left: 337px;
+            top: 0;
+            width: 773px;
+            height: 647px;
+            background: radial-gradient(
+              closest-side,
+              #bde0fe 0%,
+              rgba(189, 224, 254, 0) 100%
+            );
+          "
+        ></div>
+        <h2
+          class="absolute text-[40px] font-semibold leading-[50px] text-[#0e2138]"
+          style="left: 550px; top: 154px; width: 730px"
+        >
+          Mehr Kunden über Google und KI. Systematisch. Messbar.
+          <br />
+          <span class="text-[#a7c8ef]">Ohne Werbebudget.</span>
+        </h2>
+        <p
+          class="absolute text-[18px] font-normal leading-[25px] tracking-[0.36px] text-black"
+          style="left: 550px; top: 340px; width: 730px"
+        >
+          Bexolutions entwickelt das komplette Marketingsystem für Ihr KMU — von
+          der Website über Local SEO bis zur KI-Sichtbarkeit. Heute bei Google
+          gefunden. Morgen in ChatGPT, Perplexity und Google AI Mode erwähnt.
+          Alles aus einer Hand. Eine fixe Monatsrate.
+        </p>
+        <a
+          href="#"
+          class="btn-outline absolute"
+          style="left: 550px; top: 476px; width: 237px"
+        >
+          Termin vereinbaren
+        </a>
+      </section>
 
       <!-- ============================= DARK STATEMENT ============================= -->
       <section
-        class="absolute rounded-t-[60px] bg-[#0e2138]"
-        style="left: 0; top: 1712px; width: 1512px; height: 775px"
+        ref="darkSectionRef"
+        class="absolute z-[2] rounded-t-[60px] bg-[#0e2138] will-change-transform"
+        :style="{
+          left: '0',
+          top: '1712px',
+          width: '1512px',
+          height: 775 + darkExtraH + 'px',
+          transform: `translateY(${darkTranslateY}px)`,
+        }"
       >
         <div
           class="absolute rounded-full opacity-40"
@@ -346,7 +480,7 @@
 
       <!-- ============================= LOGOS ============================= -->
       <section
-        class="absolute overflow-hidden rounded-t-[60px] bg-white"
+        class="absolute z-[3] overflow-hidden rounded-t-[60px] bg-white"
         style="left: 0; top: 2487px; width: 1512px; height: 480px"
       >
         <h3
@@ -426,6 +560,7 @@
 
       <!-- ============================= FEATURES ============================= -->
       <section
+        ref="featSectionRef"
         class="absolute bg-[#f8f8f8]"
         style="left: 0; top: 3606px; width: 1512px; height: 1034px"
       >
@@ -450,12 +585,21 @@
           Sie konzentrieren sich auf Ihr Business.
         </h2>
 
-        <!-- horizontally scrollable card gallery -->
+        <!-- vertical-scroll drives this horizontal card track -->
         <div
+          ref="featScrollRef"
           class="feat-scroll absolute"
           style="left: 0; top: 384px; width: 1512px"
         >
-          <div class="flex" style="gap: 26px; padding: 0 120px 24px">
+          <div
+            ref="featTrackRef"
+            class="feat-track flex will-change-transform"
+            :style="{
+              gap: '26px',
+              padding: '0 120px 24px',
+              transform: `translateX(${featTranslateX}px)`,
+            }"
+          >
             <article
               v-for="f of features"
               :key="f.title"
@@ -503,19 +647,7 @@
         style="left: 0; top: 4640px; width: 1512px; height: 3232px"
       ></div>
 
-      <!-- faint watercolor textures behind quote / steps -->
-      <NuxtImg
-        :src="`${IMG}/quote-bg.jpg`"
-        class="absolute object-cover opacity-60"
-        style="left: 0; top: 6068px; width: 1512px; height: 982px"
-        alt=""
-      />
-      <NuxtImg
-        :src="`${IMG}/quote-bg.jpg`"
-        class="absolute object-cover opacity-60"
-        style="left: 0; top: 7045px; width: 1512px; height: 982px"
-        alt=""
-      />
+      <!-- faint watercolor textures behind quote / steps — removed; steps section owns one bg -->
 
       <!-- case heading -->
       <h2
@@ -601,45 +733,60 @@
         </p>
       </div>
 
-      <!-- steps heading -->
-      <p
-        class="absolute text-center text-[18px] font-normal leading-[25px] tracking-[0.36px] text-[#0e2138]"
-        style="left: 686px; top: 6480px; width: 141px"
-      >
-        Unser Vorgehen
-      </p>
-      <h2
-        class="absolute text-center text-[36px] font-semibold leading-[50px] tracking-[0.72px] text-black"
-        style="left: 440px; top: 6522px; width: 633px"
-      >
-        Von der Analyse bis zu neuen Kunden — in vier Schritten.
-      </h2>
-
-      <!-- step cards -->
-      <article
-        v-for="st of steps"
-        :key="st.n"
-        class="absolute rounded-[29px] border border-[#d6d3d3]/50 bg-white"
+      <!-- ============================= STEPS (single bg) ============================= -->
+      <section
+        class="absolute overflow-hidden"
         :style="{
-          left: st.left + 'px',
-          top: st.top + 'px',
-          width: '376px',
-          height: '428px',
-          padding: '35px',
+          left: '0',
+          top: STEPS_SECTION_TOP + 'px',
+          width: '1512px',
+          height: '1282px',
         }"
       >
-        <div class="step-num text-[#bde0fe]">{{ st.n }}</div>
-        <h4
-          class="mt-[23px] whitespace-pre-line text-[24px] font-semibold leading-[34px] text-[#0e2138]"
-        >
-          {{ st.title }}
-        </h4>
+        <NuxtImg
+          :src="`${IMG}/quote-bg.jpg`"
+          class="absolute inset-0 h-full w-full object-cover opacity-60"
+          alt=""
+        />
+
         <p
-          class="mt-[23px] text-[18px] font-normal leading-[27px] text-[#134074]"
+          class="absolute text-center text-[18px] font-normal leading-[25px] tracking-[0.36px] text-[#0e2138]"
+          style="left: 686px; top: 24px; width: 141px"
         >
-          {{ st.body }}
+          Unser Vorgehen
         </p>
-      </article>
+        <h2
+          class="absolute text-center text-[36px] font-semibold leading-[50px] tracking-[0.72px] text-black"
+          style="left: 440px; top: 66px; width: 633px"
+        >
+          Von der Analyse bis zu neuen Kunden — in vier Schritten.
+        </h2>
+
+        <article
+          v-for="st of steps"
+          :key="st.n"
+          class="absolute rounded-[29px] border border-[#d6d3d3]/50 bg-white"
+          :style="{
+            left: st.left + 'px',
+            top: st.top + 'px',
+            width: '376px',
+            height: '428px',
+            padding: '35px',
+          }"
+        >
+          <div class="step-num text-[#bde0fe]">{{ st.n }}</div>
+          <h4
+            class="mt-[23px] whitespace-pre-line text-[24px] font-semibold leading-[34px] text-[#0e2138]"
+          >
+            {{ st.title }}
+          </h4>
+          <p
+            class="mt-[23px] text-[18px] font-normal leading-[27px] text-[#134074]"
+          >
+            {{ st.body }}
+          </p>
+        </article>
+      </section>
 
       <!-- ============================= WARUM ============================= -->
       <section
@@ -755,29 +902,16 @@
       <!-- ============================= FAQ ============================= -->
       <section
         class="absolute overflow-hidden"
-        style="left: 0; top: 9431px; width: 1512px; height: 1560px"
+        :style="{
+          left: '0',
+          top: FAQ_SECTION_TOP + 'px',
+          width: '1512px',
+          height: faqSectionH + 'px',
+        }"
       >
         <div
-          class="absolute"
+          class="absolute inset-0"
           style="
-            left: 0;
-            top: 31px;
-            width: 1512px;
-            height: 577px;
-            background: linear-gradient(
-              180deg,
-              rgba(255, 255, 255, 0) 0%,
-              rgba(195, 218, 248, 0.4) 100%
-            );
-          "
-        ></div>
-        <div
-          class="absolute"
-          style="
-            left: 0;
-            top: 608px;
-            width: 1512px;
-            height: 577px;
             background: linear-gradient(
               180deg,
               rgba(255, 255, 255, 0) 0%,
@@ -799,44 +933,50 @@
           Was KMU-Inhaber uns am häufigsten fragen.
         </h2>
 
-        <details
-          v-for="(f, i) of faqs"
-          :key="f.q"
-          open
-          class="faq-item absolute rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
-          :style="{
-            left: '215px',
-            top: faqLayout[i].top - 9431 + 'px',
-            width: '1082px',
-          }"
+        <div
+          ref="faqListRef"
+          class="absolute flex flex-col gap-[20px] pb-[70px]"
+          :style="{ left: '215px', top: FAQ_LIST_TOP + 'px', width: '1082px' }"
         >
-          <summary
-            class="flex cursor-pointer list-none items-start justify-between gap-6"
+          <details
+            v-for="f of faqs"
+            :key="f.q"
+            class="faq-item rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
+            @toggle="onFaqToggle"
           >
-            <h4 class="text-[20px] font-bold leading-[25px] text-black">
-              {{ f.q }}
-            </h4>
-            <span class="relative mt-1 block h-5 w-5 shrink-0">
-              <span
-                class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
-              ></span>
-              <span
-                class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
-              ></span>
-            </span>
-          </summary>
-          <p
-            class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
-          >
-            {{ f.a }}
-          </p>
-        </details>
+            <summary
+              class="flex cursor-pointer list-none items-start justify-between gap-6"
+            >
+              <h4 class="text-[20px] font-bold leading-[25px] text-black">
+                {{ f.q }}
+              </h4>
+              <span class="relative mt-1 block h-5 w-5 shrink-0">
+                <span
+                  class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
+                ></span>
+                <span
+                  class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
+                ></span>
+              </span>
+            </summary>
+            <p
+              class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
+            >
+              {{ f.a }}
+            </p>
+          </details>
+        </div>
       </section>
 
       <!-- ============================= CTA BILLBOARD ============================= -->
       <section
         class="absolute overflow-hidden rounded-t-[200px]"
-        style="left: 0; top: 11165px; width: 1512px; height: 679px"
+        :style="{
+          left: '0',
+          top: billboardTop + 'px',
+          width: '1512px',
+          height: BILLBOARD_H + 'px',
+        }"
       >
         <NuxtImg
           :src="`${IMG}/billboard.jpg`"
@@ -877,7 +1017,12 @@
       <!-- ============================= FOOTER ============================= -->
       <footer
         class="absolute bg-[#0e2138]"
-        style="left: 0; top: 11844px; width: 1512px; height: 634px"
+        :style="{
+          left: '0',
+          top: footerTop + 'px',
+          width: '1512px',
+          height: FOOTER_H + 'px',
+        }"
       >
         <h2
           class="absolute whitespace-pre-line text-[56px] font-semibold leading-[55px] tracking-[1.12px] text-white"
@@ -925,26 +1070,26 @@
           </a>
         </div>
 
-        <!-- footer wordmark -->
+        <!-- footer wordmark (+20px padding above) -->
         <NuxtImg
           :src="`${IMG}/wordmark.png`"
           class="absolute opacity-90"
-          style="left: 120px; top: 302px; width: 1272px; height: 108px"
+          style="left: 120px; top: 322px; width: 1272px; height: 108px"
           alt="BEXOLUTIONS"
         />
 
         <div
           class="absolute bg-white/20"
-          style="left: 120px; top: 462px; width: 1272px; height: 1px"
+          style="left: 120px; top: 482px; width: 1272px; height: 1px"
         ></div>
 
         <p
           class="footer-legal absolute text-[16px] leading-[24px] text-white"
-          style="left: 120px; top: 514px"
+          style="left: 120px; top: 534px"
         >
           © 2026 Bexolutions. Alle Rechte vorbehalten.
         </p>
-        <div class="absolute flex" style="left: 907px; top: 514px; gap: 24px">
+        <div class="absolute flex" style="left: 907px; top: 534px; gap: 24px">
           <a
             href="#"
             class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
@@ -973,16 +1118,15 @@
   .bexo {
     font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     background: #ffffff;
-    display: flex;
-    justify-content: center;
+    overflow-x: hidden;
   }
 
   .canvas {
     position: relative;
     width: 1512px;
-    height: 12478px;
     flex: none;
     background: #ffffff;
+    transform-origin: top left;
   }
 
   .footer-mono {
@@ -1103,13 +1247,11 @@
     display: none;
   }
 
-  /* horizontal feature gallery */
+  /* horizontal feature gallery — scroll-driven, no overflow drag */
   .feat-scroll {
-    overflow-x: auto;
-    overflow-y: hidden;
-    scrollbar-width: none;
+    overflow: hidden;
   }
-  .feat-scroll::-webkit-scrollbar {
-    display: none;
+  .feat-track {
+    width: max-content;
   }
 </style>

@@ -1,7 +1,12 @@
 <script setup lang="ts">
+  import { ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
+  import { useCanvasScale } from "~/composables/useCanvasScale"
 
   definePageMeta({ layout: false })
+
+  const canvasRef = ref<HTMLElement | null>(null)
+  useCanvasScale(canvasRef)
 
   const IMG = "/images/referenz-zofingen"
   const HOME = "/images/startseite"
@@ -138,7 +143,7 @@
 
 <template>
   <main class="bexo">
-    <div class="canvas">
+    <div ref="canvasRef" class="canvas">
       <!-- ============================= NAV (light) ============================= -->
       <header
         class="absolute"
