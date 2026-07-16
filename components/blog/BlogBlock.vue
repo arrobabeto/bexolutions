@@ -92,6 +92,21 @@
     <li v-for="(item, i) of block.items" :key="i">{{ item }}</li>
   </component>
 
+  <!-- Image ------------------------------------------------------------- -->
+  <figure v-else-if="block.type === 'image'" class="my-2">
+    <NuxtImg
+      :src="block.src"
+      class="w-full rounded-[20px] object-cover"
+      :alt="block.alt"
+    />
+    <figcaption
+      v-if="block.caption"
+      class="mt-[8px] text-[14px] text-[#888787]"
+    >
+      {{ block.caption }}
+    </figcaption>
+  </figure>
+
   <!-- Callout ----------------------------------------------------------- -->
   <div
     v-else-if="block.type === 'callout'"

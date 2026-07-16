@@ -2,6 +2,7 @@
   import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
   import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
+  import KontaktForm from "~/components/bexo/KontaktForm.vue"
 
   const IMG = "/images/kontakt"
 
@@ -88,76 +89,7 @@
 
     <BexoSection>
       <div class="rounded-[24px] bg-[#f9f9f9] p-6">
-        <h2 class="text-2xl font-semibold text-black">Nachricht senden.</h2>
-        <form class="mt-6 flex flex-col gap-5" @submit.prevent>
-          <label class="block">
-            <span class="mb-2 block text-base text-black">Ansprache</span>
-            <select
-              class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-            >
-              <option>Herr / Frau</option>
-            </select>
-          </label>
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <label class="block">
-              <span class="mb-2 block text-base text-black">Vorname</span>
-              <input
-                type="text"
-                class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-              />
-            </label>
-            <label class="block">
-              <span class="mb-2 block text-base text-black">Nachname</span>
-              <input
-                type="text"
-                class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-              />
-            </label>
-          </div>
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <label class="block">
-              <span class="mb-2 block text-base text-black">E-Mail</span>
-              <input
-                type="email"
-                class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-              />
-            </label>
-            <label class="block">
-              <span class="mb-2 block text-base text-black">Telefonnummer</span>
-              <input
-                type="tel"
-                class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-              />
-            </label>
-          </div>
-          <label class="block">
-            <span class="mb-2 block text-base text-black">Unternehmen</span>
-            <input
-              type="text"
-              placeholder="Unternehmen"
-              class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-            />
-          </label>
-          <label class="block">
-            <span class="mb-2 block text-base text-black">Thema</span>
-            <select
-              class="h-12 w-full rounded-[20px] border border-black bg-transparent px-5 text-base"
-            >
-              <option>Sichtbarkeitsanalyse</option>
-            </select>
-          </label>
-          <label class="block">
-            <span class="mb-2 block text-base text-black">Nachricht</span>
-            <textarea
-              rows="5"
-              placeholder="Ziel in 1–2 Sätzen"
-              class="w-full rounded-[20px] border border-black bg-transparent px-5 py-3 text-base"
-            ></textarea>
-          </label>
-          <button type="submit" class="bexo-btn-primary bexo-btn-block">
-            Nachricht senden
-          </button>
-        </form>
+        <KontaktForm />
       </div>
     </BexoSection>
 
