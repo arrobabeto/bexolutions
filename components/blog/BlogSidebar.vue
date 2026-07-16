@@ -37,7 +37,7 @@
 </script>
 
 <template>
-  <aside class="blog-sidebar flex w-[212px] flex-col gap-[24px]">
+  <aside class="blog-sidebar flex w-full flex-col gap-[24px] lg:w-[212px]">
     <!-- Author -->
     <p class="text-[14px] font-medium leading-[1.7] text-[#292929]">
       <span class="font-bold">Autor:</span>

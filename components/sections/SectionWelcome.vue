@@ -150,7 +150,7 @@
       <div class="shader-aura" />
       <div class="shader-grid-overlay" />
     </div>
-    <div class="mx-auto w-full max-w-[70%]">
+    <div class="mx-auto w-full max-w-full lg:max-w-[70%]">
       <div class="mb-10 text-center sm:mb-12">
         <h1
           class="max-w-xl mx-auto text-3xl font-semibold leading-tight text-[#010101] sm:text-4xl dark:text-[#fefefe]"
@@ -166,7 +166,7 @@
 
       <div
         v-if="p.workflow"
-        class="workflow-panel mb-3 overflow-hidden rounded-[1.75rem] border border-[#e0e0e0]/80 bg-[#fefefe]/90 p-5 shadow-[0_1px_1px_rgba(1,1,1,0.04),0_8px_24px_rgba(1,1,1,0.06)] backdrop-blur-xl dark:border-[#3b3d4b]/80 dark:bg-[#191a22]/90 dark:shadow-[0_1px_1px_rgba(0,0,0,0.2),0_12px_32px_rgba(0,0,0,0.35)] sm:p-6"
+        class="workflow-panel mb-3 overflow-hidden rounded-[1.75rem] border border-[#e0e0e0]/80 bg-[#fefefe]/90 p-5 shadow-[0_1px_1px_rgba(1,1,1,0.04),0_8px_24px_rgba(1,1,1,0.06)] backdrop-blur-xl sm:p-6 dark:border-[#3b3d4b]/80 dark:bg-[#191a22]/90 dark:shadow-[0_1px_1px_rgba(0,0,0,0.2),0_12px_32px_rgba(0,0,0,0.35)]"
       >
         <header class="mb-6 text-center sm:mb-7">
           <p
@@ -175,12 +175,12 @@
             Recommended path
           </p>
           <h2
-            class="mt-2 text-lg font-semibold tracking-tight text-[#010101] dark:text-[#fefefe] sm:text-xl"
+            class="mt-2 text-lg font-semibold tracking-tight text-[#010101] sm:text-xl dark:text-[#fefefe]"
           >
             Developer workflow
           </h2>
           <p
-            class="mx-auto mt-2 max-w-lg text-xs leading-6 text-[#4e4e4e] dark:text-[#9ca3af] sm:text-sm"
+            class="max-w-lg mx-auto mt-2 text-xs leading-6 text-[#4e4e4e] sm:text-sm dark:text-[#9ca3af]"
           >
             Design in Figma, build and publish from Cursor, then run content
             operations in Orbitype Intelligence.
@@ -199,7 +199,9 @@
           </li>
 
           <li class="workflow-connector" aria-hidden="true">
-            <span class="workflow-connector__line workflow-connector__line--v" />
+            <span
+              class="workflow-connector__line workflow-connector__line--v"
+            />
             <svg
               class="workflow-connector__chevron"
               viewBox="0 0 16 16"
@@ -264,7 +266,9 @@
           </li>
 
           <li class="workflow-connector" aria-hidden="true">
-            <span class="workflow-connector__line workflow-connector__line--v" />
+            <span
+              class="workflow-connector__line workflow-connector__line--v"
+            />
             <svg
               class="workflow-connector__chevron"
               viewBox="0 0 16 16"

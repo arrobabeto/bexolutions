@@ -1,8 +1,9 @@
 import { onMounted, onUnmounted, type Ref } from "vue"
+import { BEXO_DESKTOP_BREAKPOINT_PX } from "~/constants/bexoNav"
 
 /**
- * Scales a fixed-width design canvas to always fill the viewport width, so the
- * pixel-perfect 1512px layouts have no left/right gutters on any screen size.
+ * Scales a fixed-width design canvas to fill the viewport width on desktop (≥ lg).
+ * Mobile uses native responsive layouts instead of scaling.
  *
  * Uses CSS `zoom` (not `transform: scale`) on purpose: `zoom` scales the layout
  * box too, so page height and scrolling stay correct without extra bookkeeping,
@@ -18,7 +19,12 @@ export function useCanvasScale(
     rafId = 0
     const canvas = canvasRef.value
     if (!canvas) return
-    const scale = (window.innerWidth || baseWidth) / baseWidth
+    const w = window.innerWidth || baseWidth
+    if (w < BEXO_DESKTOP_BREAKPOINT_PX) {
+      canvas.style.removeProperty("zoom")
+      return
+    }
+    const scale = w / baseWidth
     canvas.style.setProperty("zoom", String(scale))
   }
 
