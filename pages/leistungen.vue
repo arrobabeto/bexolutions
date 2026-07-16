@@ -1,16 +1,18 @@
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { computed, nextTick, onMounted, ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import LeistungenMobile from "~/components/bexo/mobile/LeistungenMobile.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
 
   const canvasRef = ref<HTMLElement | null>(null)
+  const faqListRef = ref<HTMLElement | null>(null)
   useCanvasScale(canvasRef)
 
   const IMG = "/images/leistungen"
@@ -227,11 +229,33 @@
     },
   ]
 
-  // FAQ vertical positions (design), so the absolute boxes land where Figma has them
-  const FAQ_TOPS = [7360, 7566, 7795, 8024, 8253, 8459].map((y) => y - 7139)
-  function faqTop(i: number) {
-    return FAQ_TOPS[i]
+  const FAQ_SECTION_TOP = 7139
+  const FAQ_LIST_TOP = 206
+  const GAP_AFTER_FAQ = 134
+  const TREU_SECTION_H = 568
+  const CTA_SECTION_H = 679
+
+  const faqSectionH = ref(1502)
+  const treuTop = computed(
+    () => FAQ_SECTION_TOP + faqSectionH.value + GAP_AFTER_FAQ,
+  )
+  const ctaTop = computed(() => treuTop.value + TREU_SECTION_H)
+  const footerTop = computed(() => ctaTop.value + CTA_SECTION_H)
+  const canvasH = computed(() => footerTop.value + BEXO_FOOTER_H)
+
+  function updateFaqHeight() {
+    const list = faqListRef.value
+    if (!list) return
+    faqSectionH.value = FAQ_LIST_TOP + list.offsetHeight
   }
+
+  function onFaqToggle() {
+    nextTick(updateFaqHeight)
+  }
+
+  onMounted(() => {
+    nextTick(updateFaqHeight)
+  })
 </script>
 
 <template>
@@ -240,7 +264,7 @@
       <LeistungenMobile />
     </template>
     <template #desktop>
-      <div ref="canvasRef" class="canvas">
+      <div ref="canvasRef" class="canvas" :style="{ height: canvasH + 'px' }">
         <!-- ============================= NAV (light) ============================= -->
         <header
           class="absolute"
@@ -577,29 +601,16 @@
         <!-- ============================= FAQ ============================= -->
         <section
           class="absolute overflow-hidden"
-          style="left: 0; top: 7139px; width: 1512px; height: 1502px"
+          :style="{
+            left: '0',
+            top: FAQ_SECTION_TOP + 'px',
+            width: '1512px',
+            height: faqSectionH + 'px',
+          }"
         >
           <div
-            class="absolute"
+            class="absolute inset-0"
             style="
-              left: 0;
-              top: 31px;
-              width: 1512px;
-              height: 577px;
-              background: linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(195, 218, 248, 0.4) 100%
-              );
-            "
-          ></div>
-          <div
-            class="absolute"
-            style="
-              left: 0;
-              top: 608px;
-              width: 1512px;
-              height: 577px;
               background: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0) 0%,
@@ -619,40 +630,54 @@
           >
             Was KMU-Inhaber uns zu unseren Leistungen fragen.
           </h2>
-          <details
-            v-for="(f, i) of faqs"
-            :key="f.q"
-            open
-            class="faq-item absolute rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
-            :style="{ left: '215px', top: faqTop(i) + 'px', width: '1082px' }"
+          <div
+            ref="faqListRef"
+            class="absolute flex flex-col gap-[20px] pb-[70px]"
+            :style="{
+              left: '215px',
+              top: FAQ_LIST_TOP + 'px',
+              width: '1082px',
+            }"
           >
-            <summary
-              class="flex cursor-pointer list-none items-start justify-between gap-6"
+            <details
+              v-for="f of faqs"
+              :key="f.q"
+              class="faq-item rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
+              @toggle="onFaqToggle"
             >
-              <h3 class="text-[20px] font-bold leading-[25px] text-black">
-                {{ f.q }}
-              </h3>
-              <span class="relative mt-1 block h-5 w-5 shrink-0">
-                <span
-                  class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
-                ></span>
-                <span
-                  class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
-                ></span>
-              </span>
-            </summary>
-            <p
-              class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
-            >
-              {{ f.a }}
-            </p>
-          </details>
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-6"
+              >
+                <h3 class="text-[20px] font-bold leading-[25px] text-black">
+                  {{ f.q }}
+                </h3>
+                <span class="relative mt-1 block h-5 w-5 shrink-0">
+                  <span
+                    class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
+                  ></span>
+                  <span
+                    class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
+                  ></span>
+                </span>
+              </summary>
+              <p
+                class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
+              >
+                {{ f.a }}
+              </p>
+            </details>
+          </div>
         </section>
 
         <!-- ============================= TREUHÄNDER BANNER ============================= -->
         <section
           class="absolute overflow-hidden rounded-[80px]"
-          style="left: 61px; top: 8775px; width: 1390px; height: 434px"
+          :style="{
+            left: '61px',
+            top: treuTop + 'px',
+            width: '1390px',
+            height: '434px',
+          }"
         >
           <NuxtImg
             :src="`${IMG}/treu-bg.jpg`"
@@ -689,7 +714,12 @@
         <!-- ============================= CTA BILLBOARD ============================= -->
         <section
           class="absolute overflow-hidden rounded-t-[200px]"
-          style="left: 0; top: 9343px; width: 1512px; height: 679px"
+          :style="{
+            left: '0',
+            top: ctaTop + 'px',
+            width: '1512px',
+            height: '679px',
+          }"
         >
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
@@ -723,7 +753,7 @@
           </a>
         </section>
 
-        <BexoFooter :top="10022" />
+        <BexoFooter :top="footerTop" />
       </div>
     </template>
   </BexoPageShell>
