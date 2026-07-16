@@ -595,7 +595,7 @@
           — Philippe Bally, Zofingen Treuhand AG
         </p>
         <a
-          href="#"
+          href="/referenz-zofingen"
           class="btn-outline absolute"
           style="left: 607px; top: 7613px; width: 299px"
         >
@@ -1024,6 +1024,7 @@
     height: 80px;
     width: auto;
     flex: none;
+    margin-right: 20px;
   }
   .marquee-left {
     animation: marquee-left 45s linear infinite;

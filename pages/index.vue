@@ -1115,6 +1115,7 @@
     height: 80px;
     width: auto;
     flex: none;
+    margin-right: 20px;
   }
   .marquee-left {
     animation: marquee-left 45s linear infinite;

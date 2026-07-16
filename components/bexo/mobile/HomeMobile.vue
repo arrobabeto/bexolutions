@@ -406,6 +406,7 @@
     height: 48px;
     width: auto;
     flex: none;
+    margin-right: 20px;
   }
 
   .marquee-left {
