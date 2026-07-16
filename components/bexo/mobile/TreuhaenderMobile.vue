@@ -1,7 +1,5 @@
 <script setup lang="ts">
   import { ref } from "vue"
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
 
   const IMG = "/images/treuhaender"
@@ -78,8 +76,6 @@
 
 <template>
   <div>
-    <BexoHeader variant="light" />
-
     <BexoSection compact-top>
       <h1 class="text-3xl font-semibold leading-tight text-[#0e2138]">
         Mehr Mandanten für Ihr Treuhandbüro. Systematisch. Messbar. Ohne
@@ -165,15 +161,13 @@
       </ol>
     </BexoSection>
 
-    <BexoSection>
-      <div class="rounded-[24px] bg-[#0e2138] p-6 text-center text-white">
+    <section class="w-full bg-[#0e2138] px-4 py-12 text-center text-white">
+      <div class="max-w-xl mx-auto">
         <h2 class="text-2xl font-semibold">Bereit für mehr Mandanten?</h2>
         <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
           Kostenlose Analyse buchen
         </a>
       </div>
-    </BexoSection>
-
-    <BexoFooterMobile />
+    </section>
   </div>
 </template>

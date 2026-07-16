@@ -7,26 +7,32 @@
 
 <template>
   <!-- Rich text --------------------------------------------------------- -->
-  <SafeHtml v-if="block.type === 'richText'" :html="block.html" class="prose" />
+  <SafeHtml
+    v-if="block.type === 'richText'"
+    :html="block.html"
+    class="prose min-w-0 max-w-full break-words"
+  />
 
   <!-- Numbered measure / sub-section ------------------------------------ -->
   <div
     v-else-if="block.type === 'sectionHeading'"
     :id="block.id"
-    class="scroll-mt-24"
+    class="min-w-0 max-w-full scroll-mt-24"
   >
     <p
       v-if="block.eyebrow"
-      class="text-[20px] font-bold leading-[1.5] text-[#292929]"
+      class="break-words text-base font-bold leading-[1.5] text-[#292929] lg:text-[20px]"
     >
       {{ block.eyebrow }}
     </p>
-    <h2 class="mt-[6px] text-[24px] font-semibold leading-[1.5] text-[#0e2138]">
+    <h2
+      class="mt-1 break-words text-xl font-semibold leading-[1.4] text-[#0e2138] lg:mt-[6px] lg:text-[24px] lg:leading-[1.5]"
+    >
       {{ block.heading }}
     </h2>
     <p
       v-if="block.body"
-      class="mt-[8px] text-[18px] font-medium leading-[1.6] text-[#888787]"
+      class="mt-2 break-words text-sm font-medium leading-[1.6] text-[#888787] sm:text-base lg:mt-[8px] lg:text-[18px]"
     >
       {{ block.body }}
     </p>
@@ -36,7 +42,7 @@
   <h2
     v-else-if="block.type === 'sectionTitle'"
     :id="block.id"
-    class="scroll-mt-24 text-[28px] font-semibold leading-[1.4] text-[#0e2138]"
+    class="min-w-0 max-w-full scroll-mt-24 break-words text-xl font-semibold leading-[1.35] text-[#0e2138] sm:text-2xl lg:text-[28px] lg:leading-[1.4]"
   >
     {{ block.title }}
   </h2>
@@ -48,14 +54,19 @@
   />
 
   <!-- Table ------------------------------------------------------------- -->
-  <div v-else-if="block.type === 'table'" class="overflow-x-auto">
-    <table class="w-full table-auto border-collapse text-left">
+  <div
+    v-else-if="block.type === 'table'"
+    class="-mx-1 min-w-0 max-w-full overflow-x-auto overscroll-x-contain"
+  >
+    <table
+      class="w-full min-w-[28rem] table-auto border-collapse text-left lg:min-w-0"
+    >
       <thead>
         <tr>
           <th
             v-for="(h, i) of block.headers"
             :key="i"
-            class="bg-[#f5f5f5] px-[24px] py-[16px] text-center text-[16px] font-medium text-[#0e2138]"
+            class="bg-[#f5f5f5] px-3 py-3 text-center text-xs font-medium text-[#0e2138] sm:text-sm lg:px-[24px] lg:py-[16px] lg:text-[16px]"
           >
             {{ h }}
           </th>
@@ -70,14 +81,17 @@
           <td
             v-for="(h, c) of block.headers"
             :key="c"
-            class="px-[24px] py-[16px] align-top text-[16px] font-medium leading-[1.5] text-[#292929]"
+            class="break-words px-3 py-3 align-top text-xs font-medium leading-[1.5] text-[#292929] sm:text-sm lg:px-[24px] lg:py-[16px] lg:text-[16px]"
           >
             {{ row[c] ?? "" }}
           </td>
         </tr>
       </tbody>
     </table>
-    <p v-if="block.caption" class="mt-[8px] text-[14px] text-[#888787]">
+    <p
+      v-if="block.caption"
+      class="mt-2 break-words text-xs text-[#888787] lg:mt-[8px] lg:text-[14px]"
+    >
       {{ block.caption }}
     </p>
   </div>
@@ -86,22 +100,28 @@
   <component
     :is="block.ordered ? 'ol' : 'ul'"
     v-else-if="block.type === 'list'"
-    class="flex flex-col gap-[10px] pl-[22px] text-[18px] font-medium leading-[1.6] text-[#292929]"
+    class="flex min-w-0 max-w-full flex-col gap-2 break-words pl-5 text-sm font-medium leading-[1.6] text-[#292929] sm:text-base lg:gap-[10px] lg:pl-[22px] lg:text-[18px]"
     :class="block.ordered ? 'list-decimal' : 'list-disc'"
   >
-    <li v-for="(item, i) of block.items" :key="i">{{ item }}</li>
+    <li v-for="(item, i) of block.items" :key="i" class="break-words">
+      {{ item }}
+    </li>
   </component>
 
   <!-- Image ------------------------------------------------------------- -->
-  <figure v-else-if="block.type === 'image'" class="my-2">
+  <figure
+    v-else-if="block.type === 'image'"
+    class="my-2 w-full min-w-0 max-w-full"
+  >
     <NuxtImg
       :src="block.src"
-      class="w-full rounded-[20px] object-cover"
+      class="h-auto w-full max-w-full rounded-[16px] object-cover lg:rounded-[20px]"
       :alt="block.alt"
+      sizes="100vw"
     />
     <figcaption
       v-if="block.caption"
-      class="mt-[8px] text-[14px] text-[#888787]"
+      class="mt-2 break-words text-xs text-[#888787] lg:mt-[8px] lg:text-[14px]"
     >
       {{ block.caption }}
     </figcaption>
@@ -110,19 +130,22 @@
   <!-- Callout ----------------------------------------------------------- -->
   <div
     v-else-if="block.type === 'callout'"
-    class="rounded-[30px] px-[40px] py-[32px]"
+    class="box-border w-full min-w-0 max-w-full rounded-[20px] px-5 py-5 sm:px-6 sm:py-6 lg:rounded-[30px] lg:px-[40px] lg:py-[32px]"
     :class="
       block.variant === 'highlight'
         ? 'bg-[#bde0fe] text-[#0e2138]'
         : 'bg-[#0e2138] text-white'
     "
   >
-    <p v-if="block.title" class="text-[18px] font-semibold leading-[1.5]">
+    <p
+      v-if="block.title"
+      class="break-words text-base font-semibold leading-[1.5] lg:text-[18px]"
+    >
       {{ block.title }}
     </p>
     <p
-      class="text-[16px] font-medium leading-[1.6]"
-      :class="{ 'mt-[8px]': block.title }"
+      class="break-words text-sm font-medium leading-[1.6] sm:text-base lg:text-[16px]"
+      :class="{ 'mt-2 lg:mt-[8px]': block.title }"
     >
       {{ block.body }}
     </p>
@@ -130,12 +153,41 @@
 </template>
 
 <style scoped>
-  /* Rich-text body styling (SafeHtml renders a wrapper <div>). */
+  .prose {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose :deep(p),
+  .prose :deep(li),
+  .prose :deep(td),
+  .prose :deep(th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   .prose :deep(p) {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 0.9375rem;
+    line-height: 1.625;
     color: #292929;
   }
+
+  @media (min-width: 640px) {
+    .prose :deep(p) {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .prose :deep(p) {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+
   .prose :deep(p + p) {
     margin-top: 16px;
   }
@@ -153,18 +205,39 @@
   .prose :deep(ul),
   .prose :deep(ol) {
     margin-top: 16px;
-    padding-left: 22px;
+    padding-left: 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 18px;
-    line-height: 1.6;
+    gap: 8px;
+    font-size: 0.9375rem;
+    line-height: 1.625;
     color: #292929;
   }
+
+  @media (min-width: 1024px) {
+    .prose :deep(ul),
+    .prose :deep(ol) {
+      padding-left: 22px;
+      gap: 10px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+
   .prose :deep(ul) {
     list-style: disc;
   }
   .prose :deep(ol) {
     list-style: decimal;
+  }
+
+  .prose :deep(img),
+  .prose :deep(table) {
+    max-width: 100%;
+  }
+
+  .prose :deep(table) {
+    display: block;
+    overflow-x: auto;
   }
 </style>

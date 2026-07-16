@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import KontaktForm from "~/components/bexo/KontaktForm.vue"
 
@@ -68,8 +66,6 @@
 
 <template>
   <div>
-    <BexoHeader variant="light" />
-
     <BexoSection compact-top>
       <h1 class="text-3xl font-semibold leading-tight text-black">
         Wir sind für Sie da.
@@ -251,7 +247,5 @@
         </div>
       </div>
     </BexoSection>
-
-    <BexoFooterMobile />
   </div>
 </template>

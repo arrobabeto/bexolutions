@@ -1,8 +1,6 @@
 <script setup lang="ts">
   import { computed, nextTick, ref } from "vue"
   import type { WissenCategoryFilter } from "~/constants/wissenCategories"
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BlogFeaturedCard from "~/components/blog/BlogFeaturedCard.vue"
   import BlogListCard from "~/components/blog/BlogListCard.vue"
@@ -64,9 +62,7 @@
 </script>
 
 <template>
-  <div>
-    <BexoHeader variant="light" />
-
+  <div class="box-border w-full min-w-0 max-w-full overflow-x-clip">
     <BexoSection compact-top>
       <div class="rounded-[24px] bg-[#f9f9f9] p-6 text-center">
         <h1 class="text-[28px] font-semibold leading-tight text-black">
@@ -97,10 +93,8 @@
       </p>
     </BexoSection>
 
-    <!-- Sticky filter chips — same chip set / selectFilter as desktop -->
-    <div
-      class="sticky top-[61px] z-40 border-b border-black/5 bg-white/95 backdrop-blur-sm"
-    >
+    <!-- Filter chips — same chip set / selectFilter as desktop -->
+    <div class="border-b border-black/5">
       <div class="px-4 py-3">
         <div
           class="max-w-xl mx-auto flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -255,7 +249,5 @@
         </a>
       </div>
     </section>
-
-    <BexoFooterMobile />
   </div>
 </template>

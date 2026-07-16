@@ -1,11 +1,10 @@
 <script setup lang="ts">
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   const UB = "/images/ueber-uns"
+  const HOME = "/images/startseite"
 
   const saeulen = [
     {
@@ -72,69 +71,109 @@
 </script>
 
 <template>
-  <div>
-    <BexoHeader variant="light" />
-
-    <section class="relative mx-4 mt-4 overflow-hidden rounded-[32px]">
-      <BackgroundMedia
-        :poster="`${UB}/elev8-bg.jpg`"
-        :video="BEXO_VIDEOS.leistungenHero"
-        class="aspect-[4/3] w-full"
-      />
-      <div class="absolute inset-0 bg-[#0e2138]/75"></div>
-      <div class="relative p-6">
-        <h1 class="text-3xl font-semibold leading-tight text-white">
-          Unsere Leistungen.
-          <br />
-          Ein System. Alles aus einer Hand.
-        </h1>
-        <p class="mt-4 text-base leading-relaxed text-white">
-          Bexolutions baut ein zusammenhängendes Marketingsystem für Ihr KMU —
-          Strategie, Umsetzung und Reporting aus einer Hand.
-        </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
-          Kostenlose Sichtbarkeitsanalyse anfordern
-        </a>
-        <a href="/referenz-zofingen" class="bexo-btn-navy bexo-btn-block mt-3">
-          Zur Fallstudie
-        </a>
+  <div class="box-border w-full min-w-0 max-w-full overflow-x-clip">
+    <section class="box-border w-full max-w-full px-4 pt-4">
+      <div
+        class="max-w-xl relative mx-auto w-full overflow-hidden rounded-[24px]"
+      >
+        <BackgroundMedia
+          :poster="`${UB}/elev8-bg.jpg`"
+          :video="BEXO_VIDEOS.leistungenHero"
+          class="aspect-[4/5] w-full max-w-full sm:aspect-[16/10]"
+        />
+        <div class="absolute inset-0 bg-[#0e2138]/75"></div>
+        <div class="absolute inset-0 flex flex-col justify-end p-5 sm:p-6">
+          <h1
+            class="max-w-full text-[1.75rem] font-semibold leading-tight text-white sm:text-3xl"
+          >
+            Unsere Leistungen.
+            <br />
+            Ein System. Alles aus einer Hand.
+          </h1>
+          <p
+            class="mt-3 max-w-full text-sm leading-relaxed text-white sm:text-base"
+          >
+            Bexolutions baut ein zusammenhängendes Marketingsystem für Ihr KMU —
+            Strategie, Umsetzung und Reporting aus einer Hand.
+          </p>
+          <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-5">
+            Kostenlose Sichtbarkeitsanalyse anfordern
+          </a>
+          <a
+            href="/referenz-zofingen"
+            class="bexo-btn-navy bexo-btn-block mt-2"
+          >
+            Zur Fallstudie
+          </a>
+        </div>
       </div>
     </section>
 
-    <BexoSection v-for="(s, i) of saeulen" :key="s.title">
-      <div
-        class="rounded-[24px] p-6"
+    <BexoSection
+      v-for="(s, i) of saeulen"
+      :key="s.title"
+      :compact-y="i > 0"
+      :class="i === 0 ? '' : undefined"
+    >
+      <article
+        class="box-border w-full min-w-0 max-w-full rounded-[20px] p-5"
         :class="i % 2 === 1 ? 'bg-[#f8f8f8]' : 'bg-white'"
       >
-        <p class="text-sm font-medium text-[#134074]">{{ s.title }}</p>
-        <h2 class="mt-2 text-xl font-semibold text-black">{{ s.sub }}</h2>
-        <p class="mt-3 text-base leading-relaxed text-black">{{ s.body }}</p>
+        <p class="break-words text-sm font-medium text-[#134074]">
+          {{ s.title }}
+        </p>
+        <h2
+          class="mt-2 break-words text-lg font-semibold leading-snug text-black sm:text-xl"
+        >
+          {{ s.sub }}
+        </h2>
+        <p
+          class="mt-3 break-words text-sm leading-relaxed text-black sm:text-base"
+        >
+          {{ s.body }}
+        </p>
         <ul class="mt-4 space-y-2">
           <li
             v-for="b of s.bullets"
             :key="b"
-            class="flex gap-2 text-base text-black"
+            class="flex min-w-0 gap-2 text-sm leading-snug text-black sm:text-base"
           >
-            <span class="text-[#bde0fe]">●</span>
-            {{ b }}
+            <span class="mt-1 shrink-0 text-[#bde0fe]" aria-hidden="true">
+              ●
+            </span>
+            <span class="min-w-0 break-words">{{ b }}</span>
           </li>
         </ul>
-      </div>
+      </article>
     </BexoSection>
 
-    <BexoSection>
-      <div class="rounded-[24px] bg-[#0e2138] p-6 text-center text-white">
-        <h2 class="text-2xl font-semibold">Bereit für den nächsten Schritt?</h2>
-        <p class="mt-4 text-base leading-relaxed">
-          Kostenlose 20-minütige Sichtbarkeitsanalyse — unverbindlich und
-          konkret.
+    <section
+      class="relative box-border w-full min-w-0 max-w-full overflow-hidden rounded-t-[40px]"
+    >
+      <NuxtImg
+        :src="`${HOME}/billboard.jpg`"
+        class="absolute inset-0 h-full w-full object-cover object-top"
+        alt=""
+        sizes="100vw"
+      />
+      <div class="absolute inset-0 bg-[#0e2138]/50"></div>
+      <div class="max-w-xl relative mx-auto w-full px-5 py-10 sm:px-6 sm:py-12">
+        <h2
+          class="break-words text-xl font-semibold leading-snug text-white sm:text-2xl"
+        >
+          Bereit zu erfahren, welche Leistungen Ihr KMU jetzt braucht?
+        </h2>
+        <p
+          class="mt-4 break-words text-sm leading-relaxed text-white sm:text-base"
+        >
+          Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse. Wir
+          schauen uns Ihre aktuelle digitale Präsenz an und empfehlen Ihnen
+          konkret, wo der grösste Hebel liegt.
         </p>
         <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
-          Termin vereinbaren
+          Jetzt Sichtbarkeitsanalyse anfordern
         </a>
       </div>
-    </BexoSection>
-
-    <BexoFooterMobile />
+    </section>
   </div>
 </template>
