@@ -15,7 +15,7 @@
     <select
       v-model="modelValue"
       :disabled="disabled || options.length <= 1"
-      class="h-10 border px-2"
+      class="h-10 w-full border px-2"
     >
       <option v-for="(o, i) of options" :value="o" :key="o">
         {{ texts?.[i] ?? o }}

@@ -19,7 +19,7 @@
       :placeholder="placeholder ?? ''"
       :disabled="disabled"
       :required="required"
-      class="h-10 border px-2"
+      class="h-10 w-full border px-2"
     />
   </label>
 </template>

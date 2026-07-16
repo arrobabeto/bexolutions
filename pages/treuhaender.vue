@@ -2,6 +2,8 @@
   import { ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
+  import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
+  import TreuhaenderMobile from "~/components/bexo/mobile/TreuhaenderMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
 
   definePageMeta({ layout: false })
@@ -221,622 +223,628 @@
 </script>
 
 <template>
-  <main class="bexo">
-    <div ref="canvasRef" class="canvas">
-      <!-- ============================= NAV (light) ============================= -->
-      <header
-        class="absolute"
-        style="left: 0; top: 0; width: 1512px; height: 180px; z-index: 20"
-      >
-        <a href="/" aria-label="Bexolutions Startseite">
-          <span
-            class="nav-logo absolute"
-            style="left: 120px; top: 64px; width: 107px; height: 107px"
-          ></span>
-        </a>
-        <nav
-          class="absolute flex items-center"
-          style="left: 572px; top: 95px; height: 44px; gap: 24px"
+  <BexoPageShell>
+    <template #mobile>
+      <TreuhaenderMobile />
+    </template>
+    <template #desktop>
+      <div ref="canvasRef" class="canvas">
+        <!-- ============================= NAV (light) ============================= -->
+        <header
+          class="absolute"
+          style="left: 0; top: 0; width: 1512px; height: 180px; z-index: 20"
         >
-          <a
-            v-for="n of navLinks"
-            :key="n.l"
-            :href="n.to"
-            class="text-[16px] font-medium leading-5 text-[#0e2138] transition hover:opacity-70"
-          >
-            {{ n.l }}
+          <a href="/" aria-label="Bexolutions Startseite">
+            <span
+              class="nav-logo absolute"
+              style="left: 120px; top: 64px; width: 107px; height: 107px"
+            ></span>
           </a>
-        </nav>
-        <div
-          class="absolute flex items-center"
-          style="left: 993px; top: 95px; gap: 10px"
-        >
-          <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
-          <a href="#" class="btn-primary" style="width: 237px">
-            Termin vereinbaren
-          </a>
-        </div>
-      </header>
-
-      <!-- radial glow -->
-      <div
-        class="absolute"
-        style="
-          left: 739px;
-          top: 6px;
-          width: 773px;
-          height: 773px;
-          background: radial-gradient(
-            closest-side,
-            rgba(189, 224, 254, 0.5) 0%,
-            rgba(189, 224, 254, 0) 100%
-          );
-        "
-      ></div>
-
-      <!-- ============================= HERO ============================= -->
-      <h1
-        class="absolute text-[40px] font-semibold leading-[48px] text-[#0e2138]"
-        style="left: 120px; top: 277px; width: 640px"
-      >
-        Mehr Mandanten für Ihr
-        <br />
-        Treuhandbüro.Systematisch.
-        <br />
-        Messbar. Ohne Werbebudget.
-      </h1>
-      <p
-        class="absolute text-[18px] font-normal leading-[25px] text-[#13315c]"
-        style="left: 770px; top: 299px; width: 630px"
-      >
-        Wir machen Ihr Büro bei Google sichtbar — genau dann, wenn potenzielle
-        Mandanten aktiv nach Steuerberatung, Treuhand oder
-        Grundstückgewinnsteuer in Ihrer Region suchen. Kein Zufall, kein Glück.
-        Nur System.
-      </p>
-      <div
-        class="absolute flex items-center"
-        style="left: 763px; top: 449px; gap: 16px"
-      >
-        <a href="/kontakt" class="btn-navy" style="width: 420px">
-          Kostenlose Sichtbarkeitsanalyse anfordern
-        </a>
-        <a href="/referenz-zofingen" class="btn-outline" style="width: 193px">
-          Zur Fallstudie
-        </a>
-      </div>
-
-      <!-- ============================= NAVY BAND ============================= -->
-      <div
-        class="absolute grid place-items-center rounded-[60px] bg-[#0e2138]"
-        style="left: 120px; top: 589px; width: 1272px; height: 232px"
-      >
-        <p
-          class="text-center text-[20px] font-normal leading-[24px] text-white"
-          style="width: 592px"
-        >
-          Treuhand-Kunden haben ein konkretes Problem und suchen aktiv nach
-          einer Lösung — sie müssen nicht überzeugt werden. Die Frage ist
-          einzig: Finden sie Sie bei Google?
-          <br />
-          Wir sorgen dafür, dass die Antwort Ja ist.
-        </p>
-      </div>
-
-      <!-- ============================= LOGOS ============================= -->
-      <h2
-        class="absolute text-center text-[30px] font-semibold leading-[44px] text-[#0e2138]"
-        style="left: 120px; top: 938px; width: 1272px"
-      >
-        Unternehmen, die uns vertrauen.
-      </h2>
-      <p
-        class="absolute text-center text-[18px] font-normal leading-[31px] text-[#0e2138]"
-        style="left: 428px; top: 994px; width: 656px"
-      >
-        Langjährige Kunden aus der Deutschschweiz und dem DACH-Raum — von der
-        inhabergeführten Treuhandkanzlei bis zum Gastronomiebetrieb.
-      </p>
-      <NuxtImg
-        :src="`${IMG}/logos.jpg`"
-        class="absolute"
-        style="left: 360px; top: 1088px; width: 792px"
-        alt="Zofingen Treuhand AG · Von Bergen Solution · Rothstein AG"
-      />
-
-      <!-- ============================= PROBLEM TIMELINE ============================= -->
-      <h2
-        class="absolute text-[30px] font-semibold leading-[36px] text-[#0e2138]"
-        style="left: 123px; top: 1444px; width: 408px"
-      >
-        Kommt Ihnen das
-        <br />
-        bekannt vor?
-      </h2>
-      <!-- vertical line + dots -->
-      <div
-        class="absolute bg-[#0e2138]/40"
-        style="left: 552px; top: 1432px; width: 1px; height: 1098px"
-      ></div>
-      <div
-        class="absolute h-[10px] w-[10px] rounded-full bg-[#0e2138]"
-        style="left: 548px; top: 1428px"
-      ></div>
-      <div
-        class="absolute h-[10px] w-[10px] rounded-full bg-[#0e2138]"
-        style="left: 548px; top: 2521px"
-      ></div>
-
-      <div
-        v-for="p of problems"
-        :key="p.title"
-        class="absolute"
-        :style="{ left: '655px', top: p.top + 'px', width: '725px' }"
-      >
-        <span
-          class="absolute grid h-[33px] w-[33px] place-items-center rounded-[8px] border border-[#0e2138]"
-          style="left: 0; top: 25px"
-        >
-          <svg
-            width="16"
-            height="14"
-            viewBox="0 0 16 14"
-            fill="none"
-            stroke="#0e2138"
-            stroke-width="2"
+          <nav
+            class="absolute flex items-center"
+            style="left: 572px; top: 95px; height: 44px; gap: 24px"
           >
-            <path d="M2 7l4 4 8-9" />
-          </svg>
-        </span>
-        <h3
-          class="absolute text-[24px] font-semibold leading-[29px] text-black"
-          style="left: 53px; top: 0; width: 672px"
-        >
-          {{ p.title }}
-        </h3>
-        <p
-          class="absolute text-[18px] font-normal leading-[22px] text-black"
-          style="left: 53px; top: 39px; width: 640px"
-        >
-          {{ p.body }}
-        </p>
-        <div
-          v-if="p.img"
-          class="absolute overflow-hidden rounded-[20px]"
-          style="left: 17px; top: 114px; width: 653px; height: 157px"
-        >
-          <NuxtImg
-            :src="`${IMG}/problem.jpg`"
-            class="h-full w-full object-cover"
-            alt=""
-          />
-        </div>
-      </div>
+            <a
+              v-for="n of navLinks"
+              :key="n.l"
+              :href="n.to"
+              class="text-[16px] font-medium leading-5 text-[#0e2138] transition hover:opacity-70"
+            >
+              {{ n.l }}
+            </a>
+          </nav>
+          <div
+            class="absolute flex items-center"
+            style="left: 993px; top: 95px; gap: 10px"
+          >
+            <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
+            <a href="#" class="btn-primary" style="width: 237px">
+              Termin vereinbaren
+            </a>
+          </div>
+        </header>
 
-      <!-- ============================= QUOTE BAND ============================= -->
-      <section
-        class="absolute overflow-hidden"
-        style="left: 0; top: 2670px; width: 1512px; height: 414px"
-      >
-        <NuxtImg
-          :src="`${REF}/dark-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
+        <!-- radial glow -->
         <div
-          class="absolute inset-0"
-          style="background: rgba(14, 33, 56, 0.78)"
+          class="absolute"
+          style="
+            left: 739px;
+            top: 6px;
+            width: 773px;
+            height: 773px;
+            background: radial-gradient(
+              closest-side,
+              rgba(189, 224, 254, 0.5) 0%,
+              rgba(189, 224, 254, 0) 100%
+            );
+          "
         ></div>
-        <p
-          class="absolute text-center text-[24px] font-semibold italic leading-[29px] text-white"
-          style="left: 302px; top: 145px; width: 909px"
-        >
-          «Treuhand-Kunden brauchen keine Überzeugung. Sie haben ein Problem —
-          und suchen aktiv nach einer Lösung. Die Frage ist nur: Finden sie
-          Sie?»
-        </p>
-        <p
-          class="absolute text-center text-[18px] font-medium leading-[22px] text-white"
-          style="left: 245px; top: 224px; width: 1022px"
-        >
-          — Balaram Furrer, Geschäftsführer Bexolutions
-        </p>
-      </section>
 
-      <!-- ============================= CASE STUDY ============================= -->
-      <h2
-        class="absolute text-[30px] font-semibold leading-[42px] text-black"
-        style="left: 766px; top: 3208px; width: 621px"
-      >
-        Ein Treuhandbüro. 16 Monate. Teamvergrösserung wegen Mehranfragen.
-      </h2>
-      <p
-        class="absolute text-[18px] font-normal leading-[25px] text-[#0e2138]"
-        style="left: 766px; top: 3351px; width: 550px"
-      >
-        Inhabergeführtes Büro für Privatkunden und KMU im Kanton Aargau.
-        Ausgangslage: Website vorhanden, keine Rankings, keine
-        Content-Strategie, 0 qualifizierte Anfragen über Google.
-      </p>
-      <!-- stats grid -->
-      <div
-        v-for="c of cells"
-        :key="c.label"
-        class="absolute"
-        :style="{
-          left: c.left + 'px',
-          top: c.top + 'px',
-          width: '504px',
-          height: '343px',
-          border: '0.5px solid rgba(0,0,0,0.35)',
-        }"
-      >
-        <span
-          class="absolute text-right text-[18px] font-semibold leading-[24px] text-black"
-          style="top: 30px; right: 44px; left: 44px"
+        <!-- ============================= HERO ============================= -->
+        <h1
+          class="absolute text-[40px] font-semibold leading-[48px] text-[#0e2138]"
+          style="left: 120px; top: 277px; width: 640px"
         >
-          {{ c.label }}
-        </span>
-        <span
-          class="absolute text-right text-[100px] font-semibold leading-none tracking-[-5px] text-[#13315c]"
-          style="bottom: 40px; right: 34px; left: 0"
-        >
-          {{ c.value }}
-        </span>
-      </div>
-      <!-- testimonial -->
-      <p
-        class="absolute text-center text-[18px] font-normal leading-[25px] text-black"
-        style="left: 329px; top: 4378px; width: 854px"
-      >
-        «Wir haben Bexolutions mit der Optimierung unserer digitalen
-        Sichtbarkeit beauftragt. Die Anzahl der Anfragen über unsere Website und
-        unser Google-Unternehmensprofil hat sich in den vergangenen 16 Monaten
-        substanziell erhöht. Wir mussten infolgedessen unser Team personell
-        verstärken, um die zusätzlichen Mandate ordnungsgemäss bearbeiten zu
-        können. Die Zusammenarbeit verläuft strukturiert und die Ergebnisse sind
-        äusserst zufriedenstellend. Bexolutions versteht die Anforderungen eines
-        Treuhandbüros und setzt die vereinbarten Massnahmen zuverlässig um. Wir
-        können die Zusammenarbeit uneingeschränkt empfehlen.»
-      </p>
-      <p
-        class="absolute text-center text-[16px] font-medium leading-[22px] text-black"
-        style="left: 270px; top: 4580px; width: 972px"
-      >
-        — Philippe Bally, Zofingen Treuhand AG
-      </p>
-      <a
-        href="/referenz-zofingen"
-        class="btn-outline absolute"
-        style="left: 607px; top: 4629px; width: 299px"
-      >
-        Zur vollständigen Fallstudie
-      </a>
-
-      <!-- ============================= METHOD ============================= -->
-      <div
-        class="absolute rounded-t-[60px]"
-        style="
-          left: 0;
-          top: 4751px;
-          width: 1512px;
-          height: 700px;
-          background: linear-gradient(180deg, #ecf6ff 0%, #ffffff 70%);
-        "
-      ></div>
-      <span
-        class="absolute grid place-items-center rounded-[20px] bg-[#ffeef4] text-[18px] font-normal leading-[25px] text-[#0e2138]"
-        style="left: 120px; top: 4846px; width: 343px; height: 48px"
-      >
-        Unsere Methode für Treuhandbüros
-      </span>
-      <h2
-        class="absolute text-[32px] font-semibold leading-[40px] text-[#0e2138]"
-        style="left: 120px; top: 4909px; width: 1221px"
-      >
-        Was Bexolutions für Ihr Treuhandbüro konkret umsetzt.
-      </h2>
-      <section
-        v-for="r of methodRows"
-        :key="r.title"
-        class="absolute rounded-t-[60px]"
-        :style="{
-          left: 0,
-          top: r.top + 'px',
-          width: '1512px',
-          height: r.h + 'px',
-          background: r.bg,
-        }"
-      >
-        <h3
-          class="absolute text-[30px] font-semibold leading-[38px] text-[#0e2138]"
-          style="left: 115px; top: 77px; width: 1200px"
-        >
-          {{ r.title }}
-        </h3>
+          Mehr Mandanten für Ihr
+          <br />
+          Treuhandbüro.Systematisch.
+          <br />
+          Messbar. Ohne Werbebudget.
+        </h1>
         <p
-          class="absolute text-[20px] font-normal leading-[28px] text-black"
-          :style="{ left: '115px', top: '147px', width: r.bodyW + 'px' }"
+          class="absolute text-[18px] font-normal leading-[25px] text-[#13315c]"
+          style="left: 770px; top: 299px; width: 630px"
         >
-          {{ r.body }}
+          Wir machen Ihr Büro bei Google sichtbar — genau dann, wenn potenzielle
+          Mandanten aktiv nach Steuerberatung, Treuhand oder
+          Grundstückgewinnsteuer in Ihrer Region suchen. Kein Zufall, kein
+          Glück. Nur System.
         </p>
-      </section>
-
-      <!-- ============================= PROCESS ============================= -->
-      <section
-        class="absolute overflow-hidden bg-[#f8f8f8]"
-        style="left: 0; top: 6535px; width: 1512px; height: 892px"
-      >
-        <p
-          class="absolute text-[18px] font-normal leading-[28px] text-black"
-          style="left: 120px; top: 348px"
-        >
-          Ihr Weg zu mehr Mandanten
-        </p>
-        <h2
-          class="absolute text-[30px] font-semibold leading-[38px] text-[#0e2138]"
-          style="left: 120px; top: 394px; width: 300px"
-        >
-          Von der Analyse bis zu neuen Mandanten — in vier Schritten.
-        </h2>
         <div
-          v-for="s of steps"
-          :key="s.n"
-          class="absolute overflow-hidden rounded-[30px]"
-          :style="{
-            left: s.left + 'px',
-            top: '97px',
-            width: '302px',
-            height: '699px',
-          }"
+          class="absolute flex items-center"
+          style="left: 763px; top: 449px; gap: 16px"
+        >
+          <a href="/kontakt" class="btn-navy" style="width: 420px">
+            Kostenlose Sichtbarkeitsanalyse anfordern
+          </a>
+          <a href="/referenz-zofingen" class="btn-outline" style="width: 193px">
+            Zur Fallstudie
+          </a>
+        </div>
+
+        <!-- ============================= NAVY BAND ============================= -->
+        <div
+          class="absolute grid place-items-center rounded-[60px] bg-[#0e2138]"
+          style="left: 120px; top: 589px; width: 1272px; height: 232px"
+        >
+          <p
+            class="text-center text-[20px] font-normal leading-[24px] text-white"
+            style="width: 592px"
+          >
+            Treuhand-Kunden haben ein konkretes Problem und suchen aktiv nach
+            einer Lösung — sie müssen nicht überzeugt werden. Die Frage ist
+            einzig: Finden sie Sie bei Google?
+            <br />
+            Wir sorgen dafür, dass die Antwort Ja ist.
+          </p>
+        </div>
+
+        <!-- ============================= LOGOS ============================= -->
+        <h2
+          class="absolute text-center text-[30px] font-semibold leading-[44px] text-[#0e2138]"
+          style="left: 120px; top: 938px; width: 1272px"
+        >
+          Unternehmen, die uns vertrauen.
+        </h2>
+        <p
+          class="absolute text-center text-[18px] font-normal leading-[31px] text-[#0e2138]"
+          style="left: 428px; top: 994px; width: 656px"
+        >
+          Langjährige Kunden aus der Deutschschweiz und dem DACH-Raum — von der
+          inhabergeführten Treuhandkanzlei bis zum Gastronomiebetrieb.
+        </p>
+        <NuxtImg
+          :src="`${IMG}/logos.jpg`"
+          class="absolute"
+          style="left: 360px; top: 1088px; width: 792px"
+          alt="Zofingen Treuhand AG · Von Bergen Solution · Rothstein AG"
+        />
+
+        <!-- ============================= PROBLEM TIMELINE ============================= -->
+        <h2
+          class="absolute text-[30px] font-semibold leading-[36px] text-[#0e2138]"
+          style="left: 123px; top: 1444px; width: 408px"
+        >
+          Kommt Ihnen das
+          <br />
+          bekannt vor?
+        </h2>
+        <!-- vertical line + dots -->
+        <div
+          class="absolute bg-[#0e2138]/40"
+          style="left: 552px; top: 1432px; width: 1px; height: 1098px"
+        ></div>
+        <div
+          class="absolute h-[10px] w-[10px] rounded-full bg-[#0e2138]"
+          style="left: 548px; top: 1428px"
+        ></div>
+        <div
+          class="absolute h-[10px] w-[10px] rounded-full bg-[#0e2138]"
+          style="left: 548px; top: 2521px"
+        ></div>
+
+        <div
+          v-for="p of problems"
+          :key="p.title"
+          class="absolute"
+          :style="{ left: '655px', top: p.top + 'px', width: '725px' }"
+        >
+          <span
+            class="absolute grid h-[33px] w-[33px] place-items-center rounded-[8px] border border-[#0e2138]"
+            style="left: 0; top: 25px"
+          >
+            <svg
+              width="16"
+              height="14"
+              viewBox="0 0 16 14"
+              fill="none"
+              stroke="#0e2138"
+              stroke-width="2"
+            >
+              <path d="M2 7l4 4 8-9" />
+            </svg>
+          </span>
+          <h3
+            class="absolute text-[24px] font-semibold leading-[29px] text-black"
+            style="left: 53px; top: 0; width: 672px"
+          >
+            {{ p.title }}
+          </h3>
+          <p
+            class="absolute text-[18px] font-normal leading-[22px] text-black"
+            style="left: 53px; top: 39px; width: 640px"
+          >
+            {{ p.body }}
+          </p>
+          <div
+            v-if="p.img"
+            class="absolute overflow-hidden rounded-[20px]"
+            style="left: 17px; top: 114px; width: 653px; height: 157px"
+          >
+            <NuxtImg
+              :src="`${IMG}/problem.jpg`"
+              class="h-full w-full object-cover"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- ============================= QUOTE BAND ============================= -->
+        <section
+          class="absolute overflow-hidden"
+          style="left: 0; top: 2670px; width: 1512px; height: 414px"
         >
           <NuxtImg
-            :src="`${IMG}/${s.img}`"
-            class="h-full w-full object-cover"
+            :src="`${REF}/dark-bg.jpg`"
+            class="absolute inset-0 h-full w-full object-cover"
             alt=""
           />
           <div
-            class="absolute inset-x-0 bottom-0 h-[300px]"
+            class="absolute inset-0"
+            style="background: rgba(14, 33, 56, 0.78)"
+          ></div>
+          <p
+            class="absolute text-center text-[24px] font-semibold italic leading-[29px] text-white"
+            style="left: 302px; top: 145px; width: 909px"
+          >
+            «Treuhand-Kunden brauchen keine Überzeugung. Sie haben ein Problem —
+            und suchen aktiv nach einer Lösung. Die Frage ist nur: Finden sie
+            Sie?»
+          </p>
+          <p
+            class="absolute text-center text-[18px] font-medium leading-[22px] text-white"
+            style="left: 245px; top: 224px; width: 1022px"
+          >
+            — Balaram Furrer, Geschäftsführer Bexolutions
+          </p>
+        </section>
+
+        <!-- ============================= CASE STUDY ============================= -->
+        <h2
+          class="absolute text-[30px] font-semibold leading-[42px] text-black"
+          style="left: 766px; top: 3208px; width: 621px"
+        >
+          Ein Treuhandbüro. 16 Monate. Teamvergrösserung wegen Mehranfragen.
+        </h2>
+        <p
+          class="absolute text-[18px] font-normal leading-[25px] text-[#0e2138]"
+          style="left: 766px; top: 3351px; width: 550px"
+        >
+          Inhabergeführtes Büro für Privatkunden und KMU im Kanton Aargau.
+          Ausgangslage: Website vorhanden, keine Rankings, keine
+          Content-Strategie, 0 qualifizierte Anfragen über Google.
+        </p>
+        <!-- stats grid -->
+        <div
+          v-for="c of cells"
+          :key="c.label"
+          class="absolute"
+          :style="{
+            left: c.left + 'px',
+            top: c.top + 'px',
+            width: '504px',
+            height: '343px',
+            border: '0.5px solid rgba(0,0,0,0.35)',
+          }"
+        >
+          <span
+            class="absolute text-right text-[18px] font-semibold leading-[24px] text-black"
+            style="top: 30px; right: 44px; left: 44px"
+          >
+            {{ c.label }}
+          </span>
+          <span
+            class="absolute text-right text-[100px] font-semibold leading-none tracking-[-5px] text-[#13315c]"
+            style="bottom: 40px; right: 34px; left: 0"
+          >
+            {{ c.value }}
+          </span>
+        </div>
+        <!-- testimonial -->
+        <p
+          class="absolute text-center text-[18px] font-normal leading-[25px] text-black"
+          style="left: 329px; top: 4378px; width: 854px"
+        >
+          «Wir haben Bexolutions mit der Optimierung unserer digitalen
+          Sichtbarkeit beauftragt. Die Anzahl der Anfragen über unsere Website
+          und unser Google-Unternehmensprofil hat sich in den vergangenen 16
+          Monaten substanziell erhöht. Wir mussten infolgedessen unser Team
+          personell verstärken, um die zusätzlichen Mandate ordnungsgemäss
+          bearbeiten zu können. Die Zusammenarbeit verläuft strukturiert und die
+          Ergebnisse sind äusserst zufriedenstellend. Bexolutions versteht die
+          Anforderungen eines Treuhandbüros und setzt die vereinbarten
+          Massnahmen zuverlässig um. Wir können die Zusammenarbeit
+          uneingeschränkt empfehlen.»
+        </p>
+        <p
+          class="absolute text-center text-[16px] font-medium leading-[22px] text-black"
+          style="left: 270px; top: 4580px; width: 972px"
+        >
+          — Philippe Bally, Zofingen Treuhand AG
+        </p>
+        <a
+          href="/referenz-zofingen"
+          class="btn-outline absolute"
+          style="left: 607px; top: 4629px; width: 299px"
+        >
+          Zur vollständigen Fallstudie
+        </a>
+
+        <!-- ============================= METHOD ============================= -->
+        <div
+          class="absolute rounded-t-[60px]"
+          style="
+            left: 0;
+            top: 4751px;
+            width: 1512px;
+            height: 700px;
+            background: linear-gradient(180deg, #ecf6ff 0%, #ffffff 70%);
+          "
+        ></div>
+        <span
+          class="absolute grid place-items-center rounded-[20px] bg-[#ffeef4] text-[18px] font-normal leading-[25px] text-[#0e2138]"
+          style="left: 120px; top: 4846px; width: 343px; height: 48px"
+        >
+          Unsere Methode für Treuhandbüros
+        </span>
+        <h2
+          class="absolute text-[32px] font-semibold leading-[40px] text-[#0e2138]"
+          style="left: 120px; top: 4909px; width: 1221px"
+        >
+          Was Bexolutions für Ihr Treuhandbüro konkret umsetzt.
+        </h2>
+        <section
+          v-for="r of methodRows"
+          :key="r.title"
+          class="absolute rounded-t-[60px]"
+          :style="{
+            left: 0,
+            top: r.top + 'px',
+            width: '1512px',
+            height: r.h + 'px',
+            background: r.bg,
+          }"
+        >
+          <h3
+            class="absolute text-[30px] font-semibold leading-[38px] text-[#0e2138]"
+            style="left: 115px; top: 77px; width: 1200px"
+          >
+            {{ r.title }}
+          </h3>
+          <p
+            class="absolute text-[20px] font-normal leading-[28px] text-black"
+            :style="{ left: '115px', top: '147px', width: r.bodyW + 'px' }"
+          >
+            {{ r.body }}
+          </p>
+        </section>
+
+        <!-- ============================= PROCESS ============================= -->
+        <section
+          class="absolute overflow-hidden bg-[#f8f8f8]"
+          style="left: 0; top: 6535px; width: 1512px; height: 892px"
+        >
+          <p
+            class="absolute text-[18px] font-normal leading-[28px] text-black"
+            style="left: 120px; top: 348px"
+          >
+            Ihr Weg zu mehr Mandanten
+          </p>
+          <h2
+            class="absolute text-[30px] font-semibold leading-[38px] text-[#0e2138]"
+            style="left: 120px; top: 394px; width: 300px"
+          >
+            Von der Analyse bis zu neuen Mandanten — in vier Schritten.
+          </h2>
+          <div
+            v-for="s of steps"
+            :key="s.n"
+            class="absolute overflow-hidden rounded-[30px]"
+            :style="{
+              left: s.left + 'px',
+              top: '97px',
+              width: '302px',
+              height: '699px',
+            }"
+          >
+            <NuxtImg
+              :src="`${IMG}/${s.img}`"
+              class="h-full w-full object-cover"
+              alt=""
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 h-[300px]"
+              style="
+                background: linear-gradient(
+                  180deg,
+                  rgba(0, 0, 0, 0) 0%,
+                  rgba(0, 0, 0, 0.65) 100%
+                );
+              "
+            ></div>
+            <span
+              class="absolute text-[52px] font-bold leading-[73px] text-white"
+              style="left: 32px; bottom: 108px"
+            >
+              {{ s.n }}
+            </span>
+            <span class="absolute bottom-[52px] left-[32px] text-white">
+              <span class="text-[28px] font-semibold leading-[35px]">
+                {{ s.label }}
+              </span>
+              <span class="text-[18px] font-normal">{{ s.extra }}</span>
+            </span>
+          </div>
+        </section>
+
+        <!-- ============================= WARUM ============================= -->
+        <p
+          class="absolute text-center text-[18px] font-normal leading-[25px] text-[#0e2138]"
+          style="left: 671px; top: 7597px; width: 170px"
+        >
+          Warum Bexolutions
+        </p>
+        <h2
+          class="absolute text-center text-[32px] font-semibold leading-[45px] text-black"
+          style="left: 369px; top: 7639px; width: 775px"
+        >
+          Warum Treuhandbüros Bexolutions wählen
+          <br />
+          und
+          <span class="text-[#bde0fe]">nicht eine andere Agentur.</span>
+        </h2>
+        <div
+          class="absolute bg-black/10"
+          style="left: 59px; top: 7777px; width: 1405px; height: 1px"
+        ></div>
+        <div
+          class="absolute bg-black/10"
+          style="left: 59px; top: 8226px; width: 1405px; height: 1px"
+        ></div>
+        <div
+          v-for="w of whyCards"
+          :key="w.title"
+          class="absolute overflow-hidden rounded-[24px]"
+          :style="{
+            left: w.left + 'px',
+            top: '7796px',
+            width: '323px',
+            height: '392px',
+            background: w.dark
+              ? 'linear-gradient(150deg, #7d93ac 0%, #2b3a4d 55%, #0e2138 100%)'
+              : '#e6ebed',
+          }"
+        >
+          <h3
+            class="absolute text-[20px] font-semibold leading-[25px]"
+            :class="w.dark ? 'text-white' : 'text-[#0e2138]'"
+            style="left: 36px; top: 94px; width: 254px"
+          >
+            {{ w.title }}
+          </h3>
+          <p
+            class="absolute text-[16px] font-normal leading-[22px]"
+            :class="w.dark ? 'text-white' : 'text-black'"
+            :style="{ left: '36px', top: w.bodyTop + 'px', width: '254px' }"
+          >
+            {{ w.body }}
+          </p>
+        </div>
+
+        <!-- ============================= KI BAND ============================= -->
+        <section
+          class="absolute overflow-hidden rounded-[109px]"
+          style="left: 68px; top: 8322px; width: 1381px; height: 454px"
+        >
+          <NuxtImg
+            :src="`${IMG}/ki-bg.jpg`"
+            class="absolute inset-0 h-full w-full object-cover"
+            alt=""
+          />
+          <div
+            class="absolute inset-0"
+            style="background: rgba(14, 33, 56, 0.72)"
+          ></div>
+          <h2
+            class="absolute left-0 w-full text-center text-[30px] font-semibold leading-[36px] text-white"
+            style="top: 90px"
+          >
+            KI-Sichtbarkeit für Treuhandbüros
+          </h2>
+          <p
+            class="absolute left-1/2 -translate-x-1/2 text-center text-[18px] font-normal leading-[25px] text-white"
+            style="top: 148px; width: 941px"
+          >
+            Potenzielle Mandanten fragen heute nicht nur Google — sie fragen
+            ChatGPT, Google AI Mode und Perplexity direkt: „Welches Treuhandbüro
+            ist empfehlenswert in Bern?“ oder „Wer hilft mir mit der
+            Grundstückgewinnsteuer in Aargau?“ 93% dieser KI-Suchen enden ohne
+            einen einzigen Klick auf eine Website. Wer in der Antwort nicht
+            erwähnt wird, existiert für diese Suchenden nicht. Wir integrieren
+            GEO Readiness — Generative Engine Optimization — als festen
+            Bestandteil unserer Treuhand-Mandate. Ihr Büro erscheint nicht nur
+            bei Google, sondern auch in den KI-Antworten von morgen.
+          </p>
+          <a
+            href="/wissen"
+            class="btn-primary absolute left-1/2 -translate-x-1/2"
+            style="top: 320px; width: 358px"
+          >
+            Mehr über GEO Readiness erfahren
+          </a>
+        </section>
+
+        <!-- ============================= FAQ ============================= -->
+        <section
+          class="absolute overflow-hidden"
+          style="left: 0; top: 8872px; width: 1512px; height: 1700px"
+        >
+          <div
+            class="absolute"
             style="
+              left: 0;
+              top: 31px;
+              width: 1512px;
+              height: 577px;
               background: linear-gradient(
                 180deg,
-                rgba(0, 0, 0, 0) 0%,
-                rgba(0, 0, 0, 0.65) 100%
+                rgba(255, 255, 255, 0) 0%,
+                rgba(195, 218, 248, 0.4) 100%
               );
             "
           ></div>
-          <span
-            class="absolute text-[52px] font-bold leading-[73px] text-white"
-            style="left: 32px; bottom: 108px"
-          >
-            {{ s.n }}
-          </span>
-          <span class="absolute bottom-[52px] left-[32px] text-white">
-            <span class="text-[28px] font-semibold leading-[35px]">
-              {{ s.label }}
-            </span>
-            <span class="text-[18px] font-normal">{{ s.extra }}</span>
-          </span>
-        </div>
-      </section>
-
-      <!-- ============================= WARUM ============================= -->
-      <p
-        class="absolute text-center text-[18px] font-normal leading-[25px] text-[#0e2138]"
-        style="left: 671px; top: 7597px; width: 170px"
-      >
-        Warum Bexolutions
-      </p>
-      <h2
-        class="absolute text-center text-[32px] font-semibold leading-[45px] text-black"
-        style="left: 369px; top: 7639px; width: 775px"
-      >
-        Warum Treuhandbüros Bexolutions wählen
-        <br />
-        und
-        <span class="text-[#bde0fe]">nicht eine andere Agentur.</span>
-      </h2>
-      <div
-        class="absolute bg-black/10"
-        style="left: 59px; top: 7777px; width: 1405px; height: 1px"
-      ></div>
-      <div
-        class="absolute bg-black/10"
-        style="left: 59px; top: 8226px; width: 1405px; height: 1px"
-      ></div>
-      <div
-        v-for="w of whyCards"
-        :key="w.title"
-        class="absolute overflow-hidden rounded-[24px]"
-        :style="{
-          left: w.left + 'px',
-          top: '7796px',
-          width: '323px',
-          height: '392px',
-          background: w.dark
-            ? 'linear-gradient(150deg, #7d93ac 0%, #2b3a4d 55%, #0e2138 100%)'
-            : '#e6ebed',
-        }"
-      >
-        <h3
-          class="absolute text-[20px] font-semibold leading-[25px]"
-          :class="w.dark ? 'text-white' : 'text-[#0e2138]'"
-          style="left: 36px; top: 94px; width: 254px"
-        >
-          {{ w.title }}
-        </h3>
-        <p
-          class="absolute text-[16px] font-normal leading-[22px]"
-          :class="w.dark ? 'text-white' : 'text-black'"
-          :style="{ left: '36px', top: w.bodyTop + 'px', width: '254px' }"
-        >
-          {{ w.body }}
-        </p>
-      </div>
-
-      <!-- ============================= KI BAND ============================= -->
-      <section
-        class="absolute overflow-hidden rounded-[109px]"
-        style="left: 68px; top: 8322px; width: 1381px; height: 454px"
-      >
-        <NuxtImg
-          :src="`${IMG}/ki-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
-        />
-        <div
-          class="absolute inset-0"
-          style="background: rgba(14, 33, 56, 0.72)"
-        ></div>
-        <h2
-          class="absolute left-0 w-full text-center text-[30px] font-semibold leading-[36px] text-white"
-          style="top: 90px"
-        >
-          KI-Sichtbarkeit für Treuhandbüros
-        </h2>
-        <p
-          class="absolute left-1/2 -translate-x-1/2 text-center text-[18px] font-normal leading-[25px] text-white"
-          style="top: 148px; width: 941px"
-        >
-          Potenzielle Mandanten fragen heute nicht nur Google — sie fragen
-          ChatGPT, Google AI Mode und Perplexity direkt: „Welches Treuhandbüro
-          ist empfehlenswert in Bern?“ oder „Wer hilft mir mit der
-          Grundstückgewinnsteuer in Aargau?“ 93% dieser KI-Suchen enden ohne
-          einen einzigen Klick auf eine Website. Wer in der Antwort nicht
-          erwähnt wird, existiert für diese Suchenden nicht. Wir integrieren GEO
-          Readiness — Generative Engine Optimization — als festen Bestandteil
-          unserer Treuhand-Mandate. Ihr Büro erscheint nicht nur bei Google,
-          sondern auch in den KI-Antworten von morgen.
-        </p>
-        <a
-          href="/wissen"
-          class="btn-primary absolute left-1/2 -translate-x-1/2"
-          style="top: 320px; width: 358px"
-        >
-          Mehr über GEO Readiness erfahren
-        </a>
-      </section>
-
-      <!-- ============================= FAQ ============================= -->
-      <section
-        class="absolute overflow-hidden"
-        style="left: 0; top: 8872px; width: 1512px; height: 1700px"
-      >
-        <div
-          class="absolute"
-          style="
-            left: 0;
-            top: 31px;
-            width: 1512px;
-            height: 577px;
-            background: linear-gradient(
-              180deg,
-              rgba(255, 255, 255, 0) 0%,
-              rgba(195, 218, 248, 0.4) 100%
-            );
-          "
-        ></div>
-        <div
-          class="absolute"
-          style="
-            left: 0;
-            top: 608px;
-            width: 1512px;
-            height: 577px;
-            background: linear-gradient(
-              180deg,
-              rgba(255, 255, 255, 0) 0%,
-              rgba(195, 218, 248, 0.4) 100%
-            );
-          "
-        ></div>
-        <p
-          class="absolute text-center text-[20px] font-normal leading-[28px] text-[#0e2138]"
-          style="left: 439px; top: 0; width: 633px"
-        >
-          Häufige Fragen
-        </p>
-        <h2
-          class="absolute text-center text-[40px] font-semibold leading-[56px] text-black"
-          style="left: 439px; top: 45px; width: 633px"
-        >
-          Was Treuhänder uns am häufigsten fragen.
-        </h2>
-        <details
-          v-for="(f, i) of faqs"
-          :key="f.q"
-          open
-          class="faq-item absolute rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
-          :style="{ left: '222px', top: faqTop(i) + 'px', width: '1082px' }"
-        >
-          <summary
-            class="flex cursor-pointer list-none items-start justify-between gap-6"
-          >
-            <h3
-              class="text-[20px] font-bold leading-[25px] text-black"
-              :class="{ capitalize: f.cap }"
-            >
-              {{ f.q }}
-            </h3>
-            <span class="relative mt-1 block h-5 w-5 shrink-0">
-              <span
-                class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
-              ></span>
-              <span
-                class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
-              ></span>
-            </span>
-          </summary>
+          <div
+            class="absolute"
+            style="
+              left: 0;
+              top: 608px;
+              width: 1512px;
+              height: 577px;
+              background: linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(195, 218, 248, 0.4) 100%
+              );
+            "
+          ></div>
           <p
-            class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
+            class="absolute text-center text-[20px] font-normal leading-[28px] text-[#0e2138]"
+            style="left: 439px; top: 0; width: 633px"
           >
-            {{ f.a }}
+            Häufige Fragen
           </p>
-        </details>
-      </section>
+          <h2
+            class="absolute text-center text-[40px] font-semibold leading-[56px] text-black"
+            style="left: 439px; top: 45px; width: 633px"
+          >
+            Was Treuhänder uns am häufigsten fragen.
+          </h2>
+          <details
+            v-for="(f, i) of faqs"
+            :key="f.q"
+            open
+            class="faq-item absolute rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
+            :style="{ left: '222px', top: faqTop(i) + 'px', width: '1082px' }"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-start justify-between gap-6"
+            >
+              <h3
+                class="text-[20px] font-bold leading-[25px] text-black"
+                :class="{ capitalize: f.cap }"
+              >
+                {{ f.q }}
+              </h3>
+              <span class="relative mt-1 block h-5 w-5 shrink-0">
+                <span
+                  class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
+                ></span>
+                <span
+                  class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
+                ></span>
+              </span>
+            </summary>
+            <p
+              class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
+            >
+              {{ f.a }}
+            </p>
+          </details>
+        </section>
 
-      <!-- ============================= BILLBOARD ============================= -->
-      <section
-        class="absolute overflow-hidden rounded-t-[200px]"
-        style="left: 0; top: 10630px; width: 1512px; height: 679px"
-      >
-        <NuxtImg
-          :src="`${HOME}/billboard.jpg`"
-          class="absolute inset-0 h-full w-full object-cover object-top"
-          alt=""
-        />
-        <div
-          class="absolute inset-0"
-          style="background: rgba(14, 33, 56, 0.5)"
-        ></div>
-        <h2
-          class="absolute text-[40px] font-semibold leading-[56px] text-white"
-          style="left: 127px; top: 257px; width: 498px"
+        <!-- ============================= BILLBOARD ============================= -->
+        <section
+          class="absolute overflow-hidden rounded-t-[200px]"
+          style="left: 0; top: 10630px; width: 1512px; height: 679px"
         >
-          Bereit für mehr Mandanten über Google?
-        </h2>
-        <p
-          class="absolute text-[20px] font-normal leading-[28px] text-white"
-          style="left: 127px; top: 393px; width: 639px"
-        >
-          Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse. Wir
-          analysieren Ihre aktuelle Google-Präsenz, zeigen Ihnen die
-          Suchanfragen Ihrer Zielkunden — und empfehlen konkret, was als
-          Nächstes zu tun ist. Keine Verpflichtung. Kein Werbebudget. Nur klare
-          Erkenntnisse.
-        </p>
-        <a
-          href="/kontakt"
-          class="btn-primary absolute"
-          style="left: 127px; top: 553px; width: 370px"
-        >
-          Jetzt Termin vereinbaren
-        </a>
-      </section>
+          <NuxtImg
+            :src="`${HOME}/billboard.jpg`"
+            class="absolute inset-0 h-full w-full object-cover object-top"
+            alt=""
+          />
+          <div
+            class="absolute inset-0"
+            style="background: rgba(14, 33, 56, 0.5)"
+          ></div>
+          <h2
+            class="absolute text-[40px] font-semibold leading-[56px] text-white"
+            style="left: 127px; top: 257px; width: 498px"
+          >
+            Bereit für mehr Mandanten über Google?
+          </h2>
+          <p
+            class="absolute text-[20px] font-normal leading-[28px] text-white"
+            style="left: 127px; top: 393px; width: 639px"
+          >
+            Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse. Wir
+            analysieren Ihre aktuelle Google-Präsenz, zeigen Ihnen die
+            Suchanfragen Ihrer Zielkunden — und empfehlen konkret, was als
+            Nächstes zu tun ist. Keine Verpflichtung. Kein Werbebudget. Nur
+            klare Erkenntnisse.
+          </p>
+          <a
+            href="/kontakt"
+            class="btn-primary absolute"
+            style="left: 127px; top: 553px; width: 370px"
+          >
+            Jetzt Termin vereinbaren
+          </a>
+        </section>
 
-      <BexoFooter :top="11309" />
-    </div>
-  </main>
+        <BexoFooter :top="11309" />
+      </div>
+    </template>
+  </BexoPageShell>
 </template>
 
 <style scoped>

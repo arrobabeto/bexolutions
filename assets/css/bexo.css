@@ -1,0 +1,74 @@
+.bexo {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.bexo-nav-logo {
+  display: block;
+  background-color: #0e2138;
+  -webkit-mask: url("/images/startseite/logo-mark.png") center / contain
+    no-repeat;
+  mask: url("/images/startseite/logo-mark.png") center / contain no-repeat;
+}
+
+.bexo-nav-logo--light {
+  background-color: #0e2138;
+}
+
+.bexo-nav-logo--dark {
+  background-color: #ffffff;
+}
+
+.bexo-btn-primary,
+.bexo-btn-navy {
+  display: inline-grid;
+  place-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: center;
+  transition:
+    filter 0.15s ease,
+    background 0.15s ease;
+  white-space: nowrap;
+}
+
+.bexo-btn-primary {
+  background: #bde0fe;
+  color: #0e2138;
+}
+
+.bexo-btn-primary:hover {
+  filter: brightness(0.96);
+}
+
+.bexo-btn-navy {
+  background: #13315c;
+  color: #ffffff;
+}
+
+.bexo-btn-navy:hover {
+  filter: brightness(1.1);
+}
+
+.bexo-btn-block {
+  width: 100%;
+}
+
+.bexo-footer-legal {
+  font-family: Jost, ui-sans-serif, system-ui, sans-serif;
+}
+
+.bexo-canvas {
+  position: relative;
+  width: 1512px;
+  flex: none;
+}
+
+.bexo-canvas-wrap {
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
