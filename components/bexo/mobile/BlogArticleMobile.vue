@@ -6,6 +6,7 @@
   import BlogSidebar from "~/components/blog/BlogSidebar.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
+  import { getBlogFeaturedTitle } from "~/utils/blogs"
 
   const p = defineProps<{ blog: IBlog }>()
 
@@ -20,6 +21,7 @@
   }
 
   const cta = computed<IBlogCta>(() => ({ ...defaultCta, ...p.blog.cta }))
+  const fullTitle = computed(() => getBlogFeaturedTitle(p.blog))
   const metaLine = computed(
     () => `${p.blog.category}  ·  ${p.blog.readTime}  ·  ${p.blog.date}`,
   )
@@ -31,14 +33,8 @@
       <h1
         class="break-words text-[1.65rem] font-semibold leading-tight text-black sm:text-2xl"
       >
-        {{ blog.title }}
+        {{ fullTitle }}
       </h1>
-      <p
-        v-if="blog.subtitle"
-        class="mt-2 break-words text-lg font-medium leading-snug text-black sm:text-xl"
-      >
-        {{ blog.subtitle }}
-      </p>
       <p
         v-if="blog.tagline"
         class="mt-3 break-words text-sm leading-relaxed text-black sm:text-base"
@@ -68,7 +64,7 @@
         <NuxtImg
           :src="blog.heroImage"
           class="h-full w-full object-cover"
-          :alt="blog.title"
+          :alt="fullTitle"
           sizes="100vw"
         />
       </div>
@@ -102,7 +98,7 @@
           class="w-full min-w-0 max-w-full border-t border-black/10 pt-8"
           :author="blog.author"
           :toc="blog.toc"
-          :title="blog.title"
+          :title="fullTitle"
           :url="`/wissen/${blog.slug}`"
         />
       </div>
