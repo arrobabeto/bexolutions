@@ -3,6 +3,7 @@
   import { definePageMeta, useHead } from "#imports"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
+  import KontaktForm from "~/components/bexo/KontaktForm.vue"
   import KontaktMobile from "~/components/bexo/mobile/KontaktMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
 
@@ -207,128 +208,10 @@
 
         <!-- ============================= FORM CARD ============================= -->
         <section
-          class="absolute rounded-[33px] bg-[#f9f9f9]"
-          style="left: 120px; top: 749px; width: 732px; height: 985px"
+          class="absolute rounded-[33px] bg-[#f9f9f9] p-14"
+          style="left: 120px; top: 749px; width: 732px"
         >
-          <h2
-            class="absolute text-[30px] font-semibold leading-[42px] text-black"
-            style="left: 56px; top: 80px"
-          >
-            Nachricht senden.
-          </h2>
-
-          <!-- Ansprache -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 146px; width: 620px"
-          >
-            Ansprache
-          </label>
-          <div
-            class="field-select"
-            style="left: 56px; top: 178px; width: 620px"
-          >
-            <span>Herr / Frau</span>
-            <span class="field-caret">⌄</span>
-          </div>
-
-          <!-- Vorname / Nachname -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 250px; width: 298px"
-          >
-            Vorname
-          </label>
-          <div
-            class="field-input"
-            style="left: 56px; top: 282px; width: 298px"
-          ></div>
-          <label
-            class="field-label"
-            style="left: 378px; top: 250px; width: 298px"
-          >
-            Nachname
-          </label>
-          <div
-            class="field-input"
-            style="left: 378px; top: 282px; width: 298px"
-          ></div>
-
-          <!-- E-Mail / Telefon -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 354px; width: 298px"
-          >
-            E-Mail
-          </label>
-          <div
-            class="field-input"
-            style="left: 56px; top: 386px; width: 298px"
-          ></div>
-          <label
-            class="field-label"
-            style="left: 378px; top: 354px; width: 298px"
-          >
-            Telefonnummer
-          </label>
-          <div
-            class="field-input"
-            style="left: 378px; top: 386px; width: 298px"
-          ></div>
-
-          <!-- Unternehmen -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 458px; width: 620px"
-          >
-            Unternehmen
-          </label>
-          <div
-            class="field-select"
-            style="left: 56px; top: 490px; width: 620px"
-          >
-            <span>Unternehmen</span>
-            <span class="field-caret">⌄</span>
-          </div>
-
-          <!-- Thema -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 562px; width: 620px"
-          >
-            Thema
-          </label>
-          <div
-            class="field-select"
-            style="left: 56px; top: 594px; width: 620px"
-          >
-            <span>Sichtbarkeitsanalyse</span>
-            <span class="field-caret">⌄</span>
-          </div>
-
-          <!-- Nachricht -->
-          <label
-            class="field-label"
-            style="left: 56px; top: 666px; width: 620px"
-          >
-            Nachricht
-          </label>
-          <div
-            class="field-textarea"
-            style="left: 56px; top: 698px; width: 620px; height: 140px"
-          >
-            <span class="text-[16px] font-normal leading-6 text-black/45">
-              Ziel in 1–2 Sätzen
-            </span>
-          </div>
-
-          <a
-            href="#"
-            class="btn-primary absolute"
-            style="left: 56px; top: 862px; width: 237px"
-          >
-            Nachricht senden
-          </a>
+          <KontaktForm />
         </section>
 
         <!-- ============================= BOOKING COLUMN ============================= -->
@@ -587,42 +470,6 @@
     flex: none;
     background: #ffffff;
   }
-  .field-label {
-    position: absolute;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #000000;
-  }
-  .field-input,
-  .field-select,
-  .field-textarea {
-    position: absolute;
-    border: 1px solid #000000;
-    border-radius: 20px;
-    background: transparent;
-  }
-  .field-input {
-    height: 48px;
-  }
-  .field-select {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #000000;
-  }
-  .field-caret {
-    font-size: 18px;
-    color: #000000;
-  }
-  .field-textarea {
-    padding: 12px 20px;
-  }
-
   .nav-logo {
     background-color: #0e2138;
     -webkit-mask: url("/images/startseite/logo-mark.png") center / contain

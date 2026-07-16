@@ -1,10 +1,18 @@
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { computed, ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import WissenMobile from "~/components/bexo/mobile/WissenMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useWissenListing } from "~/composables/useWissenListing"
+  import { WISSEN_FILTER_CHIPS } from "~/constants/wissenCategories"
+  import {
+    getBlogCardMeta,
+    getBlogCardTitle,
+    getBlogExcerpt,
+    getBlogFeaturedTitle,
+  } from "~/utils/blogs"
 
   definePageMeta({ layout: false })
 
@@ -13,6 +21,31 @@
 
   const IMG = "/images/wissen"
   const HOME = "/images/startseite"
+  const CARD_FALLBACK = `${IMG}/card.jpg`
+  const FEATURED_FALLBACK = `${IMG}/featured-article.jpg`
+
+  const {
+    selectedFilter,
+    isAlleSelected,
+    featuredBlog,
+    filteredListBlogs,
+    hasMore,
+    remainingCount,
+    selectFilter,
+    loadMore,
+    blogsForSection,
+  } = useWissenListing()
+
+  const chipWidths: Record<string, number> = {
+    Alle: 104,
+    "KI & GEO": 140,
+    "Local SEO": 158,
+  }
+
+  const loadMoreLabel = computed(() => {
+    const next = Math.min(remainingCount.value, 9)
+    return next > 0 ? `Mehr laden (${next})` : "Mehr laden"
+  })
 
   useHead({
     title: "Wissen — Bexolutions",
@@ -38,79 +71,44 @@
     { l: "Treuhänder", to: "#" },
   ]
 
-  const chips = [
-    { label: "Alle", w: 104, active: true },
-    { label: "SEO & Google", w: 158, active: false },
-    { label: "KI-Sichtbarkeit", w: 159, active: false },
-    { label: "Local SEO", w: 158, active: false },
-    { label: "LinkedIn", w: 158, active: false },
-    { label: "Website", w: 158, active: false },
-    { label: "Treuhand", w: 158, active: false },
-  ]
-
-  // ---- Article grid: categories with a divider + label + 3 identical cards ----
+  // ---- Article grid: categories with a divider + label + 3 cards ----
   const cols = [120, 548, 976]
   const categories = [
-    { label: "KI & GEO", divider: 1909, labelTop: 1973, cardsTop: 2033 },
-    { label: "Local SEO", divider: 2365, labelTop: 2429, cardsTop: 2489 },
-    { label: "SEO für KMU", divider: 2821, labelTop: 2885, cardsTop: 2945 },
     {
-      label: "Treuhand-spezifisch",
-      divider: null,
-      labelTop: 3672,
-      cardsTop: 3732,
+      label: "KI & GEO",
+      filter: "KI & GEO" as const,
+      divider: 1909,
+      labelTop: 1973,
+      cardsTop: 2033,
     },
     {
-      label: "LinkedIn & Personal Branding",
-      divider: 4064,
-      labelTop: 4128,
-      cardsTop: 4188,
+      label: "Local SEO",
+      filter: "Local SEO" as const,
+      divider: 2365,
+      labelTop: 2429,
+      cardsTop: 2489,
     },
   ]
+
+  const visibleDesktopCategories = computed(() =>
+    categories.filter((c) => blogsForSection(c.filter).length > 0),
+  )
 
   // ---- Topic cards (Wissen nach Thema) ----
   const topics = [
     {
       left: 120,
       top: 5199,
-      icon: "🔍",
-      title: "SEO & Google",
-      body: "Organische Sichtbarkeit, Keyword-Strategie, technisches SEO — ohne Werbebudget zu mehr Kunden über Google.",
-    },
-    {
-      left: 554,
-      top: 5199,
       icon: "📊",
-      title: "KI-Sichtbarkeit",
+      title: "KI & GEO",
       body: "GEO Readiness, ChatGPT-Optimierung, Google AI Mode — wie Ihr KMU in KI-Antworten erscheint.",
     },
     {
-      left: 988,
+      left: 554,
       top: 5199,
       icon: "🚀",
       title: "Local SEO",
       body: "Google Business Profile, Google Maps, Bewertungsmanagement — für KMU mit lokalem Kundenfokus.",
-    },
-    {
-      left: 120,
-      top: 5529,
-      icon: "🗺️",
-      title: "LinkedIn",
-      body: "Personal Branding, Thought Leadership, LinkedIn Outreach — für KMU-Inhaber und Geschäftsführer.",
-    },
-    {
-      left: 554,
-      top: 5529,
-      icon: "📈",
-      title: "Website & Conversion",
-      body: "StoryBrand-Methodik, Conversion-Optimierung, Webdesign — Websites die verkaufen, nicht nur existieren.",
-    },
-    {
-      left: 988,
-      top: 5529,
-      icon: "📈",
-      title: "Treuhand & Steuerberatung",
-      body: "Spezialisiertes Marketing-Wissen für Treuhandbüros in der Deutschschweiz — Mandanten über Google gewinnen.",
     },
   ]
 </script>
@@ -207,50 +205,54 @@
           class="absolute flex items-center"
           style="left: 184px; top: 1218px; gap: 16px"
         >
-          <span
-            v-for="c of chips"
-            :key="c.label"
-            class="grid h-[44px] place-items-center rounded-[30px] text-[14px] font-medium leading-[18px] text-[#0e2138]"
-            :class="c.active ? 'bg-[#bde0fe]' : 'bg-[#f9f9f9]'"
-            :style="{ width: c.w + 'px' }"
+          <button
+            v-for="chip of WISSEN_FILTER_CHIPS"
+            :key="chip"
+            type="button"
+            class="grid h-[44px] place-items-center rounded-[30px] text-[14px] font-medium leading-[18px] text-[#0e2138] transition"
+            :class="
+              selectedFilter === chip
+                ? 'bg-[#bde0fe]'
+                : 'bg-[#f9f9f9] hover:bg-[#eef6ff]'
+            "
+            :style="{ width: (chipWidths[chip] ?? 158) + 'px' }"
+            @click="selectFilter(chip)"
           >
-            {{ c.label }}
-          </span>
+            {{ chip }}
+          </button>
         </div>
 
         <!-- ============================= FEATURED ARTICLE ============================= -->
         <section
+          v-if="featuredBlog"
           class="absolute overflow-hidden rounded-[30px] bg-[#f1f1f1]"
           style="left: 121px; top: 1358px; width: 1272px; height: 455px"
         >
           <NuxtImg
-            :src="`${IMG}/featured-article.jpg`"
+            :src="featuredBlog.heroImage || FEATURED_FALLBACK"
             class="absolute left-0 top-0 h-full object-cover"
             style="width: 648px"
-            alt=""
+            :alt="getBlogFeaturedTitle(featuredBlog)"
           />
           <div class="absolute" style="left: 687px; top: 66px; width: 533px">
             <h2
               class="text-[28px] font-semibold leading-[39px] text-black"
               style="width: 495px"
             >
-              Warum 93% der KI-Suchen ohne Klick enden — und was das für Ihr KMU
-              bedeutet
+              {{ getBlogFeaturedTitle(featuredBlog) }}
             </h2>
             <p
               class="feat-body mt-[10px] text-[18px] font-medium leading-[27px] text-black"
             >
-              Google hat die Suchmaschine neu gebaut. Wer in KI-Antworten nicht
-              erscheint, existiert für einen wachsenden Teil der Käufer nicht.
-              Was GEO Readiness ist und warum Sie jetzt handeln sollten.
+              {{ getBlogExcerpt(featuredBlog) }}
             </p>
             <p
               class="mt-[9px] text-[20px] font-normal leading-[28px] text-black"
             >
-              ⏱️ KI-Sichtbarkeit · 6 Min. Lesezeit
+              ⏱️ {{ getBlogCardMeta(featuredBlog) }}
             </p>
             <a
-              href="/wissen/google-business-profile-optimieren"
+              :href="`/wissen/${featuredBlog.slug}`"
               class="btn-primary mt-[16px]"
               style="width: 187px"
             >
@@ -259,41 +261,25 @@
           </div>
         </section>
 
-        <!-- ============================= ARTICLE GRID ============================= -->
-        <template v-for="cat of categories" :key="cat.label">
-          <div
-            v-if="cat.divider"
-            class="absolute bg-black/10"
-            :style="{
-              left: '120px',
-              top: cat.divider + 'px',
-              width: '1267px',
-              height: '1px',
-            }"
-          ></div>
-          <p
-            class="absolute text-[20px] font-medium leading-[25px] text-black"
-            :style="{ left: '120px', top: cat.labelTop + 'px' }"
-          >
-            {{ cat.label }}
-          </p>
+        <!-- ============================= FILTERED GRID (category selected) ============================= -->
+        <template v-if="!isAlleSelected">
           <a
-            v-for="cx of cols"
-            :key="cat.label + cx"
-            href="/wissen/google-business-profile-optimieren"
+            v-for="(b, i) of filteredListBlogs"
+            :key="b.slug"
+            :href="`/wissen/${b.slug}`"
             class="card-shadow absolute block overflow-hidden rounded-[20px] bg-[#f9f9f9] transition hover:brightness-95"
             :style="{
-              left: cx + 'px',
-              top: cat.cardsTop + 'px',
+              left: cols[i % 3] + 'px',
+              top: 1850 + Math.floor(i / 3) * 288 + 'px',
               width: '411px',
               height: '268px',
             }"
           >
             <NuxtImg
-              :src="`${IMG}/card.jpg`"
+              :src="b.heroImage || CARD_FALLBACK"
               class="absolute left-0 top-0 w-full rounded-[20px] object-cover"
               style="height: 137px"
-              alt=""
+              :alt="getBlogCardTitle(b)"
             />
             <div
               class="absolute flex items-center gap-[6px] rounded-[20px] bg-[#0e2138] px-[12px] py-[3px]"
@@ -303,22 +289,111 @@
                 class="block h-[7px] w-[7px] rounded-full bg-[#bde0fe]"
               ></span>
               <span class="text-[12px] font-medium leading-[17px] text-white">
-                KI-Sichtbarkeit
+                {{ b.category }}
               </span>
             </div>
             <h3
               class="absolute text-[18px] font-medium leading-[25px] text-black"
-              style="left: 18px; top: 157px; width: 254px"
+              style="left: 18px; top: 157px; width: 375px"
             >
-              Warum 93% der KI-Suchen ohne Klick enden
+              {{ getBlogCardTitle(b) }}
             </h3>
             <p
               class="absolute text-[14px] font-medium leading-[21px] text-black"
               style="left: 18px; top: 215px; width: 375px"
             >
-              Was das für Ihr KMU bedeutet. · 6 Min. →
+              {{ getBlogCardMeta(b) }} →
             </p>
           </a>
+          <button
+            v-if="hasMore"
+            type="button"
+            class="btn-primary absolute"
+            :style="{
+              left: '548px',
+              top:
+                1850 +
+                Math.ceil(filteredListBlogs.length / 3) * 288 +
+                20 +
+                'px',
+              width: '280px',
+            }"
+            @click="loadMore"
+          >
+            {{ loadMoreLabel }}
+          </button>
+        </template>
+
+        <!-- ============================= ARTICLE GRID (Alle) ============================= -->
+        <template v-if="isAlleSelected">
+          <template v-for="cat of visibleDesktopCategories" :key="cat.label">
+            <div
+              v-if="cat.divider"
+              class="absolute bg-black/10"
+              :style="{
+                left: '120px',
+                top: cat.divider + 'px',
+                width: '1267px',
+                height: '1px',
+              }"
+            ></div>
+            <p
+              class="absolute text-[20px] font-medium leading-[25px] text-black"
+              :style="{ left: '120px', top: cat.labelTop + 'px' }"
+            >
+              {{ cat.label }}
+            </p>
+            <a
+              v-for="(b, i) of blogsForSection(cat.filter)"
+              :key="b.slug"
+              :href="`/wissen/${b.slug}`"
+              class="card-shadow absolute block overflow-hidden rounded-[20px] bg-[#f9f9f9] transition hover:brightness-95"
+              :style="{
+                left: cols[i] + 'px',
+                top: cat.cardsTop + 'px',
+                width: '411px',
+                height: '268px',
+              }"
+            >
+              <NuxtImg
+                :src="b.heroImage || CARD_FALLBACK"
+                class="absolute left-0 top-0 w-full rounded-[20px] object-cover"
+                style="height: 137px"
+                :alt="getBlogCardTitle(b)"
+              />
+              <div
+                class="absolute flex items-center gap-[6px] rounded-[20px] bg-[#0e2138] px-[12px] py-[3px]"
+                style="right: 26px; top: 12px"
+              >
+                <span
+                  class="block h-[7px] w-[7px] rounded-full bg-[#bde0fe]"
+                ></span>
+                <span class="text-[12px] font-medium leading-[17px] text-white">
+                  {{ b.category }}
+                </span>
+              </div>
+              <h3
+                class="absolute text-[18px] font-medium leading-[25px] text-black"
+                style="left: 18px; top: 157px; width: 375px"
+              >
+                {{ getBlogCardTitle(b) }}
+              </h3>
+              <p
+                class="absolute text-[14px] font-medium leading-[21px] text-black"
+                style="left: 18px; top: 215px; width: 375px"
+              >
+                {{ getBlogCardMeta(b) }} →
+              </p>
+            </a>
+            <button
+              type="button"
+              class="absolute text-[16px] font-medium leading-[20px] text-[#134074] transition hover:opacity-70"
+              :style="{ left: '120px', top: cat.cardsTop + 288 + 'px' }"
+              @click="selectFilter(cat.filter)"
+            >
+              Mehr anzeigen →
+            </button>
+          </template>
         </template>
 
         <!-- ============================= MID CTA BANNER ============================= -->

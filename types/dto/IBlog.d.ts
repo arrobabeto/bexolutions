@@ -38,6 +38,8 @@ export type BlogBlock =
       title?: string
       body: string
     }
+  /** Inline figure (infographic, diagram). Path under `/public`. */
+  | { type: "image"; src: string; alt: string; caption?: string }
 
 export interface IBlogTocEntry {
   /** Matches a `sectionHeading`/`sectionTitle` block `id`. */
