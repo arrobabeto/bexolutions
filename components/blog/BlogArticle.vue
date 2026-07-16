@@ -9,6 +9,7 @@
   import BlogArticleMobile from "~/components/bexo/mobile/BlogArticleMobile.vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { getBlogFeaturedTitle } from "~/utils/blogs"
 
   const p = defineProps<{ blog: IBlog }>()
 
@@ -34,6 +35,7 @@
   }
 
   const cta = computed<IBlogCta>(() => ({ ...defaultCta, ...p.blog.cta }))
+  const fullTitle = computed(() => getBlogFeaturedTitle(p.blog))
   const metaLine = computed(
     () => `${p.blog.category}  |  ${p.blog.readTime}  |  ${p.blog.date}`,
   )
@@ -87,14 +89,8 @@
           <div class="flex items-start justify-between gap-[40px] pt-[64px]">
             <div class="max-w-[1008px]">
               <h1 class="text-[40px] font-semibold leading-[1.3] text-black">
-                {{ blog.title }}
+                {{ fullTitle }}
               </h1>
-              <p
-                v-if="blog.subtitle"
-                class="mt-[8px] text-[32px] font-medium leading-[1.3] text-black"
-              >
-                {{ blog.subtitle }}
-              </p>
               <p
                 v-if="blog.tagline"
                 class="mt-[16px] text-[18px] font-medium leading-[1.4] text-black"
@@ -174,7 +170,7 @@
               class="sticky-rail"
               :author="blog.author"
               :toc="blog.toc"
-              :title="blog.title"
+              :title="fullTitle"
               :url="`/wissen/${blog.slug}`"
             />
           </div>

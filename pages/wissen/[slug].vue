@@ -3,6 +3,7 @@
   import { definePageMeta, useHead, useRoute, useRuntimeConfig } from "#imports"
   import type { IBlog } from "~/types/dto/IBlog"
   import BlogArticle from "~/components/blog/BlogArticle.vue"
+  import { getBlogFeaturedTitle } from "~/utils/blogs"
 
   definePageMeta({ layout: false })
 
@@ -24,6 +25,7 @@
   if (!blog)
     throw showError({ statusCode: 404, statusMessage: "Blog not found" })
 
+  const fullTitle = getBlogFeaturedTitle(blog)
   const canonicalUrl = `${config.public.siteUrl}/wissen/${blog.slug}`
 
   useHead({
@@ -47,7 +49,7 @@
         innerHTML: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: blog.title,
+          headline: fullTitle,
           description: blog.seo.description,
           datePublished: blog.datePublished,
           dateModified: blog.datePublished,
@@ -78,10 +80,10 @@
   })
 
   useSeoMeta({
-    title: `${blog.title} — Bexolutions`,
+    title: `${fullTitle} — Bexolutions`,
     description: blog.seo.description,
     author: blog.author.name,
-    ogTitle: blog.title,
+    ogTitle: fullTitle,
     ogDescription: blog.seo.description,
     ogType: "article",
     ogImage: blog.seo.ogImage,
@@ -90,7 +92,7 @@
     ogLocale: "de_DE",
     articlePublishedTime: blog.datePublished,
     twitterCard: "summary_large_image",
-    twitterTitle: blog.title,
+    twitterTitle: fullTitle,
     twitterDescription: blog.seo.description,
     twitterImage: blog.seo.ogImage,
   })
