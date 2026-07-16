@@ -12,6 +12,7 @@ export default {
     "Der datenbasierte Vergleich für Schweizer KMU — mit klarer Entscheidungsmatrix",
   heroImage:
     "/images/blog/google-maps-vs-organische-suche-kmu-schweiz/hero.jpg",
+  audioUrl: "/audio/blog/google-maps-vs-organische-suche-kmu-schweiz.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Bei lokalen Suchanfragen erhält das Google Local Pack (Google Maps) 44 % aller Klicks — die organischen Ergebnisse nur 29 %. Für KMU mit lokalem Kundenstamm ist das Local Pack deshalb der höher priorisierte Kanal. Aber: Beide Kanäle funktionieren nach unterschiedlichen Logiken und brauchen unterschiedliche Massnahmen. Wer beides richtig bespielt, ist am stärksten aufgestellt. Und neu dazu: KI-Sichtbarkeit (ChatGPT, Google AI Overviews) als dritter Kanal, der die organische CTR bereits stark verändert.",

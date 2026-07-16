@@ -20,6 +20,7 @@ export default {
   tagline:
     "Schritt für Schritt zur lokalen Sichtbarkeit — mit Zeitaufwand, Schweizer Spezifika und KI-Bonus",
   heroImage: "/images/blog/google-business-profile-optimieren/hero.jpg",
+  audioUrl: "/audio/blog/google-business-profile-optimieren.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Nur 48 % der Schweizer KMU mit Website haben ein vollständig ausgefülltes Google Business Profile (HSLU, 2025). Dabei erhalten vollständige Profile 70 % mehr Besuche als unvollständige (Google, 2024). Dieser Artikel zeigt die 10 wirkungsvollsten Massnahmen — priorisiert, mit Zeitaufwand, Schweizer Spezifika und dem GBP-KI-Bonus: Ein gepflegtes Profil ist heute auch eine Zitierquelle für ChatGPT, Google AI Mode und Perplexity.",

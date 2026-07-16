@@ -11,6 +11,7 @@ export default {
   tagline:
     "Der praktische Einstieg für Schweizer KMU — in 5 umsetzbaren Schritten",
   heroImage: "/images/blog/geo-readiness-kmu-chatgpt-google-ai-mode/hero.jpg",
+  audioUrl: "/audio/blog/geo-readiness-kmu-chatgpt-google-ai-mode.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "GEO (Generative Engine Optimization) ist die Disziplin, Ihre digitale Präsenz so zu gestalten, dass KI-Systeme wie ChatGPT, Google AI Mode oder Perplexity Sie als vertrauenswürdige Quelle zitieren. Klassisches SEO optimiert für Suchmaschinenalgorithmen. GEO optimiert dafür, in KI-Antworten zu erscheinen. Für Schweizer KMU gibt es 5 konkrete Einstiegsschritte — keiner davon erfordert ein grosses Budget oder technisches Fachwissen.",

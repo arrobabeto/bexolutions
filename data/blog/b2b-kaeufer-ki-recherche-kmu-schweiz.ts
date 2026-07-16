@@ -11,6 +11,7 @@ export default {
   tagline:
     "G2-Studie «The Answer Economy» (April 2026): Warum die KI-Shortlist vor dem ersten Kontakt entsteht — und wie Schweizer KMU darauf reagieren",
   heroImage: "/images/blog/b2b-kaeufer-ki-recherche-kmu-schweiz/hero.jpg",
+  audioUrl: "/audio/blog/b2b-kaeufer-ki-recherche-kmu-schweiz.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Laut G2-Studie «The Answer Economy» (April 2026, n = 1'076) starten 51 % der B2B-Software-Käufer ihre Recherche heute häufiger mit einem KI-Chatbot als mit Google — hochgegangen von 29 % im April 2025. 69 % wählten am Ende einen anderen Anbieter als ursprünglich geplant, weil eine KI ihnen etwas anderes empfohlen hat. Für Schweizer KMU mit B2B-Vertrieb bedeutet das: Wer in KI-Antworten nicht vorkommt, kommt auch nicht auf die Shortlist.",

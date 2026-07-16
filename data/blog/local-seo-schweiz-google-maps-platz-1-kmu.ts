@@ -11,6 +11,7 @@ export default {
   tagline:
     "Schritt für Schritt zum Local Pack — die 4 Rankingfaktoren und 5 Umsetzungsphasen für Schweizer KMU",
   heroImage: "/images/blog/local-seo-schweiz-google-maps-platz-1-kmu/hero.jpg",
+  audioUrl: "/audio/blog/local-seo-schweiz-google-maps-platz-1-kmu.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Das Google Local Pack — die drei Unternehmen auf der Karte ganz oben in den Suchergebnissen — generiert bis zu 44 % aller Klicks auf der Ergebnisseite. Wer nicht drin ist, wird von einem grossen Teil der potenziellen Kunden schlicht nicht wahrgenommen. Google bewertet vier Faktoren: Relevanz, Entfernung, Bekanntheit und Verhaltenssignale. Entfernung können Sie nicht steuern — die anderen drei schon. Dieser Artikel zeigt den Weg in 5 Phasen: von der Konkurrenzanalyse über Profiloptimierung, Autoritätsaufbau und Verhaltenssignale bis zur kontinuierlichen Pflege.",
