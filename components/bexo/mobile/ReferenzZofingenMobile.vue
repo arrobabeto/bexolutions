@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
 
   const IMG = "/images/referenz-zofingen"
@@ -60,8 +58,6 @@
 
 <template>
   <div>
-    <BexoHeader variant="light" />
-
     <section
       class="relative mx-4 mt-4 overflow-hidden rounded-[32px] bg-[#0e2138] p-6"
     >
@@ -136,8 +132,8 @@
       </div>
     </BexoSection>
 
-    <BexoSection>
-      <div class="rounded-[24px] bg-[#0e2138] p-6 text-white">
+    <section class="w-full bg-[#0e2138] px-4 py-12 text-white">
+      <div class="max-w-xl mx-auto">
         <h2 class="text-xl font-semibold">Das Ergebnis, das zählt</h2>
         <p class="mt-4 text-base leading-relaxed">
           So viele neue Mandanten, dass Philippe Bally sein Team personell
@@ -147,8 +143,6 @@
           Ähnliche Resultate anstreben
         </a>
       </div>
-    </BexoSection>
-
-    <BexoFooterMobile />
+    </section>
   </div>
 </template>

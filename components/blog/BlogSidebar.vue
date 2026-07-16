@@ -37,21 +37,27 @@
 </script>
 
 <template>
-  <aside class="blog-sidebar flex w-full flex-col gap-[24px] lg:w-[212px]">
-    <!-- Author -->
-    <p class="text-[14px] font-medium leading-[1.7] text-[#292929]">
+  <aside
+    class="blog-sidebar flex w-full min-w-0 max-w-full flex-col gap-5 lg:w-[212px] lg:gap-[24px]"
+  >
+    <p
+      class="break-words text-sm font-medium leading-[1.7] text-[#292929] lg:text-[14px]"
+    >
       <span class="font-bold">Autor:</span>
       {{ author.bio }}
     </p>
 
     <div class="h-px w-full bg-black/10"></div>
 
-    <!-- Share -->
-    <div>
-      <p class="text-[18px] font-semibold leading-[1.5] text-[#0e2138]">
+    <div class="min-w-0">
+      <p
+        class="text-base font-semibold leading-[1.5] text-[#0e2138] lg:text-[18px]"
+      >
         Teilen
       </p>
-      <div class="mt-[12px] flex items-center gap-[22px]">
+      <div
+        class="mt-3 flex flex-wrap items-center gap-4 lg:mt-[12px] lg:gap-[22px]"
+      >
         <a
           v-for="s of shares"
           :key="s.label"
@@ -59,7 +65,7 @@
           :aria-label="s.label"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-[#0e2138] transition hover:opacity-60"
+          class="grid min-h-11 min-w-11 place-items-center text-[#0e2138] transition hover:opacity-60"
         >
           <svg
             width="20"
@@ -74,21 +80,26 @@
       </div>
     </div>
 
-    <!-- Table of contents -->
     <template v-if="toc.length">
       <div class="h-px w-full bg-black/10"></div>
-      <nav>
-        <p class="text-[18px] font-semibold leading-[1.5] text-[#0e2138]">
+      <nav class="min-w-0">
+        <p
+          class="text-base font-semibold leading-[1.5] text-[#0e2138] lg:text-[18px]"
+        >
           Inhalt
         </p>
-        <ul class="mt-[12px] flex flex-col gap-[12px]">
-          <li v-for="entry of toc" :key="entry.id" class="flex gap-[8px]">
+        <ul class="mt-3 flex flex-col gap-3 lg:mt-[12px] lg:gap-[12px]">
+          <li
+            v-for="entry of toc"
+            :key="entry.id"
+            class="flex min-w-0 gap-2 lg:gap-[8px]"
+          >
             <span
-              class="mt-[8px] block h-[6px] w-[6px] shrink-0 rounded-full bg-[#0e2138]"
+              class="mt-2 block h-1.5 w-1.5 shrink-0 rounded-full bg-[#0e2138]"
             ></span>
             <a
               :href="`#${entry.id}`"
-              class="text-[15px] font-medium leading-[1.5] text-[#292929] transition hover:text-[#134074]"
+              class="min-w-0 break-words text-sm font-medium leading-[1.5] text-[#292929] transition hover:text-[#134074] lg:text-[15px]"
             >
               {{ entry.label }}
             </a>

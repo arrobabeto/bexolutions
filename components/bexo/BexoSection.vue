@@ -9,13 +9,17 @@
 
 <template>
   <section
-    class="px-4"
+    class="box-border w-full min-w-0 px-4"
     :class="[
-      p.compactY ? 'py-6' : p.compactTop ? 'pb-12 pt-8' : 'py-12',
-      p.narrow ? 'max-w-lg mx-auto' : 'max-w-xl mx-auto',
+      p.compactY ? 'py-6' : p.compactTop ? 'pb-10 pt-6' : 'py-8',
       p.class,
     ]"
   >
-    <slot />
+    <div
+      class="mx-auto w-full min-w-0"
+      :class="p.narrow ? 'max-w-lg' : 'max-w-xl'"
+    >
+      <slot />
+    </div>
   </section>
 </template>

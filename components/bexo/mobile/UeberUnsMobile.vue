@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
-  import BexoHeader from "~/components/bexo/BexoHeader.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
@@ -48,8 +46,6 @@
 
 <template>
   <div>
-    <BexoHeader variant="light" />
-
     <section class="relative mx-4 mt-4 overflow-hidden rounded-[32px]">
       <BackgroundMedia
         :poster="`${IMG}/hero-bg.jpg`"
@@ -123,7 +119,5 @@
         </div>
       </div>
     </BexoSection>
-
-    <BexoFooterMobile />
   </div>
 </template>

@@ -1,5 +1,8 @@
 .bexo {
   font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 .bexo-nav-logo {
@@ -55,6 +58,13 @@
 
 .bexo-btn-block {
   width: 100%;
+  max-width: 100%;
+  white-space: normal;
+  height: auto;
+  min-height: 44px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  line-height: 1.25;
 }
 
 .bexo-footer-legal {
@@ -68,6 +78,15 @@
 }
 
 .bexo-canvas-wrap {
+  display: flex;
   justify-content: center;
+  width: 100%;
   background: #ffffff;
+}
+
+.bexo-mobile {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
 }

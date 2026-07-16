@@ -943,8 +943,6 @@
   .bexo {
     font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     background: #ffffff;
-    display: flex;
-    justify-content: center;
   }
   .canvas {
     position: relative;

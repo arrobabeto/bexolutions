@@ -52,10 +52,12 @@
 <template>
   <div>
     <header
-      class="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-sm"
+      class="sticky top-0 z-50 w-full max-w-full border-b border-black/5 bg-white/95 backdrop-blur-sm"
       :class="isDark ? 'border-white/10 bg-[#0e2138]/95' : ''"
     >
-      <div class="max-w-xl mx-auto flex items-center justify-between px-4 py-3">
+      <div
+        class="max-w-xl mx-auto flex w-full min-w-0 items-center justify-between px-4 py-3"
+      >
         <a href="/" aria-label="Bexolutions Startseite" class="shrink-0">
           <span
             class="bexo-nav-logo block h-12 w-12"
