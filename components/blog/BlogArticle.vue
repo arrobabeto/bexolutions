@@ -2,6 +2,7 @@
   import { computed, ref } from "vue"
   import type { IBlog, IBlogCta } from "~/types/dto/IBlog"
   import BlogBlock from "~/components/blog/BlogBlock.vue"
+  import BlogAudioButton from "~/components/blog/BlogAudioButton.vue"
   import BlogSidebar from "~/components/blog/BlogSidebar.vue"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
@@ -105,7 +106,13 @@
             <div
               class="flex w-[212px] shrink-0 flex-col items-end gap-[16px] border-l border-black/10 pl-[24px] pt-[8px]"
             >
+              <BlogAudioButton
+                v-if="blog.audioUrl"
+                :src="blog.audioUrl"
+                label="Kurzaudio abspielen"
+              />
               <svg
+                v-else
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -114,7 +121,7 @@
                 stroke-width="1.8"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                :aria-hidden="blog.audioUrl ? undefined : 'true'"
+                aria-hidden="true"
               >
                 <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#0e2138" stroke="none" />
                 <path d="M16 8a5 5 0 0 1 0 8" />

@@ -12,6 +12,7 @@ export default {
   tagline:
     "Zero-Click ist die neue Normalität — so bleiben Schweizer KMU in KI-Antworten sichtbar",
   heroImage: "/images/blog/ki-suchen-ohne-klick-kmu/hero.jpg",
+  audioUrl: "/audio/blog/ki-suchen-ohne-klick-kmu.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "93 % der Suchen im Google AI Mode enden ohne einen einzigen Klick auf eine Website (Semrush, 2026). Wer heute nur auf Platz 1 bei Google optimiert, verliert einen wachsenden Teil seiner digitalen Sichtbarkeit. Die gute Nachricht: Schweizer KMU, die jetzt die richtigen drei Massnahmen umsetzen, können in KI-Antworten erscheinen — ohne grösseres Werbebudget.",
