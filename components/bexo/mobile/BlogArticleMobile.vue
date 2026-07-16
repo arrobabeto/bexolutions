@@ -87,7 +87,7 @@
       </div>
     </BexoSection>
 
-    <section class="relative mx-4 mb-12 overflow-hidden rounded-[32px]">
+    <section class="relative w-full overflow-hidden rounded-t-[48px]">
       <NuxtImg
         v-if="cta.bgImage"
         :src="cta.bgImage"

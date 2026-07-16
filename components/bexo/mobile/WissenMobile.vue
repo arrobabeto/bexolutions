@@ -64,7 +64,7 @@
 </script>
 
 <template>
-  <div class="pb-4">
+  <div>
     <BexoHeader variant="light" />
 
     <BexoSection compact-top>
@@ -109,7 +109,7 @@
             v-for="chip of WISSEN_FILTER_CHIPS"
             :key="chip"
             type="button"
-            class="grid h-11 shrink-0 place-items-center rounded-full px-5 text-sm font-medium text-[#0e2138] transition"
+            class="grid h-10 shrink-0 place-items-center rounded-full px-6 text-sm font-medium text-[#0e2138] transition"
             :class="
               selectedFilter === chip
                 ? 'bg-[#bde0fe]'
@@ -235,7 +235,7 @@
       </div>
     </BexoSection>
 
-    <section class="relative mx-4 mb-10 overflow-hidden rounded-t-[48px]">
+    <section class="relative w-full overflow-hidden rounded-t-[48px]">
       <NuxtImg
         :src="`${HOME}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"

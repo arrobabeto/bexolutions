@@ -36,16 +36,19 @@
     blogsForSection,
   } = useWissenListing()
 
-  const chipWidths: Record<string, number> = {
-    Alle: 104,
-    "KI & GEO": 140,
-    "Local SEO": 158,
-  }
-
   const loadMoreLabel = computed(() => {
     const next = Math.min(remainingCount.value, 9)
     return next > 0 ? `Mehr laden (${next})` : "Mehr laden"
   })
+
+  /** Vertical rhythm after category grids (absolute canvas). */
+  const midBannerTop = 2860
+  const newsletterTop = 3340
+  const topicsSectionTop = 3800
+  const topicsCardsTop = 4002
+  const billboardTop = 4440
+  const footerTop = 5120
+  const canvasHeight = 5640
 
   useHead({
     title: "Wissen — Bexolutions",
@@ -98,14 +101,12 @@
   const topics = [
     {
       left: 120,
-      top: 5199,
       icon: "📊",
       title: "KI & GEO",
       body: "GEO Readiness, ChatGPT-Optimierung, Google AI Mode — wie Ihr KMU in KI-Antworten erscheint.",
     },
     {
       left: 554,
-      top: 5199,
       icon: "🚀",
       title: "Local SEO",
       body: "Google Business Profile, Google Maps, Bewertungsmanagement — für KMU mit lokalem Kundenfokus.",
@@ -119,7 +120,11 @@
       <WissenMobile />
     </template>
     <template #desktop>
-      <div ref="canvasRef" class="canvas">
+      <div
+        ref="canvasRef"
+        class="canvas"
+        :style="{ height: canvasHeight + 'px' }"
+      >
         <!-- ============================= NAV (light) ============================= -->
         <header
           class="absolute"
@@ -203,19 +208,18 @@
         <!-- filter chips -->
         <div
           class="absolute flex items-center"
-          style="left: 184px; top: 1218px; gap: 16px"
+          style="left: 184px; top: 1218px; gap: 12px"
         >
           <button
             v-for="chip of WISSEN_FILTER_CHIPS"
             :key="chip"
             type="button"
-            class="grid h-[44px] place-items-center rounded-[30px] text-[14px] font-medium leading-[18px] text-[#0e2138] transition"
+            class="grid h-[44px] place-items-center rounded-full px-7 text-[14px] font-medium leading-[18px] text-[#0e2138] transition"
             :class="
               selectedFilter === chip
                 ? 'bg-[#bde0fe]'
                 : 'bg-[#f9f9f9] hover:bg-[#eef6ff]'
             "
-            :style="{ width: (chipWidths[chip] ?? 158) + 'px' }"
             @click="selectFilter(chip)"
           >
             {{ chip }}
@@ -399,7 +403,12 @@
         <!-- ============================= MID CTA BANNER ============================= -->
         <section
           class="absolute overflow-hidden rounded-[60px]"
-          style="left: 62px; top: 3277px; width: 1389px; height: 391px"
+          :style="{
+            left: '62px',
+            top: midBannerTop + 'px',
+            width: '1389px',
+            height: '391px',
+          }"
         >
           <NuxtImg
             :src="`${IMG}/midbanner-bg.jpg`"
@@ -436,7 +445,12 @@
         <!-- ============================= NEWSLETTER ============================= -->
         <section
           class="absolute rounded-[80px] bg-[#ecf6ff]"
-          style="left: 219px; top: 4552px; width: 1056px; height: 349px"
+          :style="{
+            left: '219px',
+            top: newsletterTop + 'px',
+            width: '1056px',
+            height: '349px',
+          }"
         >
           <h2
             class="absolute left-1/2 -translate-x-1/2 text-center text-[32px] font-semibold leading-[38px] text-black"
@@ -480,7 +494,12 @@
         <!-- ============================= WISSEN NACH THEMA ============================= -->
         <section
           class="absolute bg-[#f9f9f9]"
-          style="left: 0; top: 4997px; width: 1512px; height: 914px"
+          :style="{
+            left: '0',
+            top: topicsSectionTop + 'px',
+            width: '1512px',
+            height: '520px',
+          }"
         >
           <p
             class="absolute text-[18px] font-semibold leading-[22px] text-[#0e2138]"
@@ -501,7 +520,7 @@
           class="absolute rounded-[30px] border border-[#cbc3c3] bg-[#f9f9f9]"
           :style="{
             left: t.left + 'px',
-            top: t.top + 'px',
+            top: topicsCardsTop + 'px',
             width: '408px',
             height: '286px',
           }"
@@ -533,7 +552,12 @@
         <!-- ============================= BILLBOARD BAND ============================= -->
         <section
           class="absolute overflow-hidden rounded-t-[200px]"
-          style="left: 0; top: 6035px; width: 1512px; height: 679px"
+          :style="{
+            left: '0',
+            top: billboardTop + 'px',
+            width: '1512px',
+            height: '679px',
+          }"
         >
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
@@ -568,7 +592,7 @@
           </a>
         </section>
 
-        <BexoFooter :top="6714" />
+        <BexoFooter :top="footerTop" />
       </div>
     </template>
   </BexoPageShell>
@@ -584,7 +608,6 @@
   .canvas {
     position: relative;
     width: 1512px;
-    height: 7368px;
     flex: none;
     background: #ffffff;
   }

@@ -191,17 +191,35 @@
       <h3 class="text-center text-xl font-medium text-[#0e2138]">
         Über 100 KMU in der Deutschschweiz
       </h3>
-      <div class="mt-6 space-y-4 overflow-hidden">
-        <NuxtImg
-          :src="`${IMG}/logos-row1.png`"
-          class="h-12 w-auto max-w-none"
-          alt=""
-        />
-        <NuxtImg
-          :src="`${IMG}/logos-row2.png`"
-          class="h-12 w-auto max-w-none"
-          alt=""
-        />
+      <div class="mt-6 space-y-4">
+        <div class="marquee">
+          <div class="marquee-track marquee-left">
+            <NuxtImg
+              :src="`${IMG}/logos-row1.png`"
+              class="marquee-img"
+              alt=""
+            />
+            <NuxtImg
+              :src="`${IMG}/logos-row1.png`"
+              class="marquee-img"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="marquee">
+          <div class="marquee-track marquee-right">
+            <NuxtImg
+              :src="`${IMG}/logos-row2.png`"
+              class="marquee-img"
+              alt=""
+            />
+            <NuxtImg
+              :src="`${IMG}/logos-row2.png`"
+              class="marquee-img"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </BexoSection>
 
@@ -351,7 +369,7 @@
       </div>
     </BexoSection>
 
-    <section class="relative mx-4 mb-12 overflow-hidden rounded-t-[48px]">
+    <section class="relative w-full overflow-hidden rounded-t-[48px]">
       <NuxtImg
         :src="`${IMG}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"
@@ -374,3 +392,58 @@
     <BexoFooterMobile />
   </div>
 </template>
+
+<style scoped>
+  .marquee {
+    width: 100%;
+    height: 48px;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    height: 48px;
+    align-items: center;
+    will-change: transform;
+  }
+
+  .marquee-img {
+    height: 48px;
+    width: auto;
+    flex: none;
+  }
+
+  .marquee-left {
+    animation: marquee-left 30s linear infinite;
+  }
+
+  .marquee-right {
+    animation: marquee-right 30s linear infinite;
+  }
+
+  @keyframes marquee-left {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-left,
+    .marquee-right {
+      animation: none;
+    }
+  }
+</style>
