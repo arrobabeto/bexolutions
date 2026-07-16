@@ -2,6 +2,7 @@
   import { computed } from "vue"
   import type { IBlog, IBlogCta } from "~/types/dto/IBlog"
   import BlogBlock from "~/components/blog/BlogBlock.vue"
+  import BlogAudioButton from "~/components/blog/BlogAudioButton.vue"
   import BlogSidebar from "~/components/blog/BlogSidebar.vue"
   import BexoFooterMobile from "~/components/bexo/BexoFooterMobile.vue"
   import BexoHeader from "~/components/bexo/BexoHeader.vue"
@@ -43,7 +44,14 @@
       <p v-if="blog.tagline" class="mt-3 text-base leading-relaxed text-black">
         {{ blog.tagline }}
       </p>
-      <p class="mt-4 text-sm font-semibold text-black">{{ metaLine }}</p>
+      <div class="mt-4 flex items-center justify-between gap-3">
+        <p class="text-sm font-semibold text-black">{{ metaLine }}</p>
+        <BlogAudioButton
+          v-if="blog.audioUrl"
+          :src="blog.audioUrl"
+          label="Kurzaudio abspielen"
+        />
+      </div>
     </BexoSection>
 
     <BexoSection compact-y>
