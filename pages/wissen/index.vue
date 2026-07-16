@@ -4,14 +4,19 @@
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import WissenMobile from "~/components/bexo/mobile/WissenMobile.vue"
+  import BlogCanvasCard from "~/components/blog/BlogCanvasCard.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useWissenListing } from "~/composables/useWissenListing"
-  import { WISSEN_FILTER_CHIPS } from "~/constants/wissenCategories"
+  import {
+    WISSEN_FILTER_CHIPS,
+    type WissenCategoryFilter,
+  } from "~/constants/wissenCategories"
+  import type { IBlog } from "~/types/dto/IBlog"
   import {
     getBlogCardMeta,
-    getBlogCardTitle,
     getBlogExcerpt,
     getBlogFeaturedTitle,
+    getBlogCanvasRowHeight,
   } from "~/utils/blogs"
 
   definePageMeta({ layout: false })
@@ -23,6 +28,21 @@
   const HOME = "/images/startseite"
   const CARD_FALLBACK = `${IMG}/card.jpg`
   const FEATURED_FALLBACK = `${IMG}/featured-article.jpg`
+
+  const CARD_COLS = 3
+  const CARD_WIDTH = 411
+  const CARD_GAP_X = 17
+  const CARD_GRID_WIDTH = CARD_WIDTH * CARD_COLS + CARD_GAP_X * (CARD_COLS - 1)
+  const CARD_GRID_LEFT = 120
+  const CARD_ROW_GAP = 20
+  const FILTERED_GRID_TOP = 1850
+  const ALLE_FIRST_DIVIDER = 1909
+  const DIVIDER_TO_LABEL = 64
+  const DIVIDER_TO_CARDS = 124
+  const CARDS_TO_MEHR = 20
+  const MEHR_BTN_H = 20
+  const MEHR_TO_NEXT_DIVIDER = 44
+  const AFTER_GRID_TO_MID = 83
 
   const {
     selectedFilter,
@@ -41,14 +61,94 @@
     return next > 0 ? `Mehr laden (${next})` : "Mehr laden"
   })
 
-  /** Vertical rhythm after category grids (absolute canvas). */
-  const midBannerTop = 2860
-  const newsletterTop = 3340
-  const topicsSectionTop = 3800
-  const topicsCardsTop = 4002
-  const billboardTop = 4440
-  const footerTop = 5120
-  const canvasHeight = 5640
+  const categoryDefs: {
+    label: string
+    filter: WissenCategoryFilter
+  }[] = [
+    { label: "KI & GEO", filter: "KI & GEO" },
+    { label: "Local SEO", filter: "Local SEO" },
+  ]
+
+  function chunkBlogs(blogs: IBlog[], size: number): IBlog[][] {
+    const rows: IBlog[][] = []
+    for (let i = 0; i < blogs.length; i += size) {
+      rows.push(blogs.slice(i, i + size))
+    }
+    return rows
+  }
+
+  interface IAlleSectionLayout {
+    label: string
+    filter: WissenCategoryFilter
+    blogs: IBlog[]
+    divider: number
+    labelTop: number
+    cardsTop: number
+    rowHeight: number
+    mehrTop: number
+  }
+
+  const alleSections = computed(() => {
+    let y = ALLE_FIRST_DIVIDER
+    const sections: IAlleSectionLayout[] = []
+    for (const cat of categoryDefs) {
+      const blogs = blogsForSection(cat.filter)
+      if (blogs.length === 0) continue
+      const rowHeight = getBlogCanvasRowHeight(blogs)
+      const divider = y
+      const labelTop = divider + DIVIDER_TO_LABEL
+      const cardsTop = divider + DIVIDER_TO_CARDS
+      const mehrTop = cardsTop + rowHeight + CARDS_TO_MEHR
+      sections.push({
+        label: cat.label,
+        filter: cat.filter,
+        blogs,
+        divider,
+        labelTop,
+        cardsTop,
+        rowHeight,
+        mehrTop,
+      })
+      y = mehrTop + MEHR_BTN_H + MEHR_TO_NEXT_DIVIDER
+    }
+    return sections
+  })
+
+  const filteredRows = computed(() => {
+    const rows = chunkBlogs(filteredListBlogs.value, CARD_COLS)
+    let top = FILTERED_GRID_TOP
+    return rows.map((blogs) => {
+      const height = getBlogCanvasRowHeight(blogs)
+      const row = { blogs, top, height }
+      top += height + CARD_ROW_GAP
+      return row
+    })
+  })
+
+  const gridContentEnd = computed(() => {
+    if (isAlleSelected.value) {
+      const last = alleSections.value[alleSections.value.length - 1]
+      return last ? last.mehrTop + MEHR_BTN_H : ALLE_FIRST_DIVIDER
+    }
+    if (filteredRows.value.length === 0) return FILTERED_GRID_TOP
+    const last = filteredRows.value[filteredRows.value.length - 1]!
+    const loadMoreExtra = hasMore.value ? 64 : 0
+    return last.top + last.height + loadMoreExtra
+  })
+
+  const midBannerTop = computed(() => gridContentEnd.value + AFTER_GRID_TO_MID)
+  const newsletterTop = computed(() => midBannerTop.value + 480)
+  const topicsSectionTop = computed(() => midBannerTop.value + 940)
+  const topicsCardsTop = computed(() => midBannerTop.value + 1142)
+  const billboardTop = computed(() => midBannerTop.value + 1580)
+  const footerTop = computed(() => midBannerTop.value + 2260)
+  const canvasHeight = computed(() => midBannerTop.value + 2780)
+
+  const filteredLoadMoreTop = computed(() => {
+    if (filteredRows.value.length === 0) return FILTERED_GRID_TOP + 20
+    const last = filteredRows.value[filteredRows.value.length - 1]!
+    return last.top + last.height + CARD_ROW_GAP
+  })
 
   useHead({
     title: "Wissen — Bexolutions",
@@ -73,29 +173,6 @@
     { l: "Wissen", to: "/wissen" },
     { l: "Treuhänder", to: "#" },
   ]
-
-  // ---- Article grid: categories with a divider + label + 3 cards ----
-  const cols = [120, 548, 976]
-  const categories = [
-    {
-      label: "KI & GEO",
-      filter: "KI & GEO" as const,
-      divider: 1909,
-      labelTop: 1973,
-      cardsTop: 2033,
-    },
-    {
-      label: "Local SEO",
-      filter: "Local SEO" as const,
-      divider: 2365,
-      labelTop: 2429,
-      cardsTop: 2489,
-    },
-  ]
-
-  const visibleDesktopCategories = computed(() =>
-    categories.filter((c) => blogsForSection(c.filter).length > 0),
-  )
 
   // ---- Topic cards (Wissen nach Thema) ----
   const topics = [
@@ -267,59 +344,33 @@
 
         <!-- ============================= FILTERED GRID (category selected) ============================= -->
         <template v-if="!isAlleSelected">
-          <a
-            v-for="(b, i) of filteredListBlogs"
-            :key="b.slug"
-            :href="`/wissen/${b.slug}`"
-            class="card-shadow absolute block overflow-hidden rounded-[20px] bg-[#f9f9f9] transition hover:brightness-95"
+          <div
+            v-for="(row, ri) of filteredRows"
+            :key="'filtered-row-' + ri"
+            class="absolute grid items-stretch"
             :style="{
-              left: cols[i % 3] + 'px',
-              top: 1850 + Math.floor(i / 3) * 288 + 'px',
-              width: '411px',
-              height: '268px',
+              left: CARD_GRID_LEFT + 'px',
+              top: row.top + 'px',
+              width: CARD_GRID_WIDTH + 'px',
+              height: row.height + 'px',
+              gridTemplateColumns: `repeat(${CARD_COLS}, ${CARD_WIDTH}px)`,
+              columnGap: CARD_GAP_X + 'px',
             }"
           >
-            <NuxtImg
-              :src="b.heroImage || CARD_FALLBACK"
-              class="absolute left-0 top-0 w-full rounded-[20px] object-cover"
-              style="height: 137px"
-              :alt="getBlogCardTitle(b)"
+            <BlogCanvasCard
+              v-for="b of row.blogs"
+              :key="b.slug"
+              :blog="b"
+              :fallback-image="CARD_FALLBACK"
             />
-            <div
-              class="absolute flex items-center gap-[6px] rounded-[20px] bg-[#0e2138] px-[12px] py-[3px]"
-              style="right: 26px; top: 12px"
-            >
-              <span
-                class="block h-[7px] w-[7px] rounded-full bg-[#bde0fe]"
-              ></span>
-              <span class="text-[12px] font-medium leading-[17px] text-white">
-                {{ b.category }}
-              </span>
-            </div>
-            <h3
-              class="absolute text-[18px] font-medium leading-[25px] text-black"
-              style="left: 18px; top: 157px; width: 375px"
-            >
-              {{ getBlogCardTitle(b) }}
-            </h3>
-            <p
-              class="absolute text-[14px] font-medium leading-[21px] text-black"
-              style="left: 18px; top: 215px; width: 375px"
-            >
-              {{ getBlogCardMeta(b) }} →
-            </p>
-          </a>
+          </div>
           <button
             v-if="hasMore"
             type="button"
             class="btn-primary absolute"
             :style="{
               left: '548px',
-              top:
-                1850 +
-                Math.ceil(filteredListBlogs.length / 3) * 288 +
-                20 +
-                'px',
+              top: filteredLoadMoreTop + 'px',
               width: '280px',
             }"
             @click="loadMore"
@@ -330,14 +381,13 @@
 
         <!-- ============================= ARTICLE GRID (Alle) ============================= -->
         <template v-if="isAlleSelected">
-          <template v-for="cat of visibleDesktopCategories" :key="cat.label">
+          <template v-for="cat of alleSections" :key="cat.label">
             <div
-              v-if="cat.divider"
               class="absolute bg-black/10"
               :style="{
                 left: '120px',
                 top: cat.divider + 'px',
-                width: '1267px',
+                width: CARD_GRID_WIDTH + 'px',
                 height: '1px',
               }"
             ></div>
@@ -347,52 +397,28 @@
             >
               {{ cat.label }}
             </p>
-            <a
-              v-for="(b, i) of blogsForSection(cat.filter)"
-              :key="b.slug"
-              :href="`/wissen/${b.slug}`"
-              class="card-shadow absolute block overflow-hidden rounded-[20px] bg-[#f9f9f9] transition hover:brightness-95"
+            <div
+              class="absolute grid items-stretch"
               :style="{
-                left: cols[i] + 'px',
+                left: CARD_GRID_LEFT + 'px',
                 top: cat.cardsTop + 'px',
-                width: '411px',
-                height: '268px',
+                width: CARD_GRID_WIDTH + 'px',
+                height: cat.rowHeight + 'px',
+                gridTemplateColumns: `repeat(${CARD_COLS}, ${CARD_WIDTH}px)`,
+                columnGap: CARD_GAP_X + 'px',
               }"
             >
-              <NuxtImg
-                :src="b.heroImage || CARD_FALLBACK"
-                class="absolute left-0 top-0 w-full rounded-[20px] object-cover"
-                style="height: 137px"
-                :alt="getBlogCardTitle(b)"
+              <BlogCanvasCard
+                v-for="b of cat.blogs"
+                :key="b.slug"
+                :blog="b"
+                :fallback-image="CARD_FALLBACK"
               />
-              <div
-                class="absolute flex items-center gap-[6px] rounded-[20px] bg-[#0e2138] px-[12px] py-[3px]"
-                style="right: 26px; top: 12px"
-              >
-                <span
-                  class="block h-[7px] w-[7px] rounded-full bg-[#bde0fe]"
-                ></span>
-                <span class="text-[12px] font-medium leading-[17px] text-white">
-                  {{ b.category }}
-                </span>
-              </div>
-              <h3
-                class="absolute text-[18px] font-medium leading-[25px] text-black"
-                style="left: 18px; top: 157px; width: 375px"
-              >
-                {{ getBlogCardTitle(b) }}
-              </h3>
-              <p
-                class="absolute text-[14px] font-medium leading-[21px] text-black"
-                style="left: 18px; top: 215px; width: 375px"
-              >
-                {{ getBlogCardMeta(b) }} →
-              </p>
-            </a>
+            </div>
             <button
               type="button"
               class="absolute text-[16px] font-medium leading-[20px] text-[#134074] transition hover:opacity-70"
-              :style="{ left: '120px', top: cat.cardsTop + 288 + 'px' }"
+              :style="{ left: '120px', top: cat.mehrTop + 'px' }"
               @click="selectFilter(cat.filter)"
             >
               Mehr anzeigen →
