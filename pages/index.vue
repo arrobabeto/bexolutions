@@ -1,6 +1,10 @@
 <script setup lang="ts">
   import { computed, nextTick, onMounted, onUnmounted, ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
+  import BexoFooter from "~/components/bexo/BexoFooter.vue"
+  import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
+  import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
+  import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
 
@@ -25,12 +29,11 @@
   const FAQ_SECTION_TOP = 9431
   const FAQ_LIST_TOP = 206
   const BILLBOARD_H = 679
-  const FOOTER_H = 654
 
   const faqSectionH = ref(963)
   const billboardTop = computed(() => FAQ_SECTION_TOP + faqSectionH.value)
   const footerTop = computed(() => billboardTop.value + BILLBOARD_H)
-  const canvasH = computed(() => footerTop.value + FOOTER_H)
+  const canvasH = computed(() => footerTop.value + BEXO_FOOTER_H)
 
   const CANVAS_W = 1512
   const canvasScale = ref(1)
@@ -65,14 +68,14 @@
   function updateScrollFx() {
     rafId = 0
 
-    const featSection = featSectionRef.value
     const featScroll = featScrollRef.value
     const featTrack = featTrackRef.value
-    if (featSection && featScroll && featTrack) {
-      const rect = featSection.getBoundingClientRect()
+    if (featScroll && featTrack) {
       const vh = window.innerHeight || 1
-      const travel = rect.height + vh
-      const progress = clamp01((vh - rect.top) / travel)
+      const galleryTop = featScroll.getBoundingClientRect().top
+      const startY = vh * 0.48
+      const endY = vh * 0.12
+      const progress = clamp01((startY - galleryTop) / (startY - endY))
       const maxX = Math.max(0, featTrack.scrollWidth - featScroll.clientWidth)
       featTranslateX.value = -(progress * maxX)
     }
@@ -181,6 +184,7 @@
       title: "Content & Thought Leadership",
       body: "SEO-Fachbeiträge, LinkedIn, Newsletter — Inhalte, die Vertrauen aufbauen und qualifizierte Anfragen generieren. Monatlich messbar.",
       img: `${IMG}/feat-content.jpg`,
+      video: BEXO_VIDEOS.homeFeatureContent,
       imgTop: true,
       bg: "#ffeef4",
     },
@@ -301,14 +305,6 @@
       a: "Schwerpunkt: Schweizer KMU in der Deutschschweiz — Treuhand/Steuerberatung, Gastronomie/Hotellerie, Gesundheit/Medizin sowie lokale Dienstleister. Für etablierte KMU, die systematisch wachsen wollen.",
     },
   ]
-
-  const footerLinks = [
-    { l: "Über uns", to: "/ueber-uns" },
-    { l: "Leistungen", to: "/leistungen" },
-    { l: "Wissen", to: "/wissen" },
-    { l: "Treuhänder", to: "/treuhaender" },
-    { l: "Kontakt", to: "/kontakt" },
-  ]
 </script>
 
 <template>
@@ -325,10 +321,10 @@
         class="absolute z-0 overflow-hidden rounded-[60px]"
         style="left: 5px; top: 9px; width: 1503px; height: 970px"
       >
-        <NuxtImg
-          :src="`${IMG}/hero-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
+        <BackgroundMedia
+          :poster="`${IMG}/hero-bg.jpg`"
+          :video="BEXO_VIDEOS.homeHero"
+          class="absolute inset-0 h-full w-full"
         />
         <div class="absolute inset-0 bg-black/40"></div>
 
@@ -525,10 +521,10 @@
         class="absolute overflow-hidden"
         style="left: 0; top: 2967px; width: 1512px; height: 636px"
       >
-        <NuxtImg
-          :src="`${IMG}/office.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
+        <BackgroundMedia
+          :poster="`${IMG}/office.jpg`"
+          :video="BEXO_VIDEOS.homeOffice"
+          class="absolute inset-0 h-full w-full"
         />
         <div class="absolute inset-0 bg-black/45"></div>
 
@@ -607,8 +603,14 @@
               style="width: 408px; height: 516px"
               :style="{ background: f.bg }"
             >
+              <BackgroundMedia
+                v-if="f.imgTop && f.video"
+                :poster="f.img"
+                :video="f.video"
+                class="h-[246px] w-full rounded-[22px]"
+              />
               <NuxtImg
-                v-if="f.imgTop"
+                v-else-if="f.imgTop"
                 :src="f.img"
                 class="w-full rounded-[22px] object-cover"
                 style="height: 246px"
@@ -743,10 +745,10 @@
           height: '1282px',
         }"
       >
-        <NuxtImg
-          :src="`${IMG}/quote-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover opacity-60"
-          alt=""
+        <BackgroundMedia
+          :poster="`${IMG}/quote-bg.jpg`"
+          :video="BEXO_VIDEOS.homeSteps"
+          class="absolute inset-0 h-full w-full opacity-60"
         />
 
         <p
@@ -866,10 +868,10 @@
         class="absolute overflow-hidden rounded-[80px]"
         style="left: 71px; top: 8901px; width: 1371px; height: 434px"
       >
-        <NuxtImg
-          :src="`${IMG}/treuhaender-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
+        <BackgroundMedia
+          :poster="`${IMG}/treuhaender-bg.jpg`"
+          :video="BEXO_VIDEOS.homeTreuhaender"
+          class="absolute inset-0 h-full w-full"
         />
         <div
           class="absolute inset-0"
@@ -1014,102 +1016,7 @@
         </a>
       </section>
 
-      <!-- ============================= FOOTER ============================= -->
-      <footer
-        class="absolute bg-[#0e2138]"
-        :style="{
-          left: '0',
-          top: footerTop + 'px',
-          width: '1512px',
-          height: FOOTER_H + 'px',
-        }"
-      >
-        <h2
-          class="absolute whitespace-pre-line text-[56px] font-semibold leading-[55px] tracking-[1.12px] text-white"
-          style="left: 120px; top: 140px; width: 491px"
-        >
-          Better than yesterday.
-        </h2>
-
-        <ul
-          class="absolute flex flex-col"
-          style="left: 987px; top: 96px; gap: 20px"
-        >
-          <li v-for="l of footerLinks" :key="l.l">
-            <a
-              :href="l.to"
-              class="text-[14px] font-medium leading-[18px] text-white transition hover:opacity-80"
-            >
-              {{ l.l }}
-            </a>
-          </li>
-        </ul>
-
-        <div class="absolute" style="left: 1207px; top: 96px; width: 189px">
-          <p class="text-[14px] font-bold leading-[21px] text-white">
-            Adresse:
-          </p>
-          <p class="text-[14px] font-medium leading-[21px] text-white">
-            Fabrikweg 1a
-            <br />
-            5502 Hunzenschwil
-          </p>
-          <p class="mt-[20px] text-[14px] font-bold leading-[20px] text-white">
-            Kontakt:
-          </p>
-          <p
-            class="footer-mono text-[14px] font-medium leading-[21px] text-white"
-          >
-            044 771 37 77
-          </p>
-          <a
-            href="mailto:info@bexolutions.ch"
-            class="footer-mono block text-[16px] font-medium leading-[22px] text-white hover:opacity-80"
-          >
-            info@bexolutions.ch
-          </a>
-        </div>
-
-        <!-- footer wordmark (+20px padding above) -->
-        <NuxtImg
-          :src="`${IMG}/wordmark.png`"
-          class="absolute opacity-90"
-          style="left: 120px; top: 322px; width: 1272px; height: 108px"
-          alt="BEXOLUTIONS"
-        />
-
-        <div
-          class="absolute bg-white/20"
-          style="left: 120px; top: 482px; width: 1272px; height: 1px"
-        ></div>
-
-        <p
-          class="footer-legal absolute text-[16px] leading-[24px] text-white"
-          style="left: 120px; top: 534px"
-        >
-          © 2026 Bexolutions. Alle Rechte vorbehalten.
-        </p>
-        <div class="absolute flex" style="left: 907px; top: 534px; gap: 24px">
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Datenschutzrichtlinie
-          </a>
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Nutzungsbedingungen
-          </a>
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Cookie-Einstellungen
-          </a>
-        </div>
-      </footer>
+      <BexoFooter :top="footerTop" />
     </div>
   </main>
 </template>
@@ -1127,14 +1034,6 @@
     flex: none;
     background: #ffffff;
     transform-origin: top left;
-  }
-
-  .footer-mono {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  }
-
-  .footer-legal {
-    font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
   }
 
   /* buttons */

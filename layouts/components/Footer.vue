@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  // Orbitype CMS template footer — used by default layout (posts, CMS pages).
+  // Bexo canvas pages use ~/components/bexo/BexoFooter.vue instead.
   import { useTranslate } from "~/composables/useTranslate"
 
   const t = useTranslate()

@@ -1,7 +1,10 @@
 <script setup lang="ts">
   import { ref } from "vue"
   import { definePageMeta, useHead } from "#imports"
+  import BexoFooter from "~/components/bexo/BexoFooter.vue"
+  import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
 
@@ -272,10 +275,10 @@
         class="absolute overflow-hidden rounded-[120px]"
         style="left: 71px; top: 237px; width: 1361px; height: 485px"
       >
-        <NuxtImg
-          :src="`${UB}/elev8-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
+        <BackgroundMedia
+          :poster="`${UB}/elev8-bg.jpg`"
+          :video="BEXO_VIDEOS.leistungenHero"
+          class="absolute inset-0 h-full w-full"
         />
         <div
           class="absolute inset-0"
@@ -459,10 +462,10 @@
         class="absolute overflow-hidden"
         style="left: 0; top: 5558px; width: 1512px; height: 718px"
       >
-        <NuxtImg
-          :src="`${IMG}/darkcards-bg.jpg`"
-          class="absolute inset-0 h-full w-full object-cover"
-          alt=""
+        <BackgroundMedia
+          :poster="`${IMG}/darkcards-bg.jpg`"
+          :video="BEXO_VIDEOS.leistungenDarkCards"
+          class="absolute inset-0 h-full w-full"
         />
         <div
           class="absolute inset-0"
@@ -714,100 +717,7 @@
         </a>
       </section>
 
-      <!-- ============================= FOOTER ============================= -->
-      <footer
-        class="absolute bg-[#0e2138]"
-        style="left: 0; top: 10022px; width: 1512px; height: 634px"
-      >
-        <h2
-          class="absolute text-[56px] font-semibold leading-[55px] tracking-[1.12px] text-white"
-          style="left: 120px; top: 140px; width: 491px"
-        >
-          Better than yesterday.
-        </h2>
-        <ul
-          class="absolute flex flex-col"
-          style="left: 987px; top: 96px; gap: 20px"
-        >
-          <li
-            v-for="l of [
-              { l: 'Über uns', to: '/ueber-uns' },
-              { l: 'Leistungen', to: '/leistungen' },
-              { l: 'Wissen', to: '/wissen' },
-              { l: 'Treuhänder', to: '/treuhaender' },
-              { l: 'Kontakt', to: '/kontakt' },
-            ]"
-            :key="l.l"
-          >
-            <a
-              :href="l.to"
-              class="text-[14px] font-medium leading-[18px] text-white transition hover:opacity-80"
-            >
-              {{ l.l }}
-            </a>
-          </li>
-        </ul>
-        <div class="absolute" style="left: 1207px; top: 96px; width: 189px">
-          <p class="text-[14px] font-bold leading-[21px] text-white">
-            Adresse:
-          </p>
-          <p class="text-[14px] font-medium leading-[21px] text-white">
-            Fabrikweg 1a
-            <br />
-            5502 Hunzenschwil
-          </p>
-          <p class="mt-[20px] text-[14px] font-bold leading-[20px] text-white">
-            Kontakt:
-          </p>
-          <p
-            class="footer-mono text-[14px] font-medium leading-[21px] text-white"
-          >
-            044 771 37 77
-          </p>
-          <a
-            href="mailto:info@bexolutions.ch"
-            class="footer-mono block text-[16px] font-medium leading-[22px] text-white hover:opacity-80"
-          >
-            info@bexolutions.ch
-          </a>
-        </div>
-        <NuxtImg
-          :src="`${HOME}/wordmark.png`"
-          class="absolute opacity-90"
-          style="left: 120px; top: 302px; width: 1272px; height: 108px"
-          alt="BEXOLUTIONS"
-        />
-        <div
-          class="absolute bg-white/20"
-          style="left: 120px; top: 462px; width: 1272px; height: 1px"
-        ></div>
-        <p
-          class="footer-legal absolute text-[16px] leading-[24px] text-white"
-          style="left: 120px; top: 514px"
-        >
-          © 2026 Bexolutions. Alle Rechte vorbehalten.
-        </p>
-        <div class="absolute flex" style="left: 907px; top: 514px; gap: 24px">
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Datenschutzrichtlinie
-          </a>
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Nutzungsbedingungen
-          </a>
-          <a
-            href="#"
-            class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
-          >
-            Cookie-Einstellungen
-          </a>
-        </div>
-      </footer>
+      <BexoFooter :top="10022" />
     </div>
   </main>
 </template>
@@ -822,17 +732,10 @@
   .canvas {
     position: relative;
     width: 1512px;
-    height: 10656px;
+    height: 10676px;
     flex: none;
     background: #ffffff;
   }
-  .footer-mono {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  }
-  .footer-legal {
-    font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
-  }
-
   .nav-logo {
     background-color: #0e2138;
     -webkit-mask: url("/images/startseite/logo-mark.png") center / contain
