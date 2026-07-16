@@ -11,6 +11,7 @@ export default {
   tagline:
     "Vom kostenlosen Einstieg bis zum professionellen Monitoring — was für Schweizer KMU tatsächlich sinnvoll ist",
   heroImage: "/images/blog/ki-sichtbarkeit-messen-tools-kmu/hero.jpg",
+  audioUrl: "/audio/blog/ki-sichtbarkeit-messen-tools-kmu.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Google Analytics und Search Console zeigen nicht, ob Ihr Unternehmen in ChatGPT, Perplexity oder Google AI Mode auftaucht. Dafür braucht es eigene Methoden: den manuellen 5-Fragen-Test als kostenloser Einstieg, den HubSpot AI Search Grader als ersten strukturierten Check, und spezialisierte Tools wie Otterly.ai (ab USD 29/Monat) oder Peec AI (ab EUR 89/Monat) für kontinuierliches Monitoring. Die zentrale Kennzahl: Share of Voice — wie oft Ihr Unternehmen in KI-Antworten zu Ihrer Kategorie erscheint, verglichen mit Mitbewerbern.",

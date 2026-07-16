@@ -11,6 +11,7 @@ export default {
   tagline:
     "Der 4-Wochen-Plan für Schweizer KMU — mit fertigen Vorlagen, QR-Codes und DSG-konformen Methoden",
   heroImage: "/images/blog/google-bewertungen-einfordern-kmu-schweiz/hero.jpg",
+  audioUrl: "/audio/blog/google-bewertungen-einfordern-kmu-schweiz.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "99 % der Schweizer Konsumenten lesen vor einer lokalen Anschaffung Online-Bewertungen (Netzwoche, 2022). Das Problem ist asymmetrisch: Unzufriedene Kunden bewerten von alleine — zufriedene fast nie. Wer nichts tut, hat deshalb langfristig einen Sternedurchschnitt, der schlechter ist als die echte Kundenzufriedenheit. Die Lösung: Systematisch fragen. Dieser Artikel zeigt den 4-Wochen-Plan — mit SMS-, WhatsApp- und E-Mail-Vorlagen, QR-Code-Anleitung, NFC-Karten-Tipp und Do/Don't-Tabelle für rechtliche Sicherheit nach Schweizer DSG.",
