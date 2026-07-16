@@ -233,20 +233,20 @@
         Wir bauen Ihr
         <span class="text-[#a7c8ef]">Marketingsystem.</span>
       </h2>
-      <div class="-mx-4 mt-6 flex snap-x gap-4 overflow-x-auto px-4 pb-2">
+      <div class="mt-4 flex flex-col gap-3">
         <article
           v-for="f of features"
           :key="f.title"
-          class="w-[min(85vw,320px)] shrink-0 snap-start rounded-[24px] p-4"
+          class="w-full rounded-[20px] p-3"
           :style="{ background: f.bg }"
         >
           <NuxtImg
             :src="f.img"
-            class="aspect-video w-full rounded-[16px] object-cover"
+            class="aspect-[2/1] w-full rounded-[12px] object-cover"
             alt=""
           />
-          <h4 class="mt-4 text-lg font-semibold text-black">{{ f.title }}</h4>
-          <p class="mt-2 text-base leading-snug text-black">{{ f.body }}</p>
+          <h4 class="mt-2 text-base font-semibold text-black">{{ f.title }}</h4>
+          <p class="mt-1 text-sm leading-snug text-black">{{ f.body }}</p>
         </article>
       </div>
     </BexoSection>
