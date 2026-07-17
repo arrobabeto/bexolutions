@@ -189,41 +189,47 @@
       </p>
     </section>
 
-    <BexoSection>
-      <h3 class="text-center text-xl font-medium text-[#0e2138]">
+    <section class="box-border w-full max-w-full overflow-x-clip py-8">
+      <h3
+        class="max-w-xl mx-auto px-4 text-center text-xl font-medium text-[#0e2138]"
+      >
         Über 100 KMU in der Deutschschweiz
       </h3>
       <div class="mt-6 space-y-4">
-        <div class="marquee">
+        <div class="marquee" aria-hidden="true">
           <div class="marquee-track marquee-left">
             <NuxtImg
               :src="`${IMG}/logos-row1.png`"
               class="marquee-img"
               alt=""
+              loading="eager"
             />
             <NuxtImg
               :src="`${IMG}/logos-row1.png`"
               class="marquee-img"
               alt=""
+              loading="eager"
             />
           </div>
         </div>
-        <div class="marquee">
+        <div class="marquee" aria-hidden="true">
           <div class="marquee-track marquee-right">
             <NuxtImg
               :src="`${IMG}/logos-row2.png`"
               class="marquee-img"
               alt=""
+              loading="eager"
             />
             <NuxtImg
               :src="`${IMG}/logos-row2.png`"
               class="marquee-img"
               alt=""
+              loading="eager"
             />
           </div>
         </div>
       </div>
-    </BexoSection>
+    </section>
 
     <section class="relative mx-4 overflow-hidden rounded-[24px]">
       <BackgroundMedia
@@ -395,49 +401,53 @@
 
 <style scoped>
   .marquee {
+    position: relative;
     width: 100%;
-    height: 48px;
+    height: 56px;
     overflow: hidden;
   }
 
   .marquee-track {
     display: flex;
     width: max-content;
-    height: 48px;
+    height: 56px;
     align-items: center;
     will-change: transform;
   }
 
+  /* Override Tailwind preflight img { max-width:100%; height:auto } */
   .marquee-img {
-    height: 48px;
-    width: auto;
+    display: block;
+    height: 56px !important;
+    width: auto !important;
+    max-width: none !important;
     flex: none;
-    margin-right: 20px;
+    margin-right: 24px;
   }
 
   .marquee-left {
-    animation: marquee-left 30s linear infinite;
+    animation: marquee-left 28s linear infinite;
   }
 
   .marquee-right {
-    animation: marquee-right 30s linear infinite;
+    animation: marquee-right 28s linear infinite;
   }
 
   @keyframes marquee-left {
     from {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
 
   @keyframes marquee-right {
     from {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
     to {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -445,6 +455,7 @@
     .marquee-left,
     .marquee-right {
       animation: none;
+      transform: translate3d(0, 0, 0);
     }
   }
 </style>
