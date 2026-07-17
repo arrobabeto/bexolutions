@@ -100,7 +100,10 @@
           Wir analysieren Ihre aktuelle Sichtbarkeit und zeigen Ihnen, wo der
           grösste Hebel liegt.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          href="https://calendly.com/bexolutions/discovery-call"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Termin vereinbaren
         </a>
       </div>
