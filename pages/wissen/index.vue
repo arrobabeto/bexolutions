@@ -67,6 +67,12 @@
   }[] = [
     { label: "KI & GEO", filter: "KI & GEO" },
     { label: "Local SEO", filter: "Local SEO" },
+    { label: "SEO für KMU", filter: "SEO für KMU" },
+    { label: "Treuhand-spezifisch", filter: "Treuhand-spezifisch" },
+    {
+      label: "LinkedIn & Personal Branding",
+      filter: "LinkedIn & Personal Branding",
+    },
   ]
 
   function chunkBlogs(blogs: IBlog[], size: number): IBlog[][] {
@@ -140,9 +146,10 @@
   const newsletterTop = computed(() => midBannerTop.value + 480)
   const topicsSectionTop = computed(() => midBannerTop.value + 940)
   const topicsCardsTop = computed(() => midBannerTop.value + 1142)
-  const billboardTop = computed(() => midBannerTop.value + 1580)
-  const footerTop = computed(() => midBannerTop.value + 2260)
-  const canvasHeight = computed(() => midBannerTop.value + 2780)
+  const TOPIC_CARD_ROW_GAP = 306
+  const billboardTop = computed(() => midBannerTop.value + 1886)
+  const footerTop = computed(() => midBannerTop.value + 2566)
+  const canvasHeight = computed(() => midBannerTop.value + 3086)
 
   const filteredLoadMoreTop = computed(() => {
     if (filteredRows.value.length === 0) return FILTERED_GRID_TOP + 20
@@ -178,15 +185,38 @@
   const topics = [
     {
       left: 120,
+      row: 0,
       icon: "📊",
       title: "KI & GEO",
       body: "GEO Readiness, ChatGPT-Optimierung, Google AI Mode — wie Ihr KMU in KI-Antworten erscheint.",
     },
     {
       left: 554,
+      row: 0,
       icon: "🚀",
       title: "Local SEO",
       body: "Google Business Profile, Google Maps, Bewertungsmanagement — für KMU mit lokalem Kundenfokus.",
+    },
+    {
+      left: 988,
+      row: 0,
+      icon: "🔍",
+      title: "SEO für KMU",
+      body: "Einstiegsguide, Keyword-Recherche und organische Sichtbarkeit ohne Werbebudget.",
+    },
+    {
+      left: 120,
+      row: 1,
+      icon: "📁",
+      title: "Treuhand-spezifisch",
+      body: "Nischen-SEO, Content-Strategie und Fallstudien für Treuhandkanzleien in der Deutschschweiz.",
+    },
+    {
+      left: 554,
+      row: 1,
+      icon: "💼",
+      title: "LinkedIn & Personal Branding",
+      body: "Thought Leadership, Personal Branding und Outreach für Schweizer KMU-Inhaber.",
     },
   ]
 </script>
@@ -532,7 +562,7 @@
             left: '0',
             top: topicsSectionTop + 'px',
             width: '1512px',
-            height: '520px',
+            height: '826px',
           }"
         >
           <p
@@ -554,7 +584,7 @@
           class="absolute rounded-[30px] border border-[#cbc3c3] bg-[#f9f9f9]"
           :style="{
             left: t.left + 'px',
-            top: topicsCardsTop + 'px',
+            top: topicsCardsTop + t.row * TOPIC_CARD_ROW_GAP + 'px',
             width: '408px',
             height: '286px',
           }"

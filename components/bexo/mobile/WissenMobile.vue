@@ -50,6 +50,24 @@
       body: "Google Business Profile, Google Maps, Bewertungsmanagement — für KMU mit lokalem Kundenfokus.",
       filter: "Local SEO",
     },
+    {
+      icon: "🔍",
+      title: "SEO für KMU",
+      body: "Einstiegsguide, Keyword-Recherche und organische Sichtbarkeit ohne Werbebudget.",
+      filter: "SEO für KMU",
+    },
+    {
+      icon: "📁",
+      title: "Treuhand-spezifisch",
+      body: "Nischen-SEO, Content-Strategie und Fallstudien für Treuhandkanzleien in der Deutschschweiz.",
+      filter: "Treuhand-spezifisch",
+    },
+    {
+      icon: "💼",
+      title: "LinkedIn & Personal Branding",
+      body: "Thought Leadership, Personal Branding und Outreach für Schweizer KMU-Inhaber.",
+      filter: "LinkedIn & Personal Branding",
+    },
   ]
 
   async function handleSelectFilter(
