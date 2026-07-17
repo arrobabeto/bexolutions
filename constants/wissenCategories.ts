@@ -1,5 +1,12 @@
 /** Filter chip labels on `/wissen` — must match `IBlog.category` values (except "Alle"). */
-export const WISSEN_FILTER_CHIPS = ["Alle", "KI & GEO", "Local SEO"] as const
+export const WISSEN_FILTER_CHIPS = [
+  "Alle",
+  "KI & GEO",
+  "Local SEO",
+  "SEO für KMU",
+  "Treuhand-spezifisch",
+  "LinkedIn & Personal Branding",
+] as const
 
 export type WissenFilterChip = (typeof WISSEN_FILTER_CHIPS)[number]
 
@@ -14,6 +21,12 @@ export interface IWissenCategorySection {
 export const WISSEN_CATEGORY_SECTIONS: IWissenCategorySection[] = [
   { label: "KI & GEO", filter: "KI & GEO" },
   { label: "Local SEO", filter: "Local SEO" },
+  { label: "SEO für KMU", filter: "SEO für KMU" },
+  { label: "Treuhand-spezifisch", filter: "Treuhand-spezifisch" },
+  {
+    label: "LinkedIn & Personal Branding",
+    filter: "LinkedIn & Personal Branding",
+  },
 ]
 
 export const WISSEN_LIST_PAGE_SIZE = 9
