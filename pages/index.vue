@@ -365,7 +365,11 @@
             <a href="/kontakt" class="btn-white" style="width: 153px">
               Kontakt
             </a>
-            <a href="#" class="btn-primary" style="width: 237px">
+            <a
+              href="https://calendly.com/bexolutions/discovery-call"
+              class="btn-primary"
+              style="width: 237px"
+            >
               Termin vereinbaren
             </a>
           </div>
@@ -433,7 +437,7 @@
             erwähnt. Alles aus einer Hand. Eine fixe Monatsrate.
           </p>
           <a
-            href="#"
+            href="https://calendly.com/bexolutions/discovery-call"
             class="btn-outline absolute"
             style="left: 550px; top: 476px; width: 237px"
           >
@@ -1018,7 +1022,7 @@
             Massnahmen Ihnen am schnellsten zu neuen Kunden verhelfen.
           </p>
           <a
-            href="#"
+            href="https://calendly.com/bexolutions/discovery-call"
             class="btn-primary absolute"
             style="left: 106px; top: 556px; width: 276px"
           >

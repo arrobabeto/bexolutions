@@ -151,7 +151,10 @@
           <br />
           Better than yesterday.
         </h1>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          href="https://calendly.com/bexolutions/discovery-call"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Termin vereinbaren
         </a>
       </div>
@@ -167,7 +170,10 @@
         der Website über Local SEO bis zur KI-Sichtbarkeit. Alles aus einer
         Hand. Eine fixe Monatsrate.
       </p>
-      <a href="/kontakt" class="bexo-btn-primary mt-6 inline-grid">
+      <a
+        href="https://calendly.com/bexolutions/discovery-call"
+        class="bexo-btn-primary mt-6 inline-grid"
+      >
         Termin vereinbaren
       </a>
     </BexoSection>

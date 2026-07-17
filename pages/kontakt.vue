@@ -145,7 +145,11 @@
             style="left: 993px; top: 95px; gap: 10px"
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
-            <a href="#" class="btn-primary" style="width: 237px">
+            <a
+              href="https://calendly.com/bexolutions/discovery-call"
+              class="btn-primary"
+              style="width: 237px"
+            >
               Termin vereinbaren
             </a>
           </div>
