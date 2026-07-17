@@ -78,23 +78,12 @@
 }
 
 .bexo-canvas-wrap {
+  display: none;
   justify-content: flex-start;
   width: 100%;
   max-width: 100%;
   overflow-x: clip;
   background: #ffffff;
-}
-
-/* Only show / flex the canvas on desktop. Never set display:flex at all
-   breakpoints — it overrides Tailwind `hidden` and duplicates mobile pages. */
-@media (min-width: 1024px) {
-  .bexo-canvas-wrap {
-    display: flex;
-  }
-
-  .bexo-canvas-wrap > .canvas {
-    zoom: calc(100vw / 1512);
-  }
 }
 
 .bexo-mobile {
@@ -105,8 +94,18 @@
   overflow-x: clip;
 }
 
+/* Hard toggle — do not use Tailwind hidden/lg:flex here; a global
+   display:flex on this class previously overrode `hidden` and duplicated pages. */
 @media (min-width: 1024px) {
   .bexo-mobile {
-    display: none;
+    display: none !important;
+  }
+
+  .bexo-canvas-wrap {
+    display: flex !important;
+  }
+
+  .bexo-canvas-wrap > .canvas {
+    zoom: calc(100vw / 1512);
   }
 }
