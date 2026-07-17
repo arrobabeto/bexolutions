@@ -2,7 +2,12 @@ import { onMounted, onUnmounted, reactive, toRef } from "vue"
 import { BEXO_DESKTOP_BREAKPOINT_PX } from "~/constants/bexoNav"
 
 export function useBreakpoint() {
-  const state = reactive({ isDesktop: false })
+  const state = reactive({
+    isDesktop:
+      typeof window !== "undefined"
+        ? window.innerWidth >= BEXO_DESKTOP_BREAKPOINT_PX
+        : false,
+  })
   let mq: MediaQueryList | null = null
 
   function sync() {

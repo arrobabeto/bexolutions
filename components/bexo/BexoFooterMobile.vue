@@ -71,11 +71,11 @@
       <div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-5">
         <a
           v-for="legal of BEXO_LEGAL_LINKS"
-          :key="legal"
-          href="#"
+          :key="legal.l"
+          :href="legal.to"
           class="bexo-footer-legal inline-flex min-h-9 items-center text-xs leading-5 underline hover:opacity-80 sm:text-sm"
         >
-          {{ legal }}
+          {{ legal.l }}
         </a>
       </div>
     </div>

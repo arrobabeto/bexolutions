@@ -11,7 +11,7 @@ export const BEXO_FOOTER_LINKS = [
 ] as const
 
 export const BEXO_LEGAL_LINKS = [
-  "Datenschutzrichtlinie",
-  "Nutzungsbedingungen",
-  "Cookie-Einstellungen",
+  { l: "Datenschutzrichtlinie", to: "/datenschutz" },
+  { l: "Impressum", to: "/impressum" },
+  { l: "Cookie-Einstellungen", to: "/cookie-einstellungen" },
 ] as const
