@@ -46,8 +46,28 @@
         rel: "apple-touch-icon",
         href: config.public.organizationLogo,
       },
+      {
+        rel: "preconnect",
+        href: "https://legally-snippet.legal-cdn.com",
+      },
+      {
+        rel: "preload",
+        href: "https://legally-snippet.legal-cdn.com/v1/public/websites/H8xvpbgl0tQgVjzedqR5t8MX1rzhyE/cookie-banner/latest/blocker.js",
+        as: "script",
+      },
     ],
     script: [
+      {
+        src: "https://legally-snippet.legal-cdn.com/v1/public/websites/H8xvpbgl0tQgVjzedqR5t8MX1rzhyE/cookie-banner/latest/blocker.js",
+        type: "text/javascript",
+        tagPosition: "head",
+      },
+      {
+        src: "https://legally-snippet.legal-cdn.com/v1/public/websites/H8xvpbgl0tQgVjzedqR5t8MX1rzhyE/cookie-banner/latest/banner.js",
+        type: "text/javascript",
+        defer: true,
+        tagPosition: "bodyClose",
+      },
       {
         type: "application/ld+json",
         innerHTML: JSON.stringify({

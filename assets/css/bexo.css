@@ -79,9 +79,18 @@
 
 .bexo-canvas-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   background: #ffffff;
+}
+
+/* Fallback before JS zoom applies — fills viewport on desktop. */
+@media (min-width: 1024px) {
+  .bexo-canvas-wrap > .canvas {
+    zoom: calc(100vw / 1512);
+  }
 }
 
 .bexo-mobile {

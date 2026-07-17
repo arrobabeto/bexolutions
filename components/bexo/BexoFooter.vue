@@ -84,11 +84,11 @@
     <div class="absolute flex" style="left: 907px; top: 534px; gap: 24px">
       <a
         v-for="legal of BEXO_LEGAL_LINKS"
-        :key="legal"
-        href="#"
+        :key="legal.l"
+        :href="legal.to"
         class="footer-legal text-[16px] leading-[24px] text-white underline hover:opacity-80"
       >
-        {{ legal }}
+        {{ legal.l }}
       </a>
     </div>
   </footer>
