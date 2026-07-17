@@ -78,7 +78,6 @@
 }
 
 .bexo-canvas-wrap {
-  display: flex;
   justify-content: flex-start;
   width: 100%;
   max-width: 100%;
@@ -86,16 +85,28 @@
   background: #ffffff;
 }
 
-/* Fallback before JS zoom applies — fills viewport on desktop. */
+/* Only show / flex the canvas on desktop. Never set display:flex at all
+   breakpoints — it overrides Tailwind `hidden` and duplicates mobile pages. */
 @media (min-width: 1024px) {
+  .bexo-canvas-wrap {
+    display: flex;
+  }
+
   .bexo-canvas-wrap > .canvas {
     zoom: calc(100vw / 1512);
   }
 }
 
 .bexo-mobile {
+  display: block;
   width: 100%;
   max-width: 100%;
   min-width: 0;
   overflow-x: clip;
+}
+
+@media (min-width: 1024px) {
+  .bexo-mobile {
+    display: none;
+  }
 }
