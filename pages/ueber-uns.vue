@@ -93,8 +93,8 @@
       name: "Bexolutions Marketing & Vertrieb AG",
       cat: "Marketing & Vertrieb — Schweiz",
       body: "Full-Service-Marketing, SEO, Content, KI-Sichtbarkeit und Vertriebsoptimierung für Schweizer KMU. Das sind wir.",
-      left: 31,
-      logoLeft: 77,
+      left: 0,
+      logoLeft: 46,
     },
     {
       logo: `${IMG}/logo-syntech.png`,
@@ -102,8 +102,8 @@
       name: "Syntech Solutions",
       cat: "Technologie & App-Entwicklung",
       body: "Massgeschneiderte digitale Produkte, Web-Applikationen und technische Infrastruktur für anspruchsvolle Digitalprojekte.",
-      left: 518,
-      logoLeft: 564,
+      left: 487,
+      logoLeft: 533,
     },
     {
       logo: `${IMG}/logo-shark.png`,
@@ -111,21 +111,21 @@
       name: "SharkAgency",
       cat: "Performance Marketing & E-Commerce",
       body: "Google Ads, Meta Ads, datengetriebene Kampagnen und skalierbare E-Commerce-Strategien im DACH-Raum.",
-      left: 1007,
-      logoLeft: 1053,
+      left: 976,
+      logoLeft: 1022,
     },
   ]
 
   const groupStats = [
-    { value: "60%", label: "Mitarbeitende in der Gruppe", left: 31, w: 363 },
-    { value: "250+", label: "betreute Klienten", left: 394, w: 367 },
+    { value: "60%", label: "Mitarbeitende in der Gruppe", left: 0, w: 363 },
+    { value: "250+", label: "betreute Klienten", left: 363, w: 367 },
     {
       value: "200M+ €",
       label: "generierter Klientenumsatz",
-      left: 761,
+      left: 730,
       w: 364,
     },
-    { value: "4.9/5", label: "über 1'200+ Bewertungen", left: 1124, w: 357 },
+    { value: "4.9/5", label: "über 1'200+ Bewertungen", left: 1093, w: 357 },
   ]
 
   const stats = [
@@ -472,7 +472,7 @@
             :style="{
               left: c.left + 'px',
               top: '486px',
-              width: (c.left === 31 ? 487 : c.left === 518 ? 489 : 474) + 'px',
+              width: (c.left === 0 ? 487 : c.left === 487 ? 489 : 474) + 'px',
               height: '281px',
               background: 'rgba(3,3,3,0.5)',
             }"
