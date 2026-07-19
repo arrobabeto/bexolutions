@@ -44,21 +44,24 @@ export default defineNuxtConfig({
     sendgridFromName: process.env.SENDGRID_FROM_NAME ?? "Bexolutions",
     sendgridToEmail: process.env.SENDGRID_TO_EMAIL ?? "",
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? "https://www.bexolutions.ch",
       siteName:
-        process.env.NUXT_PUBLIC_SITE_NAME ?? "Orbitype Headless CMS Template",
+        process.env.NUXT_PUBLIC_SITE_NAME ??
+        "Bexolutions Marketing & Vertrieb AG",
       siteDescription:
         process.env.NUXT_PUBLIC_SITE_DESCRIPTION ??
-        "A production-ready starter for Orbitype-powered websites.",
-      organizationName: process.env.NUXT_PUBLIC_ORGANIZATION_NAME ?? "Orbitype",
+        "Bexolutions — Ihre Digitalagentur im Kanton Aargau. SEO, Online Marketing und Vertriebsoptimierung für KMU in der Schweiz und im DACH-Raum.",
+      organizationName:
+        process.env.NUXT_PUBLIC_ORGANIZATION_NAME ??
+        "Bexolutions Marketing und Vertrieb AG",
       organizationLogo:
         process.env.NUXT_PUBLIC_ORGANIZATION_LOGO ?? "/favicon.png",
       defaultLocale:
         process.env.NUXT_PUBLIC_DEFAULT_LOCALE ??
         process.env.NUXT_PUBLIC_SITE_LOCALE ??
-        "en_US",
-      twitterSite: process.env.NUXT_PUBLIC_TWITTER_SITE ?? "@orbitype",
-      twitterCreator: process.env.NUXT_PUBLIC_TWITTER_CREATOR ?? "@orbitype",
+        "de_CH",
+      twitterSite: process.env.NUXT_PUBLIC_TWITTER_SITE ?? "",
+      twitterCreator: process.env.NUXT_PUBLIC_TWITTER_CREATOR ?? "",
       ogImageEnabled: process.env.NUXT_PUBLIC_OG_IMAGE_ENABLED !== "false",
       commentsEnabled: process.env.NUXT_PUBLIC_COMMENTS_ENABLED === "true",
       gtmId,

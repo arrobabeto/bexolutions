@@ -29,7 +29,7 @@
   const canonicalUrl = `${config.public.siteUrl}/wissen/${blog.slug}`
 
   useHead({
-    htmlAttrs: { lang: "de" },
+    htmlAttrs: { lang: "de-CH" },
     link: [
       { rel: "canonical", href: canonicalUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

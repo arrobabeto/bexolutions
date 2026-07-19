@@ -135,7 +135,7 @@
 
   useHead({
     title: "Bexolutions — Better Marketing Systems",
-    htmlAttrs: { lang: "de" },
+    htmlAttrs: { lang: "de-CH" },
     link: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {

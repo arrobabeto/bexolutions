@@ -159,7 +159,7 @@
 
   useHead({
     title: "Wissen — Bexolutions",
-    htmlAttrs: { lang: "de" },
+    htmlAttrs: { lang: "de-CH" },
     link: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
