@@ -17,7 +17,7 @@
 
   useHead({
     title: "Mehr Mandanten für Ihr Treuhandbüro — Bexolutions",
-    htmlAttrs: { lang: "de" },
+    htmlAttrs: { lang: "de-CH" },
     link: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {

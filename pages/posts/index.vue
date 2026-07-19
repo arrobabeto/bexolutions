@@ -59,7 +59,7 @@
   await load()
   watch(pagination, load)
 
-  useHead({ title: "posts" })
+  useHead({ title: "Marketing-Blog" })
 </script>
 
 <template>
@@ -71,7 +71,7 @@
         Blog
       </p>
       <h1 class="text-2xl font-semibold text-[#010101] dark:text-[#fefefe]">
-        Latest Posts
+        Marketing-Blog — Bexolutions
       </h1>
     </header>
 

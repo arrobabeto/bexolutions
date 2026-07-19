@@ -6,10 +6,13 @@
   const config = useRuntimeConfig()
 
   useHead({
-    titleTemplate: (x) =>
-      x ? `${x} | ${config.public.siteName}` : config.public.siteName,
+    titleTemplate: (x) => {
+      if (!x) return config.public.siteName
+      // Avoid redundant "Bexolutions … | Bexolutions …" titles.
+      return x.includes("Bexolutions") ? x : `${x} | ${config.public.siteName}`
+    },
     htmlAttrs: {
-      lang: locale.value,
+      lang: locale.value === "de" ? "de-CH" : locale.value,
       class: "h-full",
     },
     bodyAttrs: {
@@ -81,6 +84,16 @@
               logo: {
                 "@type": "ImageObject",
                 url: config.public.organizationLogo,
+              },
+              telephone: "+41447713777",
+              email: "info@bexolutions.ch",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Fabrikweg 1a",
+                postalCode: "5502",
+                addressLocality: "Hunzenschwil",
+                addressRegion: "Aargau",
+                addressCountry: "CH",
               },
             },
             {
