@@ -6,6 +6,7 @@
   import UeberUnsMobile from "~/components/bexo/mobile/UeberUnsMobile.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
@@ -30,6 +31,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/ueber-uns",
+    title: "Über uns — Bexolutions",
+    description:
+      "Lernen Sie Bexolutions kennen — die Digitalagentur aus dem Kanton Aargau für SEO, Marketing und Vertrieb für Schweizer KMU.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Über uns", path: "/ueber-uns" },
     ],
   })
 
@@ -202,6 +214,7 @@
           <BackgroundMedia
             :poster="`${IMG}/hero-bg.jpg`"
             :video="BEXO_VIDEOS.ueberUnsHero"
+            poster-alt="Bexolutions Team und Agentur im Kanton Aargau"
             class="absolute inset-0 h-full w-full"
           />
           <div
@@ -285,7 +298,7 @@
               :src="`${IMG}/vision.jpg`"
               class="w-full rounded-[22px] object-cover"
               style="height: 255px"
-              alt=""
+              alt="Unsere Vision — faire Chancen für Schweizer KMU"
             />
             <div
               class="mt-[6px] flex flex-1 flex-col rounded-[22px] border border-[#c4c4c4] p-[12px]"
@@ -324,7 +337,7 @@
               :src="`${IMG}/mission.jpg`"
               class="mt-[6px] w-full rounded-[22px] object-cover"
               style="height: 211px"
-              alt=""
+              alt="Unsere Mission — messbares Marketing für KMU"
             />
           </article>
         </section>
@@ -354,7 +367,7 @@
             width: '245px',
             height: '300px',
           }"
-          alt=""
+          alt="Teammitglied von Bexolutions"
         />
         <p
           class="absolute text-[20px] font-normal leading-[28px] tracking-[0.4px] text-[#0e2138]"
@@ -403,7 +416,7 @@
               :src="p.img"
               class="w-full rounded-[22px] object-cover"
               style="height: 255px"
-              alt=""
+              :alt="p.title.replace(/\n/g, ' ')"
             />
             <div
               class="flex flex-1 flex-col rounded-[22px] border border-[#c4c4c4] p-[12px]"
@@ -424,7 +437,7 @@
               :src="p.img"
               class="mt-[6px] w-full rounded-[22px] object-cover"
               style="height: 211px"
-              alt=""
+              :alt="p.title.replace(/\n/g, ' ')"
             />
           </article>
         </section>
@@ -485,7 +498,7 @@
               :src="c.logo"
               class="object-contain object-left"
               :style="{ width: c.logoW + 'px', height: '40px' }"
-              alt=""
+              :alt="c.name"
             />
             <h3
               class="mt-[16px] text-[20px] font-semibold leading-[28px] tracking-[0.4px] text-white"
@@ -629,7 +642,7 @@
               <NuxtImg
                 :src="`${HOME}/logos-row1.png`"
                 class="marquee-img"
-                alt=""
+                alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
               />
               <NuxtImg
                 :src="`${HOME}/logos-row1.png`"
@@ -643,7 +656,7 @@
               <NuxtImg
                 :src="`${HOME}/logos-row2.png`"
                 class="marquee-img"
-                alt=""
+                alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
               />
               <NuxtImg
                 :src="`${HOME}/logos-row2.png`"
@@ -688,7 +701,7 @@
             <NuxtImg
               :src="`${IMG}/orbitype-bg.jpg`"
               class="absolute inset-0 h-full w-full object-cover"
-              alt=""
+              alt="Orbitype — Agentic Cloud OS Hintergrund"
             />
             <div
               class="absolute inset-0"
@@ -781,7 +794,7 @@
             <NuxtImg
               :src="`${IMG}/antarius-bg.jpg`"
               class="absolute inset-0 h-full w-full object-cover"
-              alt=""
+              alt="Antarius — digitale Infrastruktur"
             />
             <div
               class="absolute inset-0"
@@ -848,7 +861,7 @@
             :src="`${IMG}/worldmap.png`"
             class="absolute opacity-40"
             style="left: 106px; top: 55px; width: 1300px; height: 689px"
-            alt=""
+            alt="Weltkarte mit Bexolutions-Standorten"
           />
 
           <p
@@ -909,7 +922,7 @@
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
           />
           <div
             class="absolute inset-0"

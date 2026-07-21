@@ -6,6 +6,7 @@
   import LeistungenMobile from "~/components/bexo/mobile/LeistungenMobile.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
@@ -33,6 +34,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/leistungen",
+    title: "Leistungen — Bexolutions",
+    description:
+      "SEO, Local SEO, Content und KI-Sichtbarkeit: Die Leistungen von Bexolutions für Schweizer KMU im Kanton Aargau und DACH.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Leistungen", path: "/leistungen" },
     ],
   })
 
@@ -312,6 +324,7 @@
           <BackgroundMedia
             :poster="`${UB}/elev8-bg.jpg`"
             :video="BEXO_VIDEOS.leistungenHero"
+            poster-alt="Bexolutions Leistungen — Marketing und SEO für KMU"
             class="absolute inset-0 h-full w-full"
           />
           <div
@@ -686,7 +699,7 @@
           <NuxtImg
             :src="`${IMG}/treu-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="Treuhänder und Steuerberater — spezialisierte Marketingmethode"
           />
           <div
             class="absolute inset-0"
@@ -728,7 +741,7 @@
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
           />
           <div
             class="absolute inset-0"

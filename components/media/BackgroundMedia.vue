@@ -1,10 +1,17 @@
 <script setup lang="ts">
   import { onMounted, ref } from "vue"
 
-  const props = defineProps<{
-    poster: string
-    video?: string
-  }>()
+  const props = withDefaults(
+    defineProps<{
+      poster: string
+      video?: string
+      /** Descriptive alt for content-bearing posters; leave empty for decorative. */
+      posterAlt?: string
+    }>(),
+    {
+      posterAlt: "",
+    },
+  )
 
   const videoReady = ref(false)
   const showVideo = ref(false)
@@ -24,13 +31,13 @@
 <template>
   <div
     class="bg-media relative overflow-hidden"
-    aria-hidden="true"
+    :aria-hidden="props.posterAlt ? undefined : 'true'"
     v-bind="$attrs"
   >
     <NuxtImg
       :src="poster"
       class="bg-media__poster absolute inset-0 h-full w-full object-cover"
-      alt=""
+      :alt="props.posterAlt"
     />
     <video
       v-if="showVideo"

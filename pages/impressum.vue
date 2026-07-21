@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { definePageMeta, useHead } from "#imports"
   import LegalPage from "~/components/bexo/LegalPage.vue"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { impressumHtml, impressumTitle } from "~/data/legal/impressum"
 
   definePageMeta({ layout: false })
@@ -19,6 +20,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/impressum",
+    title: "Impressum — Bexolutions",
+    description:
+      "Impressum der Bexolutions Marketing & Vertrieb AG, Fabrikweg 1a, 5502 Hunzenschwil.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Impressum", path: "/impressum" },
     ],
   })
 </script>

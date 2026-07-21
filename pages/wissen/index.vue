@@ -6,6 +6,7 @@
   import WissenMobile from "~/components/bexo/mobile/WissenMobile.vue"
   import BlogCanvasCard from "~/components/blog/BlogCanvasCard.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { useWissenListing } from "~/composables/useWissenListing"
   import {
     WISSEN_FILTER_CHIPS,
@@ -174,6 +175,17 @@
     ],
   })
 
+  useMarketingPageSeo({
+    path: "/wissen",
+    title: "Wissen — Bexolutions",
+    description:
+      "Marketing-Blog von Bexolutions: SEO, Local SEO, LinkedIn und KI-Sichtbarkeit für Schweizer KMU und Treuhänder.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Wissen", path: "/wissen" },
+    ],
+  })
+
   const navLinks = [
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
@@ -302,7 +314,7 @@
           <NuxtImg
             :src="`${IMG}/hero-feature.jpg`"
             class="h-full w-full object-cover"
-            alt=""
+            alt="Zwei Personen arbeiten gemeinsam an Laptops"
           />
         </div>
 
@@ -473,7 +485,7 @@
           <NuxtImg
             :src="`${IMG}/midbanner-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="Wissen ist gut. Umsetzung ist besser."
           />
           <div
             class="absolute inset-0"
@@ -626,7 +638,7 @@
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
           />
           <div
             class="absolute inset-0"

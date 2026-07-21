@@ -6,6 +6,7 @@
   import KontaktForm from "~/components/bexo/KontaktForm.vue"
   import KontaktMobile from "~/components/bexo/mobile/KontaktMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
 
   definePageMeta({ layout: false })
 
@@ -29,6 +30,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/kontakt",
+    title: "Kontakt — Bexolutions",
+    description:
+      "Kontaktieren Sie Bexolutions in Hunzenschwil (Kanton Aargau). Beratung zu SEO, Marketing und Vertrieb für Schweizer KMU.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Kontakt", path: "/kontakt" },
     ],
   })
 
@@ -307,7 +319,7 @@
               height: 689px;
               opacity: 0.18;
             "
-            alt=""
+            alt="Stilisierte Weltkarte aus Punkten"
           />
           <div
             class="absolute overflow-hidden rounded-[30px]"

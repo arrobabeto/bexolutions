@@ -67,6 +67,7 @@
         <BackgroundMedia
           :poster="`${IMG}/hero-bg.jpg`"
           :video="BEXO_VIDEOS.ueberUnsHero"
+          poster-alt="Bexolutions Team und Agentur im Kanton Aargau"
           class="aspect-[4/5] w-full max-w-full sm:aspect-[16/10]"
         />
         <div class="absolute inset-0 bg-[#0e2138]/75"></div>
@@ -102,7 +103,7 @@
           <NuxtImg
             :src="p.img"
             class="aspect-video w-full object-cover"
-            alt=""
+            :alt="p.title"
           />
           <div class="p-5">
             <h3 class="text-lg font-semibold text-black">{{ p.title }}</h3>
@@ -122,7 +123,7 @@
           :key="i"
           :src="src"
           class="aspect-square w-full rounded-[16px] object-cover"
-          alt=""
+          alt="Teammitglied von Bexolutions"
         />
       </div>
     </BexoSection>

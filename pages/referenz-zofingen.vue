@@ -5,6 +5,7 @@
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import ReferenzZofingenMobile from "~/components/bexo/mobile/ReferenzZofingenMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
 
   definePageMeta({ layout: false })
 
@@ -28,6 +29,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/referenz-zofingen",
+    title: "Referenz: Zofingen Treuhand AG — Bexolutions",
+    description:
+      "Case Study: Wie Zofingen Treuhand AG mit Bexolutions organische SEO-Besucher und neue Mandanten gewonnen hat.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Referenz Zofingen Treuhand", path: "/referenz-zofingen" },
     ],
   })
 
@@ -545,7 +557,7 @@
           <NuxtImg
             :src="`${IMG}/dark-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="Dunkler Hintergrund — Bedeutung der Fallstudie-Zahlen"
           />
           <div
             class="absolute inset-0"
@@ -634,7 +646,7 @@
           <NuxtImg
             :src="`${IMG}/cta-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="CTA — ähnliche Resultate für Ihr Treuhandbüro"
           />
           <div
             class="absolute inset-0"
@@ -679,7 +691,7 @@
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
           />
           <div
             class="absolute inset-0"

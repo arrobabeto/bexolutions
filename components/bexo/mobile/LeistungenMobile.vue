@@ -79,6 +79,7 @@
         <BackgroundMedia
           :poster="`${UB}/elev8-bg.jpg`"
           :video="BEXO_VIDEOS.leistungenHero"
+          poster-alt="Bexolutions Leistungen — Marketing und SEO für KMU"
           class="aspect-[4/5] w-full max-w-full sm:aspect-[16/10]"
         />
         <div class="absolute inset-0 bg-[#0e2138]/75"></div>
@@ -153,7 +154,7 @@
       <NuxtImg
         :src="`${HOME}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"
-        alt=""
+        alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
         sizes="100vw"
       />
       <div class="absolute inset-0 bg-[#0e2138]/50"></div>
