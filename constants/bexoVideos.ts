@@ -1,6 +1,7 @@
 export const BEXO_VIDEOS = {
-  /** Figma 84:2435 — Startseite hero */
-  homeHero: "/videos/use-the-uploaded-image-as-the.mp4",
+  /** Startseite hero — Hero-Bex optimized */
+  homeHero: "/videos/hero-bex.mp4",
+  homeHeroWebm: "/videos/hero-bex.webm",
   /** Figma 34:980 — Startseite office / problem */
   homeOffice: "/videos/7659839-uhd-2160-3840-25fps.mp4",
   /** Figma 55:2152 — Startseite features card */
