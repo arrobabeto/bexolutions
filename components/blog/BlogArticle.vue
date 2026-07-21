@@ -143,7 +143,7 @@
               v-if="blog.heroImage"
               :src="blog.heroImage"
               class="h-full w-full object-cover"
-              alt=""
+              :alt="fullTitle"
             />
           </div>
 
@@ -189,7 +189,7 @@
             v-if="cta.bgImage"
             :src="cta.bgImage"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Bexolutions"
           />
           <div
             class="absolute inset-0"

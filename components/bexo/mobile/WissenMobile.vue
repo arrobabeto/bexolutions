@@ -101,7 +101,7 @@
         <NuxtImg
           :src="`${IMG}/hero-feature.jpg`"
           class="aspect-[16/10] w-full object-cover"
-          alt=""
+          alt="Zwei Personen arbeiten gemeinsam an Laptops"
         />
       </div>
       <p class="mt-5 text-center text-base leading-relaxed text-black">
@@ -206,7 +206,7 @@
       <NuxtImg
         :src="`${IMG}/midbanner-bg.jpg`"
         class="absolute inset-0 h-full w-full object-cover"
-        alt=""
+        alt="Wissen ist gut. Umsetzung ist besser."
       />
       <div class="bg-[#0e2138]/62 absolute inset-0"></div>
       <div class="relative px-6 py-10 text-center">
@@ -251,7 +251,7 @@
       <NuxtImg
         :src="`${HOME}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"
-        alt=""
+        alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
       />
       <div class="absolute inset-0 bg-[#0e2138]/55"></div>
       <div class="relative px-6 py-12">

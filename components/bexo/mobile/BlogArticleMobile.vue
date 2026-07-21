@@ -111,7 +111,7 @@
         v-if="cta.bgImage"
         :src="cta.bgImage"
         class="absolute inset-0 h-full w-full object-cover object-top"
-        alt=""
+        alt="Bexolutions"
         sizes="100vw"
       />
       <div class="absolute inset-0 bg-[#0e2138]/55" aria-hidden="true"></div>

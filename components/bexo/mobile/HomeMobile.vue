@@ -142,6 +142,7 @@
       <BackgroundMedia
         :poster="`${IMG}/hero-bg.jpg`"
         :video="BEXO_VIDEOS.homeHero"
+        poster-alt="Bexolutions Marketing Agentur Hunzenschwil Aargau"
         class="sm:aspect-video aspect-[4/5] w-full"
       />
       <div class="absolute inset-0 bg-black/40"></div>
@@ -196,12 +197,12 @@
         Über 100 KMU in der Deutschschweiz
       </h3>
       <div class="mt-6 space-y-4">
-        <div class="marquee" aria-hidden="true">
+        <div class="marquee">
           <div class="marquee-track marquee-left">
             <NuxtImg
               :src="`${IMG}/logos-row1.png`"
               class="marquee-img"
-              alt=""
+              alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
               loading="eager"
             />
             <NuxtImg
@@ -212,12 +213,12 @@
             />
           </div>
         </div>
-        <div class="marquee" aria-hidden="true">
+        <div class="marquee">
           <div class="marquee-track marquee-right">
             <NuxtImg
               :src="`${IMG}/logos-row2.png`"
               class="marquee-img"
-              alt=""
+              alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
               loading="eager"
             />
             <NuxtImg
@@ -235,6 +236,7 @@
       <BackgroundMedia
         :poster="`${IMG}/office.jpg`"
         :video="BEXO_VIDEOS.homeOffice"
+        poster-alt="Bexolutions Agentur Büro Kanton Aargau"
         class="aspect-[4/3] w-full"
       />
       <div class="absolute inset-0 bg-black/45"></div>
@@ -269,7 +271,7 @@
           <NuxtImg
             :src="f.img"
             class="aspect-[2/1] w-full rounded-[12px] object-cover"
-            alt=""
+            :alt="f.title.replace(/\n/g, ' ')"
           />
           <h4 class="mt-2 text-base font-semibold text-black">{{ f.title }}</h4>
           <p class="mt-1 text-sm leading-snug text-black">{{ f.body }}</p>
@@ -381,7 +383,7 @@
       <NuxtImg
         :src="`${IMG}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"
-        alt=""
+        alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
       />
       <div class="absolute inset-0 bg-[#0e2138]/50"></div>
       <div class="relative px-6 py-12">

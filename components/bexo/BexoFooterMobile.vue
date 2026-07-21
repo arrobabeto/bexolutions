@@ -3,6 +3,7 @@
     BEXO_FOOTER_LINKS,
     BEXO_FOOTER_WORDMARK,
     BEXO_LEGAL_LINKS,
+    BEXO_SOCIAL_LINKS,
   } from "~/constants/bexoFooter"
 </script>
 
@@ -17,7 +18,23 @@
         yesterday.
       </h2>
 
-      <div class="mt-6 grid grid-cols-2 gap-x-4 gap-y-4">
+      <div class="mt-6 grid grid-cols-3 gap-x-3 gap-y-4">
+        <div class="min-w-0">
+          <p class="text-sm font-bold leading-tight">Social:</p>
+          <ul class="mt-2 flex flex-col gap-0.5">
+            <li v-for="s of BEXO_SOCIAL_LINKS" :key="s.l">
+              <a
+                :href="s.href"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-10 items-center py-1 text-sm font-medium leading-tight underline transition hover:opacity-80"
+              >
+                {{ s.l }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <ul class="flex min-w-0 flex-col gap-0.5">
           <li v-for="l of BEXO_FOOTER_LINKS" :key="l.l">
             <a

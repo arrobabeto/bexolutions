@@ -95,6 +95,11 @@
                 addressRegion: "Aargau",
                 addressCountry: "CH",
               },
+              sameAs: [
+                "https://www.linkedin.com/company/bexolutions/",
+                "https://www.facebook.com/bexolutions/",
+                "https://www.instagram.com/balaram_entdeckt/",
+              ],
             },
             {
               "@type": "WebSite",

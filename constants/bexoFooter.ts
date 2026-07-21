@@ -15,3 +15,18 @@ export const BEXO_LEGAL_LINKS = [
   { l: "Impressum", to: "/impressum" },
   { l: "Cookie-Einstellungen", to: "/cookie-einstellungen" },
 ] as const
+
+export const BEXO_SOCIAL_LINKS = [
+  {
+    l: "LinkedIn",
+    href: "https://www.linkedin.com/company/bexolutions/",
+  },
+  {
+    l: "Facebook",
+    href: "https://www.facebook.com/bexolutions/",
+  },
+  {
+    l: "Instagram",
+    href: "https://www.instagram.com/balaram_entdeckt/",
+  },
+] as const

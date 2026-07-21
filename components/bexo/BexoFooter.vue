@@ -4,6 +4,7 @@
     BEXO_FOOTER_LINKS,
     BEXO_FOOTER_WORDMARK,
     BEXO_LEGAL_LINKS,
+    BEXO_SOCIAL_LINKS,
   } from "~/constants/bexoFooter"
 
   const p = defineProps<{
@@ -27,6 +28,22 @@
     >
       Better than yesterday.
     </h2>
+
+    <div class="absolute" style="left: 787px; top: 96px; width: 160px">
+      <p class="text-[14px] font-bold leading-[21px] text-white">Social:</p>
+      <ul class="mt-3 flex flex-col" style="gap: 12px">
+        <li v-for="s of BEXO_SOCIAL_LINKS" :key="s.l">
+          <a
+            :href="s.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[14px] font-medium leading-[18px] text-white underline transition hover:opacity-80"
+          >
+            {{ s.l }}
+          </a>
+        </li>
+      </ul>
+    </div>
 
     <ul
       class="absolute flex flex-col"

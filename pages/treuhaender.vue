@@ -5,6 +5,7 @@
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import TreuhaenderMobile from "~/components/bexo/mobile/TreuhaenderMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
 
   definePageMeta({ layout: false })
 
@@ -29,6 +30,17 @@
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
       },
+    ],
+  })
+
+  useMarketingPageSeo({
+    path: "/treuhaender",
+    title: "Mehr Mandanten für Ihr Treuhandbüro — Bexolutions",
+    description:
+      "SEO und digitales Marketing speziell für Schweizer Treuhandbüros — mehr Mandanten über Google und Local SEO mit Bexolutions.",
+    breadcrumbs: [
+      { name: "Home", path: "/" },
+      { name: "Treuhänder", path: "/treuhaender" },
     ],
   })
 
@@ -418,7 +430,7 @@
             <NuxtImg
               :src="`${IMG}/problem.jpg`"
               class="h-full w-full object-cover"
-              alt=""
+              alt="Empfehlungen als einziger Akquisitionskanal für Treuhandbüros"
             />
           </div>
         </div>
@@ -431,7 +443,7 @@
           <NuxtImg
             :src="`${REF}/dark-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="Dunkler Hintergrund für Zitatband"
           />
           <div
             class="absolute inset-0"
@@ -604,7 +616,7 @@
             <NuxtImg
               :src="`${IMG}/${s.img}`"
               class="h-full w-full object-cover"
-              alt=""
+              :alt="s.label"
             />
             <div
               class="absolute inset-x-0 bottom-0 h-[300px]"
@@ -693,7 +705,7 @@
           <NuxtImg
             :src="`${IMG}/ki-bg.jpg`"
             class="absolute inset-0 h-full w-full object-cover"
-            alt=""
+            alt="KI-Sichtbarkeit für Treuhandbüros"
           />
           <div
             class="absolute inset-0"
@@ -814,7 +826,7 @@
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
-            alt=""
+            alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
           />
           <div
             class="absolute inset-0"
