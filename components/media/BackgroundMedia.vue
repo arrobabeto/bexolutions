@@ -1,10 +1,13 @@
 <script setup lang="ts">
-  import { onMounted, ref } from "vue"
+  import { computed, onMounted, ref } from "vue"
 
   const props = withDefaults(
     defineProps<{
       poster: string
+      /** MP4 path (Safari / universal fallback). */
       video?: string
+      /** Optional WebM path — preferred in Chrome/Firefox when present. */
+      videoWebm?: string
       /** Descriptive alt for content-bearing posters; leave empty for decorative. */
       posterAlt?: string
     }>(),
@@ -16,11 +19,13 @@
   const videoReady = ref(false)
   const showVideo = ref(false)
 
+  const hasVideo = computed(() => Boolean(props.video || props.videoWebm))
+
   onMounted(() => {
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches
-    showVideo.value = Boolean(props.video) && !reduced
+    showVideo.value = hasVideo.value && !reduced
   })
 
   function onVideoReady() {
@@ -41,17 +46,19 @@
     />
     <video
       v-if="showVideo"
-      :src="video"
       class="bg-media__video absolute inset-0 h-full w-full object-cover"
       :class="{ 'bg-media__video--ready': videoReady }"
       autoplay
       muted
       loop
       playsinline
-      preload="metadata"
+      preload="none"
       @loadeddata="onVideoReady"
       @canplay="onVideoReady"
-    />
+    >
+      <source v-if="videoWebm" :src="videoWebm" type="video/webm" />
+      <source v-if="video" :src="video" type="video/mp4" />
+    </video>
   </div>
 </template>
 

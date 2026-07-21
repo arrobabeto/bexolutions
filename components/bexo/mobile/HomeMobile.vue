@@ -142,6 +142,7 @@
       <BackgroundMedia
         :poster="`${IMG}/hero-bg.jpg`"
         :video="BEXO_VIDEOS.homeHero"
+        :video-webm="BEXO_VIDEOS.homeHeroWebm"
         poster-alt="Bexolutions Marketing Agentur Hunzenschwil Aargau"
         class="sm:aspect-video aspect-[4/5] w-full"
       />
