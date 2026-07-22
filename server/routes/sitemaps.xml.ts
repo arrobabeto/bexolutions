@@ -6,7 +6,8 @@ import {
 
 /** Alias of /sitemap.xml — kept for older robots / Search Console submissions. */
 export default defineEventHandler((event) => {
-  const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  const siteUrl =
+    process.env.NUXT_PUBLIC_SITE_URL ?? "https://www.bexolutions.ch"
   const entries = buildBexoSitemapEntries(siteUrl)
 
   appendResponseHeaders(event, {
