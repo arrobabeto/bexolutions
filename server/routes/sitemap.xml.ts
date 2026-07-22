@@ -4,7 +4,10 @@ import {
   buildBexoSitemapEntries,
 } from "~/server/utils/bexoSitemap"
 
-/** Alias of /sitemap.xml — kept for older robots / Search Console submissions. */
+/**
+ * Canonical sitemap for Google Search Console.
+ * German-only flat urlset with all marketing pages + Wissen blogs.
+ */
 export default defineEventHandler((event) => {
   const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   const entries = buildBexoSitemapEntries(siteUrl)

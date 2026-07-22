@@ -42,10 +42,12 @@ test.describe("Homepage smoke", () => {
     expect(robotsBody).toContain("Sitemap:")
     expect(robotsBody).toContain("LLMs-Txt:")
 
-    const sitemapResponse = await request.get("/sitemaps.xml")
+    const sitemapResponse = await request.get("/sitemap.xml")
     expect(sitemapResponse.ok()).toBeTruthy()
     const sitemapBody = await sitemapResponse.text()
-    expect(sitemapBody).toContain("<sitemapindex")
+    expect(sitemapBody).toContain("<urlset")
+    expect(sitemapBody).toContain("<loc>")
+    expect(sitemapBody).toContain("/wissen")
 
     const llmsResponse = await request.get("/llms.txt")
     expect(llmsResponse.ok()).toBeTruthy()
