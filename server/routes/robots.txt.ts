@@ -1,11 +1,11 @@
 import { appendResponseHeaders, defineEventHandler } from "h3"
 import { dedent } from "ts-dedent"
+import { getSiteUrl } from "~/server/utils/bexoSiteCatalog"
 
 export default defineEventHandler(async (event) => {
-  const siteUrl = process.env.NUXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  const baseUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl
+  const baseUrl = getSiteUrl()
 
-  appendResponseHeaders(event, { "Content-Type": "text/plain" })
+  appendResponseHeaders(event, { "Content-Type": "text/plain; charset=utf-8" })
   return dedent`
     User-agent: *
     Allow: /
@@ -18,6 +18,7 @@ export default defineEventHandler(async (event) => {
     Allow: /sitemap.xml
     Allow: /sitemaps.xml
     Allow: /llms.txt
+    Allow: /llms-full.txt
 
     Crawl-delay: 1
 
