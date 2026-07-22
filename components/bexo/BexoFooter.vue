@@ -85,6 +85,9 @@
       class="absolute opacity-90"
       style="left: 120px; top: 322px; width: 1272px; height: 108px"
       alt="BEXOLUTIONS"
+      :width="1272"
+      :height="108"
+      loading="lazy"
     />
 
     <div

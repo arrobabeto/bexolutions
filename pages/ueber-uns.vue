@@ -20,18 +20,6 @@
   useHead({
     title: "Über uns — Bexolutions",
     htmlAttrs: { lang: "de-CH" },
-    link: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossorigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
-      },
-    ],
   })
 
   useMarketingPageSeo({
@@ -643,11 +631,17 @@
                 :src="`${HOME}/logos-row1.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
+                :width="4002"
+                :height="160"
+                loading="lazy"
               />
               <NuxtImg
                 :src="`${HOME}/logos-row1.png`"
                 class="marquee-img"
                 alt=""
+                :width="4002"
+                :height="160"
+                loading="lazy"
               />
             </div>
           </div>
@@ -657,11 +651,17 @@
                 :src="`${HOME}/logos-row2.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
+                :width="3709"
+                :height="160"
+                loading="lazy"
               />
               <NuxtImg
                 :src="`${HOME}/logos-row2.png`"
                 class="marquee-img"
                 alt=""
+                :width="3709"
+                :height="160"
+                loading="lazy"
               />
             </div>
           </div>
