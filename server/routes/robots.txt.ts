@@ -15,14 +15,13 @@ export default defineEventHandler(async (event) => {
     Disallow: /api/
 
     Allow: /robots.txt
+    Allow: /sitemap.xml
     Allow: /sitemaps.xml
     Allow: /llms.txt
 
     Crawl-delay: 1
 
-    Sitemap: ${baseUrl}/sitemaps.xml
-    Sitemap: ${baseUrl}/en/sitemaps.xml
-    Sitemap: ${baseUrl}/de/sitemaps.xml
+    Sitemap: ${baseUrl}/sitemap.xml
 
     LLMs-Txt: ${baseUrl}/llms.txt
     LLMs-Full-Txt: ${baseUrl}/llms-full.txt

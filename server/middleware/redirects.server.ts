@@ -3,10 +3,6 @@ import { defineEventHandler, sendRedirect } from "h3"
 // attention: order matters as it is startsWith with!
 const redirects = [
   {
-    from: "/sitemap.xml",
-    to: "/sitemaps.xml",
-  },
-  {
     from: "/blog",
     to: "/posts",
   },
