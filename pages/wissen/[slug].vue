@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import { showError, useSeoMeta } from "#app"
   import { definePageMeta, useHead, useRoute, useRuntimeConfig } from "#imports"
-  import type { IBlog } from "~/types/dto/IBlog"
   import BlogArticle from "~/components/blog/BlogArticle.vue"
   import { getBlogFeaturedTitle } from "~/utils/blogs"
+  import { loadAllBlogs } from "~/utils/loadBlogs"
 
   definePageMeta({ layout: false })
 
@@ -11,17 +11,7 @@
   const route = useRoute()
   const slug = String(route.params["slug"])
 
-  // Eager glob: every data file is bundled and evaluated at build time — the
-  // same proven pattern as components/sections/AnySection.vue. Keyed by each
-  // file's own `slug` field, so the filename need not match the slug.
-  const modules = import.meta.glob<{ default: IBlog }>("~/data/blog/*.ts", {
-    eager: true,
-  })
-  const bySlug = new Map<string, IBlog>(
-    Object.values(modules).map((m) => [m.default.slug, m.default]),
-  )
-
-  const blog = bySlug.get(slug)
+  const blog = loadAllBlogs().find((b) => b.slug === slug)
   if (!blog)
     throw showError({ statusCode: 404, statusMessage: "Blog not found" })
 
@@ -30,19 +20,7 @@
 
   useHead({
     htmlAttrs: { lang: "de-CH" },
-    link: [
-      { rel: "canonical", href: canonicalUrl },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossorigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
-      },
-    ],
+    link: [{ rel: "canonical", href: canonicalUrl }],
     script: [
       {
         type: "application/ld+json",

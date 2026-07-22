@@ -63,7 +63,7 @@
       {
         src: "https://legally-snippet.legal-cdn.com/v1/public/websites/H8xvpbgl0tQgVjzedqR5t8MX1rzhyE/cookie-banner/latest/blocker.js",
         type: "text/javascript",
-        tagPosition: "head",
+        defer: true,
       },
       {
         src: "https://legally-snippet.legal-cdn.com/v1/public/websites/H8xvpbgl0tQgVjzedqR5t8MX1rzhyE/cookie-banner/latest/banner.js",
@@ -131,7 +131,7 @@
     />
     <Link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Manrope:wght@400;500&display=swap"
     />
   </Head>
 

@@ -7,7 +7,8 @@ import {
   type WissenCategoryFilter,
   type WissenFilterChip,
 } from "~/constants/wissenCategories"
-import { filterBlogsByCategory, loadAllBlogs } from "~/utils/blogs"
+import { filterBlogsByCategory } from "~/utils/blogs"
+import { loadAllBlogs } from "~/utils/loadBlogs"
 
 export function useWissenListing() {
   const allBlogs = loadAllBlogs()

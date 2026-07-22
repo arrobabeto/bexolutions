@@ -205,12 +205,16 @@
               class="marquee-img"
               alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
               loading="eager"
+              :width="4002"
+              :height="160"
             />
             <NuxtImg
               :src="`${IMG}/logos-row1.png`"
               class="marquee-img"
               alt=""
               loading="eager"
+              :width="4002"
+              :height="160"
             />
           </div>
         </div>
@@ -221,12 +225,16 @@
               class="marquee-img"
               alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
               loading="eager"
+              :width="3709"
+              :height="160"
             />
             <NuxtImg
               :src="`${IMG}/logos-row2.png`"
               class="marquee-img"
               alt=""
               loading="eager"
+              :width="3709"
+              :height="160"
             />
           </div>
         </div>
@@ -238,6 +246,7 @@
         :poster="`${IMG}/office.jpg`"
         :video="BEXO_VIDEOS.homeOffice"
         poster-alt="Bexolutions Agentur Büro Kanton Aargau"
+        loading="lazy"
         class="aspect-[4/3] w-full"
       />
       <div class="absolute inset-0 bg-black/45"></div>
@@ -273,6 +282,7 @@
             :src="f.img"
             class="aspect-[2/1] w-full rounded-[12px] object-cover"
             :alt="f.title.replace(/\n/g, ' ')"
+            loading="lazy"
           />
           <h4 class="mt-2 text-base font-semibold text-black">{{ f.title }}</h4>
           <p class="mt-1 text-sm leading-snug text-black">{{ f.body }}</p>
@@ -331,6 +341,7 @@
       <BackgroundMedia
         :poster="`${IMG}/treuhaender-bg.jpg`"
         :video="BEXO_VIDEOS.homeTreuhaender"
+        loading="lazy"
         class="aspect-[4/3] w-full"
       />
       <div class="absolute inset-0 bg-[#0e2138]/70"></div>
@@ -385,6 +396,7 @@
         :src="`${IMG}/billboard.jpg`"
         class="absolute inset-0 h-full w-full object-cover object-top"
         alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
+        loading="lazy"
       />
       <div class="absolute inset-0 bg-[#0e2138]/50"></div>
       <div class="relative px-6 py-12">

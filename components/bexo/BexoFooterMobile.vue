@@ -78,6 +78,7 @@
         class="mt-6 h-auto w-full max-w-full object-contain object-left opacity-90"
         alt="BEXOLUTIONS"
         sizes="100vw"
+        loading="lazy"
       />
 
       <div class="mt-6 h-px w-full bg-white/20"></div>

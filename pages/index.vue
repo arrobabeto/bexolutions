@@ -137,18 +137,6 @@
   useHead({
     title: "Bexolutions — Marketing & SEO für KMU | Kanton Aargau",
     htmlAttrs: { lang: "de-CH" },
-    link: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossorigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Jost:wght@400;500&family=Inter:wght@400;500;700&display=swap",
-      },
-    ],
   })
 
   useMarketingPageSeo({
@@ -513,11 +501,15 @@
                 :src="`${IMG}/logos-row1.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
+                :width="4002"
+                :height="160"
               />
               <NuxtImg
                 :src="`${IMG}/logos-row1.png`"
                 class="marquee-img"
                 alt=""
+                :width="4002"
+                :height="160"
               />
             </div>
           </div>
@@ -527,11 +519,15 @@
                 :src="`${IMG}/logos-row2.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
+                :width="3709"
+                :height="160"
               />
               <NuxtImg
                 :src="`${IMG}/logos-row2.png`"
                 class="marquee-img"
                 alt=""
+                :width="3709"
+                :height="160"
               />
             </div>
           </div>
@@ -546,6 +542,7 @@
             :poster="`${IMG}/office.jpg`"
             :video="BEXO_VIDEOS.homeOffice"
             poster-alt="Bexolutions Agentur Büro Kanton Aargau"
+            loading="lazy"
             class="absolute inset-0 h-full w-full"
           />
           <div class="absolute inset-0 bg-black/45"></div>
@@ -629,6 +626,7 @@
                   v-if="f.imgTop && f.video"
                   :poster="f.img"
                   :video="f.video"
+                  loading="lazy"
                   class="h-[246px] w-full rounded-[22px]"
                 />
                 <NuxtImg
@@ -637,6 +635,7 @@
                   class="w-full rounded-[22px] object-cover"
                   style="height: 246px"
                   :alt="f.title.replace(/\n/g, ' ')"
+                  loading="lazy"
                 />
                 <div
                   class="flex flex-1 flex-col rounded-[22px] border border-[#c4c4c4] p-[12px]"
@@ -659,6 +658,7 @@
                   class="mt-[6px] w-full rounded-[22px] object-cover"
                   style="height: 211px"
                   :alt="f.title.replace(/\n/g, ' ')"
+                  loading="lazy"
                 />
               </article>
             </div>
@@ -770,6 +770,7 @@
           <BackgroundMedia
             :poster="`${IMG}/quote-bg.jpg`"
             :video="BEXO_VIDEOS.homeSteps"
+            loading="lazy"
             class="absolute inset-0 h-full w-full opacity-60"
           />
 
@@ -836,24 +837,36 @@
             class="absolute rounded-[30px] object-cover"
             style="left: 120px; top: 281px; width: 341px; height: 428px"
             alt="Laptop mit Website der Zofingen Treuhand AG auf dem Schreibtisch"
+            :width="341"
+            :height="428"
+            loading="lazy"
           />
           <NuxtImg
             :src="`${IMG}/warum-2.png`"
             class="absolute rounded-[30px] object-cover"
             style="left: 480px; top: 283px; width: 182px; height: 286px"
             alt="Hand skizziert Typografie in einem Notizbuch"
+            :width="182"
+            :height="286"
+            loading="lazy"
           />
           <NuxtImg
             :src="`${IMG}/warum-3.png`"
             class="absolute rounded-[22px] object-cover"
             style="left: 480px; top: 587px; width: 182px; height: 121px"
             alt="Kreativer Arbeitsplatz mit Designbüchern und Tablet"
+            :width="182"
+            :height="121"
+            loading="lazy"
           />
           <NuxtImg
             :src="`${IMG}/warum-4.png`"
             class="absolute rounded-[30px] object-cover"
             style="left: 120px; top: 721px; width: 542px; height: 254px"
             alt="Offenes Markenbuch mit Corporate Design für Private Sprachkurse"
+            :width="542"
+            :height="254"
+            loading="lazy"
           />
 
           <!-- pale panel -->
@@ -893,6 +906,7 @@
           <BackgroundMedia
             :poster="`${IMG}/treuhaender-bg.jpg`"
             :video="BEXO_VIDEOS.homeTreuhaender"
+            loading="lazy"
             class="absolute inset-0 h-full w-full"
           />
           <div
@@ -1010,6 +1024,7 @@
             :src="`${IMG}/billboard.jpg`"
             class="absolute inset-0 h-full w-full object-cover object-top"
             alt="Digitales Bexolutions-Werbeplakat in einer Bahnhofsumgebung"
+            loading="lazy"
           />
           <div
             class="absolute inset-0"

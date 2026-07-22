@@ -10,8 +10,8 @@ const tailwind = {
 
   theme: {
     fontFamily: {
-      sans: ["Inter var", "sans-serif"],
-      serif: ["Merriweather", "serif"],
+      sans: ["Inter", "sans-serif"],
+      serif: ["ui-serif", "Georgia", "serif"],
     },
     colors: ({ colors }) => ({
       transparent: "transparent",
@@ -20,9 +20,9 @@ const tailwind = {
       white: colors.white,
       gray: colors.gray,
       cyan: {
-        ['400']: "#67e8f9",
-        ['500']: "#06b6d4",
-        ['600']: "#0e7490",
+        ["400"]: "#67e8f9",
+        ["500"]: "#06b6d4",
+        ["600"]: "#0e7490",
       },
     }),
     maxWidth: ({ theme, breakpoints }) => ({
