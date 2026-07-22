@@ -187,7 +187,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/linkedin-kmu-inhaber-thought-leadership-30-minuten/infographic.png",
+      src: "/images/blog/linkedin-kmu-inhaber-thought-leadership-30-minuten/infographic.avif",
       alt: "LinkedIn Engagement-Rate nach Format — DACH vs. USA Vergleich 2026",
       caption:
         "DACH vs. USA: Substanz-Formate performen im Schweizer LinkedIn-Feed besser als emotionale Stories.",

@@ -94,7 +94,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/b2b-kaeufer-ki-recherche-kmu-schweiz/infographic.png",
+      src: "/images/blog/b2b-kaeufer-ki-recherche-kmu-schweiz/infographic.avif",
       alt: "G2 The Answer Economy 2026 — Kernzahlen zum B2B-Käuferverhalten mit KI",
       caption:
         "Überblick: Die wichtigsten Zahlen aus dem G2-Report «The Answer Economy» (April 2026).",

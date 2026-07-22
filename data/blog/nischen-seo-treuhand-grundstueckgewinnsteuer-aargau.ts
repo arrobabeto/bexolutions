@@ -126,7 +126,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/nischen-seo-treuhand-grundstueckgewinnsteuer-aargau/infographic.png",
+      src: "/images/blog/nischen-seo-treuhand-grundstueckgewinnsteuer-aargau/infographic.avif",
       alt: "Nischen-SEO für Treuhandkanzleien: Long-Tail-Keywords mit hoher Kaufabsicht",
       caption:
         "Nischen-SEO für Treuhandkanzleien — spezifisch, lokal, kaufbereit.",

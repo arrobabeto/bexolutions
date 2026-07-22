@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import type { BlogBlock } from "~/types/dto/IBlog"
+  import BlogImage from "~/components/blog/BlogImage.vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
 
   defineProps<{ block: BlogBlock }>()
@@ -109,23 +110,12 @@
   </component>
 
   <!-- Image ------------------------------------------------------------- -->
-  <figure
+  <BlogImage
     v-else-if="block.type === 'image'"
-    class="my-2 w-full min-w-0 max-w-full"
-  >
-    <NuxtImg
-      :src="block.src"
-      class="h-auto w-full max-w-full rounded-[16px] object-cover lg:rounded-[20px]"
-      :alt="block.alt"
-      sizes="100vw"
-    />
-    <figcaption
-      v-if="block.caption"
-      class="mt-2 break-words text-xs text-[#888787] lg:mt-[8px] lg:text-[14px]"
-    >
-      {{ block.caption }}
-    </figcaption>
-  </figure>
+    :src="block.src"
+    :alt="block.alt"
+    :caption="block.caption"
+  />
 
   <!-- Callout ----------------------------------------------------------- -->
   <div

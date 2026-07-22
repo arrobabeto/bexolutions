@@ -144,7 +144,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/ki-sichtbarkeit-messen-tools-kmu/infographic.png",
+      src: "/images/blog/ki-sichtbarkeit-messen-tools-kmu/infographic.avif",
       alt: "KI-Sichtbarkeit messen — Share of Voice und Kernkennzahlen für Schweizer KMU",
       caption:
         "Überblick: Mention Rate, Share of Voice und Sentiment — die drei Kennzahlen der KI-Sichtbarkeit.",

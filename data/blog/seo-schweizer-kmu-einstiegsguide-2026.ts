@@ -164,7 +164,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/seo-schweizer-kmu-einstiegsguide-2026/infographic.png",
+      src: "/images/blog/seo-schweizer-kmu-einstiegsguide-2026/infographic.avif",
       alt: "Die 5 SEO-Säulen für Schweizer KMU — Technisch, On-Page, Content, Off-Page, Lokal",
       caption:
         "Überblick: Die fünf Säulen der Suchmaschinenoptimierung für Schweizer KMU.",
