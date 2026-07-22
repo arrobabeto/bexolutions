@@ -72,8 +72,8 @@
     if (featScroll && featTrack) {
       const vh = window.innerHeight || 1
       const galleryTop = featScroll.getBoundingClientRect().top
-      const startY = vh * 0.48
-      const endY = vh * 0.12
+      const startY = vh * 0.34
+      const endY = vh * 0.08
       const progress = clamp01((startY - galleryTop) / (startY - endY))
       const maxX = Math.max(0, featTrack.scrollWidth - featScroll.clientWidth)
       featTranslateX.value = -(progress * maxX)
