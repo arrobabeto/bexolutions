@@ -66,6 +66,13 @@ export default {
       title: "Neu 2026: GBP-Daten fliessen direkt in KI-Antworten ein.",
       body: "ChatGPT, Perplexity und Google AI Mode nutzen Ihr Profil als Quelle für lokale Empfehlungen. Was für Google Maps gilt, gilt heute auch für KI-Suchen.",
     },
+    {
+      type: "image",
+      src: "/images/blog/google-business-profile-optimieren/infographic.avif",
+      alt: "Sichtbarkeits-Guide für Schweizer Unternehmen: Google Business Profile optimieren",
+      caption:
+        "Sichtbarkeits-Guide: Die wichtigsten Hebel für ein starkes Google Business Profile.",
+    },
     { type: "divider" },
 
     // ---- Rankingfaktoren --------------------------------------------------

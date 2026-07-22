@@ -131,7 +131,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/keyword-recherche-kmu-schweiz-suchbegriffe-finden/infographic.png",
+      src: "/images/blog/keyword-recherche-kmu-schweiz-suchbegriffe-finden/infographic.avif",
       alt: "Keyword-Recherche in 5 Schritten für Schweizer KMU — von Seed-Keywords bis Keyword-Mapping",
       caption:
         "Überblick: Keyword-Recherche in fünf Schritten — von Seed-Keywords bis zur Seitenzuordnung.",

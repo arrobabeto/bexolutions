@@ -94,7 +94,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/linkedin-personal-branding-profil-vs-firmenseite-kmu/infographic.png",
+      src: "/images/blog/linkedin-personal-branding-profil-vs-firmenseite-kmu/infographic.avif",
       alt: "LinkedIn Personenprofil vs. Firmenseite — Reichweite und Engagement-Rate im Vergleich 2026",
       caption:
         "Personenprofile dominieren den Feed: 65 % vs. 5 % für Firmenseiten (DSMN8, 2026).",

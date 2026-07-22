@@ -163,7 +163,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/seo-ohne-werbebudget-organische-sichtbarkeit-kmu/infographic.png",
+      src: "/images/blog/seo-ohne-werbebudget-organische-sichtbarkeit-kmu/infographic.avif",
       alt: "4 Phasen zur organischen SEO-Sichtbarkeit für Schweizer KMU ohne Werbebudget",
       caption:
         "Überblick: Organische Sichtbarkeit ohne Ads — der Weg in vier Phasen.",

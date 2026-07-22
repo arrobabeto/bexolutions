@@ -114,7 +114,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/local-seo-schweiz-google-maps-platz-1-kmu/infographic.png",
+      src: "/images/blog/local-seo-schweiz-google-maps-platz-1-kmu/infographic.avif",
       alt: "Local SEO Schweiz — Der Weg in das Google Maps Local Pack in 5 Phasen",
       caption:
         "Überblick: Rankingfaktoren und 5-Phasen-Roadmap zum Google Maps Local Pack für Schweizer KMU.",

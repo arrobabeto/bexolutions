@@ -138,7 +138,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/google-maps-vs-organische-suche-kmu-schweiz/infographic.png",
+      src: "/images/blog/google-maps-vs-organische-suche-kmu-schweiz/infographic.avif",
       alt: "Suchergebnis-Vergleich für lokale Unternehmen — Local Pack vs. organische Suche",
       caption:
         "Klickraten und Bereiche auf der lokalen Google-Ergebnisseite im Überblick.",

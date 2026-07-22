@@ -349,7 +349,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/warum-kmu-bei-google-unsichtbar-ursachen-fixes/infographic.png",
+      src: "/images/blog/warum-kmu-bei-google-unsichtbar-ursachen-fixes/infographic.avif",
       alt: "7 Ursachen warum KMU bei Google nicht gefunden werden — mit Schwere und Fix",
       caption:
         "Überblick: Die sieben häufigsten Ursachen für fehlende Google-Sichtbarkeit bei Schweizer KMU.",
