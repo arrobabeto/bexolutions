@@ -40,7 +40,7 @@
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
     { l: "Wissen", to: "/wissen" },
-    { l: "Treuhänder", to: "#" },
+    { l: "Treuhänder", to: "/treuhaender" },
   ]
 
   const saeulen = [
@@ -228,6 +228,26 @@
       a: "Ja — über die Elev8 Group haben wir Zugang zu Syntech Solutions für App- und Softwareentwicklung sowie zu SharkAgency für skaliertes Performance-Marketing. Ein Ansprechpartner bei Bexolutions koordiniert den Zugang zum gesamten Gruppenportfolio.",
     },
   ]
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.a,
+            },
+          })),
+        }),
+      },
+    ],
+  })
 
   const FAQ_SECTION_TOP = 7139
   const FAQ_LIST_TOP = 206
@@ -710,7 +730,11 @@
               Deutschschweiz — mit nachgewiesenen Resultaten und tiefem
               Branchenverständnis.
             </p>
-            <a href="#" class="btn-primary mt-[30px]" style="width: 237px">
+            <a
+              href="/treuhaender"
+              class="btn-primary mt-[30px]"
+              style="width: 237px"
+            >
               Mehr erfahren
             </a>
           </div>

@@ -16,7 +16,8 @@
     throw showError({ statusCode: 404, statusMessage: "Blog not found" })
 
   const fullTitle = getBlogFeaturedTitle(blog)
-  const canonicalUrl = `${config.public.siteUrl}/wissen/${blog.slug}`
+  const baseUrl = String(config.public.siteUrl).replace(/\/$/, "")
+  const canonicalUrl = `${baseUrl}/wissen/${blog.slug}`
 
   useHead({
     htmlAttrs: { lang: "de-CH" },
@@ -52,6 +53,33 @@
             },
           },
           mainEntityOfPage: canonicalUrl,
+        }),
+      },
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: `${baseUrl}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Wissen",
+              item: `${baseUrl}/wissen`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: fullTitle,
+              item: canonicalUrl,
+            },
+          ],
         }),
       },
     ],
