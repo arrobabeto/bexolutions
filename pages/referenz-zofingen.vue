@@ -35,7 +35,7 @@
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
     { l: "Wissen", to: "/wissen" },
-    { l: "Treuhänder", to: "#" },
+    { l: "Treuhänder", to: "/treuhaender" },
   ]
 
   // ---- Results grid (2 x 3) ----

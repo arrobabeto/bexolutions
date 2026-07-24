@@ -151,7 +151,7 @@
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
     { l: "Wissen", to: "/wissen" },
-    { l: "Treuhänder", to: "#" },
+    { l: "Treuhänder", to: "/treuhaender" },
   ]
 
   const stats = [
@@ -931,7 +931,11 @@
               nachgewiesenen Resultaten. Mehr Mandanten über Google, ohne
               Werbebudget.
             </p>
-            <a href="#" class="btn-primary mt-[30px]" style="width: 237px">
+            <a
+              href="/treuhaender"
+              class="btn-primary mt-[30px]"
+              style="width: 237px"
+            >
               Mehr erfahren
             </a>
           </div>

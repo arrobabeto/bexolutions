@@ -1,20 +1,108 @@
 <script setup lang="ts">
-  import { ref } from "vue"
+  import { computed, nextTick, onMounted, onUnmounted, ref, watch } from "vue"
   import { definePageMeta, useHead } from "#imports"
   import BexoFooter from "~/components/bexo/BexoFooter.vue"
   import BexoPageShell from "~/components/bexo/BexoPageShell.vue"
   import TreuhaenderMobile from "~/components/bexo/mobile/TreuhaenderMobile.vue"
+  import { useBreakpoint } from "~/composables/useBreakpoint"
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
+  import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
 
   definePageMeta({ layout: false })
 
+  const { isDesktop } = useBreakpoint()
   const canvasRef = ref<HTMLElement | null>(null)
+  const faqListRef = ref<HTMLElement | null>(null)
+  const processScrollRef = ref<HTMLElement | null>(null)
+  const processTrackRef = ref<HTMLElement | null>(null)
   useCanvasScale(canvasRef)
 
   const IMG = "/images/treuhaender"
   const HOME = "/images/startseite"
   const REF = "/images/referenz-zofingen"
+
+  const FAQ_SECTION_TOP = 8872
+  const FAQ_LIST_TOP = 206
+  const BILLBOARD_H = 679
+
+  const faqSectionH = ref(1500)
+  const processTranslateX = ref(0)
+  const billboardTop = computed(() => FAQ_SECTION_TOP + faqSectionH.value)
+  const footerTop = computed(() => billboardTop.value + BILLBOARD_H)
+  const canvasH = computed(() => footerTop.value + BEXO_FOOTER_H)
+
+  let rafId = 0
+
+  function clamp01(n: number) {
+    return Math.min(1, Math.max(0, n))
+  }
+
+  function updateFaqHeight() {
+    if (!isDesktop.value) return
+    const list = faqListRef.value
+    if (!list) return
+    faqSectionH.value = FAQ_LIST_TOP + list.offsetHeight
+  }
+
+  function onFaqToggle() {
+    nextTick(() => {
+      updateFaqHeight()
+      onScrollOrResize()
+    })
+  }
+
+  function updateScrollFx() {
+    if (!isDesktop.value) return
+    rafId = 0
+
+    const processScroll = processScrollRef.value
+    const processTrack = processTrackRef.value
+    if (processScroll && processTrack) {
+      const vh = window.innerHeight || 1
+      const galleryTop = processScroll.getBoundingClientRect().top
+      const startY = vh * 0.2
+      const endY = vh * 0.06
+      const progress = clamp01((startY - galleryTop) / (startY - endY))
+      const maxX = Math.max(
+        0,
+        processTrack.scrollWidth - processScroll.clientWidth,
+      )
+      processTranslateX.value = -(progress * maxX)
+    }
+  }
+
+  function onScrollOrResize() {
+    if (!isDesktop.value) return
+    if (!rafId) rafId = requestAnimationFrame(updateScrollFx)
+  }
+
+  function onResize() {
+    if (!isDesktop.value) return
+    updateFaqHeight()
+    onScrollOrResize()
+  }
+
+  function bindDesktopFx() {
+    updateFaqHeight()
+    onScrollOrResize()
+  }
+
+  onMounted(() => {
+    if (isDesktop.value) bindDesktopFx()
+    window.addEventListener("scroll", onScrollOrResize, { passive: true })
+    window.addEventListener("resize", onResize, { passive: true })
+  })
+
+  watch(isDesktop, (desktop) => {
+    if (desktop) nextTick(bindDesktopFx)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener("scroll", onScrollOrResize)
+    window.removeEventListener("resize", onResize)
+    if (rafId) cancelAnimationFrame(rafId)
+  })
 
   useHead({
     title: "Mehr Mandanten für Ihr Treuhandbüro — Bexolutions",
@@ -36,7 +124,7 @@
     { l: "Über uns", to: "/ueber-uns" },
     { l: "Leistungen", to: "/leistungen" },
     { l: "Wissen", to: "/wissen" },
-    { l: "Treuhänder", to: "#" },
+    { l: "Treuhänder", to: "/treuhaender" },
   ]
 
   const problems = [
@@ -137,15 +225,14 @@
 
   const steps = [
     {
-      left: 444,
       img: "proc1.jpg",
       n: "1",
       label: "Analyse",
       extra: " (kostenlos)",
     },
-    { left: 768, img: "proc2.jpg", n: "2", label: "Strategie", extra: "" },
-    { left: 1093, img: "proc3.jpg", n: "3", label: "Umsetzung", extra: "" },
-    { left: 1415, img: "proc4.jpg", n: "4", label: "Auswertung", extra: "" },
+    { img: "proc2.jpg", n: "2", label: "Strategie", extra: "" },
+    { img: "proc3.jpg", n: "3", label: "Umsetzung", extra: "" },
+    { img: "proc4.jpg", n: "4", label: "Auswertung", extra: "" },
   ]
 
   const whyCards = [
@@ -186,40 +273,29 @@
     },
     {
       q: "Muss ich ein Werbebudget für Google Ads einplanen?",
-      cap: true,
       a: "Nein. Unsere Methode basiert vollständig auf organischer Sichtbarkeit — SEO-Fachbeiträge, Google Business Profile, lokale Plattformen und KI-Sichtbarkeit. Kein Werbebudget nötig. Die Resultate sind nachhaltiger als bezahlte Anzeigen und hören nicht auf, wenn das Budget endet.",
     },
     {
       q: "Was ist der Unterschied zu einer normalen Webdesign-Agentur?",
-      cap: true,
       a: "Eine Webdesign-Agentur erstellt eine Website — und ist danach weg. Wir bauen das System dahinter: laufende SEO-Fachbeiträge, GBP-Pflege, lokale Sichtbarkeit, KI-Readiness und monatliches Reporting. Das ist kein Projekt, sondern eine Partnerschaft.",
     },
     {
       q: "Funktioniert das auch für kleinere Treuhandbüros mit 1–3 Personen?",
-      cap: true,
       a: "Ja — gerade für inhabergeführte Büros ist der Effekt am stärksten. Wenig Marketing-Ressourcen, aber ein klar definiertes regionales Einzugsgebiet — genau das begünstigt lokale SEO. Zofingen Treuhand AG ist ein inhabergeführtes Büro.",
     },
     {
       q: "Müssen wir die Fachbeiträge selbst schreiben?",
-      cap: true,
       a: "Nein. Unser Team recherchiert, textet und optimiert alle Fachbeiträge. Sie erhalten den Entwurf zur fachlichen Prüfung — in der Regel 15–30 Minuten pro Artikel. Den Rest übernehmen wir.",
     },
     {
       q: "Wie unterscheidet sich Bexolutions von anderen SEO-Agenturen?",
-      cap: true,
       a: "Wir haben uns auf Treuhandbüros in der Deutschschweiz spezialisiert — nicht als Nischen-Slogan, sondern mit nachgewiesenen Resultaten. Wir kennen die Fachbegriffe, Suchanfragen und Entscheidungslogik Ihrer Zielkunden. Eine Generalagentur muss sich das erst erarbeiten. Wir fangen sofort an.",
     },
     {
       q: "Was kostet die Zusammenarbeit?",
-      cap: true,
       a: "Eine fixe Monatspauschale — transparent, ohne versteckte Kosten. Die konkrete Rate hängt vom Leistungsumfang und Ihrer Region ab. Den besten Einstieg bietet die kostenlose 20-minütige Sichtbarkeitsanalyse.",
     },
   ]
-
-  function faqTop(i: number) {
-    // section starts at canvas y=8872; these are section-relative
-    return 221 + i * 206
-  }
 </script>
 
 <template>
@@ -228,7 +304,7 @@
       <TreuhaenderMobile />
     </template>
     <template #desktop>
-      <div ref="canvasRef" class="canvas">
+      <div ref="canvasRef" class="canvas" :style="{ height: canvasH + 'px' }">
         <!-- ============================= NAV (light) ============================= -->
         <header
           class="absolute"
@@ -578,56 +654,68 @@
           class="absolute overflow-hidden bg-[#f8f8f8]"
           style="left: 0; top: 6535px; width: 1512px; height: 892px"
         >
-          <p
-            class="absolute text-[18px] font-normal leading-[28px] text-black"
-            style="left: 120px; top: 348px"
-          >
-            Ihr Weg zu mehr Mandanten
-          </p>
-          <h2
-            class="absolute text-[30px] font-semibold leading-[38px] text-[#0e2138]"
-            style="left: 120px; top: 394px; width: 300px"
-          >
-            Von der Analyse bis zu neuen Mandanten — in vier Schritten.
-          </h2>
           <div
-            v-for="s of steps"
-            :key="s.n"
-            class="absolute overflow-hidden rounded-[30px]"
-            :style="{
-              left: s.left + 'px',
-              top: '97px',
-              width: '302px',
-              height: '699px',
-            }"
+            ref="processScrollRef"
+            class="process-scroll absolute"
+            style="left: 0; top: 97px; width: 1512px"
           >
-            <NuxtImg
-              :src="`${IMG}/${s.img}`"
-              class="h-full w-full object-cover"
-              :alt="s.label"
-            />
             <div
-              class="absolute inset-x-0 bottom-0 h-[300px]"
-              style="
-                background: linear-gradient(
-                  180deg,
-                  rgba(0, 0, 0, 0) 0%,
-                  rgba(0, 0, 0, 0.65) 100%
-                );
-              "
-            ></div>
-            <span
-              class="absolute text-[52px] font-bold leading-[73px] text-white"
-              style="left: 32px; bottom: 108px"
+              ref="processTrackRef"
+              class="process-track flex will-change-transform"
+              :style="{
+                gap: '24px',
+                padding: '0 120px',
+                transform: `translateX(${processTranslateX}px)`,
+              }"
             >
-              {{ s.n }}
-            </span>
-            <span class="absolute bottom-[52px] left-[32px] text-white">
-              <span class="text-[28px] font-semibold leading-[35px]">
-                {{ s.label }}
-              </span>
-              <span class="text-[18px] font-normal">{{ s.extra }}</span>
-            </span>
+              <div
+                class="flex shrink-0 flex-col"
+                style="width: 300px; height: 699px; padding-top: 251px"
+              >
+                <p class="text-[18px] font-normal leading-[28px] text-black">
+                  Ihr Weg zu mehr Mandanten
+                </p>
+                <h2
+                  class="mt-[18px] text-[30px] font-semibold leading-[38px] text-[#0e2138]"
+                >
+                  Von der Analyse bis zu neuen Mandanten — in vier Schritten.
+                </h2>
+              </div>
+              <div
+                v-for="s of steps"
+                :key="s.n"
+                class="relative shrink-0 overflow-hidden rounded-[30px]"
+                style="width: 302px; height: 699px"
+              >
+                <NuxtImg
+                  :src="`${IMG}/${s.img}`"
+                  class="h-full w-full object-cover"
+                  :alt="s.label"
+                />
+                <div
+                  class="absolute inset-x-0 bottom-0 h-[300px]"
+                  style="
+                    background: linear-gradient(
+                      180deg,
+                      rgba(0, 0, 0, 0) 0%,
+                      rgba(0, 0, 0, 0.65) 100%
+                    );
+                  "
+                ></div>
+                <span
+                  class="absolute text-[52px] font-bold leading-[73px] text-white"
+                  style="left: 32px; bottom: 108px"
+                >
+                  {{ s.n }}
+                </span>
+                <span class="absolute bottom-[52px] left-[32px] text-white">
+                  <span class="text-[28px] font-semibold leading-[35px]">
+                    {{ s.label }}
+                  </span>
+                  <span class="text-[18px] font-normal">{{ s.extra }}</span>
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -731,15 +819,16 @@
         <!-- ============================= FAQ ============================= -->
         <section
           class="absolute overflow-hidden"
-          style="left: 0; top: 8872px; width: 1512px; height: 1700px"
+          :style="{
+            left: '0',
+            top: FAQ_SECTION_TOP + 'px',
+            width: '1512px',
+            height: faqSectionH + 'px',
+          }"
         >
           <div
-            class="absolute"
+            class="absolute inset-0"
             style="
-              left: 0;
-              top: 31px;
-              width: 1512px;
-              height: 577px;
               background: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0) 0%,
@@ -747,69 +836,68 @@
               );
             "
           ></div>
-          <div
-            class="absolute"
-            style="
-              left: 0;
-              top: 608px;
-              width: 1512px;
-              height: 577px;
-              background: linear-gradient(
-                180deg,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(195, 218, 248, 0.4) 100%
-              );
-            "
-          ></div>
+
           <p
-            class="absolute text-center text-[20px] font-normal leading-[28px] text-[#0e2138]"
+            class="absolute text-center text-[18px] font-normal leading-[25px] tracking-[0.36px] text-[#0e2138]"
             style="left: 439px; top: 0; width: 633px"
           >
             Häufige Fragen
           </p>
           <h2
-            class="absolute text-center text-[40px] font-semibold leading-[56px] text-black"
-            style="left: 439px; top: 45px; width: 633px"
+            class="absolute text-center text-[36px] font-semibold leading-[50px] tracking-[0.72px] text-black"
+            style="left: 440px; top: 42px; width: 633px"
           >
             Was Treuhänder uns am häufigsten fragen.
           </h2>
-          <details
-            v-for="(f, i) of faqs"
-            :key="f.q"
-            open
-            class="faq-item absolute rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
-            :style="{ left: '222px', top: faqTop(i) + 'px', width: '1082px' }"
+
+          <div
+            ref="faqListRef"
+            class="absolute flex flex-col gap-[20px] pb-[70px]"
+            :style="{
+              left: '215px',
+              top: FAQ_LIST_TOP + 'px',
+              width: '1082px',
+            }"
           >
-            <summary
-              class="flex cursor-pointer list-none items-start justify-between gap-6"
+            <details
+              v-for="f of faqs"
+              :key="f.q"
+              class="faq-item rounded-[20px] border border-[#0e2138]/20 bg-white/50 px-[40px] py-[28px]"
+              @toggle="onFaqToggle"
             >
-              <h3
-                class="text-[20px] font-bold leading-[25px] text-black"
-                :class="{ capitalize: f.cap }"
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-6"
               >
-                {{ f.q }}
-              </h3>
-              <span class="relative mt-1 block h-5 w-5 shrink-0">
-                <span
-                  class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
-                ></span>
-                <span
-                  class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
-                ></span>
-              </span>
-            </summary>
-            <p
-              class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
-            >
-              {{ f.a }}
-            </p>
-          </details>
+                <h4 class="text-[20px] font-bold leading-[25px] text-black">
+                  {{ f.q }}
+                </h4>
+                <span class="relative mt-1 block h-5 w-5 shrink-0">
+                  <span
+                    class="absolute left-0 top-1/2 h-[3px] w-full -translate-y-1/2 rounded bg-black"
+                  ></span>
+                  <span
+                    class="faq-vbar absolute left-1/2 top-0 h-full w-[3px] -translate-x-1/2 rounded bg-black"
+                  ></span>
+                </span>
+              </summary>
+              <p
+                class="mt-[24px] text-[18px] font-normal leading-[23px] text-black"
+              >
+                {{ f.a }}
+              </p>
+            </details>
+          </div>
         </section>
 
         <!-- ============================= BILLBOARD ============================= -->
         <section
           class="absolute overflow-hidden rounded-t-[200px]"
-          style="left: 0; top: 10630px; width: 1512px; height: 679px"
+          :style="{
+            left: '0',
+            top: billboardTop + 'px',
+            width: '1512px',
+            height: BILLBOARD_H + 'px',
+          }"
         >
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
@@ -845,7 +933,7 @@
           </a>
         </section>
 
-        <BexoFooter :top="11309" />
+        <BexoFooter :top="footerTop" />
       </div>
     </template>
   </BexoPageShell>
@@ -859,7 +947,6 @@
   .canvas {
     position: relative;
     width: 1512px;
-    height: 11964px;
     flex: none;
     background: #ffffff;
   }
@@ -917,5 +1004,13 @@
   }
   .faq-item[open] .faq-vbar {
     display: none;
+  }
+
+  /* horizontal process gallery — scroll-driven, same as homepage features */
+  .process-scroll {
+    overflow: hidden;
+  }
+  .process-track {
+    width: max-content;
   }
 </style>
