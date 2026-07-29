@@ -49,7 +49,6 @@
     "team-6",
     "team-7",
     "team-8",
-    "team-9",
     "team-10",
     "team-11",
     "team-12",

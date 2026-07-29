@@ -55,7 +55,19 @@
     { value: "4.9/5", label: "über 1'200+ Bewertungen" },
   ]
 
-  const team = Array.from({ length: 12 }, (_, i) => `${IMG}/team-${i + 1}.png`)
+  const team = [
+    "team-1",
+    "team-2",
+    "team-3",
+    "team-4",
+    "team-5",
+    "team-6",
+    "team-7",
+    "team-8",
+    "team-10",
+    "team-11",
+    "team-12",
+  ].map((img) => `${IMG}/${img}.png`)
 </script>
 
 <template>
