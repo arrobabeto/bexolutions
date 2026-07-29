@@ -101,7 +101,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/seo-treuhandbuero-schweiz-mandanten-google/infographic.avif",
+      src: "/images/blog/seo-treuhandbuero-schweiz-mandanten-google/infographic.jpg",
       alt: "SEO-Strategie für Schweizer Treuhandbüros: Digitale Mandantengewinnung über Google",
       caption:
         "Digitale Mandantengewinnung für Schweizer Treuhandbüros — von Keywords bis E-E-A-T.",

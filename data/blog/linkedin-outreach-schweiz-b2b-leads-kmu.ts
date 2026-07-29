@@ -103,7 +103,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/linkedin-outreach-schweiz-b2b-leads-kmu/infographic.avif",
+      src: "/images/blog/linkedin-outreach-schweiz-b2b-leads-kmu/infographic.jpg",
       alt: "LinkedIn Outreach Benchmarks 2026 — Akzeptanzrate und Antwortrate für B2B KMU",
       caption:
         "Outreach-Benchmarks: Gut gemachte Kampagnen erreichen 30–45 % Akzeptanz (salesflow.io, 2026).",

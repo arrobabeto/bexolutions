@@ -123,7 +123,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/zofingen-treuhand-seo-fallstudie-organische-besucher/infographic.avif",
+      src: "/images/blog/zofingen-treuhand-seo-fallstudie-organische-besucher/infographic.jpg",
       alt: "Fallstudie Zofingen Treuhand AG: Organisches SEO-Wachstum von 0 auf 1’704 Besucher",
       caption:
         "Fallstudie: Organisches SEO-Wachstum bei Zofingen Treuhand AG über 16 Monate.",

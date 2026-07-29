@@ -122,7 +122,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/geo-readiness-kmu-chatgpt-google-ai-mode/infographic.avif",
+      src: "/images/blog/geo-readiness-kmu-chatgpt-google-ai-mode/infographic.jpg",
       alt: "GEO-Leitfaden für KI-Systeme — SEO vs. GEO für Schweizer KMU",
       caption:
         "Überblick: Der Unterschied zwischen klassischem SEO und GEO für KMU.",
