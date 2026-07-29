@@ -68,7 +68,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/google-business-profile-optimieren/infographic.avif",
+      src: "/images/blog/google-business-profile-optimieren/infographic.jpg",
       alt: "Sichtbarkeits-Guide für Schweizer Unternehmen: Google Business Profile optimieren",
       caption:
         "Sichtbarkeits-Guide: Die wichtigsten Hebel für ein starkes Google Business Profile.",

@@ -134,7 +134,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/google-bewertungen-einfordern-kmu-schweiz/infographic.avif",
+      src: "/images/blog/google-bewertungen-einfordern-kmu-schweiz/infographic.jpg",
       alt: "Strategieplan für Schweizer Firmenbewertungen — 4-Wochen-Plan zum Bewertungsmanagement",
       caption:
         "Überblick: Der 4-Wochen-Plan für systematisch mehr Google-Bewertungen.",
