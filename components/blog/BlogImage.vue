@@ -53,6 +53,8 @@
           class="h-auto w-full max-w-full rounded-[16px] object-cover transition-opacity group-hover:opacity-90 lg:rounded-[20px]"
           :alt="alt"
           sizes="100vw"
+          densities="x1 x2"
+          :quality="90"
           loading="lazy"
         />
       </button>
@@ -85,6 +87,9 @@
           :src="src"
           class="max-h-full max-w-full cursor-zoom-out rounded-[12px] object-contain shadow-2xl"
           :alt="alt"
+          sizes="100vw"
+          densities="x1 x2"
+          :quality="95"
           @click="closeLightbox"
         />
       </div>
