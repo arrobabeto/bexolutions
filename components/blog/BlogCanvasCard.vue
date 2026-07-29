@@ -18,8 +18,8 @@
         :src="blog.heroImage || fallbackImage"
         class="h-full w-full rounded-[20px] object-cover"
         :alt="getBlogCardTitle(blog)"
-        sizes="411px"
-        densities="x1 x2"
+        :width="822"
+        :height="274"
         :quality="90"
       />
       <div

@@ -17,8 +17,8 @@
       :src="blog.heroImage || fallbackImage"
       class="aspect-[16/9] w-full max-w-full shrink-0 object-cover"
       :alt="getBlogCardTitle(blog)"
-      sizes="(max-width: 1023px) 100vw, 411px"
-      densities="x1 x2"
+      :width="822"
+      :height="462"
       :quality="90"
     />
     <div class="box-border flex min-h-0 w-full min-w-0 flex-1 flex-col p-4">

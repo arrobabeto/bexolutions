@@ -52,8 +52,8 @@
           :src="src"
           class="h-auto w-full max-w-full rounded-[16px] object-cover transition-opacity group-hover:opacity-90 lg:rounded-[20px]"
           :alt="alt"
-          sizes="100vw"
-          densities="x1 x2"
+          :width="1600"
+          :height="893"
           :quality="90"
           loading="lazy"
         />
@@ -87,8 +87,8 @@
           :src="src"
           class="max-h-full max-w-full cursor-zoom-out rounded-[12px] object-contain shadow-2xl"
           :alt="alt"
-          sizes="100vw"
-          densities="x1 x2"
+          :width="2048"
+          :height="1143"
           :quality="95"
           @click="closeLightbox"
         />
