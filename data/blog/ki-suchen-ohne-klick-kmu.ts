@@ -108,7 +108,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/ki-suchen-ohne-klick-kmu/infographic.avif",
+      src: "/images/blog/ki-suchen-ohne-klick-kmu/infographic.jpg",
       alt: "Zero-Click-Realität: 93 % der KI-Suchanfragen im Google AI Mode enden ohne Website-Klick",
       caption:
         "Zero-Click-Suche: Warum KI-Antworten klassische Website-Klicks verdrängen.",

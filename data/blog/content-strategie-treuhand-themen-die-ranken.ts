@@ -122,7 +122,7 @@ export default {
     },
     {
       type: "image",
-      src: "/images/blog/content-strategie-treuhand-themen-die-ranken/infographic.avif",
+      src: "/images/blog/content-strategie-treuhand-themen-die-ranken/infographic.jpg",
       alt: "Content-Strategie Guide für Treuhänder: 30 Themen in 6 Kategorien",
       caption:
         "Content-Strategie für Treuhänder — 30 rankbare Themen mit Priorität und Suchintention.",
