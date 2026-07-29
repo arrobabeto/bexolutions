@@ -20,8 +20,8 @@
       :src="blog.heroImage || fallbackImage"
       class="aspect-video w-full max-w-full object-cover"
       :alt="getBlogFeaturedTitle(blog)"
-      sizes="(max-width: 1023px) 100vw, 900px"
-      densities="x1 x2"
+      :width="1600"
+      :height="900"
       :quality="90"
     />
     <div class="box-border w-full min-w-0 p-5 sm:p-6">
