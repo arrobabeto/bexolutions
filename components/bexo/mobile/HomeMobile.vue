@@ -211,7 +211,8 @@
             <NuxtImg
               :src="`${IMG}/logos-row1.png`"
               class="marquee-img"
-              alt=""
+              alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
+              aria-hidden="true"
               loading="eager"
               :width="4002"
               :height="160"
@@ -231,7 +232,8 @@
             <NuxtImg
               :src="`${IMG}/logos-row2.png`"
               class="marquee-img"
-              alt=""
+              alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
+              aria-hidden="true"
               loading="eager"
               :width="3709"
               :height="160"
@@ -341,6 +343,7 @@
       <BackgroundMedia
         :poster="`${IMG}/treuhaender-bg.jpg`"
         :video="BEXO_VIDEOS.homeTreuhaender"
+        poster-alt="Bexolutions Treuhänder und Steuerberater Marketing"
         loading="lazy"
         class="aspect-[4/3] w-full"
       />

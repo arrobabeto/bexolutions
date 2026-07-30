@@ -4,7 +4,7 @@ import { defineEventHandler, sendRedirect } from "h3"
 const redirects = [
   {
     from: "/blog",
-    to: "/posts",
+    to: "/wissen",
   },
 ]
 
