@@ -100,6 +100,13 @@
                 "https://www.facebook.com/bexolutions/",
                 "https://www.instagram.com/balaram_entdeckt/",
               ],
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: "4.8",
+                reviewCount: "23",
+                bestRating: "5",
+                worstRating: "1",
+              },
             },
             {
               "@type": "WebSite",

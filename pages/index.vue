@@ -145,6 +145,7 @@
     description:
       "Bexolutions — Ihre Digitalagentur im Kanton Aargau. SEO, Online Marketing und Vertriebsoptimierung für KMU in der Schweiz und im DACH-Raum.",
     ogTitle: "Bexolutions — Marketing & SEO für KMU",
+    breadcrumbs: [{ name: "Home", path: "/" }],
   })
 
   const navLinks = [
@@ -281,7 +282,7 @@
   const faqs = [
     {
       q: "Was macht Bexolutions genau?",
-      a: "In der Regel können wir innerhalb von 3-5 Werktagen nach Auftragserteilung starten. Bei dringenden Anfragen oder Notfällen sind auch kurzfristigere Termine möglich. Kontaktieren Sie uns und wir finden eine Lösung.",
+      a: "Wir bauen das komplette Marketingsystem für Ihr KMU — Website, SEO, Content und KI-Sichtbarkeit aus einer Hand. Ein Ansprechpartner, eine fixe Monatsrate, monatlich messbare Resultate.",
     },
     {
       q: "Was kostet die Zusammenarbeit mit Bexolutions?",
@@ -308,6 +309,26 @@
       a: "Schwerpunkt: Schweizer KMU in der Deutschschweiz — Treuhand/Steuerberatung, Gastronomie/Hotellerie, Gesundheit/Medizin sowie lokale Dienstleister. Für etablierte KMU, die systematisch wachsen wollen.",
     },
   ]
+
+  useHead({
+    script: [
+      {
+        type: "application/ld+json",
+        innerHTML: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.a,
+            },
+          })),
+        }),
+      },
+    ],
+  })
 </script>
 
 <template>
@@ -507,7 +528,8 @@
               <NuxtImg
                 :src="`${IMG}/logos-row1.png`"
                 class="marquee-img"
-                alt=""
+                alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
+                aria-hidden="true"
                 :width="4002"
                 :height="160"
               />
@@ -525,7 +547,8 @@
               <NuxtImg
                 :src="`${IMG}/logos-row2.png`"
                 class="marquee-img"
-                alt=""
+                alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
+                aria-hidden="true"
                 :width="3709"
                 :height="160"
               />
@@ -626,6 +649,7 @@
                   v-if="f.imgTop && f.video"
                   :poster="f.img"
                   :video="f.video"
+                  :poster-alt="f.title.replace(/\n/g, ' ')"
                   loading="lazy"
                   class="h-[246px] w-full rounded-[22px]"
                 />
@@ -770,6 +794,7 @@
           <BackgroundMedia
             :poster="`${IMG}/quote-bg.jpg`"
             :video="BEXO_VIDEOS.homeSteps"
+            poster-alt="Bexolutions Vorgehen — SEO und Marketing Prozess"
             loading="lazy"
             class="absolute inset-0 h-full w-full opacity-60"
           />
@@ -906,6 +931,7 @@
           <BackgroundMedia
             :poster="`${IMG}/treuhaender-bg.jpg`"
             :video="BEXO_VIDEOS.homeTreuhaender"
+            poster-alt="Bexolutions Treuhänder und Steuerberater Marketing"
             loading="lazy"
             class="absolute inset-0 h-full w-full"
           />
