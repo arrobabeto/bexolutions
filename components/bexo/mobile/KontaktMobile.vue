@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import KontaktForm from "~/components/bexo/KontaktForm.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   const IMG = "/images/kontakt"
 
@@ -101,7 +102,7 @@
           grösste Hebel liegt.
         </p>
         <a
-          href="https://calendly.com/bexolutions/discovery-call"
+          :href="BEXO_CTA_TERMIN.href"
           class="bexo-btn-primary bexo-btn-block mt-6"
         >
           Termin vereinbaren

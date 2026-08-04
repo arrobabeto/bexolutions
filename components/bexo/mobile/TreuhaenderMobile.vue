@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref } from "vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   const IMG = "/images/treuhaender"
   const REF = "/images/referenz-zofingen"
@@ -85,7 +86,7 @@
         Wir machen Ihr Büro bei Google sichtbar — genau dann, wenn potenzielle
         Mandanten aktiv suchen. Kein Zufall. Nur System.
       </p>
-      <a href="/kontakt" class="bexo-btn-navy bexo-btn-block mt-6">
+      <a :href="BEXO_CTA_TERMIN.href" class="bexo-btn-navy bexo-btn-block mt-6">
         Kostenlose Sichtbarkeitsanalyse anfordern
       </a>
       <a href="/referenz-zofingen" class="bexo-btn-primary bexo-btn-block mt-3">
@@ -164,7 +165,10 @@
     <section class="w-full bg-[#0e2138] px-4 py-12 text-center text-white">
       <div class="max-w-xl mx-auto">
         <h2 class="text-2xl font-semibold">Bereit für mehr Mandanten?</h2>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Kostenlose Analyse buchen
         </a>
       </div>

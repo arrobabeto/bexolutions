@@ -6,6 +6,7 @@
   import ReferenzZofingenMobile from "~/components/bexo/mobile/ReferenzZofingenMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   definePageMeta({ layout: false })
 
@@ -181,7 +182,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -658,7 +659,11 @@
             class="absolute left-1/2 flex -translate-x-1/2 items-center gap-[20px]"
             style="top: 282px"
           >
-            <a href="#" class="btn-primary" style="width: 372px">
+            <a
+              :href="BEXO_CTA_TERMIN.href"
+              class="btn-primary"
+              style="width: 372px"
+            >
               Kostenlose Sichtbarkeitsanalyse anfordern
             </a>
             <a

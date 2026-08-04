@@ -9,6 +9,7 @@
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
@@ -386,7 +387,7 @@
               Kontakt
             </a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -457,7 +458,7 @@
             erwähnt. Alles aus einer Hand. Eine fixe Monatsrate.
           </p>
           <a
-            href="https://calendly.com/bexolutions/discovery-call"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-outline absolute"
             style="left: 550px; top: 476px; width: 237px"
           >
@@ -1079,7 +1080,7 @@
             Massnahmen Ihnen am schnellsten zu neuen Kunden verhelfen.
           </p>
           <a
-            href="https://calendly.com/bexolutions/discovery-call"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 106px; top: 556px; width: 276px"
           >

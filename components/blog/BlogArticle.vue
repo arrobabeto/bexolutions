@@ -9,6 +9,7 @@
   import BlogArticleMobile from "~/components/bexo/mobile/BlogArticleMobile.vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { getBlogFeaturedTitle } from "~/utils/blogs"
 
   const p = defineProps<{ blog: IBlog }>()
@@ -30,7 +31,7 @@
     heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
     body: "Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse.<br>Wir analysieren Ihre aktuelle digitale Sichtbarkeit in 20 Minuten — kostenlos und konkret.",
     buttonLabel: "Jetzt Sichtbarkeitsanalyse anfordern",
-    buttonHref: "https://calendly.com/bexolutions/discovery-call",
+    buttonHref: BEXO_CTA_TERMIN.href,
     bgImage: `${HOME}/billboard.jpg`,
   }
 
@@ -78,7 +79,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >

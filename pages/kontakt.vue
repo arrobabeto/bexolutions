@@ -7,6 +7,7 @@
   import KontaktMobile from "~/components/bexo/mobile/KontaktMobile.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   definePageMeta({ layout: false })
 
@@ -146,7 +147,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >

@@ -7,6 +7,7 @@
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
@@ -184,7 +185,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -226,7 +227,7 @@
             täglich herstellt.
           </p>
           <a
-            href="#"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 114px; top: 323px; width: 279px"
           >
@@ -941,7 +942,7 @@
             für Ihr Unternehmen möglich ist.
           </p>
           <a
-            href="#"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 122px; top: 562px; width: 318px"
           >

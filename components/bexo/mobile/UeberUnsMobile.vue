@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   const IMG = "/images/ueber-uns"
@@ -97,7 +98,10 @@
             Wir verbinden Wert und Bedürfnis für Schweizer KMU — täglich,
             systematisch, messbar.
           </p>
-          <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-5">
+          <a
+            :href="BEXO_CTA_TERMIN.href"
+            class="bexo-btn-primary bexo-btn-block mt-5"
+          >
             Beratungstermin sichern
           </a>
         </div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import BexoSection from "~/components/bexo/BexoSection.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   const IMG = "/images/referenz-zofingen"
 
@@ -139,7 +140,10 @@
           So viele neue Mandanten, dass Philippe Bally sein Team personell
           verstärken musste — echtes Geschäftswachstum, nicht nur Rankings.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Ähnliche Resultate anstreben
         </a>
       </div>
