@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   const UB = "/images/ueber-uns"
@@ -97,7 +98,10 @@
             Bexolutions baut ein zusammenhängendes Marketingsystem für Ihr KMU —
             Strategie, Umsetzung und Reporting aus einer Hand.
           </p>
-          <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-5">
+          <a
+            :href="BEXO_CTA_TERMIN.href"
+            class="bexo-btn-primary bexo-btn-block mt-5"
+          >
             Kostenlose Sichtbarkeitsanalyse anfordern
           </a>
           <a
@@ -171,7 +175,10 @@
           schauen uns Ihre aktuelle digitale Präsenz an und empfehlen Ihnen
           konkret, wo der grösste Hebel liegt.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Jetzt Sichtbarkeitsanalyse anfordern
         </a>
       </div>

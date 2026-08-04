@@ -8,6 +8,7 @@
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   definePageMeta({ layout: false })
@@ -315,7 +316,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -360,7 +361,11 @@
             class="absolute flex items-center"
             style="left: 114px; top: 328px; gap: 22px"
           >
-            <a href="#" class="btn-primary" style="width: 420px">
+            <a
+              :href="BEXO_CTA_TERMIN.href"
+              class="btn-primary"
+              style="width: 420px"
+            >
               Kostenlose Sichtbarkeitsanalyse anfordern
             </a>
             <a href="/referenz-zofingen" class="btn-navy" style="width: 193px">
@@ -774,7 +779,7 @@
             konkret, wo der grösste Hebel liegt.
           </p>
           <a
-            href="#"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 122px; top: 562px; width: 370px"
           >

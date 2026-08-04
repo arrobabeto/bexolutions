@@ -6,6 +6,7 @@
   import BlogSidebar from "~/components/blog/BlogSidebar.vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import SafeHtml from "~/components/common/SafeHtml.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { getBlogFeaturedTitle } from "~/utils/blogs"
 
   const p = defineProps<{ blog: IBlog }>()
@@ -16,7 +17,7 @@
     heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
     body: "Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse.<br>Wir analysieren Ihre aktuelle digitale Sichtbarkeit in 20 Minuten — kostenlos und konkret.",
     buttonLabel: "Jetzt Sichtbarkeitsanalyse anfordern",
-    buttonHref: "https://calendly.com/bexolutions/discovery-call",
+    buttonHref: BEXO_CTA_TERMIN.href,
     bgImage: `${HOME}/billboard.jpg`,
   }
 

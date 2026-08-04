@@ -8,6 +8,7 @@
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { useWissenListing } from "~/composables/useWissenListing"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import {
     WISSEN_FILTER_CHIPS,
     type WissenCategoryFilter,
@@ -262,7 +263,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -494,7 +495,7 @@
             haben.
           </p>
           <a
-            href="#"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute left-1/2 -translate-x-1/2"
             style="top: 219px; width: 300px"
           >
@@ -540,7 +541,7 @@
               E-Mail-Adresse
             </span>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -648,7 +649,7 @@
             kostenlos und konkret.
           </p>
           <a
-            href="#"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 136px; top: 513px; width: 370px"
           >

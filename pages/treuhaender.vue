@@ -8,6 +8,7 @@
   import { useCanvasScale } from "~/composables/useCanvasScale"
   import { useMarketingPageSeo } from "~/composables/useMarketingPageSeo"
   import { BEXO_FOOTER_H } from "~/constants/bexoFooter"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   definePageMeta({ layout: false })
 
@@ -335,7 +336,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
@@ -384,7 +385,7 @@
           class="absolute flex items-center"
           style="left: 763px; top: 449px; gap: 16px"
         >
-          <a href="/kontakt" class="btn-navy" style="width: 420px">
+          <a :href="BEXO_CTA_TERMIN.href" class="btn-navy" style="width: 420px">
             Kostenlose Sichtbarkeitsanalyse anfordern
           </a>
           <a href="/referenz-zofingen" class="btn-outline" style="width: 193px">
@@ -925,7 +926,7 @@
             klare Erkenntnisse.
           </p>
           <a
-            href="https://calendly.com/bexolutions/discovery-call"
+            :href="BEXO_CTA_TERMIN.href"
             class="btn-primary absolute"
             style="left: 127px; top: 553px; width: 370px"
           >

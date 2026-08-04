@@ -4,6 +4,7 @@
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BlogFeaturedCard from "~/components/blog/BlogFeaturedCard.vue"
   import BlogListCard from "~/components/blog/BlogListCard.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { WISSEN_FILTER_CHIPS } from "~/constants/wissenCategories"
   import { useWissenListing } from "~/composables/useWissenListing"
 
@@ -218,7 +219,10 @@
           konkret, welche dieser Strategien für Ihr KMU den grössten Hebel
           haben.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           Kostenlose Analyse anfordern
         </a>
       </div>
@@ -262,7 +266,10 @@
           Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse. Wir
           analysieren Ihre digitale Sichtbarkeit — kostenlos und konkret.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-8">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-8"
+        >
           Jetzt Sichtbarkeitsanalyse anfordern
         </a>
       </div>

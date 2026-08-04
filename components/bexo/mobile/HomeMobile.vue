@@ -2,6 +2,7 @@
   import { ref } from "vue"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BackgroundMedia from "~/components/media/BackgroundMedia.vue"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import { BEXO_VIDEOS } from "~/constants/bexoVideos"
 
   const IMG = "/images/startseite"
@@ -154,7 +155,7 @@
           Better than yesterday.
         </h1>
         <a
-          href="https://calendly.com/bexolutions/discovery-call"
+          :href="BEXO_CTA_TERMIN.href"
           class="bexo-btn-primary bexo-btn-block mt-6"
         >
           Termin vereinbaren
@@ -172,10 +173,7 @@
         der Website über Local SEO bis zur KI-Sichtbarkeit. Alles aus einer
         Hand. Eine fixe Monatsrate.
       </p>
-      <a
-        href="https://calendly.com/bexolutions/discovery-call"
-        class="bexo-btn-primary mt-6 inline-grid"
-      >
+      <a :href="BEXO_CTA_TERMIN.href" class="bexo-btn-primary mt-6 inline-grid">
         Termin vereinbaren
       </a>
     </BexoSection>
@@ -409,7 +407,10 @@
         <p class="mt-4 text-base leading-relaxed text-white">
           Kostenlose 20-minütige Sichtbarkeitsanalyse — konkret, unverbindlich.
         </p>
-        <a href="/kontakt" class="bexo-btn-primary bexo-btn-block mt-8">
+        <a
+          :href="BEXO_CTA_TERMIN.href"
+          class="bexo-btn-primary bexo-btn-block mt-8"
+        >
           Jetzt Termin buchen
         </a>
       </div>

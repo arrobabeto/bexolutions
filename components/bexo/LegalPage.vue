@@ -5,6 +5,7 @@
   import LegalPageMobile from "~/components/bexo/mobile/LegalPageMobile.vue"
   import LegalHtml from "~/components/common/LegalHtml.vue"
   import { useCanvasScale } from "~/composables/useCanvasScale"
+  import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
 
   const p = defineProps<{
     title: string
@@ -74,7 +75,7 @@
           >
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
-              href="https://calendly.com/bexolutions/discovery-call"
+              :href="BEXO_CTA_TERMIN.href"
               class="btn-primary"
               style="width: 237px"
             >
