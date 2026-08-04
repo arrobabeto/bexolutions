@@ -30,7 +30,7 @@
     heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
     body: "Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse.<br>Wir analysieren Ihre aktuelle digitale Sichtbarkeit in 20 Minuten — kostenlos und konkret.",
     buttonLabel: "Jetzt Sichtbarkeitsanalyse anfordern",
-    buttonHref: "/kontakt",
+    buttonHref: "https://calendly.com/bexolutions/discovery-call",
     bgImage: `${HOME}/billboard.jpg`,
   }
 
@@ -161,7 +161,7 @@
             </p>
           </div>
 
-          <!-- Two-column: body + sticky sidebar -->
+          <!-- Two-column: body + sidebar -->
           <div class="mt-[48px] flex items-start gap-[48px]">
             <div class="blog-body flex min-w-0 flex-1 flex-col gap-[24px]">
               <BlogBlock
@@ -171,7 +171,6 @@
               />
             </div>
             <BlogSidebar
-              class="sticky-rail"
               :author="blog.author"
               :toc="blog.toc"
               :title="fullTitle"
@@ -236,12 +235,6 @@
   .article-wrap {
     width: 1272px;
     margin: 0 auto;
-  }
-  /* Sticky right rail; align-self:flex-start is required for sticky to detach. */
-  .sticky-rail {
-    position: sticky;
-    top: 40px;
-    align-self: flex-start;
   }
   .nav-logo {
     background-color: #0e2138;

@@ -16,7 +16,7 @@
     heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
     body: "Buchen Sie Ihre kostenlose 20-minütige Sichtbarkeitsanalyse.<br>Wir analysieren Ihre aktuelle digitale Sichtbarkeit in 20 Minuten — kostenlos und konkret.",
     buttonLabel: "Jetzt Sichtbarkeitsanalyse anfordern",
-    buttonHref: "/kontakt",
+    buttonHref: "https://calendly.com/bexolutions/discovery-call",
     bgImage: `${HOME}/billboard.jpg`,
   }
 
