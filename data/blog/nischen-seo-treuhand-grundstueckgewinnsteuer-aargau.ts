@@ -62,6 +62,10 @@ export default {
       type: "richText",
       html: "<p>Stellen Sie sich vor: Sie wollen mit SEO bei Google sichtbar werden und überlegen, für welche Keywords Sie Inhalte schreiben sollen. Die naheliegenden Kandidaten: «Steuerberatung Schweiz», «Treuhand Zürich», «Buchhaltung KMU». Viel gesucht, klar relevant — und vollständig dominiert von grossen Steuerberatungsgesellschaften, Immobilienportalen und nationalen Plattformen, gegen die eine lokale Kanzlei kaum eine Chance hat.</p><p>Jetzt das Gegenmodell: «Grundstückgewinnsteuer Aargau». Weniger als 200 Suchanfragen pro Monat. Keyword-Difficulty unter 15. Und wer sucht? Jemand, der gerade eine Liegenschaft im Aargau verkauft hat oder verkaufen will, die Steuerpflicht genau verstehen möchte — und bereit ist, sich professionelle Hilfe zu holen.</p><p>Das ist Nischen-SEO. Und es ist die Methode, mit der Treuhandkanzleien in der Deutschschweiz organisch wachsen können, ohne gegen Konzerne konkurrieren zu müssen.</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Dieser Artikel gehört zum Treuhand-Cluster. Den Gesamtrahmen liefert <a href="/wissen/seo-treuhandbuero-schweiz-mandanten-google">SEO für Treuhandbüros in der Schweiz</a>; welche Themen sich konkret lohnen, zeigt die <a href="/wissen/content-strategie-treuhand-themen-die-ranken">Content-Strategie mit 30 Themen für Treuhänder</a>.</p>',
+    },
     { type: "divider" },
 
     {

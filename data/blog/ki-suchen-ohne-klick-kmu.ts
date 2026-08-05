@@ -61,6 +61,10 @@ export default {
       type: "richText",
       html: "<p>Stellen Sie sich vor: Ein potenzieller Kunde sucht nach «bestem Treuhänder in Aarau». Google zeigt ihm eine KI-generierte Antwort mit drei Empfehlungen — und er klickt auf keine einzige Website. Er ruft direkt die Nummer an, die ihm die KI genannt hat.</p><p>Das ist kein Zukunftsszenario. Das ist der Alltag von 93 % aller Suchanfragen, die heute im Google AI Mode gestellt werden. Und dieser Anteil wächst jedes Quartal.</p><p>Dieser Artikel erklärt, warum das passiert, was es konkret für Ihr KMU bedeutet — und welche drei Massnahmen Sie sofort ergreifen können, um auch in einer Welt ohne Klick sichtbar zu sein.</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Dieser Artikel ist der Einstieg in Cluster 1 (KI &amp; GEO). Wie B2B-Käufer heute tatsächlich recherchieren, zeigt <a href="/wissen/b2b-kaeufer-ki-recherche-kmu-schweiz">KI-Recherche im B2B-Einkauf</a>; wie Sie Ihre Fortschritte messbar machen, erklärt <a href="/wissen/ki-sichtbarkeit-messen-tools-kmu">KI-Sichtbarkeit messen</a>.</p>',
+    },
     { type: "divider" },
 
     {

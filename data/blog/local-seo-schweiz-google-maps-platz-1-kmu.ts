@@ -65,6 +65,10 @@ export default {
       type: "richText",
       html: '<p>«Ich bin seit Jahren in Betrieb, meine Arbeit ist gut — trotzdem rufen die Neukunden immer beim Mitbewerber an.» Das ist einer der häufigsten Sätze, die wir von Schweizer KMU-Inhabern hören. Die Ursache ist fast immer dieselbe: Der Mitbewerber erscheint im Google Local Pack. Ihr Unternehmen nicht.</p><p>Das Local Pack sind die drei Unternehmen mit Karte, die Google ganz oben in den Suchergebnissen zeigt, wenn jemand lokal sucht. Diese drei Positionen ziehen bis zu 44 % aller Klicks auf der Ergebnisseite auf sich (Studie: lokales-seo.ch, April 2026). Alles, was darunter erscheint, wird von einem Grossteil der Suchenden kaum noch beachtet — besonders auf dem Smartphone, wo das Local Pack den gesamten sichtbaren Bildschirm einnimmt.</p><p>Dieser Artikel zeigt, wie Google Maps-Rankings funktionieren — und wie Sie in 5 Phasen systematisch in das Local Pack kommen.</p><p>Dieser Artikel ist Artikel 2 im Local-SEO-Cluster. Artikel 1 zeigt <a href="/wissen/google-business-profile-optimieren">die 10 wichtigsten GBP-Massnahmen</a>. Falls Sie Ihr Google Business Profile noch nicht optimiert haben, starten Sie dort.</p>',
     },
+    {
+      type: "richText",
+      html: '<p>Wie sich Local Pack und organische Treffer im Alltag ergänzen — und welcher Kanal für Ihr KMU zuerst zählt — vergleicht <a href="/wissen/google-maps-vs-organische-suche-kmu-schweiz">Google Maps vs. organische Suche</a>. Wie Sie systematisch zu echten Bewertungen kommen, zeigt <a href="/wissen/google-bewertungen-einfordern-kmu-schweiz">Google-Bewertungen einfordern</a>.</p>',
+    },
     { type: "divider" },
 
     {

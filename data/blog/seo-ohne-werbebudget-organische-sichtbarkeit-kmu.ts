@@ -61,6 +61,10 @@ export default {
       type: "richText",
       html: "<p>«Ich kann mir Google Ads nicht leisten.» Das ist einer der häufigsten Sätze, die wir von Schweizer KMU-Inhabern hören. Gefolgt von einer stillen Hoffnung: «Kann ich trotzdem bei Google sichtbar werden?»</p><p>Die Antwort ist Ja — und die Zahlen geben dieser Hoffnung recht: 93.2 % aller Google-Klicks gehen auf organische Treffer, nicht auf bezahlte Anzeigen (SISTRIX). Das bedeutet: Der Grossteil der Kunden, die heute über Google zu lokalen Unternehmen finden, klickt nicht auf Werbung. Sie klicken auf die Ergebnisse, die durch SEO dort stehen.</p><p>Aber: SEO ist nicht gratis. Es ist eine Investition — in Zeit, nicht in Klickkosten. Wer das versteht, kann mit einem minimalen Budget nachhaltige Sichtbarkeit aufbauen.</p><p>Dieser Artikel ist Artikel 3 im SEO-Cluster. Artikel 9 gibt den Überblick, Artikel 10 die Diagnose. Hier geht es um die Strategie: Wie bauen Sie organische Sichtbarkeit auf — ohne laufendes Werbebudget?</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Die Grundlagen dazu liefert der <a href="/wissen/seo-schweizer-kmu-einstiegsguide-2026">SEO-Einstiegsguide für Schweizer KMU</a>, die Ursachenanalyse <a href="/wissen/warum-kmu-bei-google-unsichtbar-ursachen-fixes">warum KMU bei Google unsichtbar bleiben</a> — und das passende Handwerk die <a href="/wissen/keyword-recherche-kmu-schweiz-suchbegriffe-finden">Keyword-Recherche für Schweizer KMU</a>.</p>',
+    },
     { type: "divider" },
 
     {

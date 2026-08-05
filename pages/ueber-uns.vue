@@ -209,14 +209,16 @@
             class="absolute inset-0"
             style="background: rgba(14, 33, 56, 0.75)"
           ></div>
-          <h1
+          <div
+            role="heading"
+            aria-level="1"
             class="absolute text-[40px] font-semibold leading-[48px] text-white"
             style="left: 114px; top: 108px; width: 858px"
           >
             Wir leben Marketing.
             <br />
             Jeden Tag besser als gestern.
-          </h1>
+          </div>
           <p
             class="absolute text-[18px] font-normal leading-[25px] text-white"
             style="left: 114px; top: 226px; width: 697px"

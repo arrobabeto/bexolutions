@@ -74,6 +74,10 @@ export default {
       type: "richText",
       html: "<p>«Über was soll ich schreiben?» Das ist die häufigste Frage, die wir von Treuhandkanzleien hören, wenn wir über Content-Marketing sprechen. Gefolgt von: «Haben wir überhaupt genügend Stoff?»</p><p>Die ehrliche Antwort: Ja. Eine Treuhandkanzlei, die KMU betreut, hat potenziell Dutzende von Themen — jede häufige Mandantenfrage ist ein potenzieller Artikel. Das Problem ist nicht Themenmangel. Das Problem ist fehlende Priorisierung: Welche Themen haben echtes Ranking-Potenzial? Welche sind zu breit? Welche zu eng?</p><p>Dieser Artikel gibt Ihnen 30 konkrete Themen — geprüft auf Suchvolumen und Keyword-Difficulty — die Sie direkt in Ihren Content-Plan übernehmen können.</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Dieser Artikel gehört zum Treuhand-Cluster. Den strategischen Überblick gibt <a href="/wissen/seo-treuhandbuero-schweiz-mandanten-google">SEO für Treuhandbüros in der Schweiz</a>, die Keyword-Logik dahinter erklärt <a href="/wissen/nischen-seo-treuhand-grundstueckgewinnsteuer-aargau">Nischen-SEO für Treuhandkanzleien</a>.</p>',
+    },
     { type: "divider" },
 
     {

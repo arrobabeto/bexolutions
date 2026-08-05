@@ -59,6 +59,10 @@ export default {
       type: "richText",
       html: "<p>«Unsere Website ist schön — aber es ruft niemand an.» Dieser Satz beschreibt das häufigste Problem, das wir von Schweizer KMU-Inhabern hören. Eine gepflegte Website ohne SEO ist wie ein Schaufenster in einer Seitengasse: hübsch, aber niemand läuft vorbei.</p><p>SEO — Suchmaschinenoptimierung — ist das Handwerk, das Ihre Website aus dieser Seitengasse auf die Hauptstrasse bringt: auf Seite 1 von Google, dort wo Ihre potenziellen Kunden suchen. In der Schweiz beginnen 68 % aller Kaufentscheidungen mit einer Google-Suche (upchain-consulting.ch, April 2026), bei einem Google-Marktanteil von 93 % (Statcounter, 2024). Wer dort nicht sichtbar ist, verliert täglich Anfragen.</p><p>Dieser Guide erklärt SEO vollständig — von den Grundlagen bis zum konkreten 90-Tage-Aktionsplan — ohne Fachjargon und mit Fokus auf die Schweizer Realität.</p><p>Dieser Artikel ist der Hub-Artikel von Cluster 3 (SEO für KMU). Die nachfolgenden Artikel vertiefen jede Säule im Detail.</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Konkret vertiefen diese Artikel den Guide: die <a href="/wissen/keyword-recherche-kmu-schweiz-suchbegriffe-finden">Keyword-Recherche für Schweizer KMU</a>, die Diagnose <a href="/wissen/warum-kmu-bei-google-unsichtbar-ursachen-fixes">warum KMU bei Google unsichtbar bleiben</a> und die Budget-Strategie <a href="/wissen/seo-ohne-werbebudget-organische-sichtbarkeit-kmu">organische Sichtbarkeit ohne Werbebudget</a>.</p>',
+    },
     { type: "divider" },
 
     {

@@ -53,6 +53,10 @@ export default {
       html: "<p>Sie geben bei Google Ihren Firmennamen ein — und finden ihn. Ihre Kunden tippen «Elektriker Winterthur» ein — und finden Ihre Mitbewerber. Das ist keine Ausnahme. Das ist der Alltag von tausenden Schweizer KMU.</p><p>Die gute Nachricht: In fast allen Fällen steckt eine von sieben bekannten Ursachen dahinter. Und fast alle sind behebbar — manche in 10 Minuten, manche brauchen mehr Zeit, aber alle haben einen klaren Fix.</p><p>Bevor wir zu den Ursachen kommen: ein wichtiger Hinweis, der oft für Verwirrung sorgt.</p>",
     },
     {
+      type: "richText",
+      html: '<p>Dieser Artikel gehört zu Cluster 3 (SEO für KMU). Den vollständigen Überblick gibt der <a href="/wissen/seo-schweizer-kmu-einstiegsguide-2026">SEO-Einstiegsguide für Schweizer KMU</a>; wie Sie ohne laufendes Werbebudget nachhaltig sichtbar werden, zeigt <a href="/wissen/seo-ohne-werbebudget-organische-sichtbarkeit-kmu">organische Sichtbarkeit ohne Werbebudget</a>.</p>',
+    },
+    {
       type: "callout",
       variant: "navy",
       title: "Der Personalisierungseffekt",

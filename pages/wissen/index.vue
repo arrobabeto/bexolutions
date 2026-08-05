@@ -277,14 +277,16 @@
           class="absolute rounded-[30px] bg-[#f9f9f9]"
           style="left: 120px; top: 252px; width: 1272px; height: 326px"
         >
-          <h1
+          <div
+            role="heading"
+            aria-level="1"
             class="absolute left-1/2 -translate-x-1/2 text-center text-[40px] font-semibold leading-[56px] text-black"
             style="top: 64px; width: 875px"
           >
             Wissen, das wirkt.
             <br />
             Marketing für Schweizer KMU — ohne Theorie.
-          </h1>
+          </div>
           <p
             class="absolute left-1/2 -translate-x-1/2 text-center text-[18px] font-medium leading-[25px] text-black"
             style="top: 202px; width: 933px"

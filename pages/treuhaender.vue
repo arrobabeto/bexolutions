@@ -362,7 +362,9 @@
         ></div>
 
         <!-- ============================= HERO ============================= -->
-        <h1
+        <div
+          role="heading"
+          aria-level="1"
           class="absolute text-[40px] font-semibold leading-[48px] text-[#0e2138]"
           style="left: 120px; top: 277px; width: 640px"
         >
@@ -371,7 +373,7 @@
           Treuhandbüro.Systematisch.
           <br />
           Messbar. Ohne Werbebudget.
-        </h1>
+        </div>
         <p
           class="absolute text-[18px] font-normal leading-[25px] text-[#13315c]"
           style="left: 770px; top: 299px; width: 630px"

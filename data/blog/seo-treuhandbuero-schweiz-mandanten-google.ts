@@ -76,6 +76,10 @@ export default {
       type: "richText",
       html: "<p>Der Treuhänder eines KMU-Kunden wechselt im Schnitt alle 8–12 Jahre — aber wenn er wechselt, googelt er. Potenzielle Neukunden informieren sich heute online, bevor sie zum Telefon greifen. Sie vergleichen Profile, lesen Bewertungen, prüfen die Website. Wer bei dieser Recherche nicht auftaucht, kommt nie auf die Shortlist.</p><p>Das Problem: Viele Deutschschweizer Treuhandbüros verlassen sich noch auf das Empfehlungsnetzwerk — was langfristig ein strukturelles Risiko ist. Empfehlungen sind passiv. SEO ist aktiv: Es baut eine digitale Präsenz auf, die neue Mandanten anzieht, auch wenn niemand aus dem Netzwerk aktiv empfiehlt.</p><p>Dieser Artikel zeigt, wie Treuhandbüros in der Deutschschweiz SEO branchenspezifisch umsetzen — mit den richtigen Keywords, den richtigen Inhalten und dem richtigen E-E-A-T-Profil.</p>",
     },
+    {
+      type: "richText",
+      html: '<p>Dieser Artikel ist der Überblicksartikel des Treuhand-Clusters. Die Detailartikel vertiefen einzelne Bausteine: <a href="/wissen/nischen-seo-treuhand-grundstueckgewinnsteuer-aargau">Nischen-SEO statt Konkurrenzkampf</a>, die <a href="/wissen/content-strategie-treuhand-themen-die-ranken">Content-Strategie mit 30 Themen</a> und die <a href="/wissen/zofingen-treuhand-seo-fallstudie-organische-besucher">Fallstudie Zofingen Treuhand AG</a>.</p>',
+    },
     { type: "divider" },
 
     {
