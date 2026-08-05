@@ -93,9 +93,13 @@
           <!-- Header: title trio + meta box -->
           <div class="flex items-start justify-between gap-[40px] pt-[64px]">
             <div class="max-w-[1008px]">
-              <h1 class="text-[40px] font-semibold leading-[1.3] text-black">
+              <div
+                role="heading"
+                aria-level="1"
+                class="text-[40px] font-semibold leading-[1.3] text-black"
+              >
                 {{ fullTitle }}
-              </h1>
+              </div>
               <p
                 v-if="blog.tagline"
                 class="mt-[16px] text-[18px] font-medium leading-[1.4] text-black"

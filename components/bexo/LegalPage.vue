@@ -85,9 +85,13 @@
         </header>
 
         <article class="article-wrap pb-[96px] pt-[48px]">
-          <h1 class="text-[40px] font-semibold leading-[1.3] text-[#0e2138]">
+          <div
+            role="heading"
+            aria-level="1"
+            class="text-[40px] font-semibold leading-[1.3] text-[#0e2138]"
+          >
             {{ title }}
-          </h1>
+          </div>
 
           <div v-if="showCookieCta" class="mt-[32px]">
             <button

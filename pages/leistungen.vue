@@ -340,14 +340,16 @@
             class="absolute inset-0"
             style="background: rgba(14, 33, 56, 0.75)"
           ></div>
-          <h1
+          <div
+            role="heading"
+            aria-level="1"
             class="absolute text-[40px] font-semibold leading-[48px] text-white"
             style="left: 114px; top: 104px; width: 858px"
           >
             Unsere Leistungen.
             <br />
             Ein System. Alles aus einer Hand.
-          </h1>
+          </div>
           <p
             class="absolute text-[20px] font-normal leading-[28px] text-white"
             style="left: 114px; top: 222px; width: 773px"

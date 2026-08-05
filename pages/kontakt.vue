@@ -173,7 +173,9 @@
         ></div>
 
         <!-- ============================= HERO ============================= -->
-        <h1
+        <div
+          role="heading"
+          aria-level="1"
           class="absolute text-[40px] font-semibold leading-[56px] text-black"
           style="left: 120px; top: 291px; width: 620px"
         >
@@ -182,7 +184,7 @@
           Schreiben Sie uns — oder
           <br />
           buchen Sie direkt.
-        </h1>
+        </div>
         <p
           class="absolute text-[18px] font-normal leading-[25px] text-black"
           style="left: 768px; top: 325px; width: 540px"

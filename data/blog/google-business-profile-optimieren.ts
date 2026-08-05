@@ -61,6 +61,10 @@ export default {
       html: "<p>Wenn jemand in Zug nach «Treuhand» sucht oder in Winterthur nach «Elektriker Notfall» — entscheidet ein einziger Moment darüber, ob Ihr Unternehmen erscheint oder nicht. Dieser Moment heisst <strong>Google Local Pack</strong>: die drei hervorgehobenen lokalen Treffer mit Karte, die in der Suche weit oben stehen.</p><p>Das Google Business Profile (GBP) ist der wichtigste Hebel für diesen Moment. Es ist kostenlos, direkt von Google, und hat laut Google-eigenen Daten mehr Einfluss auf Ihre lokale Sichtbarkeit als fast jede andere Massnahme. Und trotzdem haben nur <strong>48 % der Schweizer KMU</strong> mit Website ein vollständig ausgefülltes Profil (HSLU, 2025).</p>",
     },
     {
+      type: "richText",
+      html: '<p>Dieser Artikel ist Artikel 1 im Local-SEO-Cluster. Wie das Google Business Profile im Verhältnis zur Website wirkt, zeigt <a href="/wissen/google-maps-vs-organische-suche-kmu-schweiz">Google Maps vs. organische Suche</a>; den systematischen Weg ins Local Pack beschreibt <a href="/wissen/local-seo-schweiz-google-maps-platz-1-kmu">Local SEO Schweiz</a>.</p>',
+    },
+    {
       type: "callout",
       variant: "highlight",
       title: "Neu 2026: GBP-Daten fliessen direkt in KI-Antworten ein.",

@@ -11,7 +11,6 @@ export default defineEventHandler(async (event) => {
     Allow: /
 
     Disallow: /errors/
-    Disallow: /_nuxt/
     Disallow: /api/
 
     Allow: /robots.txt
@@ -23,8 +22,5 @@ export default defineEventHandler(async (event) => {
     Crawl-delay: 1
 
     Sitemap: ${baseUrl}/sitemap.xml
-
-    LLMs-Txt: ${baseUrl}/llms.txt
-    LLMs-Full-Txt: ${baseUrl}/llms-full.txt
   `
 })

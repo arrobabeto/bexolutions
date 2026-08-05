@@ -214,7 +214,9 @@
               Kundenfallstudie
             </span>
           </div>
-          <h1
+          <div
+            role="heading"
+            aria-level="1"
             class="absolute text-center text-[32px] font-semibold leading-[45px] text-white"
             style="left: 24px; top: 111px; width: 579px"
           >
@@ -223,7 +225,7 @@
             Von 0 Anfragen über Google zur
             <br />
             Teamvergrösserung in 16 Monaten.
-          </h1>
+          </div>
           <p
             class="absolute text-center text-[18px] font-normal leading-[25px] text-white"
             style="left: 88px; top: 274px; width: 451px"
