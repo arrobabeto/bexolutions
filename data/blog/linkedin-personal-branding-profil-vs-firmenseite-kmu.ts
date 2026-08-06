@@ -7,9 +7,9 @@ export default {
   date: "Juli 2026",
   datePublished: "2026-07-18",
   title:
-    "Personal Branding auf LinkedIn: Warum Ihr Profil besser rankt als die Firmenseite",
+    "Personal Branding auf LinkedIn — Warum Ihr Profil besser rankt als die Firmenseite",
   subtitle:
-    "Der algorithmische Grund — und wie Sie Ihr persönliches Profil als primären LinkedIn-Kanal aufbauen",
+    "Personenprofile erreichen bis 5× mehr Reichweite — so nutzen Sie das",
   tagline:
     "Personenprofile erreichen bis 5× mehr Reichweite als Firmenseiten — so nutzen Sie das",
   heroImage:
@@ -57,7 +57,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>Ein KMU-Inhaber postet auf der Firmenseite. 200 Impressionen, 4 Likes. Derselbe Inhalt, gleicher Tag, von seinem persönlichen Profil: 3.800 Impressionen, 47 Likes, 12 Kommentare. Gleicher Inhalt. Gleiche Zielgruppe. Komplett anderes Ergebnis.</p><p>Das ist kein Einzelfall. Es ist Systemrealität. LinkedIn hat seinen Algorithmus zwischen 2024 und 2026 grundlegend verändert — zuungunsten von Firmenseiten und zugunsten von Personenprofilen. Die Daten sind eindeutig. Was viele KMU-Inhaber noch nicht verstanden haben: ihre persönliche LinkedIn-Präsenz ist ihr stärkster Marketingkanal. Nicht die Firmenseite.</p><p>Dieser Artikel ist Teil von Cluster 5 (LinkedIn &amp; Personal Branding). Der Hub-Artikel erklärt das <a href="/wissen/linkedin-kmu-inhaber-thought-leadership-30-minuten">30-Minuten-System</a>. Dieser Artikel erklärt den Grund — und wie Sie Ihr Profil als Fundament aufbauen.</p>',
+      html: '<p>Ein KMU-Inhaber postet auf der Firmenseite. 200 Impressionen, 4 Likes. Derselbe Inhalt, gleicher Tag, von seinem persönlichen Profil: 3.800 Impressionen, 47 Likes, 12 Kommentare. Gleicher Inhalt. Gleiche Zielgruppe. Komplett anderes Ergebnis.</p><p>Das ist kein Einzelfall. Es ist Systemrealität. LinkedIn hat seinen Algorithmus zwischen 2024 und 2026 grundlegend verändert — zuungunsten von Firmenseiten und zugunsten von Personenprofilen. Die Daten sind eindeutig. Was viele KMU-Inhaber noch nicht verstanden haben: ihre persönliche LinkedIn-Präsenz ist ihr stärkster Marketingkanal. Nicht die Firmenseite.</p><p>Der Übersichtsartikel <a href="/wissen/linkedin-kmu-inhaber-thought-leadership-30-minuten">LinkedIn für KMU-Inhaber: Thought Leadership in 30 Minuten pro Woche</a> zeigt, wie Sie mit geringem Zeitaufwand kontinuierlich Sichtbarkeit aufbauen. Dieser Beitrag erklärt, warum Ihr LinkedIn-Profil die Grundlage dafür bildet – und wie Sie es Schritt für Schritt richtig aufbauen.</p>',
     },
     { type: "divider" },
 

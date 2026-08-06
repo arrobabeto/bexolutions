@@ -8,7 +8,7 @@ export default {
   datePublished: "2026-07-17",
   title: "LinkedIn für KMU-Inhaber: Thought Leadership in 30 Minuten pro Woche",
   subtitle:
-    "Der pragmatische Ansatz für Schweizer Inhaber, die keine Zeit haben — aber trotzdem sichtbar sein wollen",
+    "Das System für Schweizer Inhaber, die sichtbar sein wollen — ohne Zeitverlust",
   tagline:
     "Thought Leadership auf LinkedIn in 30 Minuten pro Woche — das System für Schweizer KMU-Inhaber",
   heroImage:
@@ -54,7 +54,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>«Ich weiss, dass ich auf LinkedIn aktiver sein sollte. Aber ich finde einfach keine Zeit.» Das ist der Satz, den wir am häufigsten von Schweizer KMU-Inhabern hören, wenn das Gespräch auf LinkedIn kommt. Gefolgt von: «Und was soll ich überhaupt schreiben?»</p><p>Beides sind lösbare Probleme. Nicht mit mehr Zeit — sondern mit einem System. Dieser Artikel zeigt, wie Schweizer KMU-Inhaber LinkedIn-Thought-Leadership in 30 Minuten pro Woche aufbauen können. Ohne Content-Team, ohne Agentur, ohne kreative Blockade.</p><p>Dieser Artikel ist der Hub-Artikel von Cluster 5 (LinkedIn &amp; Personal Branding). Die Folge-Artikel vertiefen einzelne Dimensionen: <a href="/wissen/linkedin-personal-branding-profil-vs-firmenseite-kmu">Profil-Optimierung</a>, Post-Formate und <a href="/wissen/linkedin-outreach-schweiz-b2b-leads-kmu">Netzwerk-Aufbau</a>.</p>',
+      html: '<p>«Ich weiss, dass ich auf LinkedIn aktiver sein sollte. Aber ich finde einfach keine Zeit.» Das ist der Satz, den wir am häufigsten von Schweizer KMU-Inhabern hören, wenn das Gespräch auf LinkedIn kommt. Gefolgt von: «Und was soll ich überhaupt schreiben?»</p><p>Beides sind lösbare Probleme. Nicht mit mehr Zeit — sondern mit einem System. Dieser Artikel zeigt, wie Schweizer KMU-Inhaber LinkedIn-Thought-Leadership in 30 Minuten pro Woche aufbauen können. Ohne Content-Team, ohne Agentur, ohne kreative Blockade.</p><p>Dieser Artikel bietet einen Überblick für unsere Artikelreihe »LinkedIn & Personal Branding«. Die Folge-Artikel vertiefen einzelne Dimensionen: <a href="/wissen/linkedin-personal-branding-profil-vs-firmenseite-kmu">Profil-Optimierung</a>, Post-Formate und <a href="/wissen/linkedin-outreach-schweiz-b2b-leads-kmu">Netzwerk-Aufbau</a>.</p>',
     },
     { type: "divider" },
 

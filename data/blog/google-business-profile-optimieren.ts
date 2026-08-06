@@ -15,8 +15,9 @@ export default {
   readTime: "9 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-01",
-  title: "Google Business Profile optimieren:",
-  subtitle: "Die 10 wichtigsten Massnahmen für KMU",
+  title: "Google Business Profile optimieren — 10 Massnahmen für KMU",
+  subtitle:
+    "Schritt für Schritt zur lokalen Sichtbarkeit — mit Zeitaufwand, Schweizer Spezifika und KI-Bonus",
   tagline:
     "Schritt für Schritt zur lokalen Sichtbarkeit — mit Zeitaufwand, Schweizer Spezifika und KI-Bonus",
   heroImage: "/images/blog/google-business-profile-optimieren/hero.jpg",
@@ -27,7 +28,7 @@ export default {
   },
   author: {
     name: "Balaram Furrer",
-    bio: "Balaram Furrer ist CEO und Co-Founder von Bexolutions Marketing & Vertrieb AG sowie BNI Area Director Kanton Aargau.",
+    bio: "Balaram Furrer ist CEO und Co-Founder von Bexolutions Marketing & Vertrieb AG sowie BNI Area Director Kanton Aargau und Gründungsmitglied von Elev8 Group. Er begleitet Schweizer KMU bei der digitalen Sichtbarkeit im Zeitalter der KI-Suche.",
   },
   toc: [
     { id: "warum", label: "Warum das GBP 2026 wichtiger ist denn je" },
@@ -210,7 +211,7 @@ export default {
     },
     {
       type: "richText",
-      html: "<p>Ein gepflegtes Google Business Profile ist der günstigste Hebel für lokale Sichtbarkeit — und 2026 zusätzlich eine Zitierquelle für KI-Antworten. Priorisieren Sie die Massnahmen, die auf Relevanz und Bekanntheit einzahlen, und halten Sie das Profil mit einer kurzen Monatsroutine aktuell.</p>",
+      html: '<p>Ein gepflegtes Google Business Profile ist der günstigste Hebel für lokale Sichtbarkeit — und 2026 zusätzlich eine Zitierquelle für KI-Antworten. Priorisieren Sie die Massnahmen, die auf Relevanz und Bekanntheit einzahlen, und halten Sie das Profil mit einer kurzen Monatsroutine aktuell.</p><p><strong>Ihr nächster Schritt:</strong> Prüfen Sie heute, ob Ihr Profil vollständig ausgefüllt ist — Kategorien, Öffnungszeiten, Fotos und NAP-Konsistenz. Das ist der schnellste Hebel ohne Werbebudget.</p><p>Möchten Sie professionelle Unterstützung? <a href="/kontakt">Kontakt aufnehmen</a></p>',
     },
     {
       type: "table",

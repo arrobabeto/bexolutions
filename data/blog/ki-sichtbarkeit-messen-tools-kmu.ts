@@ -6,8 +6,8 @@ export default {
   readTime: "7 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-05",
-  title: "KI-Sichtbarkeit messen:",
-  subtitle: "Diese Tools tracken Ihren Share of Voice in KI-Antworten",
+  title: "KI-Sichtbarkeit messen — Tools für Ihren Share of Voice",
+  subtitle: "Vom kostenlosen Einstieg bis zum professionellen Monitoring",
   tagline:
     "Vom kostenlosen Einstieg bis zum professionellen Monitoring — was für Schweizer KMU tatsächlich sinnvoll ist",
   heroImage: "/images/blog/ki-sichtbarkeit-messen-tools-kmu/hero.jpg",
@@ -56,7 +56,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>Was nicht gemessen wird, kann nicht verbessert werden. Das gilt für SEO seit Jahrzehnten — und es gilt seit 2025 auch für KI-Sichtbarkeit. Das Problem: Die Tools, die die meisten KMU täglich nutzen, sehen diese Sichtbarkeit schlicht nicht.</p><p>Google Search Console zeigt Klicks und Impressionen in der klassischen Suche. Google Analytics 4 zeigt Website-Traffic. Weder das eine noch das andere zeigt, ob ChatGPT Ihr Unternehmen empfiehlt, wenn jemand nach Ihrer Leistung fragt.</p><p>Dieser Artikel zeigt, wie Sie Ihre KI-Sichtbarkeit in drei Stufen messen — vom kostenlosen 5-Minuten-Test bis zum professionellen Monitoring.</p><p>Dieser Artikel ist Teil unserer Cluster-Serie zur KI-Sichtbarkeit. Die Grundlagen finden Sie in <a href="/wissen/ki-suchen-ohne-klick-kmu">Artikel 1 (KI-Suchen ohne Klick)</a>, <a href="/wissen/geo-readiness-kmu-chatgpt-google-ai-mode">Artikel 2 (GEO Readiness)</a> und <a href="/wissen/b2b-kaeufer-ki-recherche-kmu-schweiz">Artikel 3 (B2B-Käufer und KI)</a>.</p>',
+      html: '<p>Was nicht gemessen wird, kann nicht verbessert werden. Das gilt für SEO seit Jahrzehnten — und es gilt seit 2025 auch für KI-Sichtbarkeit. Das Problem: Die Tools, die die meisten KMU täglich nutzen, sehen diese Sichtbarkeit schlicht nicht.</p><p>Google Search Console zeigt Klicks und Impressionen in der klassischen Suche. Google Analytics 4 zeigt Website-Traffic. Weder das eine noch das andere zeigt, ob ChatGPT Ihr Unternehmen empfiehlt, wenn jemand nach Ihrer Leistung fragt.</p><p>Dieser Artikel zeigt, wie Sie Ihre KI-Sichtbarkeit in drei Stufen messen — vom kostenlosen 5-Minuten-Test bis zum professionellen Monitoring.</p><p>Dieser Artikel ist Teil unserer Artikelreihe zur KI-Sichtbarkeit. Die Grundlagen finden Sie in <a href="/wissen/ki-suchen-ohne-klick-kmu">Artikel 1 (KI-Suchen ohne Klick)</a>, <a href="/wissen/geo-readiness-kmu-chatgpt-google-ai-mode">Artikel 2 (GEO Readiness)</a> und <a href="/wissen/b2b-kaeufer-ki-recherche-kmu-schweiz">Artikel 3 (B2B-Käufer und KI)</a>.</p>',
     },
     { type: "divider" },
 

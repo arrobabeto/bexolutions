@@ -8,7 +8,7 @@ export default {
   datePublished: "2026-07-11",
   title: "SEO ohne Werbebudget: Organische Sichtbarkeit Schritt für Schritt",
   subtitle:
-    "Warum 93 % der Google-Klicks auf organische Treffer gehen — und wie Schweizer KMU davon profitieren",
+    "In 4 Phasen zur nachhaltigen Sichtbarkeit für Schweizer KMU — ohne Ads-Budget",
   tagline:
     "Organische Sichtbarkeit ohne Ads-Budget — ehrlich erklärt, in 4 Phasen umsetzbar",
   heroImage:
@@ -59,7 +59,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: "<p>«Ich kann mir Google Ads nicht leisten.» Das ist einer der häufigsten Sätze, die wir von Schweizer KMU-Inhabern hören. Gefolgt von einer stillen Hoffnung: «Kann ich trotzdem bei Google sichtbar werden?»</p><p>Die Antwort ist Ja — und die Zahlen geben dieser Hoffnung recht: 93.2 % aller Google-Klicks gehen auf organische Treffer, nicht auf bezahlte Anzeigen (SISTRIX). Das bedeutet: Der Grossteil der Kunden, die heute über Google zu lokalen Unternehmen finden, klickt nicht auf Werbung. Sie klicken auf die Ergebnisse, die durch SEO dort stehen.</p><p>Aber: SEO ist nicht gratis. Es ist eine Investition — in Zeit, nicht in Klickkosten. Wer das versteht, kann mit einem minimalen Budget nachhaltige Sichtbarkeit aufbauen.</p><p>Dieser Artikel ist Artikel 3 im SEO-Cluster. Artikel 9 gibt den Überblick, Artikel 10 die Diagnose. Hier geht es um die Strategie: Wie bauen Sie organische Sichtbarkeit auf — ohne laufendes Werbebudget?</p>",
+      html: '<p>«Ich kann mir Google Ads nicht leisten.» Das ist einer der häufigsten Sätze, die wir von Schweizer KMU-Inhabern hören. Gefolgt von einer stillen Hoffnung: «Kann ich trotzdem bei Google sichtbar werden?»</p><p>Die Antwort ist Ja — und die Zahlen geben dieser Hoffnung recht: 93.2 % aller Google-Klicks gehen auf organische Treffer, nicht auf bezahlte Anzeigen (SISTRIX). Das bedeutet: Der Grossteil der Kunden, die heute über Google zu lokalen Unternehmen finden, klickt nicht auf Werbung. Sie klicken auf die Ergebnisse, die durch SEO dort stehen.</p><p>Aber: SEO ist nicht gratis. Es ist eine Investition — in Zeit, nicht in Klickkosten. Wer das versteht, kann mit einem minimalen Budget nachhaltige Sichtbarkeit aufbauen.</p><p>Dieser Artikel ist Teil 3 unserer SEO-Artikelreihe. Die Artikel <a href="/wissen/seo-schweizer-kmu-einstiegsguide-2026">«SEO für Schweizer KMU: Der komplette Einstiegsguide 2026»</a>, <a href="/wissen/warum-kmu-bei-google-unsichtbar-ursachen-fixes">«Warum Ihr KMU bei Google unsichtbar ist — und wie Sie das ändern»</a> sowie <a href="/wissen/keyword-recherche-kmu-schweiz-suchbegriffe-finden">«Keyword-Recherche für KMU: Die richtigen Suchbegriffe finden»</a> bilden die Grundlage dieser Artikelreihe. In diesem Beitrag erfahren Sie, wie Sie organische Sichtbarkeit Schritt für Schritt aufbauen – ganz ohne laufendes Werbebudget.</p>',
     },
     {
       type: "richText",
@@ -188,7 +188,7 @@ export default {
     },
     {
       type: "richText",
-      html: "<p>SEO hat einen Eigenschaft, die Google Ads fundamental fehlt: den Compound-Effekt. Jede Massnahme, die Sie heute ergreifen, stärkt die Grundlage für zukünftige Massnahmen.</p>",
+      html: "<p>SEO hat eine Eigenschaft, die Google Ads fundamental fehlt: den Compound-Effekt. Jede Massnahme, die Sie heute ergreifen, stärkt die Grundlage für zukünftige Massnahmen.</p>",
     },
     {
       type: "table",

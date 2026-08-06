@@ -8,7 +8,7 @@ export default {
   datePublished: "2026-07-19",
   title: "LinkedIn Outreach: Wie Schweizer KMU qualifizierte Leads generieren",
   subtitle:
-    "Systematisch, persönlich, ohne Spam-Gefühl — die Methode für B2B-Schweizer-KMU",
+    "Warm Outreach, Personalisierung und Mehrwert vor Pitch — das System für B2B-Leads",
   tagline:
     "Warm Outreach, Personalisierung und Mehrwert vor Pitch — das System für B2B-Leads",
   heroImage: "/images/blog/linkedin-outreach-schweiz-b2b-leads-kmu/hero.jpg",
@@ -51,7 +51,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>«Ich möchte nicht als Spam wahrgenommen werden.» Das ist der häufigste Einwand, den wir von Schweizer KMU-Inhabern hören, wenn das Gespräch auf LinkedIn Outreach kommt. Berechtigt — weil schlechter Outreach tatsächlich wie Spam wirkt. Systematischer, gut gemachter Outreach aber nicht.</p><p>Der Unterschied liegt nicht in der Absicht, sondern in der Methode. Wer seine Zielgruppe genau kennt, das richtige Timing wählt, eine persönliche Verbindung herstellt und in der ersten Nachricht keinen Pitch macht, erreicht Antwortquoten, die klassische Kaltakquise per Telefon oder E-Mail weit übertreffen.</p><p>Dieser Artikel zeigt das System, das Schweizer KMU dafür brauchen. Er ist Teil von Cluster 5 (LinkedIn &amp; Personal Branding): Der <a href="/wissen/linkedin-kmu-inhaber-thought-leadership-30-minuten">30-Minuten-Wochenplan</a> gibt das Content-System, der Artikel zum <a href="/wissen/linkedin-personal-branding-profil-vs-firmenseite-kmu">Personenprofil</a> das Fundament. Hier wird aus Sichtbarkeit aktive Lead-Generierung.</p>',
+      html: '<p>«Ich möchte nicht als Spam wahrgenommen werden.» Das ist der häufigste Einwand, den wir von Schweizer KMU-Inhabern hören, wenn das Gespräch auf LinkedIn Outreach kommt. Berechtigt — weil schlechter Outreach tatsächlich wie Spam wirkt. Systematischer, gut gemachter Outreach aber nicht.</p><p>Der Unterschied liegt nicht in der Absicht, sondern in der Methode. Wer seine Zielgruppe genau kennt, das richtige Timing wählt, eine persönliche Verbindung herstellt und in der ersten Nachricht keinen Pitch macht, erreicht Antwortquoten, die klassische Kaltakquise per Telefon oder E-Mail weit übertreffen.</p><p>Dieser Artikel zeigt das System, das Schweizer KMU dafür brauchen. Er ist Teil unserer Artikelreihe (LinkedIn &amp; Personal Branding): Der <a href="/wissen/linkedin-kmu-inhaber-thought-leadership-30-minuten">30-Minuten-Wochenplan</a> gibt das Content-System, der Artikel zum <a href="/wissen/linkedin-personal-branding-profil-vs-firmenseite-kmu">Personenprofil</a> das Fundament. Hier wird aus Sichtbarkeit aktive Lead-Generierung.</p>',
     },
     { type: "divider" },
 

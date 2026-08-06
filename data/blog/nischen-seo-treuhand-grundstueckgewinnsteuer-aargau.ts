@@ -6,9 +6,10 @@ export default {
   readTime: "7 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-14",
-  title: "Grundstückgewinnsteuer Aargau: Warum dieser Begriff Gold wert ist",
+  title:
+    "Nischen-SEO am Beispiel: Warum «Grundstückgewinnsteuer Aargau» Gold wert ist",
   subtitle:
-    "Nischen-SEO für Treuhandkanzleien — die Methode hinter dem Keyword",
+    "Wie Treuhandkanzleien Long-Tail-Keywords finden, die Mandate bringen",
   tagline:
     "Long-Tail statt Breite: So gewinnen Treuhandkanzleien Mandate über Nischen-Keywords",
   heroImage:
@@ -60,11 +61,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: "<p>Stellen Sie sich vor: Sie wollen mit SEO bei Google sichtbar werden und überlegen, für welche Keywords Sie Inhalte schreiben sollen. Die naheliegenden Kandidaten: «Steuerberatung Schweiz», «Treuhand Zürich», «Buchhaltung KMU». Viel gesucht, klar relevant — und vollständig dominiert von grossen Steuerberatungsgesellschaften, Immobilienportalen und nationalen Plattformen, gegen die eine lokale Kanzlei kaum eine Chance hat.</p><p>Jetzt das Gegenmodell: «Grundstückgewinnsteuer Aargau». Weniger als 200 Suchanfragen pro Monat. Keyword-Difficulty unter 15. Und wer sucht? Jemand, der gerade eine Liegenschaft im Aargau verkauft hat oder verkaufen will, die Steuerpflicht genau verstehen möchte — und bereit ist, sich professionelle Hilfe zu holen.</p><p>Das ist Nischen-SEO. Und es ist die Methode, mit der Treuhandkanzleien in der Deutschschweiz organisch wachsen können, ohne gegen Konzerne konkurrieren zu müssen.</p>",
-    },
-    {
-      type: "richText",
-      html: '<p>Dieser Artikel gehört zum Treuhand-Cluster. Den Gesamtrahmen liefert <a href="/wissen/seo-treuhandbuero-schweiz-mandanten-google">SEO für Treuhandbüros in der Schweiz</a>; welche Themen sich konkret lohnen, zeigt die <a href="/wissen/content-strategie-treuhand-themen-die-ranken">Content-Strategie mit 30 Themen für Treuhänder</a>.</p>',
+      html: '<p>Stellen Sie sich vor: Sie wollen mit SEO bei Google sichtbar werden und überlegen, für welche Keywords Sie Inhalte schreiben sollen. Die naheliegenden Kandidaten: «Steuerberatung Schweiz», «Treuhand Zürich», «Buchhaltung KMU». Viel gesucht, klar relevant — und vollständig dominiert von grossen Steuerberatungsgesellschaften, Immobilienportalen und nationalen Plattformen, gegen die eine lokale Kanzlei kaum eine Chance hat.</p><p>Jetzt das Gegenmodell: «Grundstückgewinnsteuer Aargau». Weniger als 200 Suchanfragen pro Monat. Keyword-Difficulty unter 15. Und wer sucht? Jemand, der gerade eine Liegenschaft im Aargau verkauft hat oder verkaufen will, die Steuerpflicht genau verstehen möchte — und bereit ist, sich professionelle Hilfe zu holen.</p><p>Das ist Nischen-SEO. Und es ist die Methode, mit der Treuhandkanzleien in der Deutschschweiz organisch wachsen können, ohne gegen Konzerne konkurrieren zu müssen.</p><p>Mehr Tiefe gefällig? Den Gesamtrahmen liefert <a href="/wissen/seo-treuhandbuero-schweiz-mandanten-google">SEO für Treuhandbüros</a>. Was die Methode in der Praxis gebracht hat, lesen Sie in der <a href="/wissen/zofingen-treuhand-seo-fallstudie-organische-besucher">Fallstudie Zofingen Treuhand AG</a>. Und welche Themen für Treuhandkanzleien wirklich ranken, zeigt der <a href="/wissen/content-strategie-treuhand-themen-die-ranken">Content-Plan mit 30 konkreten Themen</a>.</p>',
     },
     { type: "divider" },
 
@@ -327,7 +324,7 @@ export default {
     },
     {
       type: "callout",
-      variant: "navy",
+      variant: "highlight",
       title: "Erkenntnis aus der Praxis",
       body: "«Das häufigste Missverständnis bei SEO in Treuhandkanzleien: Sichtbarkeit entsteht durch Breite. Also: möglichst viele Themen, möglichst allgemeine Begriffe. Das Gegenteil ist wahr. Wer für «Steuerberatung Schweiz» ranken will, kämpft gegen Hunderte von Anbietern, die seit Jahren investieren. Wer für «Grundstückgewinnsteuer Aargau» rankt, spricht genau die Person an, die gerade eine Liegenschaft im Aargau verkauft hat — und heute noch anruft. Weniger Reichweite, aber der richtige Moment.» — Balaram Furrer, CEO Bexolutions",
     },

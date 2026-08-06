@@ -9,8 +9,7 @@ export function filterBlogsByCategory(
 }
 
 export function getBlogFeaturedTitle(blog: IBlog): string {
-  const title = blog.title.replace(/:\s*$/, "")
-  return blog.subtitle ? `${title} — ${blog.subtitle}` : title
+  return blog.title.replace(/:\s*$/, "")
 }
 
 export function getBlogCardTitle(blog: IBlog): string {

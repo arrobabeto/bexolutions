@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { computed, ref } from "vue"
+  import { useRuntimeConfig } from "#imports"
   import type { IBlog, IBlogCta } from "~/types/dto/IBlog"
   import BlogBlock from "~/components/blog/BlogBlock.vue"
   import BlogAudioButton from "~/components/blog/BlogAudioButton.vue"
@@ -16,6 +17,7 @@
 
   const canvasRef = ref<HTMLElement | null>(null)
   useCanvasScale(canvasRef)
+  const config = useRuntimeConfig()
 
   const IMG = "/images/wissen"
   const HOME = "/images/startseite"
@@ -37,6 +39,10 @@
 
   const cta = computed<IBlogCta>(() => ({ ...defaultCta, ...p.blog.cta }))
   const fullTitle = computed(() => getBlogFeaturedTitle(p.blog))
+  const shareUrl = computed(() => {
+    const base = String(config.public.siteUrl).replace(/\/$/, "")
+    return `${base}/wissen/${p.blog.slug}`
+  })
   const metaLine = computed(
     () => `${p.blog.category}  |  ${p.blog.readTime}  |  ${p.blog.date}`,
   )
@@ -80,6 +86,8 @@
             <a href="/kontakt" class="btn-navy" style="width: 153px">Kontakt</a>
             <a
               :href="BEXO_CTA_TERMIN.href"
+              target="_blank"
+              rel="noopener noreferrer"
               class="btn-primary"
               style="width: 237px"
             >
@@ -93,18 +101,14 @@
           <!-- Header: title trio + meta box -->
           <div class="flex items-start justify-between gap-[40px] pt-[64px]">
             <div class="max-w-[1008px]">
-              <div
-                role="heading"
-                aria-level="1"
-                class="text-[40px] font-semibold leading-[1.3] text-black"
-              >
-                {{ fullTitle }}
-              </div>
+              <h1 class="text-[40px] font-semibold leading-[1.3] text-black">
+                {{ blog.title.replace(/:\s*$/, "") }}
+              </h1>
               <p
-                v-if="blog.tagline"
-                class="mt-[16px] text-[18px] font-medium leading-[1.4] text-black"
+                v-if="blog.subtitle"
+                class="mt-[12px] text-[24px] font-medium leading-[1.35] text-[#0e2138]"
               >
-                {{ blog.tagline }}
+                {{ blog.subtitle }}
               </p>
             </div>
 
@@ -179,7 +183,7 @@
               :author="blog.author"
               :toc="blog.toc"
               :title="fullTitle"
-              :url="`/wissen/${blog.slug}`"
+              :url="shareUrl"
             />
           </div>
         </article>
@@ -212,6 +216,8 @@
           />
           <a
             :href="cta.buttonHref"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn-primary absolute"
             style="left: 136px; top: 513px; width: 370px"
           >
