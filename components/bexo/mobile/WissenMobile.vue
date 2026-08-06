@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import { computed, nextTick, ref } from "vue"
+  import { computed, nextTick, ref, watch } from "vue"
   import type { WissenCategoryFilter } from "~/constants/wissenCategories"
+  import { getWissenFilterPath } from "~/constants/wissenCategories"
   import BexoSection from "~/components/bexo/BexoSection.vue"
   import BlogFeaturedCard from "~/components/blog/BlogFeaturedCard.vue"
   import BlogListCard from "~/components/blog/BlogListCard.vue"
@@ -23,10 +24,15 @@
     hasMore,
     remainingCount,
     visibleCategorySections,
-    selectFilter,
     loadMore,
     blogsForSection,
   } = useWissenListing()
+
+  /** Category links change the URL — bring the freshly filtered list into view. */
+  watch(selectedFilter, async () => {
+    await nextTick()
+    listAnchor.value?.scrollIntoView({ behavior: "smooth", block: "start" })
+  })
 
   const loadMoreLabel = computed(() => {
     const next = Math.min(remainingCount.value, 9)
@@ -70,14 +76,6 @@
       filter: "LinkedIn & Personal Branding",
     },
   ]
-
-  async function handleSelectFilter(
-    chip: (typeof WISSEN_FILTER_CHIPS)[number],
-  ) {
-    selectFilter(chip)
-    await nextTick()
-    listAnchor.value?.scrollIntoView({ behavior: "smooth", block: "start" })
-  }
 </script>
 
 <template>
@@ -112,27 +110,26 @@
       </p>
     </BexoSection>
 
-    <!-- Filter chips — same chip set / selectFilter as desktop -->
+    <!-- Filter chips — crawlable category links, same chip set as desktop -->
     <div class="border-b border-black/5">
       <div class="px-4 py-3">
         <div
           class="max-w-xl mx-auto flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <button
+          <NuxtLink
             v-for="chip of WISSEN_FILTER_CHIPS"
             :key="chip"
-            type="button"
+            :to="getWissenFilterPath(chip)"
             class="grid h-10 shrink-0 place-items-center rounded-full px-6 text-sm font-medium text-[#0e2138] transition"
             :class="
               selectedFilter === chip
                 ? 'bg-[#bde0fe]'
                 : 'bg-[#f9f9f9] hover:bg-[#eef6ff]'
             "
-            :aria-pressed="selectedFilter === chip"
-            @click="handleSelectFilter(chip)"
+            :aria-current="selectedFilter === chip ? 'page' : undefined"
           >
             {{ chip }}
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -162,13 +159,13 @@
               :fallback-image="CARD_FALLBACK"
             />
           </div>
-          <button
-            type="button"
-            class="mt-4 min-h-11 text-base font-medium text-[#134074] transition hover:opacity-70"
-            @click="handleSelectFilter(section.filter)"
+          <NuxtLink
+            :to="getWissenFilterPath(section.filter)"
+            class="mt-4 grid min-h-11 w-fit items-center text-base font-medium text-[#134074] transition hover:opacity-70"
+            :aria-current="undefined"
           >
             Mehr anzeigen →
-          </button>
+          </NuxtLink>
         </BexoSection>
       </template>
 
@@ -232,12 +229,12 @@
       <p class="text-sm font-semibold text-[#0e2138]">Alle Themen</p>
       <h2 class="mt-1 text-2xl font-semibold text-black">Wissen nach Thema</h2>
       <div class="mt-6 grid grid-cols-1 gap-4">
-        <button
+        <NuxtLink
           v-for="t of topics"
           :key="t.title"
-          type="button"
-          class="rounded-[20px] border border-black/10 bg-[#f9f9f9] p-5 text-left transition hover:border-[#bde0fe]"
-          @click="handleSelectFilter(t.filter)"
+          :to="getWissenFilterPath(t.filter)"
+          class="block rounded-[20px] border border-black/10 bg-[#f9f9f9] p-5 text-left transition hover:border-[#bde0fe]"
+          :aria-current="selectedFilter === t.filter ? 'page' : undefined"
         >
           <span class="text-2xl" aria-hidden="true">{{ t.icon }}</span>
           <h3 class="mt-2 text-lg font-semibold text-black">{{ t.title }}</h3>
@@ -247,7 +244,7 @@
           <span class="mt-3 inline-block text-base font-medium text-[#134074]">
             Alle Artikel →
           </span>
-        </button>
+        </NuxtLink>
       </div>
     </BexoSection>
 

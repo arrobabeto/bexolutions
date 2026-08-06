@@ -1,9 +1,11 @@
-import { computed, reactive, toRef } from "vue"
+import { computed, reactive, watch } from "vue"
+import { useRoute } from "#app"
 import type { IBlog } from "~/types/dto/IBlog"
 import {
   WISSEN_CATEGORY_SECTIONS,
   WISSEN_LIST_PAGE_SIZE,
   WISSEN_SECTION_PREVIEW_SIZE,
+  getWissenCategoryBySlug,
   type WissenCategoryFilter,
   type WissenFilterChip,
 } from "~/constants/wissenCategories"
@@ -12,18 +14,30 @@ import { loadAllBlogs } from "~/utils/loadBlogs"
 
 export function useWissenListing() {
   const allBlogs = loadAllBlogs()
+  const route = useRoute()
   const state = reactive({
-    selectedFilter: "Alle" as WissenFilterChip,
     visibleCount: WISSEN_LIST_PAGE_SIZE,
   })
 
-  const isAlleSelected = computed(() => state.selectedFilter === "Alle")
+  /** Driven by `?kategorie=` so every category view is server-rendered and crawlable. */
+  const selectedFilter = computed<WissenFilterChip>(() => {
+    const raw = route.query["kategorie"]
+    const slug = Array.isArray(raw) ? raw[0] : raw
+    if (typeof slug !== "string" || slug === "") return "Alle"
+    return getWissenCategoryBySlug(slug) ?? "Alle"
+  })
+
+  watch(selectedFilter, () => {
+    state.visibleCount = WISSEN_LIST_PAGE_SIZE
+  })
+
+  const isAlleSelected = computed(() => selectedFilter.value === "Alle")
 
   const filteredBlogs = computed(() => {
     if (isAlleSelected.value) return allBlogs
     return filterBlogsByCategory(
       allBlogs,
-      state.selectedFilter as WissenCategoryFilter,
+      selectedFilter.value as WissenCategoryFilter,
     )
   })
 
@@ -43,18 +57,14 @@ export function useWissenListing() {
     Math.max(0, filteredBlogs.value.length - 1 - state.visibleCount),
   )
 
-  function selectFilter(chip: WissenFilterChip) {
-    state.selectedFilter = chip
-    state.visibleCount = WISSEN_LIST_PAGE_SIZE
-  }
-
   function loadMore() {
     state.visibleCount += WISSEN_LIST_PAGE_SIZE
   }
 
   function blogsForSection(filter: WissenCategoryFilter): IBlog[] {
-    const excludeSlug =
-      state.selectedFilter === "Alle" ? featuredBlog.value?.slug : undefined
+    const excludeSlug = isAlleSelected.value
+      ? featuredBlog.value?.slug
+      : undefined
     return filterBlogsByCategory(allBlogs, filter)
       .filter((b) => b.slug !== excludeSlug)
       .slice(0, WISSEN_SECTION_PREVIEW_SIZE)
@@ -68,7 +78,7 @@ export function useWissenListing() {
 
   return {
     allBlogs,
-    selectedFilter: toRef(state, "selectedFilter"),
+    selectedFilter,
     isAlleSelected,
     filteredBlogs,
     featuredBlog,
@@ -76,7 +86,6 @@ export function useWissenListing() {
     hasMore,
     remainingCount,
     visibleCategorySections,
-    selectFilter,
     loadMore,
     blogsForSection,
   }
