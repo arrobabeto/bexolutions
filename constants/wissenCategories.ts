@@ -30,4 +30,32 @@ export const WISSEN_CATEGORY_SECTIONS: IWissenCategorySection[] = [
 ]
 
 export const WISSEN_LIST_PAGE_SIZE = 9
-export const WISSEN_SECTION_PREVIEW_SIZE = 3
+/**
+ * Two full desktop card rows. Articles beyond this stay crawlable through the
+ * category link rendered by `getWissenFilterPath`.
+ */
+export const WISSEN_SECTION_PREVIEW_SIZE = 6
+
+/** URL slugs for the `?kategorie=` views so every category is a real, crawlable link. */
+export const WISSEN_CATEGORY_SLUGS: Record<WissenCategoryFilter, string> = {
+  "KI & GEO": "ki-geo",
+  "Local SEO": "local-seo",
+  "SEO für KMU": "seo-fuer-kmu",
+  "Treuhand-spezifisch": "treuhand-spezifisch",
+  "LinkedIn & Personal Branding": "linkedin-personal-branding",
+}
+
+export function getWissenCategoryBySlug(
+  slug: string,
+): WissenCategoryFilter | null {
+  for (const [filter, categorySlug] of Object.entries(WISSEN_CATEGORY_SLUGS)) {
+    if (categorySlug === slug) return filter as WissenCategoryFilter
+  }
+  return null
+}
+
+/** Path for a filter chip — "Alle" is the canonical `/wissen` page. */
+export function getWissenFilterPath(chip: WissenFilterChip): string {
+  if (chip === "Alle") return "/wissen"
+  return `/wissen?kategorie=${WISSEN_CATEGORY_SLUGS[chip]}`
+}

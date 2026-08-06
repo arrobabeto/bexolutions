@@ -11,6 +11,7 @@
   import { BEXO_CTA_TERMIN } from "~/constants/bexoNav"
   import {
     WISSEN_FILTER_CHIPS,
+    getWissenFilterPath,
     type WissenCategoryFilter,
   } from "~/constants/wissenCategories"
   import type { IBlog } from "~/types/dto/IBlog"
@@ -53,7 +54,6 @@
     filteredListBlogs,
     hasMore,
     remainingCount,
-    selectFilter,
     loadMore,
     blogsForSection,
   } = useWissenListing()
@@ -85,14 +85,18 @@
     return rows
   }
 
+  interface IAlleSectionRow {
+    blogs: IBlog[]
+    top: number
+    height: number
+  }
+
   interface IAlleSectionLayout {
     label: string
     filter: WissenCategoryFilter
-    blogs: IBlog[]
+    rows: IAlleSectionRow[]
     divider: number
     labelTop: number
-    cardsTop: number
-    rowHeight: number
     mehrTop: number
   }
 
@@ -102,19 +106,23 @@
     for (const cat of categoryDefs) {
       const blogs = blogsForSection(cat.filter)
       if (blogs.length === 0) continue
-      const rowHeight = getBlogCanvasRowHeight(blogs)
       const divider = y
       const labelTop = divider + DIVIDER_TO_LABEL
       const cardsTop = divider + DIVIDER_TO_CARDS
-      const mehrTop = cardsTop + rowHeight + CARDS_TO_MEHR
+      let rowTop = cardsTop
+      const rows = chunkBlogs(blogs, CARD_COLS).map((rowBlogs) => {
+        const height = getBlogCanvasRowHeight(rowBlogs)
+        const row: IAlleSectionRow = { blogs: rowBlogs, top: rowTop, height }
+        rowTop += height + CARD_ROW_GAP
+        return row
+      })
+      const mehrTop = rowTop - CARD_ROW_GAP + CARDS_TO_MEHR
       sections.push({
         label: cat.label,
         filter: cat.filter,
-        blogs,
+        rows,
         divider,
         labelTop,
-        cardsTop,
-        rowHeight,
         mehrTop,
       })
       y = mehrTop + MEHR_BTN_H + MEHR_TO_NEXT_DIVIDER
@@ -324,20 +332,20 @@
           class="absolute flex items-center"
           style="left: 184px; top: 1218px; gap: 12px"
         >
-          <button
+          <NuxtLink
             v-for="chip of WISSEN_FILTER_CHIPS"
             :key="chip"
-            type="button"
+            :to="getWissenFilterPath(chip)"
             class="grid h-[44px] place-items-center rounded-full px-7 text-[14px] font-medium leading-[18px] text-[#0e2138] transition"
             :class="
               selectedFilter === chip
                 ? 'bg-[#bde0fe]'
                 : 'bg-[#f9f9f9] hover:bg-[#eef6ff]'
             "
-            @click="selectFilter(chip)"
+            :aria-current="selectedFilter === chip ? 'page' : undefined"
           >
             {{ chip }}
-          </button>
+          </NuxtLink>
         </div>
 
         <!-- ============================= FEATURED ARTICLE ============================= -->
@@ -435,31 +443,33 @@
               {{ cat.label }}
             </p>
             <div
+              v-for="(row, ri) of cat.rows"
+              :key="cat.label + '-row-' + ri"
               class="absolute grid items-stretch"
               :style="{
                 left: CARD_GRID_LEFT + 'px',
-                top: cat.cardsTop + 'px',
+                top: row.top + 'px',
                 width: CARD_GRID_WIDTH + 'px',
-                height: cat.rowHeight + 'px',
+                height: row.height + 'px',
                 gridTemplateColumns: `repeat(${CARD_COLS}, ${CARD_WIDTH}px)`,
                 columnGap: CARD_GAP_X + 'px',
               }"
             >
               <BlogCanvasCard
-                v-for="b of cat.blogs"
+                v-for="b of row.blogs"
                 :key="b.slug"
                 :blog="b"
                 :fallback-image="CARD_FALLBACK"
               />
             </div>
-            <button
-              type="button"
+            <NuxtLink
+              :to="getWissenFilterPath(cat.filter)"
               class="absolute text-[16px] font-medium leading-[20px] text-[#134074] transition hover:opacity-70"
               :style="{ left: '120px', top: cat.mehrTop + 'px' }"
-              @click="selectFilter(cat.filter)"
+              :aria-current="undefined"
             >
               Mehr anzeigen →
-            </button>
+            </NuxtLink>
           </template>
         </template>
 
