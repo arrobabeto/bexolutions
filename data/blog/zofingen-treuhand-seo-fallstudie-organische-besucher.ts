@@ -6,10 +6,9 @@ export default {
   readTime: "8 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-15",
-  title:
-    "Wie Zofingen Treuhand AG von 0 auf 1’704 organische Besucher pro Monat kam",
+  title: "Wie Zofingen Treuhand AG auf 1'704 organische Besucher pro Monat kam",
   subtitle:
-    "Eine Fallstudie über 16 Monate SEO, Nischen-Content und Google Business Profile — und was das für Ihr Treuhandbüro bedeutet",
+    "Fallstudie: Von 0 Sichtbarkeit zu +200 % Klicks und 12 Top-Rankings in 16 Monaten",
   tagline:
     "Fallstudie: +200 % Klicks, 12 Top-10-Keywords und Teamwachstum durch SEO",
   heroImage:
@@ -77,14 +76,8 @@ export default {
   },
   blocks: [
     {
-      type: "callout",
-      variant: "navy",
-      title: "Die Resultate auf einen Blick",
-      body: "+200 % mehr Klicks pro Monat\n+302 % mehr Impressionen bei Google\n1’704 organische Besucher/Monat\n60 % Engagement-Rate\n12 Keywords in den Top 10 bei Google\n16 Mt. bis zur notwendigen Teamvergrösserung",
-    },
-    {
       type: "richText",
-      html: "<p>«Wir mussten infolgedessen unser Team personell verstärken, um die zusätzlichen Mandate ordnungsgemäss bearbeiten zu können.»</p><p>Dieser Satz von Philippe Bally, Inhaber der Zofingen Treuhand AG, beschreibt das Ergebnis von 16 Monaten SEO-Arbeit besser als jede Statistik. Zusätzliche Mandate. Teamwachstum als Konsequenz. Nicht als Ziel, sondern als Notwendigkeit.</p><p>Was davor war: eine inhabergeführte Kanzlei mit exzellentem Ruf in der Region Zofingen, Kanton Aargau — und praktisch null Sichtbarkeit bei Google. Potenzielle Mandanten, die «Steuerberatung Zofingen» oder «Grundstückgewinnsteuer Aargau» suchten, fanden Mitbewerber. Nicht Zofingen Treuhand AG.</p><p>Diese Fallstudie zeigt, was sich in 16 Monaten geändert hat — welche Massnahmen wir umgesetzt haben, welche Zahlen dabei entstanden sind und was diese Zahlen im echten Kanzleileben bedeuten.</p>",
+      html: '<p>«Wir mussten infolgedessen unser Team personell verstärken, um die zusätzlichen Mandate ordnungsgemäss bearbeiten zu können.»</p><p>Dieser Satz von Philippe Bally, Inhaber der Zofingen Treuhand AG, beschreibt das Ergebnis von 16 Monaten SEO-Arbeit besser als jede Statistik. Zusätzliche Mandate. Teamwachstum als Konsequenz. Nicht als Ziel, sondern als Notwendigkeit.</p><p>Was davor war: eine inhabergeführte Kanzlei mit exzellentem Ruf in der Region Zofingen, Kanton Aargau — und praktisch null Sichtbarkeit bei Google. Potenzielle Mandanten, die «Steuerberatung Zofingen» oder «Grundstückgewinnsteuer Aargau» suchten, fanden Mitbewerber. Nicht Zofingen Treuhand AG.</p><p>Diese Fallstudie zeigt, was sich in 16 Monaten geändert hat — welche Massnahmen wir umgesetzt haben, welche Zahlen dabei entstanden sind und was diese Zahlen im echten Kanzleileben bedeuten.</p><p>Wie die Methode hinter diesen Zahlen funktioniert, erklärt der Artikel über <a href="/wissen/nischen-seo-treuhand-grundstueckgewinnsteuer-aargau">Nischen-SEO am Beispiel Grundstückgewinnsteuer Aargau</a>. Den Einstieg in SEO für Treuhandkanzleien hingegen bietet der <a href="/wissen/seo-treuhandbuero-schweiz-mandanten-google">Überblick SEO für Treuhandbüros</a>.</p>',
     },
     { type: "divider" },
 

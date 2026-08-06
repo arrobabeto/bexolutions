@@ -6,8 +6,9 @@ export default {
   readTime: "8 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-03",
-  title: "Bewertungsmanagement:",
-  subtitle: "Mehr Google-Bewertungen in 30 Tagen",
+  title: "Bewertungsmanagement — Mehr Google-Bewertungen in 30 Tagen",
+  subtitle:
+    "Der 4-Wochen-Plan für Schweizer KMU — mit Vorlagen und DSG-konformen Methoden",
   tagline:
     "Der 4-Wochen-Plan für Schweizer KMU — mit fertigen Vorlagen, QR-Codes und DSG-konformen Methoden",
   heroImage: "/images/blog/google-bewertungen-einfordern-kmu-schweiz/hero.jpg",
@@ -51,7 +52,7 @@ export default {
     },
     {
       type: "richText",
-      html: '<p>Stellen Sie sich vor: Von zehn Kunden, die heute zufrieden Ihren Betrieb verlassen, schreibt einer eine Bewertung — wenn Sie nichts tun. Und dieser eine ist statistisch gesehen öfter der leicht Unzufriedene als der Begeisterte.</p><p>Das ist das asymmetrische Bewertungsproblem. Unzufriedene Kunden suchen aktiv nach Ventilen. Zufriedene erleben Ihren Service als selbstverständlich, gehen weiter und vergessen es. Wenn Sie nichts tun, kippt Ihr Sternedurchschnitt langfristig nach unten — nicht weil Sie schlechter werden, sondern weil sich die Bewertenden selbst selektieren.</p><p>Die Lösung ist einfach: systematisch fragen. Nicht betteln, nicht manipulieren — schlicht fragen, zum richtigen Zeitpunkt, auf dem richtigen Kanal, mit dem richtigen Satz. Dieser Artikel zeigt wie.</p><p>Dieser Artikel ist Artikel 3 im Local-SEO-Cluster. Artikel 1 zeigt <a href="/wissen/google-business-profile-optimieren">die 10 GBP-Massnahmen</a>, Artikel 2 <a href="/wissen/local-seo-schweiz-google-maps-platz-1-kmu">den Weg ins Google Local Pack</a>.</p>',
+      html: "<p>Stellen Sie sich vor: Von zehn Kunden, die heute zufrieden Ihren Betrieb verlassen, schreibt einer eine Bewertung — wenn Sie nichts tun. Und dieser eine ist statistisch gesehen öfter der leicht Unzufriedene als der Begeisterte.</p><p>Das ist das asymmetrische Bewertungsproblem. Unzufriedene Kunden suchen aktiv nach Ventilen. Zufriedene erleben Ihren Service als selbstverständlich, gehen weiter und vergessen es. Wenn Sie nichts tun, kippt Ihr Sternedurchschnitt langfristig nach unten — nicht weil Sie schlechter werden, sondern weil sich die Bewertenden selbst selektieren.</p><p>Die Lösung ist einfach: systematisch fragen. Nicht betteln, nicht manipulieren — schlicht fragen, zum richtigen Zeitpunkt, auf dem richtigen Kanal, mit dem richtigen Satz. Dieser Artikel zeigt wie.</p><p>Dieser Artikel ist der dritte Teil unserer SEO-Artikelreihe.</p>",
     },
     { type: "divider" },
 
@@ -325,7 +326,7 @@ export default {
     },
     {
       type: "richText",
-      html: "<p>Bewertungsmanagement ist keine Magie. Es ist Konsequenz. Wer jeden Kundenkontakt als Gelegenheit sieht, konsequent fragt und professionell antwortet, baut in 6 Monaten ein Bewertungsprofil auf, das Mitbewerber mit schleppendem oder keinem System kaum einholen.</p><p>Die 30 Tage dieses Plans sind der Anfang. Was danach zählt: die monatliche Routine, die sich so fest in den Alltag einbettet, dass Fragen zur Selbstverständlichkeit wird.</p>",
+      html: '<p>Bewertungsmanagement ist keine Magie. Es ist Konsequenz. Wer jeden Kundenkontakt als Gelegenheit sieht, konsequent fragt und professionell antwortet, baut in 6 Monaten ein Bewertungsprofil auf, das Mitbewerber mit schleppendem oder keinem System kaum einholen.</p><p>Die 30 Tage dieses Plans sind der Anfang. Was danach zählt: die monatliche Routine, die sich so fest in den Alltag einbettet, dass Fragen zur Selbstverständlichkeit wird.</p><p>Vertiefung im Local-SEO-Cluster: <a href="/wissen/google-business-profile-optimieren">Google Business Profile optimieren</a> und <a href="/wissen/local-seo-schweiz-google-maps-platz-1-kmu">Local SEO Schweiz — Weg ins Local Pack</a>.</p>',
     },
     {
       type: "table",

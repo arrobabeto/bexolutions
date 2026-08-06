@@ -134,7 +134,7 @@
       {{ block.title }}
     </p>
     <p
-      class="break-words text-sm font-medium leading-[1.6] sm:text-base lg:text-[16px]"
+      class="whitespace-pre-line break-words text-sm font-medium leading-[1.6] sm:text-base lg:text-[16px]"
       :class="{ 'mt-2 lg:mt-[8px]': block.title }"
     >
       {{ block.body }}

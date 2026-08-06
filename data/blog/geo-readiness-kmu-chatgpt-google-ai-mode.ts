@@ -6,8 +6,8 @@ export default {
   readTime: "8 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-07",
-  title: "GEO Readiness:",
-  subtitle: "Wie Ihr KMU in ChatGPT & Google AI Mode erscheint",
+  title: "GEO Readiness: Wie Ihr KMU in ChatGPT & Google AI Mode erscheint",
+  subtitle: "Der Schritt-für-Schritt-Leitfaden für Schweizer KMU",
   tagline:
     "Der praktische Einstieg für Schweizer KMU — in 5 umsetzbaren Schritten",
   heroImage: "/images/blog/geo-readiness-kmu-chatgpt-google-ai-mode/hero.jpg",
@@ -49,7 +49,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>«GEO was?» — Das ist die häufigste Reaktion, wenn wir Schweizer KMU-Inhabern zum ersten Mal von Generative Engine Optimization erzählen. Verständlich. Der Begriff ist neu. Das Konzept dahinter verändert aber gerade grundlegend, wie potenzielle Kunden Unternehmen wie Ihres finden — oder eben nicht finden.</p><p>In diesem Artikel erklären wir, was GEO Readiness bedeutet, warum sie für Ihr KMU relevant ist — und wie Sie in 5 konkreten Schritten damit starten, ohne technisches Vorwissen und ohne grosses Budget.</p><p>Dieser Artikel ist Teil unserer Cluster-Serie zur KI-Sichtbarkeit. Artikel 1 zeigt, <a href="/wissen/ki-suchen-ohne-klick-kmu">warum 93 % der KI-Suchen ohne Klick enden</a> — und was das für Ihr KMU bedeutet.</p>',
+      html: '<p>«GEO was?» — Das ist die häufigste Reaktion, wenn wir Schweizer KMU-Inhabern zum ersten Mal von Generative Engine Optimization erzählen. Verständlich. Der Begriff ist neu. Das Konzept dahinter verändert aber gerade grundlegend, wie potenzielle Kunden Unternehmen wie Ihres finden — oder eben nicht finden.</p><p>In diesem Artikel erklären wir, was GEO Readiness bedeutet, warum sie für Ihr KMU relevant ist — und wie Sie in 5 konkreten Schritten damit starten, ohne technisches Vorwissen und ohne grosses Budget.</p><p>Dieser Artikel ist Teil unserer Artikelreihe zur KI-Sichtbarkeit. Artikel 1 zeigt, <a href="/wissen/ki-suchen-ohne-klick-kmu">warum 93 % der KI-Suchen ohne Klick enden</a> — und was das für Ihr KMU bedeutet.</p>',
     },
     { type: "divider" },
 

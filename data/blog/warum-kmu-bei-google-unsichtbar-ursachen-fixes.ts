@@ -8,7 +8,7 @@ export default {
   datePublished: "2026-07-10",
   title: "Warum Ihr KMU bei Google unsichtbar ist — und wie Sie das ändern",
   subtitle:
-    "Die 7 häufigsten Ursachen bei Schweizer KMU — mit Selbst-Check und konkretem Fix für jede",
+    "Die 7 häufigsten Ursachen — mit Selbst-Check und sofort umsetzbaren Fixes",
   tagline:
     "7 Ursachen, Selbst-Check und sofort umsetzbare Fixes für fehlende Google-Sichtbarkeit",
   heroImage:
@@ -77,7 +77,7 @@ export default {
       type: "callout",
       variant: "highlight",
       title: "30-MINUTEN SELBST-CHECK",
-      body: "Schritt 1 (5 Min.): Indexierungs-Check — site:ihreDomain.ch in Google. 0 Seiten = nicht indexiert. Unter 10 = mögliche Probleme. · Schritt 2 (5 Min.): Ladezeit-Check — pagespeed.web.dev, Mobile-Score notieren. Unter 50 kritisch, 50–79 verbesserungswürdig, 80+ gut. · Schritt 3 (5 Min.): Mobile-Check — Telefonnummer in 10 Sekunden finden? Formular in 15 Sekunden? · Schritt 4 (5 Min.): Content-Check — Enthält die H1 Leistung und Standort, oder nur «Herzlich willkommen»? · Schritt 5 (5 Min.): GBP-Check — Erscheint ein Google Business Profile mit Adresse, Öffnungszeiten und Bewertungen? · Schritt 6 (5 Min.): Keyword-Check — Im Inkognito «[Leistung] [Ort]» suchen. Seite 1? Local Pack?",
+      body: "Schritt 1 (5 Min.): Indexierungs-Check — site:ihreDomain.ch in Google. 0 Seiten = nicht indexiert. Unter 10 = mögliche Probleme.\nSchritt 2 (5 Min.): Ladezeit-Check — pagespeed.web.dev, Mobile-Score notieren. Unter 50 kritisch, 50–79 verbesserungswürdig, 80+ gut.\nSchritt 3 (5 Min.): Mobile-Check — Telefonnummer in 10 Sekunden finden? Formular in 15 Sekunden?\nSchritt 4 (5 Min.): Content-Check — Enthält die H1 Leistung und Standort, oder nur «Herzlich willkommen»?\nSchritt 5 (5 Min.): GBP-Check — Erscheint ein Google Business Profile mit Adresse, Öffnungszeiten und Bewertungen?\nSchritt 6 (5 Min.): Keyword-Check — Im Inkognito «[Leistung] [Ort]» suchen. Seite 1? Local Pack?",
     },
     { type: "divider" },
 

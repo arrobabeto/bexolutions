@@ -7,7 +7,7 @@ export default {
   date: "Juli 2026",
   datePublished: "2026-07-06",
   title: "51 % der B2B-Käufer starten heute mit KI",
-  subtitle: "Was das für Schweizer KMU bedeutet — und was Sie jetzt tun müssen",
+  subtitle: "Was Schweizer KMU jetzt konkret tun müssen",
   tagline:
     "G2-Studie «The Answer Economy» (April 2026): Warum die KI-Shortlist vor dem ersten Kontakt entsteht — und wie Schweizer KMU darauf reagieren",
   heroImage: "/images/blog/b2b-kaeufer-ki-recherche-kmu-schweiz/hero.jpg",
@@ -45,7 +45,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: '<p>51 %. Das ist keine Prognose. Das ist eine Messung — aus dem April 2026, von G2, dem weltweit grössten B2B-Software-Bewertungsportal, auf Basis einer Befragung von 1\'076 B2B-Einkaufsentscheidern.</p><p>Die Zahl besagt: Mehr als die Hälfte der B2B-Käufer beginnen ihre Lieferantenrecherche heute häufiger mit einem KI-Chatbot als mit Google. Nicht irgendwann. Heute.</p><p>Für viele Schweizer KMU ist das eine unbequeme Nachricht. Denn die meisten haben ihre digitale Sichtbarkeit auf Google-Rankings aufgebaut — auf SEO, auf Einträge in Verzeichnissen, auf eine gepflegte Website. Das bleibt wertvoll. Aber es reicht nicht mehr allein.</p><p>Dieser Artikel ist Teil unserer Cluster-Serie zur KI-Sichtbarkeit. Artikel 1 erklärt, <a href="/wissen/ki-suchen-ohne-klick-kmu">warum 93 % der KI-Suchen ohne Klick enden</a>. Artikel 2 zeigt <a href="/wissen/geo-readiness-kmu-chatgpt-google-ai-mode">die 5 Schritte zur GEO Readiness</a>.</p>',
+      html: '<p>51 %. Das ist keine Prognose. Das ist eine Messung — aus dem April 2026, von G2, dem weltweit grössten B2B-Software-Bewertungsportal, auf Basis einer Befragung von 1\'076 B2B-Einkaufsentscheidern.</p><p>Die Zahl besagt: Mehr als die Hälfte der B2B-Käufer beginnen ihre Lieferantenrecherche heute häufiger mit einem KI-Chatbot als mit Google. Nicht irgendwann. Heute.</p><p>Für viele Schweizer KMU ist das eine unbequeme Nachricht. Denn die meisten haben ihre digitale Sichtbarkeit auf Google-Rankings aufgebaut — auf SEO, auf Einträge in Verzeichnissen, auf eine gepflegte Website. Das bleibt wertvoll. Aber es reicht nicht mehr allein.</p><p>Dieser Artikel ist Teil unserer Artikelreihe zur KI-Sichtbarkeit. Artikel 1 erklärt, <a href="/wissen/ki-suchen-ohne-klick-kmu">warum 93 % der KI-Suchen ohne Klick enden</a>. Artikel 2 zeigt <a href="/wissen/geo-readiness-kmu-chatgpt-google-ai-mode">die 5 Schritte zur GEO Readiness</a>.</p>',
     },
     { type: "divider" },
 

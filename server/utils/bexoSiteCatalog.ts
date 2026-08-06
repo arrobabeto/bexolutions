@@ -212,8 +212,7 @@ export function loadBlogCatalog(): BexoBlogMeta[] {
 }
 
 export function blogLinkTitle(blog: BexoBlogMeta) {
-  const title = blog.title.replace(/:\s*$/, "")
-  return blog.subtitle ? `${title} — ${blog.subtitle}` : title
+  return blog.title.replace(/:\s*$/, "")
 }
 
 export function blogLinkDescription(blog: BexoBlogMeta) {

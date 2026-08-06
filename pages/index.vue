@@ -1081,6 +1081,8 @@
           </p>
           <a
             :href="BEXO_CTA_TERMIN.href"
+            target="_blank"
+            rel="noopener noreferrer"
             class="btn-primary absolute"
             style="left: 106px; top: 556px; width: 276px"
           >

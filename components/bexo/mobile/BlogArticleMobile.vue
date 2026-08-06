@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { computed } from "vue"
+  import { useRuntimeConfig } from "#imports"
   import type { IBlog, IBlogCta } from "~/types/dto/IBlog"
   import BlogBlock from "~/components/blog/BlogBlock.vue"
   import BlogAudioButton from "~/components/blog/BlogAudioButton.vue"
@@ -12,6 +13,7 @@
   const p = defineProps<{ blog: IBlog }>()
 
   const HOME = "/images/startseite"
+  const config = useRuntimeConfig()
 
   const defaultCta: IBlogCta = {
     heading: "Sie wollen nicht nur lesen — sondern umsetzen?",
@@ -23,6 +25,10 @@
 
   const cta = computed<IBlogCta>(() => ({ ...defaultCta, ...p.blog.cta }))
   const fullTitle = computed(() => getBlogFeaturedTitle(p.blog))
+  const shareUrl = computed(() => {
+    const base = String(config.public.siteUrl).replace(/\/$/, "")
+    return `${base}/wissen/${p.blog.slug}`
+  })
   const metaLine = computed(
     () => `${p.blog.category}  ·  ${p.blog.readTime}  ·  ${p.blog.date}`,
   )
@@ -34,13 +40,13 @@
       <h1
         class="break-words text-[1.65rem] font-semibold leading-tight text-black sm:text-2xl"
       >
-        {{ fullTitle }}
+        {{ blog.title.replace(/:\s*$/, "") }}
       </h1>
       <p
-        v-if="blog.tagline"
-        class="mt-3 break-words text-sm leading-relaxed text-black sm:text-base"
+        v-if="blog.subtitle"
+        class="mt-2 break-words text-base font-medium leading-snug text-[#0e2138] sm:text-lg"
       >
-        {{ blog.tagline }}
+        {{ blog.subtitle }}
       </p>
       <div class="mt-4 flex min-w-0 items-start justify-between gap-3">
         <p
@@ -88,20 +94,22 @@
 
     <BexoSection>
       <div class="flex w-full min-w-0 max-w-full flex-col gap-6">
-        <div class="blog-body flex w-full min-w-0 max-w-full flex-col gap-5">
+        <BlogSidebar
+          class="w-full min-w-0 max-w-full"
+          :author="blog.author"
+          :toc="blog.toc"
+          :title="fullTitle"
+          :url="shareUrl"
+        />
+        <div
+          class="blog-body flex w-full min-w-0 max-w-full flex-col gap-5 border-t border-black/10 pt-6"
+        >
           <BlogBlock
             v-for="(block, i) of blog.blocks"
             :key="i"
             :block="block"
           />
         </div>
-        <BlogSidebar
-          class="w-full min-w-0 max-w-full border-t border-black/10 pt-8"
-          :author="blog.author"
-          :toc="blog.toc"
-          :title="fullTitle"
-          :url="`/wissen/${blog.slug}`"
-        />
       </div>
     </BexoSection>
 
@@ -126,7 +134,12 @@
           :html="cta.body"
           class="mt-4 break-words text-sm leading-relaxed text-white sm:text-base"
         />
-        <a :href="cta.buttonHref" class="bexo-btn-primary bexo-btn-block mt-6">
+        <a
+          :href="cta.buttonHref"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bexo-btn-primary bexo-btn-block mt-6"
+        >
           {{ cta.buttonLabel }}
         </a>
       </div>

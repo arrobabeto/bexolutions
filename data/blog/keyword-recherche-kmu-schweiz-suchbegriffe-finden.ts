@@ -8,7 +8,7 @@ export default {
   datePublished: "2026-07-12",
   title: "Keyword-Recherche für KMU: Die richtigen Suchbegriffe finden",
   subtitle:
-    "So geht’s — in 5 Schritten, mit kostenlosen Tools und Schweizer Spezifika",
+    "In 5 Schritten zur Keyword-Liste — mit kostenlosen Tools und Helvetismen",
   tagline:
     "In 5 Schritten zur Keyword-Liste — kostenlose Tools, Helvetismen und Keyword-Raster",
   heroImage:
@@ -54,11 +54,7 @@ export default {
   blocks: [
     {
       type: "richText",
-      html: "<p>Stellen Sie sich vor, Sie betreiben eine Treuhandkanzlei in Aarau und optimieren Ihre Website für das Keyword «Treuhand». Das Problem: Für «Treuhand» suchen täglich Tausende Menschen — aber Ihre potenziellen Kunden suchen nach «Treuhand Aarau», «Jahresabschluss KMU Aargau» oder «Steuerberatung kleine Unternehmen Schweiz». Wer auf das falsche Keyword optimiert, baut SEO — aber für die falsche Zielgruppe.</p><p>Keyword-Recherche ist der Schritt, der entscheidet, ob Ihre SEO-Arbeit die richtigen Menschen findet. Dieser Artikel zeigt, wie Sie in 5 Schritten eine praxistaugliche Keyword-Liste aufbauen — ohne teure Tools und mit Fokus auf die Schweizer Realität.</p><p>Dieser Artikel ist Artikel 4 im SEO-Cluster. Artikel 9 gibt den Überblick, Artikel 10 die Diagnose, Artikel 11 die Budget-Strategie. Hier geht es um das Handwerk: die richtigen Keywords finden.</p>",
-    },
-    {
-      type: "richText",
-      html: '<p>Den Rahmen dazu setzt der <a href="/wissen/seo-schweizer-kmu-einstiegsguide-2026">SEO-Einstiegsguide für Schweizer KMU</a>, die häufigsten Blockaden beschreibt <a href="/wissen/warum-kmu-bei-google-unsichtbar-ursachen-fixes">warum KMU bei Google unsichtbar bleiben</a>, und die Budgetfrage klärt <a href="/wissen/seo-ohne-werbebudget-organische-sichtbarkeit-kmu">SEO ohne Werbebudget</a>.</p>',
+      html: '<p>Stellen Sie sich vor, Sie betreiben eine Treuhandkanzlei in Aarau und optimieren Ihre Website für das Keyword «Treuhand». Das Problem: Für «Treuhand» suchen täglich Tausende Menschen — aber Ihre potenziellen Kunden suchen nach «Treuhand Aarau», «Jahresabschluss KMU Aargau» oder «Steuerberatung kleine Unternehmen Schweiz». Wer auf das falsche Keyword optimiert, baut SEO — aber für die falsche Zielgruppe.</p><p>Keyword-Recherche ist der Schritt, der entscheidet, ob Ihre SEO-Arbeit die richtigen Menschen findet. Dieser Artikel zeigt, wie Sie in 5 Schritten eine praxistaugliche Keyword-Liste aufbauen — ohne teure Tools und mit Fokus auf die Schweizer Realität.</p><p>Dieser Artikel ist Artikel 4 im SEO-Cluster. Den Überblick gibt der <a href="/wissen/seo-schweizer-kmu-einstiegsguide-2026">SEO-Einstiegsguide für Schweizer KMU</a>; die Diagnose beschreibt <a href="/wissen/warum-kmu-bei-google-unsichtbar-ursachen-fixes">warum KMU bei Google unsichtbar bleiben</a>; die Budgetfrage klärt <a href="/wissen/seo-ohne-werbebudget-organische-sichtbarkeit-kmu">SEO ohne Werbebudget</a>. Hier geht es um das Handwerk: die richtigen Keywords finden.</p>',
     },
     { type: "divider" },
 

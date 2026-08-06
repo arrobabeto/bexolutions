@@ -6,8 +6,9 @@ export default {
   readTime: "7 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-04",
-  title: "Google Maps vs. organische Suche:",
-  subtitle: "Was bringt mehr Kunden?",
+  title: "Google Maps vs. organische Suche: Was bringt mehr Kunden?",
+  subtitle:
+    "Zwei Kanäle im direkten Vergleich — und wann welcher der richtige ist",
   tagline:
     "Der datenbasierte Vergleich für Schweizer KMU — mit klarer Entscheidungsmatrix",
   heroImage:
@@ -57,7 +58,7 @@ export default {
     },
     {
       type: "richText",
-      html: '<p>«Soll ich zuerst mein Google Business Profile optimieren oder meine Website?» — Das ist eine der häufigsten Fragen, die wir von Schweizer KMU-Inhabern hören. Dahinter steckt eine konkrete Ressourcenfrage: begrenzte Zeit, begrenztes Budget, maximale Wirkung.</p><p>Die ehrliche Antwort lautet: Es kommt auf Ihren Unternehmenstyp an. Aber es gibt Daten, die eine klare Orientierung geben. Und sie zeigen: Für die meisten lokalen KMU ist das Google Local Pack — also Google Maps — der Kanal mit der höchsten unmittelbaren Wirkung.</p><p>Dieser Artikel erklärt den Unterschied, zeigt die Zahlen, und liefert eine Entscheidungsmatrix für Ihr spezifisches KMU.</p><p>Dieser Artikel ist Artikel 4 im Local-SEO-Cluster. Siehe auch: <a href="/wissen/google-business-profile-optimieren">GBP 10 Massnahmen</a>, <a href="/wissen/local-seo-schweiz-google-maps-platz-1-kmu">Weg ins Local Pack</a>, <a href="/wissen/google-bewertungen-einfordern-kmu-schweiz">Bewertungsmanagement</a>.</p><p>Wenn jemand «Elektriker Aarau» oder «Treuhand Zug» bei Google eingibt, erscheinen auf der Ergebnisseite verschiedene Bereiche:</p>',
+      html: "<p>«Soll ich zuerst mein Google Business Profile optimieren oder meine Website?» — Das ist eine der häufigsten Fragen, die wir von Schweizer KMU-Inhabern hören. Dahinter steckt eine konkrete Ressourcenfrage: begrenzte Zeit, begrenztes Budget, maximale Wirkung.</p><p>Die ehrliche Antwort lautet: Es kommt auf Ihren Unternehmenstyp an. Aber es gibt Daten, die eine klare Orientierung geben. Und sie zeigen: Für die meisten lokalen KMU ist das Google Local Pack — also Google Maps — der Kanal mit der höchsten unmittelbaren Wirkung.</p><p>Dieser Artikel erklärt den Unterschied, zeigt die Zahlen, und liefert eine Entscheidungsmatrix für Ihr spezifisches KMU.</p><p>Dieser Artikel ist der vierte Teil unserer Local-SEO-Artikelreihe.</p><p>Wenn jemand «Elektriker Aarau» oder «Treuhand Zug» bei Google eingibt, erscheinen auf der Ergebnisseite verschiedene Bereiche:</p>",
     },
     {
       type: "table",

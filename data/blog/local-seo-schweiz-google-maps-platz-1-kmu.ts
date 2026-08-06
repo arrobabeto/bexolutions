@@ -6,8 +6,9 @@ export default {
   readTime: "9 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-02",
-  title: "Local SEO Schweiz:",
-  subtitle: "Wie Sie in Google Maps auf Platz 1 kommen",
+  title: "Local SEO Schweiz: Wie Sie in Google Maps auf Platz 1 kommen",
+  subtitle:
+    "Die wichtigsten Rankingfaktoren für das Local Pack — mit Schweizer Kontext",
   tagline:
     "Schritt für Schritt zum Local Pack — die 4 Rankingfaktoren und 5 Umsetzungsphasen für Schweizer KMU",
   heroImage: "/images/blog/local-seo-schweiz-google-maps-platz-1-kmu/hero.jpg",

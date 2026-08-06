@@ -6,10 +6,9 @@ export default {
   readTime: "9 Min. Lesezeit",
   date: "Juli 2026",
   datePublished: "2026-07-13",
-  title:
-    "Mehr Mandanten über Google: SEO für Treuhandbüros in der Deutschschweiz",
+  title: "Mehr Mandanten über Google: SEO für Treuhandbüros",
   subtitle:
-    "Wie Treuhandkanzleien digitale Sichtbarkeit aufbauen — branchenspezifisch, lokal, ohne Werbebudget",
+    "Branchenspezifisch, lokal, ohne Werbebudget — für die Deutschschweiz",
   tagline:
     "Branchenspezifisches SEO für Treuhandbüros — Keywords, GBP und E-E-A-T ohne Werbebudget",
   heroImage: "/images/blog/seo-treuhandbuero-schweiz-mandanten-google/hero.jpg",
