@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { computed } from "vue"
+  import PreferredSourceButton from "~/components/blog/PreferredSourceButton.vue"
   import type { IBlogAuthor, IBlogTocEntry } from "~/types/dto/IBlog"
 
   const p = defineProps<{
@@ -79,6 +80,9 @@
         </a>
       </div>
     </div>
+
+    <div class="h-px w-full bg-black/10"></div>
+    <PreferredSourceButton />
 
     <template v-if="toc.length">
       <div class="h-px w-full bg-black/10"></div>
