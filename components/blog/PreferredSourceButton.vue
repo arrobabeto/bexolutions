@@ -74,10 +74,10 @@
 </script>
 
 <template>
-  <div v-if="enabled" class="preferred-source max-w-full overflow-hidden">
+  <div v-if="enabled" class="preferred-source w-full max-w-full">
     <div
       ref="hostEl"
-      class="min-h-[28px]"
+      class="preferred-source-host w-full min-w-0"
       google-add-preferred-source-btn
       data-theme="light"
       data-lang="de"
@@ -93,3 +93,12 @@
     </a>
   </div>
 </template>
+
+<style scoped>
+  /* Google injects a multi-line pill; do not clip height. Constrain width only. */
+  .preferred-source-host :deep(iframe),
+  .preferred-source-host :deep(button),
+  .preferred-source-host :deep(div) {
+    max-width: 100%;
+  }
+</style>
