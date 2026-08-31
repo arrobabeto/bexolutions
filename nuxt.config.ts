@@ -66,6 +66,8 @@ export default defineNuxtConfig({
       commentsEnabled: process.env.NUXT_PUBLIC_COMMENTS_ENABLED === "true",
       gtmId,
       ogLogoPath: process.env.NUXT_PUBLIC_OG_LOGO_PATH ?? "/favicon.png",
+      preferredSourceEnabled:
+        process.env.NUXT_PUBLIC_PREFERRED_SOURCE_ENABLED !== "false",
     },
   },
   nitro: {
