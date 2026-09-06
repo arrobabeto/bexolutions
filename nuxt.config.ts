@@ -39,10 +39,10 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    sendgridApiKey: process.env.SENDGRID_API_KEY ?? "",
-    sendgridFromEmail: process.env.SENDGRID_FROM_EMAIL ?? "",
-    sendgridFromName: process.env.SENDGRID_FROM_NAME ?? "Bexolutions",
-    sendgridToEmail: process.env.SENDGRID_TO_EMAIL ?? "",
+    brevoApiKey: process.env.BREVO_API_KEY ?? "",
+    brevoFromEmail: process.env.BREVO_FROM_EMAIL ?? "",
+    brevoFromName: process.env.BREVO_FROM_NAME ?? "Bexolutions",
+    brevoToEmail: process.env.BREVO_TO_EMAIL ?? "",
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? "https://www.bexolutions.ch",
       siteName:
