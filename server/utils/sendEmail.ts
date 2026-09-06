@@ -11,11 +11,7 @@ type FormEmailPayload = {
 export async function sendFormEmail(event: H3Event, payload: FormEmailPayload) {
   const config = useRuntimeConfig(event)
 
-  if (
-    !config.sendgridApiKey ||
-    !config.sendgridFromEmail ||
-    !config.sendgridToEmail
-  ) {
+  if (!config.brevoApiKey || !config.brevoFromEmail || !config.brevoToEmail) {
     throw createError({
       statusCode: 500,
       statusMessage: "Email service is not configured",
@@ -23,32 +19,33 @@ export async function sendFormEmail(event: H3Event, payload: FormEmailPayload) {
   }
 
   const body: Record<string, unknown> = {
-    personalizations: [{ to: [{ email: config.sendgridToEmail }] }],
-    from: {
-      email: config.sendgridFromEmail,
-      name: config.sendgridFromName || "Bexolutions",
+    sender: {
+      email: config.brevoFromEmail,
+      name: config.brevoFromName || "Bexolutions",
     },
+    to: [{ email: config.brevoToEmail }],
     subject: payload.subject,
-    content: [{ type: "text/html", value: payload.html }],
+    htmlContent: payload.html,
   }
 
   if (payload.replyTo) {
-    body.reply_to = { email: payload.replyTo }
+    body.replyTo = { email: payload.replyTo }
   }
 
   try {
-    const response = await $fetch.raw("https://api.sendgrid.com/v3/mail/send", {
+    const response = await $fetch.raw("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${config.sendgridApiKey}`,
+        "api-key": config.brevoApiKey,
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body,
       ignoreResponseError: true,
     })
 
     if (response.status >= 400) {
-      console.error("SendGrid error:", response.status, response._data)
+      console.error("Brevo error:", response.status, response._data)
       throw createError({
         statusCode: 502,
         statusMessage: "Failed to send email",
@@ -59,7 +56,7 @@ export async function sendFormEmail(event: H3Event, payload: FormEmailPayload) {
       throw error
     }
 
-    console.error("SendGrid request failed:", error)
+    console.error("Brevo request failed:", error)
     throw createError({
       statusCode: 502,
       statusMessage: "Failed to send email",
