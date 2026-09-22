@@ -85,48 +85,6 @@
     },
   ]
 
-  const companies = [
-    {
-      logo: `${IMG}/logo-bex.png`,
-      logoW: 215,
-      name: "Bexolutions Marketing & Vertrieb AG",
-      cat: "Marketing & Vertrieb — Schweiz",
-      body: "Full-Service-Marketing, SEO, Content, KI-Sichtbarkeit und Vertriebsoptimierung für Schweizer KMU. Das sind wir.",
-      left: 0,
-      logoLeft: 46,
-    },
-    {
-      logo: `${IMG}/logo-syntech.png`,
-      logoW: 246,
-      name: "Syntech Solutions",
-      cat: "Technologie & App-Entwicklung",
-      body: "Massgeschneiderte digitale Produkte, Web-Applikationen und technische Infrastruktur für anspruchsvolle Digitalprojekte.",
-      left: 487,
-      logoLeft: 533,
-    },
-    {
-      logo: `${IMG}/logo-shark.png`,
-      logoW: 164,
-      name: "SharkAgency",
-      cat: "Performance Marketing & E-Commerce",
-      body: "Google Ads, Meta Ads, datengetriebene Kampagnen und skalierbare E-Commerce-Strategien im DACH-Raum.",
-      left: 976,
-      logoLeft: 1022,
-    },
-  ]
-
-  const groupStats = [
-    { value: "60%", label: "Mitarbeitende in der Gruppe", left: 0, w: 363 },
-    { value: "250+", label: "betreute Klienten", left: 363, w: 367 },
-    {
-      value: "200M+ €",
-      label: "generierter Klientenumsatz",
-      left: 730,
-      w: 364,
-    },
-    { value: "4.9/5", label: "über 1'200+ Bewertungen", left: 1093, w: 357 },
-  ]
-
   const stats = [
     {
       label: "mehr Klicks — Zofingen Treuhand AG",
@@ -431,119 +389,10 @@
           </article>
         </section>
 
-        <!-- ============================= ELEV8 GROUP ============================= -->
-        <section
-          class="absolute overflow-hidden rounded-[40px]"
-          style="left: 31px; top: 5074px; width: 1450px; height: 971px"
-        >
-          <BackgroundMedia
-            :poster="`${IMG}/elev8-bg.jpg`"
-            :video="BEXO_VIDEOS.ueberUnsElev8"
-            class="absolute inset-0 h-full w-full"
-          />
-          <div
-            class="absolute inset-0"
-            style="background: rgba(0, 0, 0, 0.7)"
-          ></div>
-
-          <p
-            class="absolute text-[16px] font-semibold leading-5 text-white"
-            style="left: 46px; top: 188px; width: 593px"
-          >
-            Unsere Gruppe
-          </p>
-          <h2
-            class="absolute text-[40px] font-semibold leading-[50px] text-white"
-            style="left: 46px; top: 228px; width: 800px"
-          >
-            Bexolutions ist
-            <br />
-            Gründungsmitglied der Elev8 Group.
-          </h2>
-          <p
-            class="absolute text-[20px] font-normal leading-[28px] tracking-[0.4px] text-white"
-            style="left: 46px; top: 348px; width: 926px"
-          >
-            Für Mandate, die über klassisches Marketing hinausgehen, greifen wir
-            auf das volle Leistungsspektrum der Elev8 Group zurück — einem
-            Zusammenschluss dreier spezialisierter Unternehmen mit Hauptsitz in
-            der Schweiz, aktiv in der DACH-Region und darüber hinaus.
-          </p>
-
-          <!-- company cells -->
-          <div
-            v-for="c of companies"
-            :key="c.name"
-            class="absolute flex flex-col border border-white/60 p-[46px]"
-            :style="{
-              left: c.left + 'px',
-              top: '486px',
-              width: (c.left === 0 ? 487 : c.left === 487 ? 489 : 474) + 'px',
-              height: '281px',
-              background: 'rgba(3,3,3,0.5)',
-            }"
-          >
-            <NuxtImg
-              :src="c.logo"
-              class="object-contain object-left"
-              :style="{ width: c.logoW + 'px', height: '40px' }"
-              :alt="c.name"
-            />
-            <h3
-              class="mt-[16px] text-[20px] font-semibold leading-[28px] tracking-[0.4px] text-white"
-            >
-              {{ c.name }}
-            </h3>
-            <p
-              class="mt-[6px] text-[16px] leading-[22px] tracking-[0.3px] text-white"
-            >
-              <span class="font-semibold">{{ c.cat }}</span>
-              {{ c.body }}
-            </p>
-          </div>
-
-          <!-- stat cells -->
-          <div
-            v-for="s of groupStats"
-            :key="s.value"
-            class="absolute flex flex-col justify-between border border-white/60 px-[46px] py-[24px]"
-            :style="{
-              left: s.left + 'px',
-              top: '767px',
-              width: s.w + 'px',
-              height: '204px',
-              background: 'rgba(3,3,3,0.5)',
-            }"
-          >
-            <span
-              class="text-[18px] font-semibold leading-[22px] tracking-[-0.5px] text-white"
-            >
-              {{ s.label }}
-            </span>
-            <span
-              class="text-right text-[64px] font-semibold leading-none tracking-[-3px] text-white"
-            >
-              {{ s.value }}
-            </span>
-          </div>
-        </section>
-
-        <!-- ============================= ALLES AUS EINER HAND (pill) ============================= -->
-        <div
-          class="absolute grid place-items-center rounded-full bg-[#0e2138] px-[100px] text-center"
-          style="left: 232px; top: 6169px; width: 1049px; height: 100px"
-        >
-          <p class="text-[20px] font-medium leading-[25px] text-white">
-            Alles aus einer Hand. Ein Ansprechpartner bei Bexolutions
-            koordiniert den Zugang zu Tech, Performance und Marketing — ohne
-            dass Sie drei Agenturen managen müssen.
-          </p>
-        </div>
-
         <!-- ============================= STATS GRID ============================= -->
         <h2
           class="absolute text-[40px] font-semibold leading-[56px] tracking-[0.8px] text-black"
-          style="left: 768px; top: 6393px; width: 621px"
+          style="left: 768px; top: 5074px; width: 621px"
         >
           Keine Screenshots.
           <br />
@@ -555,7 +404,7 @@
           class="absolute flex flex-col items-end justify-between border border-black/40"
           :style="{
             left: s.left + 'px',
-            top: (i < 3 ? 6601 : 6944) + 'px',
+            top: (i < 3 ? 5282 : 5625) + 'px',
             width: s.w + 'px',
             height: '343px',
             padding: '30px 36px',
@@ -574,7 +423,7 @@
           class="absolute rounded-full opacity-90"
           style="
             left: 366px;
-            top: 7271px;
+            top: 5952px;
             width: 773px;
             height: 647px;
             background: radial-gradient(
@@ -586,7 +435,7 @@
         ></div>
         <p
           class="absolute text-center text-[20px] font-semibold leading-[28px] tracking-[0.4px] text-black"
-          style="left: 362px; top: 7435px; width: 788px"
+          style="left: 362px; top: 6116px; width: 788px"
         >
           «Die Anzahl der Anfragen über unsere Website und unser
           Google-Unternehmensprofil hat sich in den vergangenen 16 Monaten
@@ -596,14 +445,14 @@
         </p>
         <p
           class="absolute text-center text-[16px] font-normal leading-[22px] tracking-[0.32px] text-black"
-          style="left: 362px; top: 7569px; width: 788px"
+          style="left: 362px; top: 6250px; width: 788px"
         >
           — Philippe Bally, Zofingen Treuhand AG
         </p>
         <a
           href="/referenz-zofingen"
           class="btn-outline absolute"
-          style="left: 607px; top: 7613px; width: 299px"
+          style="left: 607px; top: 6294px; width: 299px"
         >
           Zur vollständigen Fallstudie
         </a>
@@ -611,7 +460,7 @@
         <!-- ============================= LOGOS ============================= -->
         <section
           class="absolute overflow-hidden rounded-t-[60px] bg-white"
-          style="left: 0; top: 7825px; width: 1512px; height: 480px"
+          style="left: 0; top: 6506px; width: 1512px; height: 480px"
         >
           <h2
             class="absolute text-center text-[32px] font-semibold leading-[44px] tracking-[0.6px] text-[#0e2138]"
@@ -671,7 +520,7 @@
         <!-- ============================= NETZWERK ============================= -->
         <section
           class="absolute bg-[#f9f9f9]"
-          style="left: 0; top: 8396px; width: 1512px; height: 1016px"
+          style="left: 0; top: 7077px; width: 1512px; height: 1016px"
         >
           <span
             class="absolute grid place-items-center rounded-[16px] bg-[#ecf6ff] text-[20px] font-normal leading-[28px] tracking-[0.4px] text-[#0e2138]"
@@ -825,19 +674,19 @@
         <!-- ============================= WIE WIR DENKEN ============================= -->
         <p
           class="absolute text-center text-[18px] font-semibold leading-[25px] tracking-[0.36px] text-black"
-          style="left: 120px; top: 9476px; width: 1272px"
+          style="left: 120px; top: 8157px; width: 1272px"
         >
           Wie wir denken
         </p>
         <h2
           class="absolute text-center text-[28px] font-semibold leading-[39px] tracking-[0.56px] text-black"
-          style="left: 120px; top: 9509px; width: 1272px"
+          style="left: 120px; top: 8190px; width: 1272px"
         >
           Wir bauen heute, was morgen Standard ist.
         </h2>
         <p
           class="absolute whitespace-pre-line text-center text-[16px] font-normal leading-[22px] tracking-[0.32px] text-black"
-          style="left: 349px; top: 9570px; width: 814px"
+          style="left: 349px; top: 8251px; width: 814px"
         >
           51% der B2B-Käufer starten ihre Recherche heute mit einem KI-Chatbot
           statt bei Google. 93% der KI-Suchen enden ohne einen einzigen Klick
@@ -856,7 +705,7 @@
         <!-- ============================= MAP / LOCATIONS ============================= -->
         <section
           class="absolute bg-[#f9f9f9]"
-          style="left: 0; top: 9832px; width: 1512px; height: 799px"
+          style="left: 0; top: 8513px; width: 1512px; height: 799px"
         >
           <NuxtImg
             :src="`${IMG}/worldmap.png`"
@@ -918,7 +767,7 @@
         <!-- ============================= CTA BILLBOARD ============================= -->
         <section
           class="absolute overflow-hidden rounded-t-[200px]"
-          style="left: 0; top: 10460px; width: 1512px; height: 679px"
+          style="left: 0; top: 9141px; width: 1512px; height: 679px"
         >
           <NuxtImg
             :src="`${HOME}/billboard.jpg`"
@@ -951,7 +800,7 @@
           </a>
         </section>
 
-        <BexoFooter :top="11139" />
+        <BexoFooter :top="9820" />
       </div>
     </template>
   </BexoPageShell>
@@ -965,7 +814,7 @@
   .canvas {
     position: relative;
     width: 1512px;
-    height: 11793px;
+    height: 10474px;
     flex: none;
     background: #ffffff;
   }

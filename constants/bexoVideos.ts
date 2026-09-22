@@ -12,8 +12,6 @@ export const BEXO_VIDEOS = {
   homeSteps: "/videos/video-3.mp4",
   /** Figma 84:2478 — Über uns hero banner */
   ueberUnsHero: "/videos/7691548-hd-1920-1080-25fps.mp4",
-  /** Figma 91:388 — Über uns Elev8 group */
-  ueberUnsElev8: "/videos/13187428-2160-3840-32fps.mp4",
   /** Figma 119:4770 — Leistungen dark cards band */
   leistungenDarkCards: "/videos/11948481-1080-1920-30fps.mp4",
   /** Figma 114:4444 — Leistungen hero */
