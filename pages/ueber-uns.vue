@@ -51,7 +51,6 @@
     "team-7",
     "team-8",
     "team-10",
-    "team-11",
     "team-12",
   ].map((img, i) => ({
     img: `${IMG}/${img}.png`,
