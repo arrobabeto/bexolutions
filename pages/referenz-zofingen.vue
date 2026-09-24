@@ -700,8 +700,8 @@
             Full-Service-Marketingagentur mit Sitz in Hunzenschwil, Kanton
             Aargau. Wir entwickeln komplette Marketingsysteme für KMU in der
             Deutschschweiz — Website, Local SEO, Content, LinkedIn und
-            KI-Sichtbarkeit aus einer Hand. Gründungsmitglied der Elev8 Group.
-            Offizieller Orbitype Reseller-Partner. SEMrush-zertifiziert.
+            KI-Sichtbarkeit aus einer Hand. Offizieller Orbitype
+            Reseller-Partner. SEMrush-zertifiziert.
           </p>
           <a
             href="/ueber-uns"

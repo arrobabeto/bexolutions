@@ -19,7 +19,7 @@ export default {
   },
   author: {
     name: "Balaram Furrer",
-    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG und Gründungsmitglied von Elev8 Group.",
+    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG.",
   },
   toc: [
     { id: "local-pack", label: "Warum das Local Pack so entscheidend ist" },

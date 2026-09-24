@@ -20,7 +20,7 @@ export default {
   },
   author: {
     name: "Balaram Furrer",
-    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG und Gründungsmitglied von Elev8 Group. Er betreut über 100 KMU in der Deutschschweiz bei SEO, KI-Sichtbarkeit und digitalem Marketing.",
+    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG. Er betreut über 100 KMU in der Deutschschweiz bei SEO, KI-Sichtbarkeit und digitalem Marketing.",
   },
   toc: [
     {
