@@ -226,7 +226,7 @@
     },
     {
       q: "Kann Bexolutions auch grössere Projekte wie App-Entwicklung übernehmen?",
-      a: "Ja — über die Elev8 Group haben wir Zugang zu Syntech Solutions für App- und Softwareentwicklung sowie zu SharkAgency für skaliertes Performance-Marketing. Ein Ansprechpartner bei Bexolutions koordiniert den Zugang zum gesamten Gruppenportfolio.",
+      a: "Ja. Für App- und Softwareentwicklung sowie skaliertes Performance-Marketing arbeiten wir mit spezialisierten Partnern zusammen. Ein Ansprechpartner bei Bexolutions koordiniert das Projekt für Sie.",
     },
   ]
 
@@ -331,7 +331,7 @@
           style="left: 71px; top: 237px; width: 1361px; height: 485px"
         >
           <BackgroundMedia
-            :poster="`${UB}/elev8-bg.jpg`"
+            :poster="`${UB}/leistungen-hero-bg.jpg`"
             :video="BEXO_VIDEOS.leistungenHero"
             poster-alt="Bexolutions Leistungen — Marketing und SEO für KMU"
             class="absolute inset-0 h-full w-full"

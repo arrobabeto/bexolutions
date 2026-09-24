@@ -18,7 +18,7 @@ export default {
   },
   author: {
     name: "Balaram Furrer",
-    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG und Gründungsmitglied von Elev8 Group. Er begleitet Schweizer KMU bei der digitalen Sichtbarkeit im Zeitalter der KI-Suche.",
+    bio: "Balaram Furrer ist CEO von Bexolutions Marketing & Vertrieb AG. Er begleitet Schweizer KMU bei der digitalen Sichtbarkeit im Zeitalter der KI-Suche.",
   },
   toc: [
     { id: "93-prozent-ki", label: "Was steckt hinter der 93-%-Zahl?" },

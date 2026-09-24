@@ -78,7 +78,7 @@
         class="max-w-xl relative mx-auto w-full overflow-hidden rounded-[24px]"
       >
         <BackgroundMedia
-          :poster="`${UB}/elev8-bg.jpg`"
+          :poster="`${UB}/leistungen-hero-bg.jpg`"
           :video="BEXO_VIDEOS.leistungenHero"
           poster-alt="Bexolutions Leistungen — Marketing und SEO für KMU"
           class="aspect-[4/5] w-full max-w-full sm:aspect-[16/10]"
