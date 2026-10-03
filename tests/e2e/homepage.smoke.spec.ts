@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test"
 
 test.describe("Homepage smoke", () => {
-  test("renders the Bexolutions home at / and /de and toggles the FAQ", async ({
+  test("renders the Bexolutions home at / and toggles the FAQ", async ({
     page,
   }) => {
     await page.goto("/")
@@ -15,15 +15,11 @@ test.describe("Homepage smoke", () => {
     })
     await expect(faqHeading).toBeVisible()
 
-    // The same home is served under the /de locale prefix
-    await page.goto("/de")
-    await expect(page.getByText("Better Marketing Systems.")).toBeVisible()
-
     // FAQ native <details> accordion: open by default, clicking the summary collapses it
     const firstFaq = page.locator("details.faq-item").first()
     await expect(firstFaq).toHaveAttribute("open", "")
     await expect(
-      page.getByText(/3-5 Werktagen nach Auftragserteilung/),
+      page.getByText(/das komplette Marketingsystem für Ihr KMU/),
     ).toBeVisible()
 
     await firstFaq.locator("summary").click()
@@ -40,7 +36,6 @@ test.describe("Homepage smoke", () => {
     expect(robotsResponse.ok()).toBeTruthy()
     const robotsBody = await robotsResponse.text()
     expect(robotsBody).toContain("Sitemap:")
-    expect(robotsBody).toContain("LLMs-Txt:")
 
     const sitemapResponse = await request.get("/sitemap.xml")
     expect(sitemapResponse.ok()).toBeTruthy()

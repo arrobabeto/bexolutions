@@ -52,7 +52,7 @@
   }
 
   async function switchLocale(code: string) {
-    if (code !== "en" && code !== "de") return
+    if (code !== "de") return
     await setLocale(code)
   }
 

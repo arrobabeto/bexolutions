@@ -1,15 +1,217 @@
 {
   "redirects": [
     {
+      "source": "/treuhandburo",
+      "destination": "https://www.bexolutions.ch/treuhaender",
+      "statusCode": 301
+    },
+    {
+      "source": "/treuhandburo/",
+      "destination": "https://www.bexolutions.ch/treuhaender",
+      "statusCode": 301
+    },
+    {
+      "source": "/mehr-mandanten",
+      "destination": "https://www.bexolutions.ch/treuhaender",
+      "statusCode": 301
+    },
+    {
+      "source": "/mehr-mandanten/",
+      "destination": "https://www.bexolutions.ch/treuhaender",
+      "statusCode": 301
+    },
+    {
+      "source": "/casestudy",
+      "destination": "https://www.bexolutions.ch/referenz-zofingen",
+      "statusCode": 301
+    },
+    {
+      "source": "/casestudy/",
+      "destination": "https://www.bexolutions.ch/referenz-zofingen",
+      "statusCode": 301
+    },
+    {
+      "source": "/uber-uns",
+      "destination": "https://www.bexolutions.ch/ueber-uns",
+      "statusCode": 301
+    },
+    {
+      "source": "/uber-uns/",
+      "destination": "https://www.bexolutions.ch/ueber-uns",
+      "statusCode": 301
+    },
+    {
+      "source": "/imprint",
+      "destination": "https://www.bexolutions.ch/impressum",
+      "statusCode": 301
+    },
+    {
+      "source": "/imprint/",
+      "destination": "https://www.bexolutions.ch/impressum",
+      "statusCode": 301
+    },
+    {
+      "source": "/datenschutzerklaerung",
+      "destination": "https://www.bexolutions.ch/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "source": "/datenschutzerklaerung/",
+      "destination": "https://www.bexolutions.ch/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy-2",
+      "destination": "https://www.bexolutions.ch/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy-2/",
+      "destination": "https://www.bexolutions.ch/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/contact",
+      "destination": "https://www.bexolutions.ch/kontakt",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/contact/",
+      "destination": "https://www.bexolutions.ch/kontakt",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/bexolutions-gmbh-startseite",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/bexolutions-gmbh-startseite/",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:path+/",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/:path+",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/seo-fur-schweizer-kmu-praxisleitfaden-local-seo",
+      "destination": "https://www.bexolutions.ch/wissen/seo-schweizer-kmu-einstiegsguide-2026",
+      "statusCode": 301
+    },
+    {
+      "source": "/seo-fur-schweizer-kmu-praxisleitfaden-local-seo/",
+      "destination": "https://www.bexolutions.ch/wissen/seo-schweizer-kmu-einstiegsguide-2026",
+      "statusCode": 301
+    },
+    {
+      "source": "/google-unternehmensprofil-2026-optimierung-fur-schweizer-kmu",
+      "destination": "https://www.bexolutions.ch/wissen/google-business-profile-optimieren",
+      "statusCode": 301
+    },
+    {
+      "source": "/google-unternehmensprofil-2026-optimierung-fur-schweizer-kmu/",
+      "destination": "https://www.bexolutions.ch/wissen/google-business-profile-optimieren",
+      "statusCode": 301
+    },
+    {
+      "source": "/so-maximieren-sie-ihre-online-sichtbarkeit-mit-dem-business-profil-boost-von-bexolutions",
+      "destination": "https://www.bexolutions.ch/wissen/google-business-profile-optimieren",
+      "statusCode": 301
+    },
+    {
+      "source": "/so-maximieren-sie-ihre-online-sichtbarkeit-mit-dem-business-profil-boost-von-bexolutions/",
+      "destination": "https://www.bexolutions.ch/wissen/google-business-profile-optimieren",
+      "statusCode": 301
+    },
+    {
+      "source": "/die-wichtigkeit-der-kundenrezensionen-und-wie-du-sie-fur-dich-nutzt",
+      "destination": "https://www.bexolutions.ch/wissen/google-bewertungen-einfordern-kmu-schweiz",
+      "statusCode": 301
+    },
+    {
+      "source": "/die-wichtigkeit-der-kundenrezensionen-und-wie-du-sie-fur-dich-nutzt/",
+      "destination": "https://www.bexolutions.ch/wissen/google-bewertungen-einfordern-kmu-schweiz",
+      "statusCode": 301
+    },
+
+    {
+      "source": "/de",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/:path+/",
+      "destination": "https://www.bexolutions.ch/:path+",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/:path+",
+      "destination": "https://www.bexolutions.ch/:path+",
+      "statusCode": 301
+    },
+
+    {
+      "source": "/posts",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/posts/",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/posts/:path+/",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/posts/:path+",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+
+    {
+      "source": "/:path+/",
+      "has": [{ "type": "host", "value": "bexolutions.ch" }],
+      "destination": "https://www.bexolutions.ch/:path+",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "bexolutions.ch" }],
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "bexolutions.ch"
-        }
-      ],
+      "has": [{ "type": "host", "value": "bexolutions.ch" }],
       "destination": "https://www.bexolutions.ch/:path*",
-      "permanent": true
-    }
+      "statusCode": 301
+    },
+
+    { "source": "/:path+/", "destination": "/:path+", "statusCode": 301 }
   ]
 }

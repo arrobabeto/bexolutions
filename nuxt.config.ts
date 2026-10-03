@@ -30,9 +30,9 @@ export default defineNuxtConfig({
     domains: ["localhost", "s3.eu-central-2.amazonaws.com"],
   },
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "de"],
-    strategy: "prefix_except_default",
+    defaultLocale: "de",
+    locales: ["de"],
+    strategy: "no_prefix",
     detectBrowserLanguage: false,
     bundle: {
       optimizeTranslationDirective: false,

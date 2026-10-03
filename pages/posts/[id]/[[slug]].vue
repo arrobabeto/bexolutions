@@ -55,12 +55,7 @@
     }
   }
 
-  const isGermanPage = route.path === "/de" || route.path.startsWith("/de/")
-  const enPath = route.path.startsWith("/de/")
-    ? route.path.slice(3) || "/"
-    : route.path
-  const dePath = enPath === "/" ? "/de" : `/de${enPath}`
-  const canonicalPath = isGermanPage ? dePath : enPath
+  const canonicalPath = route.path
   const canonicalUrl = `${config.public.siteUrl}${canonicalPath}`
   const title = t(post.title)
   const description = fn.truncateText(plainLead, 160)
@@ -95,12 +90,7 @@
   })
 
   useHead({
-    link: useCanonicalLinks({
-      canonicalPath,
-      enPath,
-      dePath,
-      xDefaultPath: enPath,
-    }),
+    link: useCanonicalLinks({ canonicalPath }),
     script: [
       {
         type: "application/ld+json",
