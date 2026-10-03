@@ -22,8 +22,7 @@
   const currentSlug = Array.isArray(routeSlug)
     ? routeSlug[0] || "home"
     : routeSlug || "home"
-  const slug =
-    route.path === "/de" && currentSlug === "de" ? "home" : currentSlug
+  const slug = currentSlug
 
   const page: IPage = await $fetch("/api/pages", { query: { slug } })
   if (!page)
@@ -32,10 +31,7 @@
   const title = fn.truncateText(t(page.title), 60)
   const description = fn.truncateText(fn.removeHtml(t(page.lead)), 160)
   const keywords = Array.isArray(page.keywords) ? page.keywords.join(", ") : ""
-  const isGermanPage = route.path === "/de" || route.path.startsWith("/de/")
-  const enPath = page.slug === "home" ? "/" : `/${page.slug}`
-  const dePath = page.slug === "home" ? "/de" : `/de/${page.slug}`
-  const canonicalPath = isGermanPage ? dePath : enPath
+  const canonicalPath = page.slug === "home" ? "/" : `/${page.slug}`
   const canonicalUrl = `${config.public.siteUrl}${canonicalPath}`
   const ogImage = config.public.ogImageEnabled
     ? generateOGImageUrl({
@@ -68,12 +64,7 @@
 
   useHead({
     ...page.head,
-    link: useCanonicalLinks({
-      canonicalPath,
-      enPath,
-      dePath,
-      xDefaultPath: enPath,
-    }),
+    link: useCanonicalLinks({ canonicalPath }),
     script: [
       {
         type: "application/ld+json",

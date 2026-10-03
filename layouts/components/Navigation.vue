@@ -15,20 +15,20 @@
       {
         name: { en: "Home" },
         to: "index" as const,
-        matchExact: ["/", "/de", "/en"],
+        matchExact: ["/"],
         matchPrefix: [] as string[],
       },
       {
         name: { en: "About" },
         to: "ueber-uns" as const,
         matchExact: [] as string[],
-        matchPrefix: ["/ueber-uns", "/de/ueber-uns"],
+        matchPrefix: ["/ueber-uns"],
       },
       {
         name: { en: "Posts" },
         to: "posts" as const,
         matchExact: [] as string[],
-        matchPrefix: ["/posts", "/de/posts"],
+        matchPrefix: ["/posts"],
       },
     ],
   }
