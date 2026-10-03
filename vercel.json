@@ -200,6 +200,12 @@
       "statusCode": 301
     },
     {
+      "source": "/",
+      "has": [{ "type": "host", "value": "bexolutions.ch" }],
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "bexolutions.ch" }],
       "destination": "https://www.bexolutions.ch/:path*",
