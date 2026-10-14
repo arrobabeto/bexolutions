@@ -50,6 +50,8 @@ export interface IBlogTocEntry {
 export interface IBlogAuthor {
   name: string
   bio: string
+  /** Article JSON-LD `author.jobTitle`, e.g. "CEO". */
+  jobTitle?: string
 }
 
 export interface IBlogCta {
@@ -64,6 +66,10 @@ export interface IBlogCta {
 export interface IBlogSeo {
   description: string
   ogImage: string
+  /** Exact `<title>`; defaults to "<title> — Bexolutions". */
+  title?: string
+  /** JSON-LD headline + breadcrumb name; defaults to the H1 title. */
+  headline?: string
 }
 
 export interface IBlog {

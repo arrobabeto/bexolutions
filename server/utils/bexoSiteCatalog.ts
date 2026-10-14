@@ -9,6 +9,7 @@ import googleMapsVsOrganisch from "~/data/blog/google-maps-vs-organische-suche-k
 import keywordRecherche from "~/data/blog/keyword-recherche-kmu-schweiz-suchbegriffe-finden"
 import kiSichtbarkeitMessen from "~/data/blog/ki-sichtbarkeit-messen-tools-kmu"
 import kiSuchenOhneKlick from "~/data/blog/ki-suchen-ohne-klick-kmu"
+import kundenwertBerechnen from "~/data/blog/kundenwert-berechnen-kmu"
 import linkedinKmuInhaber from "~/data/blog/linkedin-kmu-inhaber-thought-leadership-30-minuten"
 import linkedinOutreach from "~/data/blog/linkedin-outreach-schweiz-b2b-leads-kmu"
 import linkedinPersonalBranding from "~/data/blog/linkedin-personal-branding-profil-vs-firmenseite-kmu"
@@ -60,6 +61,7 @@ const BLOG_MODULES: IBlog[] = [
   keywordRecherche,
   kiSichtbarkeitMessen,
   kiSuchenOhneKlick,
+  kundenwertBerechnen,
   linkedinKmuInhaber,
   linkedinOutreach,
   linkedinPersonalBranding,

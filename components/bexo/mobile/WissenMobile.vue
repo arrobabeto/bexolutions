@@ -75,6 +75,12 @@
       body: "Thought Leadership, Personal Branding und Outreach für Schweizer KMU-Inhaber.",
       filter: "LinkedIn & Personal Branding",
     },
+    {
+      icon: "📈",
+      title: "Marketing & Vertrieb",
+      body: "Kundenwert, Akquisekosten und Kundengewinnung — wie aus Sichtbarkeit planbar Kunden werden.",
+      filter: "Marketing & Vertrieb",
+    },
   ]
 </script>
 

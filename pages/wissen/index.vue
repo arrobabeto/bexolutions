@@ -75,6 +75,7 @@
       label: "LinkedIn & Personal Branding",
       filter: "LinkedIn & Personal Branding",
     },
+    { label: "Marketing & Vertrieb", filter: "Marketing & Vertrieb" },
   ]
 
   function chunkBlogs(blogs: IBlog[], size: number): IBlog[][] {
@@ -226,6 +227,13 @@
       icon: "💼",
       title: "LinkedIn & Personal Branding",
       body: "Thought Leadership, Personal Branding und Outreach für Schweizer KMU-Inhaber.",
+    },
+    {
+      left: 988,
+      row: 1,
+      icon: "📈",
+      title: "Marketing & Vertrieb",
+      body: "Kundenwert, Akquisekosten und Kundengewinnung — wie aus Sichtbarkeit planbar Kunden werden.",
     },
   ]
 </script>

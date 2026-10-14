@@ -6,6 +6,7 @@ export const WISSEN_FILTER_CHIPS = [
   "SEO für KMU",
   "Treuhand-spezifisch",
   "LinkedIn & Personal Branding",
+  "Marketing & Vertrieb",
 ] as const
 
 export type WissenFilterChip = (typeof WISSEN_FILTER_CHIPS)[number]
@@ -27,6 +28,7 @@ export const WISSEN_CATEGORY_SECTIONS: IWissenCategorySection[] = [
     label: "LinkedIn & Personal Branding",
     filter: "LinkedIn & Personal Branding",
   },
+  { label: "Marketing & Vertrieb", filter: "Marketing & Vertrieb" },
 ]
 
 export const WISSEN_LIST_PAGE_SIZE = 9
@@ -43,6 +45,7 @@ export const WISSEN_CATEGORY_SLUGS: Record<WissenCategoryFilter, string> = {
   "SEO für KMU": "seo-fuer-kmu",
   "Treuhand-spezifisch": "treuhand-spezifisch",
   "LinkedIn & Personal Branding": "linkedin-personal-branding",
+  "Marketing & Vertrieb": "marketing-vertrieb",
 }
 
 export function getWissenCategoryBySlug(

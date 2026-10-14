@@ -120,22 +120,6 @@
                 :src="blog.audioUrl"
                 label="Kurzaudio abspielen"
               />
-              <svg
-                v-else
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#0e2138"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M3 9v6h4l5 5V4L7 9H3z" fill="#0e2138" stroke="none" />
-                <path d="M16 8a5 5 0 0 1 0 8" />
-                <path d="M19 5a9 9 0 0 1 0 14" />
-              </svg>
               <p
                 class="text-right text-[16px] font-semibold leading-[1.6] text-black"
               >
