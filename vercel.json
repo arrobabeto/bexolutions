@@ -152,6 +152,97 @@
     },
 
     {
+      "source": "/:slug(die-customer-journey|der-marketing-mix|5-tipps-fur-ein-effektives-online-marketing-im-mittelstand|ki-marketing-fur-schweizer-kmu-2026-praxisleitfaden|voice-search-seo-2026-leitfaden-fur-schweizer-kmu|10-einfache-wege-wie-du-seo-im-marketing-einsetzen-kannst|9-einfache-moglichkeiten-seo-im-marketing-einzusetzen|marketing-automation-fur-schweizer-kmu-2026-tools-roi|video-marketing-2026-fur-schweizer-kmu-praxisleitfaden|employer-branding-fur-schweizer-kmu-fachkraftemangel-losen|10-wirksame-marketingstrategien-fur-kleine-unternehmen|5-clevere-tipps-zur-namensfindung-fur-dein-startup-business|5-kleine-schritte-zum-erfolg-auf-social-media|aufrufe-zum-handeln-cta-gestalten-der-direkte-weg-zum-erfolg|das-marketing-geheimnis-das-ihnen-zu-mehr-kunden-verhilft|das-marketing-geheimnis-welches-dir-zu-mehr-kunden-verhelfen-wird|das-problem-definieren-der-kern-jeder-storybrand-strategie|der-erfolg-von-storybrand-auf-linkedin-ihre-erfolgsgeschichte-beginnt-hier|der-schlussel-zur-kundenbindung|die-kunst-des-storytellings-im-marketing-emotionale-bindungen-zu-deinem-publikum-schaffen|die-macht-des-influencer-marketings-tipps-und-tricks|die-wichtigsten-komponenten-eines-erfolgreichen-marketingplans|einen-klaren-weg-voraus-ein-souveraner-plan-zur-kundenbindung-entwickeln|erstelle-eine-konversionsstarke-website-mit-storybrand|farbpsychologie-im-marketing-wahle-die-richtige-palette|maximiere-den-roi-mit-facebook-ads-leitfaden-fur-beginner|uberwindung-der-handlungsparalyse-das-scheitern-klar-benennen|visionen-des-erfolgs-die-transformative-kraft-ihrer-dienstleistung|von-der-idee-zum-start-schritt-anleitung-zur-grundung-deines-unternehmens|warum-branding-fur-den-erfolg-deines-startups-wichtig-ist|was-du-uber-storybrand-framework-wissen-musst|was-du-ueber-storybrand-framework-wissen-musst|wie-du-dein-empathie-statement-erarbeiten-kannst|wie-du-eine-starke-online-community-fur-deine-marke-aufbaust|wie-du-mehr-website-leads-generierst|wie-du-mehr-website-leads-generierst-2|wie-man-eine-social-media-marketing-strategie-entwickelt|wie-man-mithilfe-von-storybrand-einen-blogbeitrag-schreibt|wie-postkarten-dir-im-jahr-2023-bei-deiner-vermarktung-helfen|wie-sie-mit-der-storybrand-methode-muehelos-ueberzeugende-blogbeitraege-schreiben|marketing-resources|marketing-ressourcen){/}?",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/:year(\\d{4})/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/tag/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/category/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/wissen",
+      "statusCode": 301
+    },
+    {
+      "source": "/:slug(von-flopp-zu-top-in-nur-12-wochen-mit-der-art-of-linkedin-masterclass|art-of-linkedin-masterclass|storybrand-workshop|story-brand-workshop-zurich|story-brand-workshop-registration-confirmation|storybrand-webseiten|foto-video|beste-marketingdienstleistungen|small-business-owners-marketing-academy|shop|cart){/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/:slug(art-of-linkedin-masterclass|art-of-linkedin-masterclass-2|storybrand-workshop|storybrand-workshop-2){/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/marketing-de/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/product-category/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/:funnel(financial-training|sboma-finance|sboma-main|small-business-owners-marketing-academy-oct-promo-108)/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/leistungen",
+      "statusCode": 301
+    },
+    {
+      "source": "/:slug(analyse|anmelden|apply|beantragen|geschaftliche-bewertung|kunden-feedback|workshop-feedback|fragebogen-fuer-die-erstellung-eines-marketing-und-verkaufskonzepts|questionnaire-cold|questionnaire-warm){/}?",
+      "destination": "https://www.bexolutions.ch/kontakt",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/beantragen{/}?",
+      "destination": "https://www.bexolutions.ch/kontakt",
+      "statusCode": 301
+    },
+    {
+      "source": "/:slug(agb|rechtliche-warnung){/}?",
+      "destination": "https://www.bexolutions.ch/impressum",
+      "statusCode": 301
+    },
+    {
+      "source": "/de/agb{/}?",
+      "destination": "https://www.bexolutions.ch/impressum",
+      "statusCode": 301
+    },
+    {
+      "source": "/privacy-policy-tc{/}?",
+      "destination": "https://www.bexolutions.ch/datenschutz",
+      "statusCode": 301
+    },
+    {
+      "source": "/:slug(faq|affiliate-area|control-panel|animation-test|animation-test-2|animation-test-3|testing-page|sample-page|prep|wrong|link){/}?",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+    {
+      "source": "/wp-content/:path*{/}?",
+      "destination": "https://www.bexolutions.ch/",
+      "statusCode": 301
+    },
+
+    {
       "source": "/de",
       "destination": "https://www.bexolutions.ch/",
       "statusCode": 301

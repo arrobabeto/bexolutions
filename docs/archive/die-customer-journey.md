@@ -1,10 +1,10 @@
 # Die Customer Journey (archived)
 
-- Old URL: `https://bexolutions.ch/die-customer-journey/` (currently 404)
+- Old URL: `https://bexolutions.ch/die-customer-journey/` (currently 301 to `/wissen`)
 - Published: 2025-11-04
 - Source: Wayback Machine snapshot 2026-06-09, `https://web.archive.org/web/20260609001814/https://bexolutions.ch/die-customer-journey/`
 - Meta description: Die Customer Journey beschreibt den gesamten Prozess, den ein Kunde von der ersten Wahrnehmung einer Marke bis hin zur langfristigen Kundenbindung durchläuft.
-- Status: Recovered text for the new Wissen article. Once the new article is live, add a 301 from `/die-customer-journey` and `/die-customer-journey/` to it in `vercel.json` and update `docs/redirects-bexolutions-2026-10.csv`.
+- Status: Recovered text for the new Wissen article. Once the new article is live, remove `die-customer-journey` from the `/wissen` blog rule in `vercel.json`, add a 301 to the new article and update `docs/redirects-bexolutions-2026-10.csv`.
 
 ---
 
