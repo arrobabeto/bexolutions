@@ -16,10 +16,13 @@
     throw showError({ statusCode: 404, statusMessage: "Blog not found" })
 
   const fullTitle = getBlogFeaturedTitle(blog)
+  const headline = blog.seo.headline ?? fullTitle
   const baseUrl = String(config.public.siteUrl).replace(/\/$/, "")
   const canonicalUrl = `${baseUrl}/wissen/${blog.slug}`
+  const organizationRef = { "@id": `${baseUrl}/#organization` }
 
   useHead({
+    ...(blog.seo.title ? { titleTemplate: null } : {}),
     htmlAttrs: { lang: "de-CH" },
     link: [{ rel: "canonical", href: canonicalUrl }],
     script: [
@@ -28,31 +31,26 @@
         innerHTML: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
-          headline: fullTitle,
+          headline,
           description: blog.seo.description,
           datePublished: blog.datePublished,
           dateModified: blog.datePublished,
           inLanguage: "de",
           url: canonicalUrl,
+          mainEntityOfPage: canonicalUrl,
           image: {
             "@type": "ImageObject",
-            url: blog.seo.ogImage,
-            width: "1200",
-            height: "630",
+            url: `${baseUrl}${blog.seo.ogImage}`,
+            width: 1200,
+            height: 630,
           },
           author: {
             "@type": "Person",
             name: blog.author.name,
+            jobTitle: blog.author.jobTitle,
+            worksFor: organizationRef,
           },
-          publisher: {
-            "@type": "Organization",
-            name: config.public.organizationName,
-            logo: {
-              "@type": "ImageObject",
-              url: config.public.organizationLogo,
-            },
-          },
-          mainEntityOfPage: canonicalUrl,
+          publisher: organizationRef,
         }),
       },
       {
@@ -76,7 +74,7 @@
             {
               "@type": "ListItem",
               position: 3,
-              name: fullTitle,
+              name: headline,
               item: canonicalUrl,
             },
           ],
@@ -86,7 +84,7 @@
   })
 
   useSeoMeta({
-    title: `${fullTitle} — Bexolutions`,
+    title: blog.seo.title ?? `${fullTitle} — Bexolutions`,
     description: blog.seo.description,
     author: blog.author.name,
     ogTitle: fullTitle,
