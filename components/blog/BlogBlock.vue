@@ -67,7 +67,8 @@
           <th
             v-for="(h, i) of block.headers"
             :key="i"
-            class="bg-[#f5f5f5] px-3 py-3 text-center text-xs font-medium text-[#0e2138] sm:text-sm lg:px-[24px] lg:py-[16px] lg:text-[16px]"
+            class="bg-[#f5f5f5] px-3 py-3 text-xs font-medium text-[#0e2138] sm:text-sm lg:px-[24px] lg:py-[16px] lg:text-[16px]"
+            :class="block.headerAlign === 'left' ? 'text-left' : 'text-center'"
           >
             {{ h }}
           </th>

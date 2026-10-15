@@ -102,6 +102,7 @@ export default {
     {
       type: "table",
       headers: ["", "Umsatz"],
+      headerAlign: "left",
       rows: [
         ["Eigene Aufträge (3 Jahre)", "19'000 Franken"],
         ["Zwei vermittelte Kunden", "20'500 Franken"],
