@@ -28,7 +28,14 @@ export type BlogBlock =
   /** Standalone thin horizontal rule. */
   | { type: "divider" }
   /** Data table. `rows[i].length` should match `headers.length` (guarded at render). */
-  | { type: "table"; caption?: string; headers: string[]; rows: string[][] }
+  | {
+      type: "table"
+      caption?: string
+      headers: string[]
+      rows: string[][]
+      /** Header cell alignment; defaults to centered. */
+      headerAlign?: "left" | "center"
+    }
   /** Bulleted (default) or numbered list. */
   | { type: "list"; ordered?: boolean; items: string[] }
   /** Highlighted box. `navy` = dark #0e2138 / white text; `highlight` = #bde0fe. */
