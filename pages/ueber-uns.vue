@@ -481,7 +481,7 @@
                 :src="`${HOME}/logos-row1.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
-                :width="4002"
+                :width="3192"
                 :height="160"
                 loading="lazy"
               />
@@ -489,7 +489,7 @@
                 :src="`${HOME}/logos-row1.png`"
                 class="marquee-img"
                 alt=""
-                :width="4002"
+                :width="3192"
                 :height="160"
                 loading="lazy"
               />
@@ -501,7 +501,7 @@
                 :src="`${HOME}/logos-row2.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
-                :width="3709"
+                :width="2899"
                 :height="160"
                 loading="lazy"
               />
@@ -509,7 +509,7 @@
                 :src="`${HOME}/logos-row2.png`"
                 class="marquee-img"
                 alt=""
-                :width="3709"
+                :width="2899"
                 :height="160"
                 loading="lazy"
               />
