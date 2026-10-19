@@ -523,7 +523,7 @@
                 :src="`${IMG}/logos-row1.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
-                :width="4002"
+                :width="3192"
                 :height="160"
               />
               <NuxtImg
@@ -531,7 +531,7 @@
                 class="marquee-img"
                 alt="Referenzen Bexolutions: Coca-Cola HBC, Thomas Sabo, Biotronik, REMAX, BELL Helmets"
                 aria-hidden="true"
-                :width="4002"
+                :width="3192"
                 :height="160"
               />
             </div>
@@ -542,7 +542,7 @@
                 :src="`${IMG}/logos-row2.png`"
                 class="marquee-img"
                 alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
-                :width="3709"
+                :width="2899"
                 :height="160"
               />
               <NuxtImg
@@ -550,7 +550,7 @@
                 class="marquee-img"
                 alt="Referenzen Bexolutions: weitere Schweizer und internationale Markenkunden"
                 aria-hidden="true"
-                :width="3709"
+                :width="2899"
                 :height="160"
               />
             </div>
