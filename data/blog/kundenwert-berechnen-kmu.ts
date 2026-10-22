@@ -11,6 +11,7 @@ export default {
   tagline:
     "Zwei Fälle aus der Praxis zeigen, warum KMU den ganzen Kunden rechnen sollten — nicht nur das erste Mandat",
   heroImage: "/images/blog/kundenwert-berechnen-kmu/hero.jpg",
+  audioUrl: "/audio/blog/kundenwert-berechnen-kmu.m4a",
   tldr: {
     title: "TL;DR — Das Wichtigste in 60 Sekunden",
     body: "Die 3:1-Regel sagt: Ein Kunde soll mindestens dreimal so viel einbringen, wie seine Gewinnung kostet. Bei KMU, die Dienstleistungen verkaufen, zählt sie aber nur das erste Mandat und die eigenen Rechnungen eines Kunden — und unterschätzt so oft genau die wertvollsten Kunden. Zwei Fälle aus unserer Agentur zeigen, warum Sie mit Deckungsbeitrag statt Umsatz, über mehrere Jahre, mit Empfehlungen und ehrlich erfassten Akquisekosten rechnen sollten.",
@@ -64,6 +65,13 @@ export default {
     {
       type: "richText",
       html: "<p>Die bekannte 3:1-Regel sagt, dass ein Kunde über die ganze Zusammenarbeit mindestens dreimal so viel einbringen soll, wie seine Gewinnung kostet. In der Theorie stimmt das. Bei KMU, die Dienstleistungen verkaufen, unterschätzt die Regel aber oft genau die Kunden, die am meisten bringen, weil sie nur das erste Mandat und die eigenen Rechnungen eines Kunden zählt.</p><p>In diesem Beitrag zeigen wir an zwei echten Fällen aus unserer Agentur, wo die Formel hilft, wo sie danebenliegt und wie Sie stattdessen den ganzen Kunden rechnen.</p>",
+    },
+    {
+      type: "image",
+      src: "/images/blog/kundenwert-berechnen-kmu/infographic.jpg",
+      alt: "Den wahren Kundenwert im Dienstleistungs-KMU berechnen: Problem der klassischen 3:1-Regel und die 4 Anpassungen",
+      caption:
+        "Überblick: Warum die 3:1-Regel zu kurz greift — und wie Sie den ganzen Kunden rechnen.",
     },
     { type: "divider" },
 
